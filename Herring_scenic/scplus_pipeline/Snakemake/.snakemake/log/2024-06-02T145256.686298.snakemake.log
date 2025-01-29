@@ -1,6 +1,0 @@
-Building DAG of jobs...
-MissingInputException in rule prepare_GEX_ACC_multiome in file /home/michal.kubacki/Githubs/Re-MEND/code/External_Datasets/GeneSet_Derivation/Herring_scenic/scplus_pipeline/Snakemake/workflow/Snakefile, line 16:
-Missing input files for rule prepare_GEX_ACC_multiome:
-    output: /group/testa/michal.kubacki/herring/scenic_all_celltypes/ACC_GEX.h5mu
-    affected files:
-        /group/testa/michal.kubacki/herring/output_hg19_all_cell_types/adata.h5ad

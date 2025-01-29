@@ -1,6 +1,0 @@
-INFO: localdir at /localscratch/13530119.michal.kubacki
-INFO: your job will run on local system.
-Error: No config file name provided.
-Usage: sbatch /cm/local/apps/slurm/var/spool/job13530119/slurm_script <config_file_name>
-slurmstepd: error: _cgroup_procs_check: failed on path /sys/fs/cgroup/memory/slurm/uid_10666/job_13530119/step_batch/cgroup.procs: No such file or directory
-slurmstepd: error: unable to read '/sys/fs/cgroup/memory/slurm/uid_10666/job_13530119/step_batch/cgroup.procs'

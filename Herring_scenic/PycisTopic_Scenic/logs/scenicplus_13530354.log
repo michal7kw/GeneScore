@@ -1,7 +1,0 @@
-INFO: localdir at /localscratch/13530354.michal.kubacki
-INFO: your job will run on local system.
-Error: Config file not found: /home/michal.kubacki/Githubs/Re-MEND/code/External_Datasets/GeneSet_Derivation/Herring_scenic/scplus_pipeline/Snakemake/config//home/michal.kubacki/Githubs/Re-MEND/code/External_Datasets/GeneSet_Derivation/Herring_scenic/scplus_pipeline/Snakemake/config/config_all_excitatory.yaml
-slurmstepd: error: _cgroup_procs_check: failed on path /sys/fs/cgroup/memory/slurm/uid_10666/job_13530354/step_batch/cgroup.procs: No such file or directory
-slurmstepd: error: unable to read '/sys/fs/cgroup/memory/slurm/uid_10666/job_13530354/step_batch/cgroup.procs'
-
-/home/michal.kubacki/Githubs/Re-MEND/code/External_Datasets/GeneSet_Derivation/Herring_scenic/scplus_pipeline/Snakemake/config/config_all_excitatory.yaml
