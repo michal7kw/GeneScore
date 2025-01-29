@@ -36,3 +36,4 @@ PN_dev: 4884
 2025-01-29 20:14:29,062 cisTopic     INFO     Splitting fragments by cell type.
 [W::hts_idx_load3] The index file is older than the data file: /group/testa/michal.kubacki/herring_minimal/data/GSE168408_RAW/GSM5138515_RL2367_1m_snATAC_fragments.tsv.gz.tbi
 [W::hts_idx_load3] The index file is older than the data file: /group/testa/michal.kubacki/herring_minimal/data/GSE168408_RAW/GSM5138521_RL2208_6m_snATAC_fragments.tsv.gz.tbi
+[W::hts_idx_load3] The index file is older than the data file: /group/testa/michal.kubacki/herring_minimal/data/GSE168408_RAW/GSM5138512_RL2207_ga24_snATAC_fragments.tsv.gz.tbi
