@@ -37,3 +37,6 @@ PN_dev: 4884
 [W::hts_idx_load3] The index file is older than the data file: /group/testa/michal.kubacki/herring_minimal/data/GSE168408_RAW/GSM5138515_RL2367_1m_snATAC_fragments.tsv.gz.tbi
 [W::hts_idx_load3] The index file is older than the data file: /group/testa/michal.kubacki/herring_minimal/data/GSE168408_RAW/GSM5138521_RL2208_6m_snATAC_fragments.tsv.gz.tbi
 [W::hts_idx_load3] The index file is older than the data file: /group/testa/michal.kubacki/herring_minimal/data/GSE168408_RAW/GSM5138512_RL2207_ga24_snATAC_fragments.tsv.gz.tbi
+2025-01-29 20:23:04,904 cisTopic     INFO     generating bigwig files
+2025-01-29 20:24:03,928 cisTopic     INFO     /group/testa/michal.kubacki/herring_minimal/all_ex/consensus_peak_calling/pseudobulk_bw_files/L2-3_CUX2.bw done!
+2025-01-29 20:24:24,005 cisTopic     INFO     /group/testa/michal.kubacki/herring_minimal/all_ex/consensus_peak_calling/pseudobulk_bw_files/L5-6_TLE4.bw done!
