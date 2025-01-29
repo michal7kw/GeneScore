@@ -1,0 +1,313 @@
+INFO: localdir at /localscratch/13375732.michal.kubacki
+INFO: your job will run on local system.
+which: no R in (/home/michal.kubacki/.conda/envs/scenicplus/bin:/home/michal.kubacki/new_miniconda/condabin:/cm/shared/apps/slurm/current/sbin:/cm/shared/apps/slurm/current/bin:/cm/local/apps/environment-modules/4.5.3/bin:/usr/local/bin:/usr/bin:/usr/local/sbin:/usr/sbin:/sbin:/usr/sbin:/cm/local/apps/environment-modules/4.5.3/bin:/opt/dell/srvadmin/bin:.)
+root_dir: /group/testa/michal.kubacki/herring
+out_dir: /group/testa/michal.kubacki/herring/output_hg19_all_inhibitory_all_ages/celloracle
+in_dir: /group/testa/michal.kubacki/herring/data
+tmp_dir: /group/testa/michal.kubacki/herring/celloracle/tmp
+Load scRNA-seq data
+Genes of interest found: 26
+Genes of interest not found: {'DIO3'}
+Processing cell type: VIP
+Processing RET for cell type VIP
+No data found for gene RET in cell type MGE_dev
+No data found for gene RET in cell type PV
+No data found for gene RET in cell type SST
+No data found for gene RET in cell type VIP
+Processing NTRK1 for cell type VIP
+No data found for gene NTRK1 in cell type MGE_dev
+No data found for gene NTRK1 in cell type PV
+No data found for gene NTRK1 in cell type SST
+No data found for gene NTRK1 in cell type VIP
+Processing NTRK2 for cell type VIP
+No data found for gene NTRK2 in cell type MGE_dev
+No data found for gene NTRK2 in cell type PV
+No data found for gene NTRK2 in cell type SST
+No data found for gene NTRK2 in cell type VIP
+Processing NTRK3 for cell type VIP
+No data found for gene NTRK3 in cell type MGE_dev
+No data found for gene NTRK3 in cell type PV
+No data found for gene NTRK3 in cell type SST
+No data found for gene NTRK3 in cell type VIP
+Processing GFRA1 for cell type VIP
+No data found for gene GFRA1 in cell type MGE_dev
+No data found for gene GFRA1 in cell type PV
+No data found for gene GFRA1 in cell type SST
+No data found for gene GFRA1 in cell type VIP
+Processing GFRA2 for cell type VIP
+No data found for gene GFRA2 in cell type MGE_dev
+No data found for gene GFRA2 in cell type PV
+No data found for gene GFRA2 in cell type SST
+No data found for gene GFRA2 in cell type VIP
+Processing GFRA3 for cell type VIP
+No data found for gene GFRA3 in cell type MGE_dev
+No data found for gene GFRA3 in cell type PV
+No data found for gene GFRA3 in cell type SST
+No data found for gene GFRA3 in cell type VIP
+Processing GFRA4 for cell type VIP
+No data found for gene GFRA4 in cell type MGE_dev
+No data found for gene GFRA4 in cell type PV
+No data found for gene GFRA4 in cell type SST
+No data found for gene GFRA4 in cell type VIP
+Processing AHR for cell type VIP
+Processing ARNT for cell type VIP
+Processing ARNT2 for cell type VIP
+Processing CLOCK for cell type VIP
+Processing AR for cell type VIP
+Processing NR1I2 for cell type VIP
+Processing NR1I3 for cell type VIP
+Processing NR3C1 for cell type VIP
+Processing NR3C2 for cell type VIP
+Processing ESR1 for cell type VIP
+Processing GPER1 for cell type VIP
+No data found for gene GPER1 in cell type MGE_dev
+No data found for gene GPER1 in cell type PV
+No data found for gene GPER1 in cell type SST
+No data found for gene GPER1 in cell type VIP
+Processing DIO2 for cell type VIP
+No data found for gene DIO2 in cell type MGE_dev
+No data found for gene DIO2 in cell type PV
+No data found for gene DIO2 in cell type SST
+No data found for gene DIO2 in cell type VIP
+Processing RARA for cell type VIP
+Processing ESR2 for cell type VIP
+Processing THRB for cell type VIP
+Processing THRA for cell type VIP
+Processing THRSP for cell type VIP
+No data found for gene THRSP in cell type MGE_dev
+No data found for gene THRSP in cell type PV
+No data found for gene THRSP in cell type SST
+No data found for gene THRSP in cell type VIP
+Processing THRAP3 for cell type VIP
+No data found for gene THRAP3 in cell type MGE_dev
+No data found for gene THRAP3 in cell type PV
+No data found for gene THRAP3 in cell type SST
+No data found for gene THRAP3 in cell type VIP
+Processing cell type: SST
+Processing RET for cell type SST
+No data found for gene RET in cell type MGE_dev
+No data found for gene RET in cell type PV
+No data found for gene RET in cell type SST
+No data found for gene RET in cell type VIP
+Processing NTRK1 for cell type SST
+No data found for gene NTRK1 in cell type MGE_dev
+No data found for gene NTRK1 in cell type PV
+No data found for gene NTRK1 in cell type SST
+No data found for gene NTRK1 in cell type VIP
+Processing NTRK2 for cell type SST
+No data found for gene NTRK2 in cell type MGE_dev
+No data found for gene NTRK2 in cell type PV
+No data found for gene NTRK2 in cell type SST
+No data found for gene NTRK2 in cell type VIP
+Processing NTRK3 for cell type SST
+No data found for gene NTRK3 in cell type MGE_dev
+No data found for gene NTRK3 in cell type PV
+No data found for gene NTRK3 in cell type SST
+No data found for gene NTRK3 in cell type VIP
+Processing GFRA1 for cell type SST
+No data found for gene GFRA1 in cell type MGE_dev
+No data found for gene GFRA1 in cell type PV
+No data found for gene GFRA1 in cell type SST
+No data found for gene GFRA1 in cell type VIP
+Processing GFRA2 for cell type SST
+No data found for gene GFRA2 in cell type MGE_dev
+No data found for gene GFRA2 in cell type PV
+No data found for gene GFRA2 in cell type SST
+No data found for gene GFRA2 in cell type VIP
+Processing GFRA3 for cell type SST
+No data found for gene GFRA3 in cell type MGE_dev
+No data found for gene GFRA3 in cell type PV
+No data found for gene GFRA3 in cell type SST
+No data found for gene GFRA3 in cell type VIP
+Processing GFRA4 for cell type SST
+No data found for gene GFRA4 in cell type MGE_dev
+No data found for gene GFRA4 in cell type PV
+No data found for gene GFRA4 in cell type SST
+No data found for gene GFRA4 in cell type VIP
+Processing AHR for cell type SST
+Processing ARNT for cell type SST
+Processing ARNT2 for cell type SST
+Processing CLOCK for cell type SST
+Processing AR for cell type SST
+Processing NR1I2 for cell type SST
+Processing NR1I3 for cell type SST
+Processing NR3C1 for cell type SST
+Processing NR3C2 for cell type SST
+Processing ESR1 for cell type SST
+Processing GPER1 for cell type SST
+No data found for gene GPER1 in cell type MGE_dev
+No data found for gene GPER1 in cell type PV
+No data found for gene GPER1 in cell type SST
+No data found for gene GPER1 in cell type VIP
+Processing DIO2 for cell type SST
+No data found for gene DIO2 in cell type MGE_dev
+No data found for gene DIO2 in cell type PV
+No data found for gene DIO2 in cell type SST
+No data found for gene DIO2 in cell type VIP
+Processing RARA for cell type SST
+Processing ESR2 for cell type SST
+Processing THRB for cell type SST
+Processing THRA for cell type SST
+Processing THRSP for cell type SST
+No data found for gene THRSP in cell type MGE_dev
+No data found for gene THRSP in cell type PV
+No data found for gene THRSP in cell type SST
+No data found for gene THRSP in cell type VIP
+Processing THRAP3 for cell type SST
+No data found for gene THRAP3 in cell type MGE_dev
+No data found for gene THRAP3 in cell type PV
+No data found for gene THRAP3 in cell type SST
+No data found for gene THRAP3 in cell type VIP
+Processing cell type: PV
+Processing RET for cell type PV
+No data found for gene RET in cell type MGE_dev
+No data found for gene RET in cell type PV
+No data found for gene RET in cell type SST
+No data found for gene RET in cell type VIP
+Processing NTRK1 for cell type PV
+No data found for gene NTRK1 in cell type MGE_dev
+No data found for gene NTRK1 in cell type PV
+No data found for gene NTRK1 in cell type SST
+No data found for gene NTRK1 in cell type VIP
+Processing NTRK2 for cell type PV
+No data found for gene NTRK2 in cell type MGE_dev
+No data found for gene NTRK2 in cell type PV
+No data found for gene NTRK2 in cell type SST
+No data found for gene NTRK2 in cell type VIP
+Processing NTRK3 for cell type PV
+No data found for gene NTRK3 in cell type MGE_dev
+No data found for gene NTRK3 in cell type PV
+No data found for gene NTRK3 in cell type SST
+No data found for gene NTRK3 in cell type VIP
+Processing GFRA1 for cell type PV
+No data found for gene GFRA1 in cell type MGE_dev
+No data found for gene GFRA1 in cell type PV
+No data found for gene GFRA1 in cell type SST
+No data found for gene GFRA1 in cell type VIP
+Processing GFRA2 for cell type PV
+No data found for gene GFRA2 in cell type MGE_dev
+No data found for gene GFRA2 in cell type PV
+No data found for gene GFRA2 in cell type SST
+No data found for gene GFRA2 in cell type VIP
+Processing GFRA3 for cell type PV
+No data found for gene GFRA3 in cell type MGE_dev
+No data found for gene GFRA3 in cell type PV
+No data found for gene GFRA3 in cell type SST
+No data found for gene GFRA3 in cell type VIP
+Processing GFRA4 for cell type PV
+No data found for gene GFRA4 in cell type MGE_dev
+No data found for gene GFRA4 in cell type PV
+No data found for gene GFRA4 in cell type SST
+No data found for gene GFRA4 in cell type VIP
+Processing AHR for cell type PV
+Processing ARNT for cell type PV
+Processing ARNT2 for cell type PV
+Processing CLOCK for cell type PV
+Processing AR for cell type PV
+Processing NR1I2 for cell type PV
+Processing NR1I3 for cell type PV
+Processing NR3C1 for cell type PV
+Processing NR3C2 for cell type PV
+Processing ESR1 for cell type PV
+Processing GPER1 for cell type PV
+No data found for gene GPER1 in cell type MGE_dev
+No data found for gene GPER1 in cell type PV
+No data found for gene GPER1 in cell type SST
+No data found for gene GPER1 in cell type VIP
+Processing DIO2 for cell type PV
+No data found for gene DIO2 in cell type MGE_dev
+No data found for gene DIO2 in cell type PV
+No data found for gene DIO2 in cell type SST
+No data found for gene DIO2 in cell type VIP
+Processing RARA for cell type PV
+Processing ESR2 for cell type PV
+Processing THRB for cell type PV
+Processing THRA for cell type PV
+Processing THRSP for cell type PV
+No data found for gene THRSP in cell type MGE_dev
+No data found for gene THRSP in cell type PV
+No data found for gene THRSP in cell type SST
+No data found for gene THRSP in cell type VIP
+Processing THRAP3 for cell type PV
+No data found for gene THRAP3 in cell type MGE_dev
+No data found for gene THRAP3 in cell type PV
+No data found for gene THRAP3 in cell type SST
+No data found for gene THRAP3 in cell type VIP
+Processing cell type: MGE_dev
+Processing RET for cell type MGE_dev
+No data found for gene RET in cell type MGE_dev
+No data found for gene RET in cell type PV
+No data found for gene RET in cell type SST
+No data found for gene RET in cell type VIP
+Processing NTRK1 for cell type MGE_dev
+No data found for gene NTRK1 in cell type MGE_dev
+No data found for gene NTRK1 in cell type PV
+No data found for gene NTRK1 in cell type SST
+No data found for gene NTRK1 in cell type VIP
+Processing NTRK2 for cell type MGE_dev
+No data found for gene NTRK2 in cell type MGE_dev
+No data found for gene NTRK2 in cell type PV
+No data found for gene NTRK2 in cell type SST
+No data found for gene NTRK2 in cell type VIP
+Processing NTRK3 for cell type MGE_dev
+No data found for gene NTRK3 in cell type MGE_dev
+No data found for gene NTRK3 in cell type PV
+No data found for gene NTRK3 in cell type SST
+No data found for gene NTRK3 in cell type VIP
+Processing GFRA1 for cell type MGE_dev
+No data found for gene GFRA1 in cell type MGE_dev
+No data found for gene GFRA1 in cell type PV
+No data found for gene GFRA1 in cell type SST
+No data found for gene GFRA1 in cell type VIP
+Processing GFRA2 for cell type MGE_dev
+No data found for gene GFRA2 in cell type MGE_dev
+No data found for gene GFRA2 in cell type PV
+No data found for gene GFRA2 in cell type SST
+No data found for gene GFRA2 in cell type VIP
+Processing GFRA3 for cell type MGE_dev
+No data found for gene GFRA3 in cell type MGE_dev
+No data found for gene GFRA3 in cell type PV
+No data found for gene GFRA3 in cell type SST
+No data found for gene GFRA3 in cell type VIP
+Processing GFRA4 for cell type MGE_dev
+No data found for gene GFRA4 in cell type MGE_dev
+No data found for gene GFRA4 in cell type PV
+No data found for gene GFRA4 in cell type SST
+No data found for gene GFRA4 in cell type VIP
+Processing AHR for cell type MGE_dev
+Processing ARNT for cell type MGE_dev
+Processing ARNT2 for cell type MGE_dev
+Processing CLOCK for cell type MGE_dev
+Processing AR for cell type MGE_dev
+Processing NR1I2 for cell type MGE_dev
+Processing NR1I3 for cell type MGE_dev
+Processing NR3C1 for cell type MGE_dev
+Processing NR3C2 for cell type MGE_dev
+Processing ESR1 for cell type MGE_dev
+Processing GPER1 for cell type MGE_dev
+No data found for gene GPER1 in cell type MGE_dev
+No data found for gene GPER1 in cell type PV
+No data found for gene GPER1 in cell type SST
+No data found for gene GPER1 in cell type VIP
+Processing DIO2 for cell type MGE_dev
+No data found for gene DIO2 in cell type MGE_dev
+No data found for gene DIO2 in cell type PV
+No data found for gene DIO2 in cell type SST
+No data found for gene DIO2 in cell type VIP
+Processing RARA for cell type MGE_dev
+Processing ESR2 for cell type MGE_dev
+Processing THRB for cell type MGE_dev
+Processing THRA for cell type MGE_dev
+Processing THRSP for cell type MGE_dev
+No data found for gene THRSP in cell type MGE_dev
+No data found for gene THRSP in cell type PV
+No data found for gene THRSP in cell type SST
+No data found for gene THRSP in cell type VIP
+Processing THRAP3 for cell type MGE_dev
+No data found for gene THRAP3 in cell type MGE_dev
+No data found for gene THRAP3 in cell type PV
+No data found for gene THRAP3 in cell type SST
+No data found for gene THRAP3 in cell type VIP
+Combined GRN data saved to /group/testa/michal.kubacki/herring/output_hg19_all_inhibitory_all_ages/celloracle/scores_grn_all.csv
+slurmstepd: error: _cgroup_procs_check: failed on path /sys/fs/cgroup/memory/slurm/uid_10666/job_13375732/step_batch/cgroup.procs: No such file or directory
+slurmstepd: error: unable to read '/sys/fs/cgroup/memory/slurm/uid_10666/job_13375732/step_batch/cgroup.procs'

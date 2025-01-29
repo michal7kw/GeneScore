@@ -1,0 +1,287 @@
+INFO: localdir at /localscratch/13139992.michal.kubacki
+INFO: your job will run on local system.
+root_dir: /group/testa/michal.kubacki/herring
+out_dir: /group/testa/michal.kubacki/herring/output_hg19_all_excitatory
+in_dir: /group/testa/michal.kubacki/herring/data
+tmp_dir: /group/testa/michal.kubacki/herring/tmp
+All fragments: {'ga22': '/group/testa/michal.kubacki/herring/data/GSE168408_RAW/GSM5138510_RL2366_ga22_snATAC_fragments.tsv.gz', '1y': '/group/testa/michal.kubacki/herring/data/GSE168408_RAW/GSM5138526_RL2209_1y_snATAC_fragments.tsv.gz', '14y': '/group/testa/michal.kubacki/herring/data/GSE168408_RAW/GSM5138542_RL2372_14y_snATAC_fragments.tsv.gz', 'ga24': '/group/testa/michal.kubacki/herring/data/GSE168408_RAW/GSM5138512_RL2207_ga24_snATAC_fragments.tsv.gz', '2y': '/group/testa/michal.kubacki/herring/data/GSE168408_RAW/GSM5138529_RL1784_2y_snATAC_fragments.tsv.gz', '16y': '/group/testa/michal.kubacki/herring/data/GSE168408_RAW/GSM5138544_RL1785_16y_snATAC_fragments.tsv.gz', '1m': '/group/testa/michal.kubacki/herring/data/GSE168408_RAW/GSM5138515_RL2367_1m_snATAC_fragments.tsv.gz', '4y': '/group/testa/michal.kubacki/herring/data/GSE168408_RAW/GSM5138532_RL2210_4y_snATAC_fragments.tsv.gz', '20y': '/group/testa/michal.kubacki/herring/data/GSE168408_RAW/GSM5138548_RL2085_20y_snATAC_fragments.tsv.gz', '3m': '/group/testa/michal.kubacki/herring/data/GSE168408_RAW/GSM5138518_RL1914_3m_snATAC_fragments.tsv.gz', '6y': '/group/testa/michal.kubacki/herring/data/GSE168408_RAW/GSM5138534_RL2364_6y_snATAC_fragments.tsv.gz', '25y': '/group/testa/michal.kubacki/herring/data/GSE168408_RAW/GSM5138550_RL2369_25y_snATAC_fragments.tsv.gz', '6m': '/group/testa/michal.kubacki/herring/data/GSE168408_RAW/GSM5138521_RL2208_6m_snATAC_fragments.tsv.gz', '8y': '/group/testa/michal.kubacki/herring/data/GSE168408_RAW/GSM5138536_RL1994_8y_snATAC_fragments.tsv.gz', '40y': '/group/testa/michal.kubacki/herring/data/GSE168408_RAW/GSM5138552_RL2373_40y_snATAC_fragments.tsv.gz', '10m': '/group/testa/michal.kubacki/herring/data/GSE168408_RAW/GSM5138523_RL2371_10m_snATAC_fragments.tsv.gz', '10y': '/group/testa/michal.kubacki/herring/data/GSE168408_RAW/GSM5138539_RL2368_10y_snATAC_fragments.tsv.gz'}
+Selected fragments: ['1m', '3m', '6m', '10m', '1y', '2y', '4y', 'ga22', 'ga24']
+(87339, 24)
+(32365, 24)
+v3    29982
+v2     2383
+Name: chem, dtype: int64
+1.0    32365
+Name: PassQC, dtype: int64
+(29982, 24)
+(22558, 24)
+(22558, 25)
+L2-3_CUX2: 6355
+L5-6_TLE4: 3292
+L4_RORB: 5956
+L5-6_THEMIS: 2071
+PN_dev: 4884
+L2-3_CUX2: 6355
+L5-6_TLE4: 3292
+L4_RORB: 5956
+L5-6_THEMIS: 2071
+PN_dev: 4884
+L2-3_CUX2: 6355
+L5-6_TLE4: 3292
+L4_RORB: 5956
+L5-6_THEMIS: 2071
+PN_dev: 4884
+2024-07-02 19:31:18,248 cisTopic     INFO     Splitting fragments by cell type.
+2024-07-02 19:41:30,071 cisTopic     INFO     generating bigwig files
+2024-07-02 19:42:35,380 cisTopic     INFO     /group/testa/michal.kubacki/herring/output_hg19_all_excitatory/consensus_peak_calling/pseudobulk_bw_files/L2-3_CUX2.bw done!
+2024-07-02 19:42:55,221 cisTopic     INFO     /group/testa/michal.kubacki/herring/output_hg19_all_excitatory/consensus_peak_calling/pseudobulk_bw_files/L5-6_TLE4.bw done!
+2024-07-02 19:43:45,187 cisTopic     INFO     /group/testa/michal.kubacki/herring/output_hg19_all_excitatory/consensus_peak_calling/pseudobulk_bw_files/L4_RORB.bw done!
+2024-07-02 19:44:03,184 cisTopic     INFO     /group/testa/michal.kubacki/herring/output_hg19_all_excitatory/consensus_peak_calling/pseudobulk_bw_files/L5-6_THEMIS.bw done!
+2024-07-02 19:44:50,430 cisTopic     INFO     /group/testa/michal.kubacki/herring/output_hg19_all_excitatory/consensus_peak_calling/pseudobulk_bw_files/PN_dev.bw done!
+2024-07-02 19:44:50,458 cisTopic     INFO     Calling peaks for L2-3_CUX2 with /home/michal.kubacki/.conda/envs/scenicplus/bin/macs2 callpeak --treatment /group/testa/michal.kubacki/herring/output_hg19_all_excitatory/consensus_peak_calling/pseudobulk_bed_files/L2-3_CUX2.fragments.tsv.gz --name L2-3_CUX2  --outdir /group/testa/michal.kubacki/herring/output_hg19_all_excitatory/consensus_peak_calling/MACS --format BEDPE --gsize hs --qvalue 0.05 --nomodel --shift 73 --extsize 146 --keep-dup all --call-summits --nolambda
+2024-07-02 19:47:01,019 cisTopic     INFO     L2-3_CUX2 done!
+2024-07-02 19:47:01,074 cisTopic     INFO     Calling peaks for L5-6_TLE4 with /home/michal.kubacki/.conda/envs/scenicplus/bin/macs2 callpeak --treatment /group/testa/michal.kubacki/herring/output_hg19_all_excitatory/consensus_peak_calling/pseudobulk_bed_files/L5-6_TLE4.fragments.tsv.gz --name L5-6_TLE4  --outdir /group/testa/michal.kubacki/herring/output_hg19_all_excitatory/consensus_peak_calling/MACS --format BEDPE --gsize hs --qvalue 0.05 --nomodel --shift 73 --extsize 146 --keep-dup all --call-summits --nolambda
+2024-07-02 19:47:37,237 cisTopic     INFO     L5-6_TLE4 done!
+2024-07-02 19:47:37,237 cisTopic     INFO     Calling peaks for L4_RORB with /home/michal.kubacki/.conda/envs/scenicplus/bin/macs2 callpeak --treatment /group/testa/michal.kubacki/herring/output_hg19_all_excitatory/consensus_peak_calling/pseudobulk_bed_files/L4_RORB.fragments.tsv.gz --name L4_RORB  --outdir /group/testa/michal.kubacki/herring/output_hg19_all_excitatory/consensus_peak_calling/MACS --format BEDPE --gsize hs --qvalue 0.05 --nomodel --shift 73 --extsize 146 --keep-dup all --call-summits --nolambda
+2024-07-02 19:49:56,427 cisTopic     INFO     L4_RORB done!
+2024-07-02 19:49:56,429 cisTopic     INFO     Calling peaks for L5-6_THEMIS with /home/michal.kubacki/.conda/envs/scenicplus/bin/macs2 callpeak --treatment /group/testa/michal.kubacki/herring/output_hg19_all_excitatory/consensus_peak_calling/pseudobulk_bed_files/L5-6_THEMIS.fragments.tsv.gz --name L5-6_THEMIS  --outdir /group/testa/michal.kubacki/herring/output_hg19_all_excitatory/consensus_peak_calling/MACS --format BEDPE --gsize hs --qvalue 0.05 --nomodel --shift 73 --extsize 146 --keep-dup all --call-summits --nolambda
+2024-07-02 19:50:45,233 cisTopic     INFO     L5-6_THEMIS done!
+2024-07-02 19:50:45,233 cisTopic     INFO     Calling peaks for PN_dev with /home/michal.kubacki/.conda/envs/scenicplus/bin/macs2 callpeak --treatment /group/testa/michal.kubacki/herring/output_hg19_all_excitatory/consensus_peak_calling/pseudobulk_bed_files/PN_dev.fragments.tsv.gz --name PN_dev  --outdir /group/testa/michal.kubacki/herring/output_hg19_all_excitatory/consensus_peak_calling/MACS --format BEDPE --gsize hs --qvalue 0.05 --nomodel --shift 73 --extsize 146 --keep-dup all --call-summits --nolambda
+2024-07-02 19:52:29,619 cisTopic     INFO     PN_dev done!
+2024-07-02 19:52:29,635 cisTopic     INFO     Extending and merging peaks per class
+2024-07-02 19:53:13,001 cisTopic     INFO     Normalizing peak scores
+2024-07-02 19:53:13,274 cisTopic     INFO     Merging peaks
+Warning! Start and End columns now have different dtypes: int64 and int32
+2024-07-02 19:54:04,857 cisTopic     INFO     Done!
+/home/michal.kubacki/.conda/envs/scenicplus/lib/python3.11/site-packages/pyranges/out.py:37: FutureWarning: Passing a set as an indexer is deprecated and will raise in a future version. Use a list instead.
+  return pd.concat([outdf, df.get(noncanonical)], axis=1)
+/home/michal.kubacki/.conda/envs/scenicplus/lib/python3.11/site-packages/pyranges/out.py:37: FutureWarning: Passing a set as an indexer is deprecated and will raise in a future version. Use a list instead.
+  return pd.concat([outdf, df.get(noncanonical)], axis=1)
+/home/michal.kubacki/.conda/envs/scenicplus/lib/python3.11/site-packages/pyranges/out.py:37: FutureWarning: Passing a set as an indexer is deprecated and will raise in a future version. Use a list instead.
+  return pd.concat([outdf, df.get(noncanonical)], axis=1)
+/home/michal.kubacki/.conda/envs/scenicplus/lib/python3.11/site-packages/pyranges/out.py:37: FutureWarning: Passing a set as an indexer is deprecated and will raise in a future version. Use a list instead.
+  return pd.concat([outdf, df.get(noncanonical)], axis=1)
+/home/michal.kubacki/.conda/envs/scenicplus/lib/python3.11/site-packages/pyranges/out.py:37: FutureWarning: Passing a set as an indexer is deprecated and will raise in a future version. Use a list instead.
+  return pd.concat([outdf, df.get(noncanonical)], axis=1)
+/home/michal.kubacki/.conda/envs/scenicplus/lib/python3.11/site-packages/pyranges/out.py:37: FutureWarning: Passing a set as an indexer is deprecated and will raise in a future version. Use a list instead.
+  return pd.concat([outdf, df.get(noncanonical)], axis=1)
+/home/michal.kubacki/.conda/envs/scenicplus/lib/python3.11/site-packages/pyranges/out.py:37: FutureWarning: Passing a set as an indexer is deprecated and will raise in a future version. Use a list instead.
+  return pd.concat([outdf, df.get(noncanonical)], axis=1)
+/home/michal.kubacki/.conda/envs/scenicplus/lib/python3.11/site-packages/pyranges/out.py:37: FutureWarning: Passing a set as an indexer is deprecated and will raise in a future version. Use a list instead.
+  return pd.concat([outdf, df.get(noncanonical)], axis=1)
+/home/michal.kubacki/.conda/envs/scenicplus/lib/python3.11/site-packages/pyranges/out.py:37: FutureWarning: Passing a set as an indexer is deprecated and will raise in a future version. Use a list instead.
+  return pd.concat([outdf, df.get(noncanonical)], axis=1)
+/home/michal.kubacki/.conda/envs/scenicplus/lib/python3.11/site-packages/pyranges/out.py:37: FutureWarning: Passing a set as an indexer is deprecated and will raise in a future version. Use a list instead.
+  return pd.concat([outdf, df.get(noncanonical)], axis=1)
+/home/michal.kubacki/.conda/envs/scenicplus/lib/python3.11/site-packages/pyranges/out.py:37: FutureWarning: Passing a set as an indexer is deprecated and will raise in a future version. Use a list instead.
+  return pd.concat([outdf, df.get(noncanonical)], axis=1)
+/home/michal.kubacki/.conda/envs/scenicplus/lib/python3.11/site-packages/pyranges/out.py:37: FutureWarning: Passing a set as an indexer is deprecated and will raise in a future version. Use a list instead.
+  return pd.concat([outdf, df.get(noncanonical)], axis=1)
+/home/michal.kubacki/.conda/envs/scenicplus/lib/python3.11/site-packages/pyranges/out.py:37: FutureWarning: Passing a set as an indexer is deprecated and will raise in a future version. Use a list instead.
+  return pd.concat([outdf, df.get(noncanonical)], axis=1)
+/home/michal.kubacki/.conda/envs/scenicplus/lib/python3.11/site-packages/pyranges/out.py:37: FutureWarning: Passing a set as an indexer is deprecated and will raise in a future version. Use a list instead.
+  return pd.concat([outdf, df.get(noncanonical)], axis=1)
+/home/michal.kubacki/.conda/envs/scenicplus/lib/python3.11/site-packages/pyranges/out.py:37: FutureWarning: Passing a set as an indexer is deprecated and will raise in a future version. Use a list instead.
+  return pd.concat([outdf, df.get(noncanonical)], axis=1)
+/home/michal.kubacki/.conda/envs/scenicplus/lib/python3.11/site-packages/pyranges/out.py:37: FutureWarning: Passing a set as an indexer is deprecated and will raise in a future version. Use a list instead.
+  return pd.concat([outdf, df.get(noncanonical)], axis=1)
+/home/michal.kubacki/.conda/envs/scenicplus/lib/python3.11/site-packages/pyranges/out.py:37: FutureWarning: Passing a set as an indexer is deprecated and will raise in a future version. Use a list instead.
+  return pd.concat([outdf, df.get(noncanonical)], axis=1)
+/home/michal.kubacki/.conda/envs/scenicplus/lib/python3.11/site-packages/pyranges/out.py:37: FutureWarning: Passing a set as an indexer is deprecated and will raise in a future version. Use a list instead.
+  return pd.concat([outdf, df.get(noncanonical)], axis=1)
+/home/michal.kubacki/.conda/envs/scenicplus/lib/python3.11/site-packages/pyranges/out.py:37: FutureWarning: Passing a set as an indexer is deprecated and will raise in a future version. Use a list instead.
+  return pd.concat([outdf, df.get(noncanonical)], axis=1)
+/home/michal.kubacki/.conda/envs/scenicplus/lib/python3.11/site-packages/pyranges/out.py:37: FutureWarning: Passing a set as an indexer is deprecated and will raise in a future version. Use a list instead.
+  return pd.concat([outdf, df.get(noncanonical)], axis=1)
+/home/michal.kubacki/.conda/envs/scenicplus/lib/python3.11/site-packages/pyranges/out.py:37: FutureWarning: Passing a set as an indexer is deprecated and will raise in a future version. Use a list instead.
+  return pd.concat([outdf, df.get(noncanonical)], axis=1)
+/home/michal.kubacki/.conda/envs/scenicplus/lib/python3.11/site-packages/pyranges/out.py:37: FutureWarning: Passing a set as an indexer is deprecated and will raise in a future version. Use a list instead.
+  return pd.concat([outdf, df.get(noncanonical)], axis=1)
+/home/michal.kubacki/.conda/envs/scenicplus/lib/python3.11/site-packages/pyranges/out.py:37: FutureWarning: Passing a set as an indexer is deprecated and will raise in a future version. Use a list instead.
+  return pd.concat([outdf, df.get(noncanonical)], axis=1)
+/home/michal.kubacki/.conda/envs/scenicplus/lib/python3.11/site-packages/pyranges/out.py:37: FutureWarning: Passing a set as an indexer is deprecated and will raise in a future version. Use a list instead.
+  return pd.concat([outdf, df.get(noncanonical)], axis=1)
+1m:
+	Using automatic threshold for unique fragments: 1215.4058793248182
+	Using automatic threshold for TSS enrichment: 1.742530285948993
+3m:
+	Using automatic threshold for unique fragments: 1340.3996441762727
+	Using automatic threshold for TSS enrichment: 1.5834907011528703
+6m:
+	Using automatic threshold for unique fragments: 1127.4526792449699
+	Using automatic threshold for TSS enrichment: 1.486449504950495
+10m:
+	Using automatic threshold for unique fragments: 1312.2525561968303
+	Using automatic threshold for TSS enrichment: 1.5211207920792078
+1y:
+	Using automatic threshold for unique fragments: 995.6690233820258
+	Using automatic threshold for TSS enrichment: 1.5731110557626589
+2y:
+	Using automatic threshold for unique fragments: 1187.9345911846797
+	Using automatic threshold for TSS enrichment: 1.6757426605646697
+4y:
+	Using automatic threshold for unique fragments: 1366.290895891452
+	Using automatic threshold for TSS enrichment: 1.5950178742362109
+ga22:
+	Using automatic threshold for unique fragments: 1070.067516792013
+	Using automatic threshold for TSS enrichment: 1.4639067842865912
+ga24:
+	Using automatic threshold for unique fragments: 1117.3506444330308
+	Using automatic threshold for TSS enrichment: 1.6073671313939895
+2024-07-02 20:08:55,877 cisTopic     INFO     Reading data for 1m
+2024-07-02 20:09:56,008 cisTopic     INFO     metrics provided!
+2024-07-02 20:09:59,293 cisTopic     INFO     Counting fragments in regions
+2024-07-02 20:10:06,071 cisTopic     INFO     Creating fragment matrix
+2024-07-02 20:10:13,634 cisTopic     INFO     Converting fragment matrix to sparse matrix
+2024-07-02 20:10:16,287 cisTopic     INFO     Removing blacklisted regions
+2024-07-02 20:10:17,539 cisTopic     INFO     Creating CistopicObject
+2024-07-02 20:10:18,289 cisTopic     INFO     Done!
+2024-07-02 20:10:19,692 cisTopic     INFO     Reading data for 3m
+2024-07-02 20:11:33,407 cisTopic     INFO     metrics provided!
+2024-07-02 20:11:36,370 cisTopic     INFO     Counting fragments in regions
+2024-07-02 20:11:39,336 cisTopic     INFO     Creating fragment matrix
+2024-07-02 20:11:42,751 cisTopic     INFO     Converting fragment matrix to sparse matrix
+2024-07-02 20:11:43,859 cisTopic     INFO     Removing blacklisted regions
+2024-07-02 20:11:44,643 cisTopic     INFO     Creating CistopicObject
+2024-07-02 20:11:44,947 cisTopic     INFO     Done!
+2024-07-02 20:11:46,476 cisTopic     INFO     Reading data for 6m
+2024-07-02 20:13:37,603 cisTopic     INFO     metrics provided!
+2024-07-02 20:13:41,747 cisTopic     INFO     Counting fragments in regions
+2024-07-02 20:13:43,868 cisTopic     INFO     Creating fragment matrix
+2024-07-02 20:13:46,796 cisTopic     INFO     Converting fragment matrix to sparse matrix
+2024-07-02 20:13:47,905 cisTopic     INFO     Removing blacklisted regions
+2024-07-02 20:13:48,687 cisTopic     INFO     Creating CistopicObject
+2024-07-02 20:13:48,976 cisTopic     INFO     Done!
+2024-07-02 20:13:50,749 cisTopic     INFO     Reading data for 10m
+2024-07-02 20:14:53,183 cisTopic     INFO     metrics provided!
+2024-07-02 20:14:55,699 cisTopic     INFO     Counting fragments in regions
+2024-07-02 20:14:58,509 cisTopic     INFO     Creating fragment matrix
+2024-07-02 20:15:01,391 cisTopic     INFO     Converting fragment matrix to sparse matrix
+2024-07-02 20:15:02,509 cisTopic     INFO     Removing blacklisted regions
+2024-07-02 20:15:03,290 cisTopic     INFO     Creating CistopicObject
+2024-07-02 20:15:03,593 cisTopic     INFO     Done!
+2024-07-02 20:15:05,062 cisTopic     INFO     Reading data for 1y
+2024-07-02 20:16:18,294 cisTopic     INFO     metrics provided!
+2024-07-02 20:16:21,829 cisTopic     INFO     Counting fragments in regions
+2024-07-02 20:16:24,992 cisTopic     INFO     Creating fragment matrix
+2024-07-02 20:16:29,507 cisTopic     INFO     Converting fragment matrix to sparse matrix
+2024-07-02 20:16:31,384 cisTopic     INFO     Removing blacklisted regions
+2024-07-02 20:16:32,169 cisTopic     INFO     Creating CistopicObject
+2024-07-02 20:16:32,488 cisTopic     INFO     Done!
+2024-07-02 20:16:33,951 cisTopic     INFO     Reading data for 2y
+2024-07-02 20:17:38,653 cisTopic     INFO     metrics provided!
+2024-07-02 20:17:41,859 cisTopic     INFO     Counting fragments in regions
+2024-07-02 20:17:44,956 cisTopic     INFO     Creating fragment matrix
+2024-07-02 20:17:49,165 cisTopic     INFO     Converting fragment matrix to sparse matrix
+2024-07-02 20:17:50,880 cisTopic     INFO     Removing blacklisted regions
+2024-07-02 20:17:51,655 cisTopic     INFO     Creating CistopicObject
+2024-07-02 20:17:51,971 cisTopic     INFO     Done!
+2024-07-02 20:17:53,477 cisTopic     INFO     Reading data for 4y
+2024-07-02 20:19:01,043 cisTopic     INFO     metrics provided!
+2024-07-02 20:19:04,302 cisTopic     INFO     Counting fragments in regions
+2024-07-02 20:19:07,913 cisTopic     INFO     Creating fragment matrix
+2024-07-02 20:19:12,223 cisTopic     INFO     Converting fragment matrix to sparse matrix
+2024-07-02 20:19:13,860 cisTopic     INFO     Removing blacklisted regions
+2024-07-02 20:19:14,612 cisTopic     INFO     Creating CistopicObject
+2024-07-02 20:19:14,931 cisTopic     INFO     Done!
+2024-07-02 20:19:16,462 cisTopic     INFO     Reading data for ga22
+2024-07-02 20:20:35,223 cisTopic     INFO     metrics provided!
+2024-07-02 20:20:38,267 cisTopic     INFO     Counting fragments in regions
+2024-07-02 20:20:40,636 cisTopic     INFO     Creating fragment matrix
+2024-07-02 20:20:43,341 cisTopic     INFO     Converting fragment matrix to sparse matrix
+2024-07-02 20:20:44,407 cisTopic     INFO     Removing blacklisted regions
+2024-07-02 20:20:45,174 cisTopic     INFO     Creating CistopicObject
+2024-07-02 20:20:45,465 cisTopic     INFO     Done!
+2024-07-02 20:20:46,968 cisTopic     INFO     Reading data for ga24
+2024-07-02 20:21:55,496 cisTopic     INFO     metrics provided!
+2024-07-02 20:21:58,244 cisTopic     INFO     Counting fragments in regions
+2024-07-02 20:22:01,816 cisTopic     INFO     Creating fragment matrix
+2024-07-02 20:22:06,804 cisTopic     INFO     Converting fragment matrix to sparse matrix
+2024-07-02 20:22:08,883 cisTopic     INFO     Removing blacklisted regions
+2024-07-02 20:22:09,655 cisTopic     INFO     Creating CistopicObject
+2024-07-02 20:22:09,993 cisTopic     INFO     Done!
+2024-07-02 20:22:13,940 cisTopic     INFO     cisTopic object 1 merged
+2024-07-02 20:22:16,238 cisTopic     INFO     cisTopic object 2 merged
+2024-07-02 20:22:18,797 cisTopic     INFO     cisTopic object 3 merged
+2024-07-02 20:22:21,303 cisTopic     INFO     cisTopic object 4 merged
+2024-07-02 20:22:23,943 cisTopic     INFO     cisTopic object 5 merged
+2024-07-02 20:22:26,760 cisTopic     INFO     cisTopic object 6 merged
+2024-07-02 20:22:29,631 cisTopic     INFO     cisTopic object 7 merged
+2024-07-02 20:22:32,676 cisTopic     INFO     cisTopic object 8 merged
+/home/michal.kubacki/.conda/envs/scenicplus/lib/python3.11/site-packages/scrublet/helper_functions.py:252: RuntimeWarning: invalid value encountered in sqrt
+  CV_input = np.sqrt(b);
+(22558, 27)
+(22474, 27)
+True
+True
+Warning: Some cells in this CistopicObject are not present in this cell_data. Values will be filled with Nan
+
+Preprocessing...
+Simulating doublets...
+Embedding transcriptomes using PCA...
+Calculating doublet scores...
+Automatically set threshold at doublet score = 0.39
+Detected doublet rate = 3.5%
+Estimated detectable doublet fraction = 32.3%
+Overall doublet rate:
+	Expected   = 10.0%
+	Estimated  = 10.8%
+Elapsed time: 39.3 seconds
+Detected doublet rate = 13.5%
+Estimated detectable doublet fraction = 58.9%
+Overall doublet rate:
+	Expected   = 10.0%
+	Estimated  = 22.8%
+CistopicObject from project cisTopic_merge with n_cells × n_regions = 9533 × 329274
+2024-07-02 20:23:30,964 cisTopic     INFO     Formatting input to corpus
+2024-07-02 20:23:31,443 cisTopic     INFO     Running model with 20 topics
+2024-07-02 20:23:31,444 LDAMalletWrapper INFO     Serializing temporary corpus to /tmp/corpus.txt
+2024-07-02 20:23:42,747 LDAMalletWrapper INFO     Converting temporary corpus to MALLET format with: /scratch/michal.kubacki/herring/Mallet-202108/bin/mallet import-file --preserve-case --keep-sequence --token-regex \S+ --input /tmp/corpus.txt --output /tmp/corpus.mallet
+2024-07-02 20:24:02,476 LDAMalletWrapper INFO     Training MALLET LDA with: /scratch/michal.kubacki/herring/Mallet-202108/bin/mallet train-topics --input /tmp/corpus.mallet --num-topics 20 --alpha 50 --beta 0.1 --optimize-interval 0 --num-threads 32 --output-state /tmp/18f91e_state.mallet.gz --output-doc-topics /tmp/18f91e_doctopics.txt --output-topic-keys /tmp/18f91e_topickeys.txt --num-iterations 500 --inferencer-filename /tmp/18f91e_inferencer.mallet --doc-topics-threshold 0.0 --random-seed 555
+2024-07-02 20:33:23,817 LDAMalletWrapper INFO     loading assigned topics from /tmp/18f91e_state.mallet.gz
+2024-07-02 20:33:35,648 cisTopic     INFO     Model with 20 topics done!
+2024-07-02 20:33:35,648 cisTopic     INFO     Saving model with 20 topics at /tmp
+2024-07-02 20:33:35,821 cisTopic     INFO     Running model with 25 topics
+2024-07-02 20:33:35,821 LDAMalletWrapper INFO     Serializing temporary corpus to /tmp/corpus.txt
+2024-07-02 20:33:47,262 LDAMalletWrapper INFO     Converting temporary corpus to MALLET format with: /scratch/michal.kubacki/herring/Mallet-202108/bin/mallet import-file --preserve-case --keep-sequence --token-regex \S+ --input /tmp/corpus.txt --output /tmp/corpus.mallet
+2024-07-02 20:34:04,234 LDAMalletWrapper INFO     Training MALLET LDA with: /scratch/michal.kubacki/herring/Mallet-202108/bin/mallet train-topics --input /tmp/corpus.mallet --num-topics 25 --alpha 50 --beta 0.1 --optimize-interval 0 --num-threads 32 --output-state /tmp/9f97dc_state.mallet.gz --output-doc-topics /tmp/9f97dc_doctopics.txt --output-topic-keys /tmp/9f97dc_topickeys.txt --num-iterations 500 --inferencer-filename /tmp/9f97dc_inferencer.mallet --doc-topics-threshold 0.0 --random-seed 555
+2024-07-02 20:43:51,536 LDAMalletWrapper INFO     loading assigned topics from /tmp/9f97dc_state.mallet.gz
+2024-07-02 20:44:04,815 cisTopic     INFO     Model with 25 topics done!
+2024-07-02 20:44:04,815 cisTopic     INFO     Saving model with 25 topics at /tmp
+2024-07-02 20:44:04,996 cisTopic     INFO     Running model with 30 topics
+2024-07-02 20:44:04,996 LDAMalletWrapper INFO     Serializing temporary corpus to /tmp/corpus.txt
+2024-07-02 20:44:16,873 LDAMalletWrapper INFO     Converting temporary corpus to MALLET format with: /scratch/michal.kubacki/herring/Mallet-202108/bin/mallet import-file --preserve-case --keep-sequence --token-regex \S+ --input /tmp/corpus.txt --output /tmp/corpus.mallet
+2024-07-02 20:44:34,030 LDAMalletWrapper INFO     Training MALLET LDA with: /scratch/michal.kubacki/herring/Mallet-202108/bin/mallet train-topics --input /tmp/corpus.mallet --num-topics 30 --alpha 50 --beta 0.1 --optimize-interval 0 --num-threads 32 --output-state /tmp/79a6c2_state.mallet.gz --output-doc-topics /tmp/79a6c2_doctopics.txt --output-topic-keys /tmp/79a6c2_topickeys.txt --num-iterations 500 --inferencer-filename /tmp/79a6c2_inferencer.mallet --doc-topics-threshold 0.0 --random-seed 555
+2024-07-02 20:54:36,381 LDAMalletWrapper INFO     loading assigned topics from /tmp/79a6c2_state.mallet.gz
+2024-07-02 20:54:51,393 cisTopic     INFO     Model with 30 topics done!
+2024-07-02 20:54:51,393 cisTopic     INFO     Saving model with 30 topics at /tmp
+2024-07-02 20:54:51,590 cisTopic     INFO     Running model with 35 topics
+2024-07-02 20:54:51,590 LDAMalletWrapper INFO     Serializing temporary corpus to /tmp/corpus.txt
+2024-07-02 20:55:03,413 LDAMalletWrapper INFO     Converting temporary corpus to MALLET format with: /scratch/michal.kubacki/herring/Mallet-202108/bin/mallet import-file --preserve-case --keep-sequence --token-regex \S+ --input /tmp/corpus.txt --output /tmp/corpus.mallet
+2024-07-02 20:55:20,467 LDAMalletWrapper INFO     Training MALLET LDA with: /scratch/michal.kubacki/herring/Mallet-202108/bin/mallet train-topics --input /tmp/corpus.mallet --num-topics 35 --alpha 50 --beta 0.1 --optimize-interval 0 --num-threads 32 --output-state /tmp/aa82b9_state.mallet.gz --output-doc-topics /tmp/aa82b9_doctopics.txt --output-topic-keys /tmp/aa82b9_topickeys.txt --num-iterations 500 --inferencer-filename /tmp/aa82b9_inferencer.mallet --doc-topics-threshold 0.0 --random-seed 555
+2024-07-02 21:06:43,403 LDAMalletWrapper INFO     loading assigned topics from /tmp/aa82b9_state.mallet.gz
+2024-07-02 21:06:59,287 cisTopic     INFO     Model with 35 topics done!
+2024-07-02 21:06:59,287 cisTopic     INFO     Saving model with 35 topics at /tmp
+2024-07-02 21:06:59,489 cisTopic     INFO     Running model with 40 topics
+2024-07-02 21:06:59,489 LDAMalletWrapper INFO     Serializing temporary corpus to /tmp/corpus.txt
+2024-07-02 21:07:11,474 LDAMalletWrapper INFO     Converting temporary corpus to MALLET format with: /scratch/michal.kubacki/herring/Mallet-202108/bin/mallet import-file --preserve-case --keep-sequence --token-regex \S+ --input /tmp/corpus.txt --output /tmp/corpus.mallet
+2024-07-02 21:07:28,842 LDAMalletWrapper INFO     Training MALLET LDA with: /scratch/michal.kubacki/herring/Mallet-202108/bin/mallet train-topics --input /tmp/corpus.mallet --num-topics 40 --alpha 50 --beta 0.1 --optimize-interval 0 --num-threads 32 --output-state /tmp/1475fc_state.mallet.gz --output-doc-topics /tmp/1475fc_doctopics.txt --output-topic-keys /tmp/1475fc_topickeys.txt --num-iterations 500 --inferencer-filename /tmp/1475fc_inferencer.mallet --doc-topics-threshold 0.0 --random-seed 555
+2024-07-02 21:18:50,197 LDAMalletWrapper INFO     loading assigned topics from /tmp/1475fc_state.mallet.gz
+2024-07-02 21:19:07,129 cisTopic     INFO     Model with 40 topics done!
+2024-07-02 21:19:07,129 cisTopic     INFO     Saving model with 40 topics at /tmp
+2024-07-02 21:19:07,371 cisTopic     INFO     Running model with 45 topics
+2024-07-02 21:19:07,371 LDAMalletWrapper INFO     Serializing temporary corpus to /tmp/corpus.txt
+2024-07-02 21:19:19,396 LDAMalletWrapper INFO     Converting temporary corpus to MALLET format with: /scratch/michal.kubacki/herring/Mallet-202108/bin/mallet import-file --preserve-case --keep-sequence --token-regex \S+ --input /tmp/corpus.txt --output /tmp/corpus.mallet
+2024-07-02 21:19:37,545 LDAMalletWrapper INFO     Training MALLET LDA with: /scratch/michal.kubacki/herring/Mallet-202108/bin/mallet train-topics --input /tmp/corpus.mallet --num-topics 45 --alpha 50 --beta 0.1 --optimize-interval 0 --num-threads 32 --output-state /tmp/82d439_state.mallet.gz --output-doc-topics /tmp/82d439_doctopics.txt --output-topic-keys /tmp/82d439_topickeys.txt --num-iterations 500 --inferencer-filename /tmp/82d439_inferencer.mallet --doc-topics-threshold 0.0 --random-seed 555
+2024-07-02 21:30:52,987 LDAMalletWrapper INFO     loading assigned topics from /tmp/82d439_state.mallet.gz
+2024-07-02 21:31:11,670 cisTopic     INFO     Model with 45 topics done!
+2024-07-02 21:31:11,670 cisTopic     INFO     Saving model with 45 topics at /tmp
+2024-07-02 21:31:11,921 cisTopic     INFO     Running model with 50 topics
+2024-07-02 21:31:11,921 LDAMalletWrapper INFO     Serializing temporary corpus to /tmp/corpus.txt
+2024-07-02 21:31:24,015 LDAMalletWrapper INFO     Converting temporary corpus to MALLET format with: /scratch/michal.kubacki/herring/Mallet-202108/bin/mallet import-file --preserve-case --keep-sequence --token-regex \S+ --input /tmp/corpus.txt --output /tmp/corpus.mallet
+2024-07-02 21:31:41,827 LDAMalletWrapper INFO     Training MALLET LDA with: /scratch/michal.kubacki/herring/Mallet-202108/bin/mallet train-topics --input /tmp/corpus.mallet --num-topics 50 --alpha 50 --beta 0.1 --optimize-interval 0 --num-threads 32 --output-state /tmp/15439b_state.mallet.gz --output-doc-topics /tmp/15439b_doctopics.txt --output-topic-keys /tmp/15439b_topickeys.txt --num-iterations 500 --inferencer-filename /tmp/15439b_inferencer.mallet --doc-topics-threshold 0.0 --random-seed 555
+2024-07-02 21:42:47,434 LDAMalletWrapper INFO     loading assigned topics from /tmp/15439b_state.mallet.gz
+2024-07-02 21:43:06,786 cisTopic     INFO     Model with 50 topics done!
+2024-07-02 21:43:06,786 cisTopic     INFO     Saving model with 50 topics at /tmp
+slurmstepd: error: _cgroup_procs_check: failed on path /sys/fs/cgroup/memory/slurm/uid_10666/job_13139992/step_batch/cgroup.procs: No such file or directory
+slurmstepd: error: unable to read '/sys/fs/cgroup/memory/slurm/uid_10666/job_13139992/step_batch/cgroup.procs'

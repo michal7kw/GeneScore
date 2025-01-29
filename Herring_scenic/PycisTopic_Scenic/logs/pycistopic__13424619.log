@@ -1,0 +1,9 @@
+INFO: localdir at /localscratch/13424619.michal.kubacki
+INFO: your job will run on local system.
+Traceback (most recent call last):
+  File "/home/michal.kubacki/Githubs/Re-MEND/code/External_Datasets/GeneSet_Derivation/Herring_scenic/PycisTopic_Scenic/herring_scRNA_from_downsampled_CPM.py", line 38, in <module>
+    out_dir, in_dir, root_dir, tmp_dir, data_folder = set_output_folders(reference, neurons_set)
+                                                      ^^^^^^^^^^^^^^^^^^
+NameError: name 'set_output_folders' is not defined
+slurmstepd: error: _cgroup_procs_check: failed on path /sys/fs/cgroup/memory/slurm/uid_10666/job_13424619/step_batch/cgroup.procs: No such file or directory
+slurmstepd: error: unable to read '/sys/fs/cgroup/memory/slurm/uid_10666/job_13424619/step_batch/cgroup.procs'

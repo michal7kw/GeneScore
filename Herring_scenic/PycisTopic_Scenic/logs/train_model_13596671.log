@@ -1,0 +1,5 @@
+INFO: localdir at /localscratch/13596671.michal.kubacki
+INFO: your job will run on local system.
+slurmstepd: error: *** JOB 13596671 ON cnode11 CANCELLED AT 2024-07-17T12:55:19 ***
+slurmstepd: error: _cgroup_procs_check: failed on path /sys/fs/cgroup/memory/slurm/uid_10666/job_13596671/step_batch/cgroup.procs: No such file or directory
+slurmstepd: error: unable to read '/sys/fs/cgroup/memory/slurm/uid_10666/job_13596671/step_batch/cgroup.procs'

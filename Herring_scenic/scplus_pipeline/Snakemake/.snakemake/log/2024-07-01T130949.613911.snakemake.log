@@ -1,0 +1,123 @@
+Building DAG of jobs...
+Using shell: /usr/bin/bash
+Provided cores: 32
+Rules claiming more threads will be scaled down.
+Job stats:
+job                            count
+---------------------------  -------
+AUCell_direct                      1
+AUCell_extended                    1
+all                                1
+download_genome_annotations        1
+eGRN_direct                        1
+eGRN_extended                      1
+get_search_space                   1
+prepare_GEX_ACC_multiome           1
+prepare_menr                       1
+region_to_gene                     1
+scplus_mudata                      1
+tf_to_gene                         1
+total                             12
+
+Select jobs to execute...
+Execute 2 jobs...
+
+[Mon Jul  1 13:09:50 2024]
+localrule prepare_GEX_ACC_multiome:
+    input: /group/testa/michal.kubacki/herring/output_hg19_all_excitatory_all_ages/cistopic_obj.pkl, /group/testa/michal.kubacki/herring/output_hg19_all_excitatory_all_ages/adata.h5ad
+    output: /group/testa/michal.kubacki/herring/scenic_all_excitatory_all_ages/ACC_GEX.h5mu
+    jobid: 2
+    reason: Forced execution
+    resources: tmpdir=/localscratch/13136446.michal.kubacki
+
+
+[Mon Jul  1 13:09:50 2024]
+localrule download_genome_annotations:
+    output: /group/testa/michal.kubacki/herring/scenic_all_excitatory_all_ages/genome_annotation.tsv, /group/testa/michal.kubacki/herring/scenic_all_excitatory_all_ages/chromsizes.tsv
+    jobid: 7
+    reason: Forced execution
+    resources: tmpdir=/localscratch/13136446.michal.kubacki
+
+[Mon Jul  1 13:14:57 2024]
+Finished job 7.
+1 of 12 steps (8%) done
+[Mon Jul  1 13:14:57 2024]
+Finished job 2.
+2 of 12 steps (17%) done
+Select jobs to execute...
+Execute 2 jobs...
+
+[Mon Jul  1 13:14:57 2024]
+localrule prepare_menr:
+    input: /group/testa/michal.kubacki/herring/scenic_all_excitatory_all_ages/dem_results.hdf5, /group/testa/michal.kubacki/herring/scenic_all_excitatory_all_ages/ctx_results.hdf5, /group/testa/michal.kubacki/herring/scenic_all_excitatory_all_ages/ACC_GEX.h5mu
+    output: /group/testa/michal.kubacki/herring/scenic_all_excitatory_all_ages/tf_names.txt, /group/testa/michal.kubacki/herring/scenic_all_excitatory_all_ages/cistromes_direct.h5ad, /group/testa/michal.kubacki/herring/scenic_all_excitatory_all_ages/cistromes_extended.h5ad
+    jobid: 6
+    reason: Forced execution
+    resources: tmpdir=/localscratch/13136446.michal.kubacki
+
+
+[Mon Jul  1 13:14:57 2024]
+localrule get_search_space:
+    input: /group/testa/michal.kubacki/herring/scenic_all_excitatory_all_ages/ACC_GEX.h5mu, /group/testa/michal.kubacki/herring/scenic_all_excitatory_all_ages/genome_annotation.tsv, /group/testa/michal.kubacki/herring/scenic_all_excitatory_all_ages/chromsizes.tsv
+    output: /group/testa/michal.kubacki/herring/scenic_all_excitatory_all_ages/search_space.tsv
+    jobid: 9
+    reason: Forced execution
+    resources: tmpdir=/localscratch/13136446.michal.kubacki
+
+[Mon Jul  1 13:17:39 2024]
+Finished job 9.
+3 of 12 steps (25%) done
+Select jobs to execute...
+[Mon Jul  1 13:31:14 2024]
+Finished job 6.
+4 of 12 steps (33%) done
+Execute 1 jobs...
+
+[Mon Jul  1 13:31:14 2024]
+localrule region_to_gene:
+    input: /group/testa/michal.kubacki/herring/scenic_all_excitatory_all_ages/ACC_GEX.h5mu, /group/testa/michal.kubacki/herring/scenic_all_excitatory_all_ages/search_space.tsv
+    output: /group/testa/michal.kubacki/herring/scenic_all_excitatory_all_ages/region_to_gene_adj.tsv
+    jobid: 8
+    reason: Forced execution
+    threads: 32
+    resources: tmpdir=/localscratch/13136446.michal.kubacki
+
+[Mon Jul  1 13:42:47 2024]
+Finished job 8.
+5 of 12 steps (42%) done
+Select jobs to execute...
+Execute 1 jobs...
+
+[Mon Jul  1 13:42:47 2024]
+localrule tf_to_gene:
+    input: /group/testa/michal.kubacki/herring/scenic_all_excitatory_all_ages/ACC_GEX.h5mu, /group/testa/michal.kubacki/herring/scenic_all_excitatory_all_ages/tf_names.txt
+    output: /group/testa/michal.kubacki/herring/scenic_all_excitatory_all_ages/tf_to_gene_adj.tsv
+    jobid: 5
+    reason: Forced execution
+    threads: 32
+    resources: tmpdir=/localscratch/13136446.michal.kubacki
+
+[Mon Jul  1 14:12:53 2024]
+Finished job 5.
+6 of 12 steps (50%) done
+Select jobs to execute...
+Execute 1 jobs...
+
+[Mon Jul  1 14:12:53 2024]
+localrule eGRN_direct:
+    input: /group/testa/michal.kubacki/herring/scenic_all_excitatory_all_ages/tf_to_gene_adj.tsv, /group/testa/michal.kubacki/herring/scenic_all_excitatory_all_ages/region_to_gene_adj.tsv, /group/testa/michal.kubacki/herring/scenic_all_excitatory_all_ages/cistromes_direct.h5ad, /scratch/michal.kubacki/herring/output_hg19_all_excitatory_all_ages/cistarget_motif_dataset.regions_vs_motifs.rankings.feather
+    output: /group/testa/michal.kubacki/herring/scenic_all_excitatory_all_ages/eRegulon_direct.tsv
+    jobid: 4
+    reason: Forced execution
+    threads: 32
+    resources: tmpdir=/localscratch/13136446.michal.kubacki
+
+Waiting at most 5 seconds for missing files.
+MissingOutputException in rule eGRN_direct in file /home/michal.kubacki/Githubs/Re-MEND/code/External_Datasets/GeneSet_Derivation/Herring_scenic/scplus_pipeline/Snakemake/workflow/Snakefile, line 311:
+Job 4  completed successfully, but some output files are missing. Missing files after 5 seconds. This might be due to filesystem latency. If that is the case, consider to increase the wait time with --latency-wait:
+/group/testa/michal.kubacki/herring/scenic_all_excitatory_all_ages/eRegulon_direct.tsv
+Shutting down, this might take some time.
+Exiting because a job execution failed. Look above for error message
+Complete log: .snakemake/log/2024-07-01T130949.613911.snakemake.log
+WorkflowError:
+At least one job did not complete successfully.

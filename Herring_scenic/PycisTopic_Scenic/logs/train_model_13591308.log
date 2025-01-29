@@ -1,0 +1,13 @@
+INFO: localdir at /localscratch/13591308.michal.kubacki
+INFO: your job will run on local system.
+root_dir: /group/testa/michal.kubacki/herring
+out_dir: /group/testa/michal.kubacki/herring/output_hg19_all_cells
+in_dir: /group/testa/michal.kubacki/herring/data
+tmp_dir: /group/testa/michal.kubacki/herring/tmp
+Traceback (most recent call last):
+  File "/home/michal.kubacki/Githubs/Re-MEND/code/External_Datasets/GeneSet_Derivation/Herring_scenic/PycisTopic_Scenic/train_model.py", line 93, in <module>
+    with open(os.path.join(out_dir, "cistopic_obj.pkl"), "rb") as file:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: '/group/testa/michal.kubacki/herring/output_hg19_all_cells/cistopic_obj.pkl'
+slurmstepd: error: _cgroup_procs_check: failed on path /sys/fs/cgroup/memory/slurm/uid_10666/job_13591308/step_batch/cgroup.procs: No such file or directory
+slurmstepd: error: unable to read '/sys/fs/cgroup/memory/slurm/uid_10666/job_13591308/step_batch/cgroup.procs'

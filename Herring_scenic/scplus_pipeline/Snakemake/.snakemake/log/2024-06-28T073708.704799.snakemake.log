@@ -1,0 +1,76 @@
+Building DAG of jobs...
+Using shell: /usr/bin/bash
+Provided cores: 32
+Rules claiming more threads will be scaled down.
+Job stats:
+job                            count
+---------------------------  -------
+AUCell_direct                      1
+AUCell_extended                    1
+all                                1
+download_genome_annotations        1
+eGRN_direct                        1
+eGRN_extended                      1
+get_search_space                   1
+motif_enrichment_cistarget         1
+motif_enrichment_dem               1
+prepare_GEX_ACC_multiome           1
+prepare_menr                       1
+region_to_gene                     1
+scplus_mudata                      1
+tf_to_gene                         1
+total                             14
+
+Select jobs to execute...
+Execute 1 jobs...
+
+[Fri Jun 28 07:37:09 2024]
+localrule motif_enrichment_cistarget:
+    input: /group/testa/michal.kubacki/herring/output_hg19_all_excitatory_trimmed/region_sets, /scratch/michal.kubacki/herring/output_hg19_all_excitatory_trimmed/cistarget_motif_dataset.regions_vs_motifs.rankings.feather, /group/testa/michal.kubacki/herring/scenic_input/motifs-v9-nr.hgnc-m0.001-o0.0.tbl
+    output: /group/testa/michal.kubacki/herring/scenic_all_excitatory_trimmed/ctx_results.hdf5, /group/testa/michal.kubacki/herring/scenic_all_excitatory_trimmed/ctx_results.html
+    jobid: 9
+    reason: Forced execution
+    threads: 32
+    resources: tmpdir=/localscratch/13123999.michal.kubacki
+
+[Fri Jun 28 07:48:03 2024]
+Finished job 9.
+1 of 14 steps (7%) done
+Select jobs to execute...
+Execute 2 jobs...
+
+[Fri Jun 28 07:48:03 2024]
+localrule prepare_GEX_ACC_multiome:
+    input: /group/testa/michal.kubacki/herring/output_hg19_all_excitatory_trimmed/cistopic_obj.pkl, /group/testa/michal.kubacki/herring/output_hg19_all_excitatory_trimmed/adata.h5ad
+    output: /group/testa/michal.kubacki/herring/scenic_all_excitatory_trimmed/ACC_GEX.h5mu
+    jobid: 2
+    reason: Forced execution
+    resources: tmpdir=/localscratch/13123999.michal.kubacki
+
+
+[Fri Jun 28 07:48:03 2024]
+localrule download_genome_annotations:
+    output: /group/testa/michal.kubacki/herring/scenic_all_excitatory_trimmed/genome_annotation.tsv, /group/testa/michal.kubacki/herring/scenic_all_excitatory_trimmed/chromsizes.tsv
+    jobid: 8
+    reason: Forced execution
+    resources: tmpdir=/localscratch/13123999.michal.kubacki
+
+[Fri Jun 28 07:48:40 2024]
+Error in rule prepare_GEX_ACC_multiome:
+    jobid: 2
+    input: /group/testa/michal.kubacki/herring/output_hg19_all_excitatory_trimmed/cistopic_obj.pkl, /group/testa/michal.kubacki/herring/output_hg19_all_excitatory_trimmed/adata.h5ad
+    output: /group/testa/michal.kubacki/herring/scenic_all_excitatory_trimmed/ACC_GEX.h5mu
+    shell:
+        
+            scenicplus prepare_data prepare_GEX_ACC                 --cisTopic_obj_fname /group/testa/michal.kubacki/herring/output_hg19_all_excitatory_trimmed/cistopic_obj.pkl                 --GEX_anndata_fname /group/testa/michal.kubacki/herring/output_hg19_all_excitatory_trimmed/adata.h5ad                 --out_file /group/testa/michal.kubacki/herring/scenic_all_excitatory_trimmed/ACC_GEX.h5mu                 --bc_transform_func "lambda x: f'{x}'"
+            
+        (one of the commands exited with non-zero exit code; note that snakemake uses bash strict mode!)
+
+[Fri Jun 28 07:49:23 2024]
+Finished job 8.
+2 of 14 steps (14%) done
+Shutting down, this might take some time.
+Exiting because a job execution failed. Look above for error message
+Complete log: .snakemake/log/2024-06-28T073708.704799.snakemake.log
+WorkflowError:
+At least one job did not complete successfully.

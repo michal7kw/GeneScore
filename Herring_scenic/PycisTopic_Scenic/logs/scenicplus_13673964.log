@@ -1,0 +1,139 @@
+INFO: localdir at /localscratch/13673964.michal.kubacki
+INFO: your job will run on local system.
+Assuming unrestricted shared filesystem usage for local execution.
+Building DAG of jobs...
+Using shell: /usr/bin/bash
+Provided cores: 96
+Rules claiming more threads will be scaled down.
+Job stats:
+job                            count
+---------------------------  -------
+AUCell_direct                      1
+AUCell_extended                    1
+all                                1
+download_genome_annotations        1
+eGRN_direct                        1
+eGRN_extended                      1
+get_search_space                   1
+prepare_GEX_ACC_multiome           1
+prepare_menr                       1
+region_to_gene                     1
+scplus_mudata                      1
+tf_to_gene                         1
+total                             12
+
+Select jobs to execute...
+Execute 2 jobs...
+
+[Thu Jul 18 07:52:12 2024]
+localrule prepare_GEX_ACC_multiome:
+    input: /group/testa/michal.kubacki/herring/output_hg19_all_inhibitory_all_ages/cistopic_obj.pkl, /group/testa/michal.kubacki/herring/output_hg19_all_inhibitory_all_ages/adata.h5ad
+    output: /group/testa/michal.kubacki/herring/scenic_all_inhibitory_all_ages/ACC_GEX.h5mu
+    jobid: 2
+    reason: Forced execution
+    resources: tmpdir=/localscratch/13673964.michal.kubacki
+
+
+[Thu Jul 18 07:52:12 2024]
+localrule download_genome_annotations:
+    output: /group/testa/michal.kubacki/herring/scenic_all_inhibitory_all_ages/genome_annotation.tsv, /group/testa/michal.kubacki/herring/scenic_all_inhibitory_all_ages/chromsizes.tsv
+    jobid: 7
+    reason: Forced execution
+    resources: tmpdir=/localscratch/13673964.michal.kubacki
+
+2024-07-18 07:53:19,151 SCENIC+      INFO     Reading cisTopic object.
+2024-07-18 07:53:21,705 SCENIC+      INFO     Reading gene expression AnnData.
+Traceback (most recent call last):
+  File "/home/michal.kubacki/miniconda3/envs/scenicplusnew/bin/scenicplus", line 33, in <module>
+    sys.exit(load_entry_point('scenicplus', 'console_scripts', 'scenicplus')())
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/michal.kubacki/Downloads/scenicplus/src/scenicplus/cli/scenicplus.py", line 1137, in main
+    args.func(args)
+  File "/home/michal.kubacki/Downloads/scenicplus/src/scenicplus/cli/scenicplus.py", line 44, in command_prepare_GEX_ACC
+    prepare_GEX_ACC(
+  File "/home/michal.kubacki/Downloads/scenicplus/src/scenicplus/cli/commands.py", line 61, in prepare_GEX_ACC
+    mdata = process_multiome_data(
+            ^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/michal.kubacki/Downloads/scenicplus/src/scenicplus/data_wrangling/adata_cistopic_wrangling.py", line 39, in process_multiome_data
+    raise Exception(
+Exception: No cells found which are present in both assays, check input and consider using `bc_transform_func`!
+[Thu Jul 18 07:53:24 2024]
+Error in rule prepare_GEX_ACC_multiome:
+    jobid: 2
+    input: /group/testa/michal.kubacki/herring/output_hg19_all_inhibitory_all_ages/cistopic_obj.pkl, /group/testa/michal.kubacki/herring/output_hg19_all_inhibitory_all_ages/adata.h5ad
+    output: /group/testa/michal.kubacki/herring/scenic_all_inhibitory_all_ages/ACC_GEX.h5mu
+    shell:
+        
+            scenicplus prepare_data prepare_GEX_ACC                 --cisTopic_obj_fname /group/testa/michal.kubacki/herring/output_hg19_all_inhibitory_all_ages/cistopic_obj.pkl                 --GEX_anndata_fname /group/testa/michal.kubacki/herring/output_hg19_all_inhibitory_all_ages/adata.h5ad                 --out_file /group/testa/michal.kubacki/herring/scenic_all_inhibitory_all_ages/ACC_GEX.h5mu                 --bc_transform_func "lambda x: f'{x}'"
+            
+        (one of the commands exited with non-zero exit code; note that snakemake uses bash strict mode!)
+
+2024-07-18 07:54:07,132 Download gene annotation INFO     Using genome: GRCh38.p14
+2024-07-18 07:54:07,175 Download gene annotation INFO     Found corresponding genome Id 51 on NCBI
+2024-07-18 07:54:07,687 Download gene annotation INFO     Found corresponding assembly Id 11968211 on NCBI
+2024-07-18 07:54:08,200 Download gene annotation INFO     Downloading assembly information from: ftp://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/000/001/405/GCF_000001405.40_GRCh38.p14/GCF_000001405.40_GRCh38.p14_assembly_report.txt
+2024-07-18 07:54:39,086 Download gene annotation INFO     Found following assembled molecules (chromosomes): 
+	1
+	2
+	3
+	4
+	5
+	6
+	7
+	8
+	9
+	10
+	11
+	12
+	13
+	14
+	15
+	16
+	17
+	18
+	19
+	20
+	21
+	22
+	X
+	Y
+	MT
+2024-07-18 07:54:39,127 Download gene annotation INFO     Converting chromosomes names to UCSC style as follows: 
+	Original	UCSC
+	1	chr1
+	2	chr2
+	3	chr3
+	4	chr4
+	5	chr5
+	6	chr6
+	7	chr7
+	8	chr8
+	9	chr9
+	10	chr10
+	11	chr11
+	12	chr12
+	13	chr13
+	14	chr14
+	15	chr15
+	16	chr16
+	17	chr17
+	18	chr18
+	19	chr19
+	20	chr20
+	21	chr21
+	22	chr22
+	X	chrX
+	Y	chrY
+	MT	chrM
+2024-07-18 07:54:39,141 SCENIC+      INFO     Saving chromosome sizes to: /group/testa/michal.kubacki/herring/scenic_all_inhibitory_all_ages/chromsizes.tsv
+2024-07-18 07:54:39,171 SCENIC+      INFO     Saving genome annotation to: /group/testa/michal.kubacki/herring/scenic_all_inhibitory_all_ages/genome_annotation.tsv
+[Thu Jul 18 07:54:41 2024]
+Finished job 7.
+1 of 12 steps (8%) done
+Shutting down, this might take some time.
+Exiting because a job execution failed. Look above for error message
+Complete log: .snakemake/log/2024-07-18T075212.074826.snakemake.log
+WorkflowError:
+At least one job did not complete successfully.
+slurmstepd: error: _cgroup_procs_check: failed on path /sys/fs/cgroup/memory/slurm/uid_10666/job_13673964/step_batch/cgroup.procs: No such file or directory
+slurmstepd: error: unable to read '/sys/fs/cgroup/memory/slurm/uid_10666/job_13673964/step_batch/cgroup.procs'

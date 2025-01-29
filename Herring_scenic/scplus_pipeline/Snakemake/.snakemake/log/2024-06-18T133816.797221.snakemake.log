@@ -1,0 +1,6 @@
+Building DAG of jobs...
+MissingInputException in rule motif_enrichment_dem in file /home/michal.kubacki/Githubs/Re-MEND/code/External_Datasets/GeneSet_Derivation/Herring_scenic/scplus_pipeline/Snakemake/workflow/Snakefile, line 98:
+Missing input files for rule motif_enrichment_dem:
+    output: /group/testa/michal.kubacki/herring/scenic_all_inhibitory/dem_results.hdf5, /group/testa/michal.kubacki/herring/scenic_all_inhibitory/dem_results.html
+    affected files:
+        /group/testa/michal.kubacki/herring/output_hg19_all_inhibitory/cistarget_motif_dataset.regions_vs_motifs.scores.feather

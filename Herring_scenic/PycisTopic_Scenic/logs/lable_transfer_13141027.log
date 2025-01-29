@@ -1,0 +1,75 @@
+INFO: localdir at /localscratch/13141027.michal.kubacki
+INFO: your job will run on local system.
+root_dir: /group/testa/michal.kubacki/herring
+out_dir: /group/testa/michal.kubacki/herring/output_hg19_all_excitatory
+in_dir: /group/testa/michal.kubacki/herring/data
+tmp_dir: /group/testa/michal.kubacki/herring/tmp
+2024-07-03 10:21:58,491 cisTopic     INFO     Normalizing RNA data
+WARNING: adata.X seems to be already log-transformed.
+/home/michal.kubacki/.conda/envs/scenicplus/lib/python3.11/site-packages/scanpy/preprocessing/_scale.py:299: UserWarning: Received a view of an AnnData. Making a copy.
+  view_to_actual(adata)
+2024-07-03 10:23:34,195 cisTopic     INFO     Processing 1 query sample(s) using 1 cpu(s)
+2024-07-03 10:23:50,612	ERROR services.py:1329 -- Failed to start the dashboard , return code 1
+2024-07-03 10:23:50,613	ERROR services.py:1354 -- Error should be written to 'dashboard.log' or 'dashboard.err'. We are printing the last 20 lines for you. See 'https://docs.ray.io/en/master/ray-observability/ray-logging.html#logging-directory-structure' to find where the log file is.
+2024-07-03 10:23:50,616	ERROR services.py:1398 -- 
+The last 20 lines of /group/testa/michal.kubacki/herring/tmp/session_2024-07-03_10-23-34_310643_3565364/logs/dashboard.log (it contains the error message from the dashboard): 
+    modules = self._load_modules(self._modules_to_load)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/michal.kubacki/.conda/envs/scenicplus/lib/python3.11/site-packages/ray/dashboard/head.py", line 219, in _load_modules
+    head_cls_list = dashboard_utils.get_all_modules(DashboardHeadModule)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/michal.kubacki/.conda/envs/scenicplus/lib/python3.11/site-packages/ray/dashboard/utils.py", line 121, in get_all_modules
+    importlib.import_module(name)
+  File "/home/michal.kubacki/.conda/envs/scenicplus/lib/python3.11/importlib/__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1204, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1176, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1147, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 690, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 940, in exec_module
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "/home/michal.kubacki/.conda/envs/scenicplus/lib/python3.11/site-packages/ray/dashboard/modules/dashboard_sdk.py", line 10, in <module>
+    from pkg_resources import packaging
+ImportError: cannot import name 'packaging' from 'pkg_resources' (/home/michal.kubacki/.conda/envs/scenicplus/lib/python3.11/site-packages/pkg_resources/__init__.py)
+2024-07-03 10:23:53,598	INFO worker.py:1724 -- Started a local Ray instance.
+Traceback (most recent call last):
+  File "/home/michal.kubacki/Githubs/Re-MEND/code/External_Datasets/GeneSet_Derivation/Herring_scenic/Main_analysis/Exicatory_all/label_transfer.py", line 46, in <module>
+    label_dict = label_transfer(
+                 ^^^^^^^^^^^^^^^
+  File "/home/michal.kubacki/.conda/envs/scenicplus/lib/python3.11/site-packages/pycisTopic/label_transfer.py", line 120, in label_transfer
+    [
+  File "/home/michal.kubacki/.conda/envs/scenicplus/lib/python3.11/site-packages/pycisTopic/label_transfer.py", line 121, in <listcomp>
+    label_transfer_ray.remote(
+  File "/home/michal.kubacki/.conda/envs/scenicplus/lib/python3.11/site-packages/ray/remote_function.py", line 139, in _remote_proxy
+    return self._remote(args=args, kwargs=kwargs, **self._default_options)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/michal.kubacki/.conda/envs/scenicplus/lib/python3.11/site-packages/ray/_private/auto_init_hook.py", line 22, in auto_init_wrapper
+    return fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^
+  File "/home/michal.kubacki/.conda/envs/scenicplus/lib/python3.11/site-packages/ray/util/tracing/tracing_helper.py", line 310, in _invocation_remote_span
+    return method(self, args, kwargs, *_args, **_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/michal.kubacki/.conda/envs/scenicplus/lib/python3.11/site-packages/ray/remote_function.py", line 460, in _remote
+    return invocation(args, kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/michal.kubacki/.conda/envs/scenicplus/lib/python3.11/site-packages/ray/remote_function.py", line 428, in invocation
+    object_refs = worker.core_worker.submit_task(
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "python/ray/_raylet.pyx", line 3778, in ray._raylet.CoreWorker.submit_task
+  File "python/ray/_raylet.pyx", line 3782, in ray._raylet.CoreWorker.submit_task
+  File "python/ray/_raylet.pyx", line 864, in ray._raylet.prepare_args_and_increment_put_refs
+  File "python/ray/_raylet.pyx", line 855, in ray._raylet.prepare_args_and_increment_put_refs
+  File "python/ray/_raylet.pyx", line 901, in ray._raylet.prepare_args_internal
+  File "/home/michal.kubacki/.conda/envs/scenicplus/lib/python3.11/site-packages/ray/_private/worker.py", line 678, in get_serialization_context
+    context_map[job_id] = serialization.SerializationContext(self)
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/michal.kubacki/.conda/envs/scenicplus/lib/python3.11/site-packages/ray/_private/serialization.py", line 153, in __init__
+    serialization_addons.apply(self)
+  File "/home/michal.kubacki/.conda/envs/scenicplus/lib/python3.11/site-packages/ray/util/serialization_addons.py", line 29, in apply
+    from ray._private.pydantic_compat import register_pydantic_serializers
+  File "/home/michal.kubacki/.conda/envs/scenicplus/lib/python3.11/site-packages/ray/_private/pydantic_compat.py", line 2, in <module>
+    from pkg_resources import packaging
+ImportError: cannot import name 'packaging' from 'pkg_resources' (/home/michal.kubacki/.conda/envs/scenicplus/lib/python3.11/site-packages/pkg_resources/__init__.py)
+slurmstepd: error: _cgroup_procs_check: failed on path /sys/fs/cgroup/memory/slurm/uid_10666/job_13141027/step_batch/cgroup.procs: No such file or directory
+slurmstepd: error: unable to read '/sys/fs/cgroup/memory/slurm/uid_10666/job_13141027/step_batch/cgroup.procs'

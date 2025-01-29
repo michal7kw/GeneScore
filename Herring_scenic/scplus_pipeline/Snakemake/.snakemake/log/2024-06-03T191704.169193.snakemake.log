@@ -1,0 +1,30 @@
+Building DAG of jobs...
+Using shell: /usr/bin/bash
+Provided cores: 128
+Rules claiming more threads will be scaled down.
+Job stats:
+job                     count
+--------------------  -------
+AUCell_direct               1
+AUCell_extended             1
+all                         1
+eGRN_direct                 1
+eGRN_extended               1
+motif_enrichment_dem        1
+prepare_menr                1
+scplus_mudata               1
+tf_to_gene                  1
+total                       9
+
+Select jobs to execute...
+Execute 1 jobs...
+
+[Mon Jun  3 19:17:07 2024]
+localrule motif_enrichment_dem:
+    input: /group/testa/michal.kubacki/herring/output_hg19_all_cell_types/region_sets, /group/testa/michal.kubacki/herring/output_hg19_all_cell_types/cistarget_motif_dataset.regions_vs_motifs.scores.feather, /group/testa/michal.kubacki/herring/scenic_all_celltypes/genome_annotation.tsv, /group/testa/michal.kubacki/herring/scenic_input/motifs-v10nr_clust-nr.hgnc-m0.001-o0.0.tbl
+    output: /group/testa/michal.kubacki/herring/scenic_all_celltypes/dem_results.hdf5, /group/testa/michal.kubacki/herring/scenic_all_celltypes/dem_results.html
+    jobid: 7
+    reason: Params have changed since last execution
+    threads: 32
+    resources: tmpdir=/localscratch/12351161.michal.kubacki
+

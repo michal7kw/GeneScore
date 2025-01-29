@@ -1,0 +1,98 @@
+#  %%
+print("Loading packages")
+import os
+import re
+import gc
+import sys
+import importlib
+import pandas as pd
+
+from celloracle import motif_analysis as ma
+import celloracle as co
+
+# %%
+n_cpus = 8
+neurons_set = "all_ex"
+# neurons_set = "all_ex_all_ages"
+root_dir = "/group/testa/michal.kubacki/herring_minimal"
+
+# %%
+def set_custom_folders(neurons_set):
+    tmp_dir = os.path.join(root_dir, "celloracle", "tmp")
+    in_dir = os.path.join(root_dir, "data")
+
+    out_dir = os.path.join(root_dir, neurons_set, "celloracle")
+    in_dir_from_scenic = os.path.join(root_dir, neurons_set)
+
+    print(f"root_dir: {root_dir}")
+    print(f"out_dir: {out_dir}")
+    print(f"in_dir: {in_dir}")
+    print(f"tmp_dir: {tmp_dir}")
+
+    os.makedirs(out_dir, exist_ok = True)
+    return out_dir, in_dir, root_dir, tmp_dir, in_dir_from_scenic
+
+# %%
+output_dir, input_dir, root_dir, tmp_dir, in_dir_from_scenic = set_custom_folders(neurons_set)
+    
+celltypes_dict = {
+    "all_ex"                : ['L5-6_TLE4', 'L2-3_CUX2', 'L4_RORB', 'L5-6_THEMIS', 'PN_dev'],
+    "all_ex_all_ages"       : ['L5-6_TLE4', 'L2-3_CUX2', 'L4_RORB', 'L5-6_THEMIS', 'PN_dev']
+}
+
+cell_types = celltypes_dict[neurons_set]
+
+coaccess_files = [f"{cell_type}_coaccess.csv" for cell_type in cell_types]
+
+peaks_files = [f"{cell_type}_peaks.csv" for cell_type in cell_types]
+
+def extract_cell_type(file_name):
+    pattern = r'^(.+)_coaccess\.csv$'
+    match = re.match(pattern, file_name)
+    if match:
+        return match.group(1)
+    else:
+        return None
+
+# %%
+print("Processing loop")
+for coaccess_file, peaks_file in zip(coaccess_files, peaks_files):
+    print(f"Processing {coaccess_file}, {peaks_file}")
+    
+    print("Loading connections")
+    coaccess_path = os.path.join(in_dir_from_scenic, coaccess_file)
+    cicero_connections = pd.read_csv(coaccess_path)
+    print("Debugging: Checking the contents of cicero_connections")
+    print(cicero_connections.head())
+    
+    print("Loading peaks")
+    peak_path = os.path.join(in_dir_from_scenic, peaks_file)
+    with open(peak_path, 'r') as file:
+        peaks = file.read().split()
+    print("Debugging: Checking the contents of peaks")
+    print(peaks[:5])
+    
+    print("Formating peaks")
+    # peaks = [peak.strip('"') for peak in peaks]
+
+    tss_annotated = ma.get_tss_info(peak_str_list=peaks, ref_genome="hg19")
+    
+    print("TSS integration")
+    integrated = ma.integrate_tss_peak_with_cicero(tss_peak=tss_annotated,
+                                                   cicero_connections=cicero_connections)
+    
+    print("Filtering peaks")
+    cell_type = extract_cell_type(coaccess_file)
+    peak_filtered = integrated[integrated.coaccess >= 0.8]
+    peak_filtered = peak_filtered[["peak_id", "gene_short_name"]].reset_index(drop=True)
+    
+    print("Debugging: Checking the contents of peak_filtered")
+    print(peak_filtered.head())
+    print(f"Number of rows in peak_filtered: {len(peak_filtered)}")
+    
+    print(f"Saving results to {output_dir}")
+    peak_filtered_path = os.path.join(output_dir, f'processed_peak_file_{cell_type}.csv')
+    peak_filtered.to_csv(peak_filtered_path, index=False)
+    
+    print(f"Processed peak file saved for cell type {cell_type}")
+    gc.collect()

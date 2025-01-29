@@ -1,0 +1,310 @@
+INFO: localdir at /localscratch/13120795.michal.kubacki
+INFO: your job will run on local system.
+/home/michal.kubacki/.conda/envs/scenicplus/lib/python3.11/site-packages/pycisTopic/plotting/qc_plot.py:340: RuntimeWarning: More than 20 figures have been opened. Figures created through the pyplot interface (`matplotlib.pyplot.figure`) are retained until explicitly closed and may consume too much memory. (To control this warning, see the rcParam `figure.max_open_warning`). Consider using `matplotlib.pyplot.close()`.
+  fig, axs = plt.subplots(
+root_dir: /group/testa/michal.kubacki/herring
+out_dir: /group/testa/michal.kubacki/herring/output_hg19_all_excitatory_all_ages
+in_dir: /group/testa/michal.kubacki/herring/data
+tmp_dir: /group/testa/michal.kubacki/herring/tmp
+All fragments: {'ga22': '/group/testa/michal.kubacki/herring/data/GSE168408_RAW/GSM5138510_RL2366_ga22_snATAC_fragments.tsv.gz', '1y': '/group/testa/michal.kubacki/herring/data/GSE168408_RAW/GSM5138526_RL2209_1y_snATAC_fragments.tsv.gz', '14y': '/group/testa/michal.kubacki/herring/data/GSE168408_RAW/GSM5138542_RL2372_14y_snATAC_fragments.tsv.gz', 'ga24': '/group/testa/michal.kubacki/herring/data/GSE168408_RAW/GSM5138512_RL2207_ga24_snATAC_fragments.tsv.gz', '2y': '/group/testa/michal.kubacki/herring/data/GSE168408_RAW/GSM5138529_RL1784_2y_snATAC_fragments.tsv.gz', '16y': '/group/testa/michal.kubacki/herring/data/GSE168408_RAW/GSM5138544_RL1785_16y_snATAC_fragments.tsv.gz', '1m': '/group/testa/michal.kubacki/herring/data/GSE168408_RAW/GSM5138515_RL2367_1m_snATAC_fragments.tsv.gz', '4y': '/group/testa/michal.kubacki/herring/data/GSE168408_RAW/GSM5138532_RL2210_4y_snATAC_fragments.tsv.gz', '20y': '/group/testa/michal.kubacki/herring/data/GSE168408_RAW/GSM5138548_RL2085_20y_snATAC_fragments.tsv.gz', '3m': '/group/testa/michal.kubacki/herring/data/GSE168408_RAW/GSM5138518_RL1914_3m_snATAC_fragments.tsv.gz', '6y': '/group/testa/michal.kubacki/herring/data/GSE168408_RAW/GSM5138534_RL2364_6y_snATAC_fragments.tsv.gz', '25y': '/group/testa/michal.kubacki/herring/data/GSE168408_RAW/GSM5138550_RL2369_25y_snATAC_fragments.tsv.gz', '6m': '/group/testa/michal.kubacki/herring/data/GSE168408_RAW/GSM5138521_RL2208_6m_snATAC_fragments.tsv.gz', '8y': '/group/testa/michal.kubacki/herring/data/GSE168408_RAW/GSM5138536_RL1994_8y_snATAC_fragments.tsv.gz', '40y': '/group/testa/michal.kubacki/herring/data/GSE168408_RAW/GSM5138552_RL2373_40y_snATAC_fragments.tsv.gz', '10m': '/group/testa/michal.kubacki/herring/data/GSE168408_RAW/GSM5138523_RL2371_10m_snATAC_fragments.tsv.gz', '10y': '/group/testa/michal.kubacki/herring/data/GSE168408_RAW/GSM5138539_RL2368_10y_snATAC_fragments.tsv.gz'}
+Selected fragments: ['1m', '3m', '6m', '10m', '1y', '2y', '4y', '6y', '10y', '14y', '16y', '20y', '25y', '40y', 'ga22', 'ga24']
+1m:
+	Using automatic threshold for unique fragments: 1216.596787222716
+	Using automatic threshold for TSS enrichment: 1.742530285948993
+3m:
+	Using automatic threshold for unique fragments: 1363.416592542072
+	Using automatic threshold for TSS enrichment: 1.5834907011528703
+6m:
+	Using automatic threshold for unique fragments: 1137.268162412718
+	Using automatic threshold for TSS enrichment: 1.486449504950495
+10m:
+	Using automatic threshold for unique fragments: 1345.1525101347581
+	Using automatic threshold for TSS enrichment: 1.5211207920792078
+1y:
+	Using automatic threshold for unique fragments: 1010.5981707707466
+	Using automatic threshold for TSS enrichment: 1.5731110557626589
+2y:
+	Using automatic threshold for unique fragments: 1197.9562662164487
+	Using automatic threshold for TSS enrichment: 1.6757426605646697
+4y:
+	Using automatic threshold for unique fragments: 1399.3318035671782
+	Using automatic threshold for TSS enrichment: 1.5950178742362109
+6y:
+	Using automatic threshold for unique fragments: 1142.5070069020242
+	Using automatic threshold for TSS enrichment: 1.755061885906123
+10y:
+	Using automatic threshold for unique fragments: 1398.6725820736656
+	Using automatic threshold for TSS enrichment: 1.7847453694900661
+14y:
+	Using automatic threshold for unique fragments: 683.0735675444118
+	Using automatic threshold for TSS enrichment: 1.4839356435643563
+16y:
+	Using automatic threshold for unique fragments: 1263.5793539515223
+	Using automatic threshold for TSS enrichment: 1.8197448445720958
+20y:
+	Using automatic threshold for unique fragments: 1250.3182197686601
+	Using automatic threshold for TSS enrichment: 1.8283237384472089
+25y:
+	Using automatic threshold for unique fragments: 923.6163893658729
+	Using automatic threshold for TSS enrichment: 1.8446423853465213
+40y:
+	Using automatic threshold for unique fragments: 637.8299473359498
+	Using automatic threshold for TSS enrichment: 1.651448280214018
+ga22:
+	Using automatic threshold for unique fragments: 1073.633270232372
+	Using automatic threshold for TSS enrichment: 1.4639067842865912
+ga24:
+	Using automatic threshold for unique fragments: 1096.9158037324298
+	Using automatic threshold for TSS enrichment: 1.6073671313939895
+2024-06-27 10:51:49,494 cisTopic     INFO     Reading data for 1m
+2024-06-27 10:52:46,288 cisTopic     INFO     metrics provided!
+2024-06-27 10:52:49,526 cisTopic     INFO     Counting fragments in regions
+2024-06-27 10:52:56,403 cisTopic     INFO     Creating fragment matrix
+2024-06-27 10:53:03,731 cisTopic     INFO     Converting fragment matrix to sparse matrix
+2024-06-27 10:53:06,334 cisTopic     INFO     Removing blacklisted regions
+2024-06-27 10:53:07,520 cisTopic     INFO     Creating CistopicObject
+2024-06-27 10:53:08,060 cisTopic     INFO     Done!
+2024-06-27 10:53:09,469 cisTopic     INFO     Reading data for 3m
+2024-06-27 10:54:21,492 cisTopic     INFO     metrics provided!
+2024-06-27 10:54:24,557 cisTopic     INFO     Counting fragments in regions
+2024-06-27 10:54:27,869 cisTopic     INFO     Creating fragment matrix
+2024-06-27 10:54:31,768 cisTopic     INFO     Converting fragment matrix to sparse matrix
+2024-06-27 10:54:32,872 cisTopic     INFO     Removing blacklisted regions
+2024-06-27 10:54:33,637 cisTopic     INFO     Creating CistopicObject
+2024-06-27 10:54:33,951 cisTopic     INFO     Done!
+2024-06-27 10:54:35,825 cisTopic     INFO     Reading data for 6m
+2024-06-27 10:56:21,951 cisTopic     INFO     metrics provided!
+2024-06-27 10:56:26,027 cisTopic     INFO     Counting fragments in regions
+2024-06-27 10:56:27,948 cisTopic     INFO     Creating fragment matrix
+2024-06-27 10:56:30,544 cisTopic     INFO     Converting fragment matrix to sparse matrix
+2024-06-27 10:56:31,641 cisTopic     INFO     Removing blacklisted regions
+2024-06-27 10:56:32,341 cisTopic     INFO     Creating CistopicObject
+2024-06-27 10:56:32,605 cisTopic     INFO     Done!
+2024-06-27 10:56:34,015 cisTopic     INFO     Reading data for 10m
+2024-06-27 10:57:33,457 cisTopic     INFO     metrics provided!
+2024-06-27 10:57:35,921 cisTopic     INFO     Counting fragments in regions
+2024-06-27 10:57:38,701 cisTopic     INFO     Creating fragment matrix
+2024-06-27 10:57:41,539 cisTopic     INFO     Converting fragment matrix to sparse matrix
+2024-06-27 10:57:42,635 cisTopic     INFO     Removing blacklisted regions
+2024-06-27 10:57:43,355 cisTopic     INFO     Creating CistopicObject
+2024-06-27 10:57:43,640 cisTopic     INFO     Done!
+2024-06-27 10:57:45,036 cisTopic     INFO     Reading data for 1y
+2024-06-27 10:58:54,051 cisTopic     INFO     metrics provided!
+2024-06-27 10:58:57,544 cisTopic     INFO     Counting fragments in regions
+2024-06-27 10:59:00,637 cisTopic     INFO     Creating fragment matrix
+2024-06-27 10:59:04,952 cisTopic     INFO     Converting fragment matrix to sparse matrix
+2024-06-27 10:59:06,804 cisTopic     INFO     Removing blacklisted regions
+2024-06-27 10:59:07,533 cisTopic     INFO     Creating CistopicObject
+2024-06-27 10:59:07,841 cisTopic     INFO     Done!
+2024-06-27 10:59:09,268 cisTopic     INFO     Reading data for 2y
+2024-06-27 11:00:11,068 cisTopic     INFO     metrics provided!
+2024-06-27 11:00:14,236 cisTopic     INFO     Counting fragments in regions
+2024-06-27 11:00:17,287 cisTopic     INFO     Creating fragment matrix
+2024-06-27 11:00:21,366 cisTopic     INFO     Converting fragment matrix to sparse matrix
+2024-06-27 11:00:23,198 cisTopic     INFO     Removing blacklisted regions
+2024-06-27 11:00:23,945 cisTopic     INFO     Creating CistopicObject
+2024-06-27 11:00:24,250 cisTopic     INFO     Done!
+2024-06-27 11:00:26,293 cisTopic     INFO     Reading data for 4y
+2024-06-27 11:01:31,054 cisTopic     INFO     metrics provided!
+2024-06-27 11:01:34,292 cisTopic     INFO     Counting fragments in regions
+2024-06-27 11:01:37,887 cisTopic     INFO     Creating fragment matrix
+2024-06-27 11:01:42,104 cisTopic     INFO     Converting fragment matrix to sparse matrix
+2024-06-27 11:01:43,727 cisTopic     INFO     Removing blacklisted regions
+2024-06-27 11:01:44,433 cisTopic     INFO     Creating CistopicObject
+2024-06-27 11:01:44,739 cisTopic     INFO     Done!
+2024-06-27 11:01:46,030 cisTopic     INFO     Reading data for 6y
+2024-06-27 11:02:17,533 cisTopic     INFO     metrics provided!
+2024-06-27 11:02:18,792 cisTopic     INFO     Counting fragments in regions
+2024-06-27 11:02:19,676 cisTopic     INFO     Creating fragment matrix
+2024-06-27 11:02:20,775 cisTopic     INFO     Converting fragment matrix to sparse matrix
+2024-06-27 11:02:21,182 cisTopic     INFO     Removing blacklisted regions
+2024-06-27 11:02:21,670 cisTopic     INFO     Creating CistopicObject
+2024-06-27 11:02:21,836 cisTopic     INFO     Done!
+2024-06-27 11:02:23,154 cisTopic     INFO     Reading data for 10y
+2024-06-27 11:03:12,219 cisTopic     INFO     metrics provided!
+2024-06-27 11:03:14,824 cisTopic     INFO     Counting fragments in regions
+2024-06-27 11:03:18,053 cisTopic     INFO     Creating fragment matrix
+2024-06-27 11:03:22,294 cisTopic     INFO     Converting fragment matrix to sparse matrix
+2024-06-27 11:03:24,014 cisTopic     INFO     Removing blacklisted regions
+2024-06-27 11:03:24,710 cisTopic     INFO     Creating CistopicObject
+2024-06-27 11:03:25,015 cisTopic     INFO     Done!
+2024-06-27 11:03:26,392 cisTopic     INFO     Reading data for 14y
+2024-06-27 11:04:09,565 cisTopic     INFO     metrics provided!
+2024-06-27 11:04:11,367 cisTopic     INFO     Counting fragments in regions
+2024-06-27 11:04:12,887 cisTopic     INFO     Creating fragment matrix
+2024-06-27 11:04:14,906 cisTopic     INFO     Converting fragment matrix to sparse matrix
+2024-06-27 11:04:15,906 cisTopic     INFO     Removing blacklisted regions
+2024-06-27 11:04:16,582 cisTopic     INFO     Creating CistopicObject
+2024-06-27 11:04:16,830 cisTopic     INFO     Done!
+2024-06-27 11:04:18,373 cisTopic     INFO     Reading data for 16y
+2024-06-27 11:05:29,255 cisTopic     INFO     metrics provided!
+2024-06-27 11:05:32,734 cisTopic     INFO     Counting fragments in regions
+2024-06-27 11:05:38,798 cisTopic     INFO     Creating fragment matrix
+2024-06-27 11:05:45,940 cisTopic     INFO     Converting fragment matrix to sparse matrix
+2024-06-27 11:05:48,621 cisTopic     INFO     Removing blacklisted regions
+2024-06-27 11:05:49,362 cisTopic     INFO     Creating CistopicObject
+2024-06-27 11:05:49,754 cisTopic     INFO     Done!
+2024-06-27 11:05:51,382 cisTopic     INFO     Reading data for 20y
+2024-06-27 11:07:10,546 cisTopic     INFO     metrics provided!
+2024-06-27 11:07:14,034 cisTopic     INFO     Counting fragments in regions
+2024-06-27 11:07:18,982 cisTopic     INFO     Creating fragment matrix
+2024-06-27 11:07:24,590 cisTopic     INFO     Converting fragment matrix to sparse matrix
+2024-06-27 11:07:26,840 cisTopic     INFO     Removing blacklisted regions
+2024-06-27 11:07:27,542 cisTopic     INFO     Creating CistopicObject
+2024-06-27 11:07:27,895 cisTopic     INFO     Done!
+2024-06-27 11:07:29,430 cisTopic     INFO     Reading data for 25y
+2024-06-27 11:08:16,724 cisTopic     INFO     metrics provided!
+2024-06-27 11:08:19,158 cisTopic     INFO     Counting fragments in regions
+2024-06-27 11:08:23,294 cisTopic     INFO     Creating fragment matrix
+2024-06-27 11:08:29,974 cisTopic     INFO     Converting fragment matrix to sparse matrix
+2024-06-27 11:08:33,315 cisTopic     INFO     Removing blacklisted regions
+2024-06-27 11:08:34,015 cisTopic     INFO     Creating CistopicObject
+2024-06-27 11:08:34,370 cisTopic     INFO     Done!
+2024-06-27 11:08:35,790 cisTopic     INFO     Reading data for 40y
+2024-06-27 11:09:10,139 cisTopic     INFO     metrics provided!
+2024-06-27 11:09:11,738 cisTopic     INFO     Counting fragments in regions
+2024-06-27 11:09:13,328 cisTopic     INFO     Creating fragment matrix
+2024-06-27 11:09:15,975 cisTopic     INFO     Converting fragment matrix to sparse matrix
+2024-06-27 11:09:17,336 cisTopic     INFO     Removing blacklisted regions
+2024-06-27 11:09:17,987 cisTopic     INFO     Creating CistopicObject
+2024-06-27 11:09:18,242 cisTopic     INFO     Done!
+2024-06-27 11:09:19,767 cisTopic     INFO     Reading data for ga22
+2024-06-27 11:10:37,334 cisTopic     INFO     metrics provided!
+2024-06-27 11:10:40,323 cisTopic     INFO     Counting fragments in regions
+2024-06-27 11:10:42,608 cisTopic     INFO     Creating fragment matrix
+2024-06-27 11:10:45,225 cisTopic     INFO     Converting fragment matrix to sparse matrix
+2024-06-27 11:10:46,235 cisTopic     INFO     Removing blacklisted regions
+2024-06-27 11:10:46,968 cisTopic     INFO     Creating CistopicObject
+2024-06-27 11:10:47,245 cisTopic     INFO     Done!
+2024-06-27 11:10:48,821 cisTopic     INFO     Reading data for ga24
+2024-06-27 11:11:56,012 cisTopic     INFO     metrics provided!
+2024-06-27 11:11:58,753 cisTopic     INFO     Counting fragments in regions
+2024-06-27 11:12:02,287 cisTopic     INFO     Creating fragment matrix
+2024-06-27 11:12:07,093 cisTopic     INFO     Converting fragment matrix to sparse matrix
+2024-06-27 11:12:09,126 cisTopic     INFO     Removing blacklisted regions
+2024-06-27 11:12:09,859 cisTopic     INFO     Creating CistopicObject
+2024-06-27 11:12:10,187 cisTopic     INFO     Done!
+2024-06-27 11:12:13,813 cisTopic     INFO     cisTopic object 1 merged
+2024-06-27 11:12:16,193 cisTopic     INFO     cisTopic object 2 merged
+2024-06-27 11:12:18,428 cisTopic     INFO     cisTopic object 3 merged
+2024-06-27 11:12:20,852 cisTopic     INFO     cisTopic object 4 merged
+2024-06-27 11:12:23,396 cisTopic     INFO     cisTopic object 5 merged
+2024-06-27 11:12:26,115 cisTopic     INFO     cisTopic object 6 merged
+2024-06-27 11:12:28,816 cisTopic     INFO     cisTopic object 7 merged
+2024-06-27 11:12:31,780 cisTopic     INFO     cisTopic object 8 merged
+2024-06-27 11:12:34,717 cisTopic     INFO     cisTopic object 9 merged
+2024-06-27 11:12:37,928 cisTopic     INFO     cisTopic object 10 merged
+2024-06-27 11:12:41,461 cisTopic     INFO     cisTopic object 11 merged
+2024-06-27 11:12:45,264 cisTopic     INFO     cisTopic object 12 merged
+2024-06-27 11:12:49,059 cisTopic     INFO     cisTopic object 13 merged
+2024-06-27 11:12:52,798 cisTopic     INFO     cisTopic object 14 merged
+2024-06-27 11:12:56,734 cisTopic     INFO     cisTopic object 15 merged
+/home/michal.kubacki/.conda/envs/scenicplus/lib/python3.11/site-packages/scrublet/helper_functions.py:252: RuntimeWarning: invalid value encountered in sqrt
+  CV_input = np.sqrt(b);
+(29982, 25)
+(29891, 25)
+True
+True
+Warning: Some cells in this CistopicObject are not present in this cell_data. Values will be filled with Nan
+
+Preprocessing...
+Simulating doublets...
+Embedding transcriptomes using PCA...
+Calculating doublet scores...
+Automatically set threshold at doublet score = 0.79
+Detected doublet rate = 0.0%
+Estimated detectable doublet fraction = 0.1%
+Overall doublet rate:
+	Expected   = 10.0%
+	Estimated  = 0.0%
+Elapsed time: 259.4 seconds
+Detected doublet rate = 26.8%
+Estimated detectable doublet fraction = 65.0%
+Overall doublet rate:
+	Expected   = 10.0%
+	Estimated  = 41.2%
+CistopicObject from project cisTopic_merge with n_cells × n_regions = 15857 × 324037
+2024-06-27 11:17:44,839 cisTopic     INFO     Formatting input to corpus
+2024-06-27 11:17:45,799 cisTopic     INFO     Running model with 20 topics
+2024-06-27 11:17:45,799 LDAMalletWrapper INFO     Serializing temporary corpus to /tmp/corpus.txt
+2024-06-27 11:18:05,788 LDAMalletWrapper INFO     Converting temporary corpus to MALLET format with: /scratch/michal.kubacki/herring/Mallet-202108/bin/mallet import-file --preserve-case --keep-sequence --token-regex \S+ --input /tmp/corpus.txt --output /tmp/corpus.mallet
+2024-06-27 11:18:34,505 LDAMalletWrapper INFO     Training MALLET LDA with: /scratch/michal.kubacki/herring/Mallet-202108/bin/mallet train-topics --input /tmp/corpus.mallet --num-topics 20 --alpha 50 --beta 0.1 --optimize-interval 0 --num-threads 32 --output-state /tmp/447e65_state.mallet.gz --output-doc-topics /tmp/447e65_doctopics.txt --output-topic-keys /tmp/447e65_topickeys.txt --num-iterations 500 --inferencer-filename /tmp/447e65_inferencer.mallet --doc-topics-threshold 0.0 --random-seed 555
+2024-06-27 11:35:52,791 LDAMalletWrapper INFO     loading assigned topics from /tmp/447e65_state.mallet.gz
+2024-06-27 11:36:08,696 cisTopic     INFO     Model with 20 topics done!
+2024-06-27 11:36:08,696 cisTopic     INFO     Saving model with 20 topics at /tmp
+2024-06-27 11:36:08,915 cisTopic     INFO     Running model with 25 topics
+2024-06-27 11:36:08,915 LDAMalletWrapper INFO     Serializing temporary corpus to /tmp/corpus.txt
+2024-06-27 11:36:30,347 LDAMalletWrapper INFO     Converting temporary corpus to MALLET format with: /scratch/michal.kubacki/herring/Mallet-202108/bin/mallet import-file --preserve-case --keep-sequence --token-regex \S+ --input /tmp/corpus.txt --output /tmp/corpus.mallet
+2024-06-27 11:36:59,325 LDAMalletWrapper INFO     Training MALLET LDA with: /scratch/michal.kubacki/herring/Mallet-202108/bin/mallet train-topics --input /tmp/corpus.mallet --num-topics 25 --alpha 50 --beta 0.1 --optimize-interval 0 --num-threads 32 --output-state /tmp/a8cd2d_state.mallet.gz --output-doc-topics /tmp/a8cd2d_doctopics.txt --output-topic-keys /tmp/a8cd2d_topickeys.txt --num-iterations 500 --inferencer-filename /tmp/a8cd2d_inferencer.mallet --doc-topics-threshold 0.0 --random-seed 555
+2024-06-27 11:54:26,496 LDAMalletWrapper INFO     loading assigned topics from /tmp/a8cd2d_state.mallet.gz
+2024-06-27 11:54:43,475 cisTopic     INFO     Model with 25 topics done!
+2024-06-27 11:54:43,475 cisTopic     INFO     Saving model with 25 topics at /tmp
+2024-06-27 11:54:43,655 cisTopic     INFO     Running model with 30 topics
+2024-06-27 11:54:43,655 LDAMalletWrapper INFO     Serializing temporary corpus to /tmp/corpus.txt
+2024-06-27 11:55:04,690 LDAMalletWrapper INFO     Converting temporary corpus to MALLET format with: /scratch/michal.kubacki/herring/Mallet-202108/bin/mallet import-file --preserve-case --keep-sequence --token-regex \S+ --input /tmp/corpus.txt --output /tmp/corpus.mallet
+2024-06-27 11:55:33,718 LDAMalletWrapper INFO     Training MALLET LDA with: /scratch/michal.kubacki/herring/Mallet-202108/bin/mallet train-topics --input /tmp/corpus.mallet --num-topics 30 --alpha 50 --beta 0.1 --optimize-interval 0 --num-threads 32 --output-state /tmp/c0dce5_state.mallet.gz --output-doc-topics /tmp/c0dce5_doctopics.txt --output-topic-keys /tmp/c0dce5_topickeys.txt --num-iterations 500 --inferencer-filename /tmp/c0dce5_inferencer.mallet --doc-topics-threshold 0.0 --random-seed 555
+2024-06-27 12:15:13,293 LDAMalletWrapper INFO     loading assigned topics from /tmp/c0dce5_state.mallet.gz
+2024-06-27 12:15:32,823 cisTopic     INFO     Model with 30 topics done!
+2024-06-27 12:15:32,823 cisTopic     INFO     Saving model with 30 topics at /tmp
+2024-06-27 12:15:33,054 cisTopic     INFO     Running model with 35 topics
+2024-06-27 12:15:33,054 LDAMalletWrapper INFO     Serializing temporary corpus to /tmp/corpus.txt
+2024-06-27 12:15:54,563 LDAMalletWrapper INFO     Converting temporary corpus to MALLET format with: /scratch/michal.kubacki/herring/Mallet-202108/bin/mallet import-file --preserve-case --keep-sequence --token-regex \S+ --input /tmp/corpus.txt --output /tmp/corpus.mallet
+2024-06-27 12:16:24,914 LDAMalletWrapper INFO     Training MALLET LDA with: /scratch/michal.kubacki/herring/Mallet-202108/bin/mallet train-topics --input /tmp/corpus.mallet --num-topics 35 --alpha 50 --beta 0.1 --optimize-interval 0 --num-threads 32 --output-state /tmp/4752e2_state.mallet.gz --output-doc-topics /tmp/4752e2_doctopics.txt --output-topic-keys /tmp/4752e2_topickeys.txt --num-iterations 500 --inferencer-filename /tmp/4752e2_inferencer.mallet --doc-topics-threshold 0.0 --random-seed 555
+2024-06-27 12:34:43,825 LDAMalletWrapper INFO     loading assigned topics from /tmp/4752e2_state.mallet.gz
+2024-06-27 12:35:04,046 cisTopic     INFO     Model with 35 topics done!
+2024-06-27 12:35:04,046 cisTopic     INFO     Saving model with 35 topics at /tmp
+2024-06-27 12:35:04,290 cisTopic     INFO     Running model with 40 topics
+2024-06-27 12:35:04,290 LDAMalletWrapper INFO     Serializing temporary corpus to /tmp/corpus.txt
+2024-06-27 12:35:25,789 LDAMalletWrapper INFO     Converting temporary corpus to MALLET format with: /scratch/michal.kubacki/herring/Mallet-202108/bin/mallet import-file --preserve-case --keep-sequence --token-regex \S+ --input /tmp/corpus.txt --output /tmp/corpus.mallet
+2024-06-27 12:35:56,322 LDAMalletWrapper INFO     Training MALLET LDA with: /scratch/michal.kubacki/herring/Mallet-202108/bin/mallet train-topics --input /tmp/corpus.mallet --num-topics 40 --alpha 50 --beta 0.1 --optimize-interval 0 --num-threads 32 --output-state /tmp/22c08a_state.mallet.gz --output-doc-topics /tmp/22c08a_doctopics.txt --output-topic-keys /tmp/22c08a_topickeys.txt --num-iterations 500 --inferencer-filename /tmp/22c08a_inferencer.mallet --doc-topics-threshold 0.0 --random-seed 555
+2024-06-27 12:54:29,078 LDAMalletWrapper INFO     loading assigned topics from /tmp/22c08a_state.mallet.gz
+2024-06-27 12:54:50,013 cisTopic     INFO     Model with 40 topics done!
+2024-06-27 12:54:50,013 cisTopic     INFO     Saving model with 40 topics at /tmp
+2024-06-27 12:54:50,232 cisTopic     INFO     Running model with 45 topics
+2024-06-27 12:54:50,232 LDAMalletWrapper INFO     Serializing temporary corpus to /tmp/corpus.txt
+2024-06-27 12:55:11,683 LDAMalletWrapper INFO     Converting temporary corpus to MALLET format with: /scratch/michal.kubacki/herring/Mallet-202108/bin/mallet import-file --preserve-case --keep-sequence --token-regex \S+ --input /tmp/corpus.txt --output /tmp/corpus.mallet
+2024-06-27 12:55:42,497 LDAMalletWrapper INFO     Training MALLET LDA with: /scratch/michal.kubacki/herring/Mallet-202108/bin/mallet train-topics --input /tmp/corpus.mallet --num-topics 45 --alpha 50 --beta 0.1 --optimize-interval 0 --num-threads 32 --output-state /tmp/13d715_state.mallet.gz --output-doc-topics /tmp/13d715_doctopics.txt --output-topic-keys /tmp/13d715_topickeys.txt --num-iterations 500 --inferencer-filename /tmp/13d715_inferencer.mallet --doc-topics-threshold 0.0 --random-seed 555
+2024-06-27 13:16:06,707 LDAMalletWrapper INFO     loading assigned topics from /tmp/13d715_state.mallet.gz
+2024-06-27 13:16:28,807 cisTopic     INFO     Model with 45 topics done!
+2024-06-27 13:16:28,808 cisTopic     INFO     Saving model with 45 topics at /tmp
+2024-06-27 13:16:29,069 cisTopic     INFO     Running model with 50 topics
+2024-06-27 13:16:29,069 LDAMalletWrapper INFO     Serializing temporary corpus to /tmp/corpus.txt
+2024-06-27 13:16:50,293 LDAMalletWrapper INFO     Converting temporary corpus to MALLET format with: /scratch/michal.kubacki/herring/Mallet-202108/bin/mallet import-file --preserve-case --keep-sequence --token-regex \S+ --input /tmp/corpus.txt --output /tmp/corpus.mallet
+2024-06-27 13:17:21,090 LDAMalletWrapper INFO     Training MALLET LDA with: /scratch/michal.kubacki/herring/Mallet-202108/bin/mallet train-topics --input /tmp/corpus.mallet --num-topics 50 --alpha 50 --beta 0.1 --optimize-interval 0 --num-threads 32 --output-state /tmp/799e82_state.mallet.gz --output-doc-topics /tmp/799e82_doctopics.txt --output-topic-keys /tmp/799e82_topickeys.txt --num-iterations 500 --inferencer-filename /tmp/799e82_inferencer.mallet --doc-topics-threshold 0.0 --random-seed 555
+2024-06-27 13:36:45,104 LDAMalletWrapper INFO     loading assigned topics from /tmp/799e82_state.mallet.gz
+2024-06-27 13:37:08,764 cisTopic     INFO     Model with 50 topics done!
+2024-06-27 13:37:08,764 cisTopic     INFO     Saving model with 50 topics at /tmp
+2024-06-27 13:37:51,728 cisTopic     INFO     Finding neighbours
+2024-06-27 13:38:01,315 cisTopic     INFO     Running UMAP
+/home/michal.kubacki/.conda/envs/scenicplus/lib/python3.11/site-packages/umap/umap_.py:1943: UserWarning: n_jobs value -1 overridden to 1 by setting random_state. Use no seed for parallelism.
+  warn(f"n_jobs value {self.n_jobs} overridden to 1 by setting random_state. Use no seed for parallelism.")
+2024-06-27 13:38:39,344 cisTopic     INFO     Running TSNE
+/home/michal.kubacki/.conda/envs/scenicplus/lib/python3.11/site-packages/statsmodels/stats/weightstats.py:792: RuntimeWarning: divide by zero encountered in scalar divide
+  zstat = value / std
+2024-06-27 13:39:57,797 cisTopic     INFO     Imputing region accessibility
+2024-06-27 13:39:57,797 cisTopic     INFO     Impute region accessibility for regions 0-20000
+2024-06-27 13:40:01,857 cisTopic     INFO     Impute region accessibility for regions 20000-40000
+2024-06-27 13:40:04,673 cisTopic     INFO     Impute region accessibility for regions 40000-60000
+2024-06-27 13:40:07,488 cisTopic     INFO     Impute region accessibility for regions 60000-80000
+2024-06-27 13:40:10,303 cisTopic     INFO     Impute region accessibility for regions 80000-100000
+2024-06-27 13:40:13,117 cisTopic     INFO     Impute region accessibility for regions 100000-120000
+2024-06-27 13:40:15,934 cisTopic     INFO     Impute region accessibility for regions 120000-140000
+2024-06-27 13:40:18,737 cisTopic     INFO     Impute region accessibility for regions 140000-160000
+2024-06-27 13:40:21,541 cisTopic     INFO     Impute region accessibility for regions 160000-180000
+2024-06-27 13:40:24,342 cisTopic     INFO     Impute region accessibility for regions 180000-200000
+2024-06-27 13:40:27,157 cisTopic     INFO     Impute region accessibility for regions 200000-220000
+2024-06-27 13:40:29,959 cisTopic     INFO     Impute region accessibility for regions 220000-240000
+2024-06-27 13:40:32,763 cisTopic     INFO     Impute region accessibility for regions 240000-260000
+2024-06-27 13:40:35,578 cisTopic     INFO     Impute region accessibility for regions 260000-280000
+2024-06-27 13:40:38,392 cisTopic     INFO     Impute region accessibility for regions 280000-300000
+2024-06-27 13:40:41,208 cisTopic     INFO     Impute region accessibility for regions 300000-320000
+2024-06-27 13:40:44,025 cisTopic     INFO     Impute region accessibility for regions 320000-340000
+2024-06-27 13:40:44,592 cisTopic     INFO     Done!
+2024-06-27 13:40:44,593 cisTopic     INFO     Normalizing imputed data
+2024-06-27 13:41:20,002 cisTopic     INFO     Done!
+2024-06-27 13:41:20,002 cisTopic     INFO     Calculating mean
+2024-06-27 13:41:25,904 cisTopic     INFO     Calculating variance
+/cm/local/apps/slurm/var/spool/job13120795/slurm_script: line 18: 2643398 Killed                  "$PYTHON_PATH" /home/michal.kubacki/Githubs/Re-MEND/code/External_Datasets/GeneSet_Derivation/Herring_scenic/Main_analysis/Exicatory_all/Alternatives/full_run_combined_with_run_model_all_ages.py
+slurmstepd: error: Detected 1 oom-kill event(s) in StepId=13120795.batch. Some of your processes may have been killed by the cgroup out-of-memory handler.
+slurmstepd: error: _cgroup_procs_check: failed on path /sys/fs/cgroup/memory/slurm/uid_10666/job_13120795/step_batch/cgroup.procs: No such file or directory
+slurmstepd: error: unable to read '/sys/fs/cgroup/memory/slurm/uid_10666/job_13120795/step_batch/cgroup.procs'

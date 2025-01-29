@@ -1,0 +1,114 @@
+INFO: localdir at /localscratch/13124892.michal.kubacki
+INFO: your job will run on local system.
+Assuming unrestricted shared filesystem usage for local execution.
+Building DAG of jobs...
+Using shell: /usr/bin/bash
+Provided cores: 32
+Rules claiming more threads will be scaled down.
+Job stats:
+job                count
+---------------  -------
+AUCell_direct          1
+AUCell_extended        1
+all                    1
+eGRN_direct            1
+eGRN_extended          1
+scplus_mudata          1
+total                  6
+
+Select jobs to execute...
+Execute 1 jobs...
+
+[Fri Jun 28 10:08:54 2024]
+localrule eGRN_direct:
+    input: /group/testa/michal.kubacki/herring/scenic_all_excitatory_all_ages/tf_to_gene_adj.tsv, /group/testa/michal.kubacki/herring/scenic_all_excitatory_all_ages/region_to_gene_adj.tsv, /group/testa/michal.kubacki/herring/scenic_all_excitatory_all_ages/cistromes_direct.h5ad, /scratch/michal.kubacki/herring/output_hg19_all_excitatory_all_ages/cistarget_motif_dataset.regions_vs_motifs.rankings.feather
+    output: /group/testa/michal.kubacki/herring/scenic_all_excitatory_all_ages/eRegulon_direct.tsv
+    jobid: 4
+    reason: Missing output files: /group/testa/michal.kubacki/herring/scenic_all_excitatory_all_ages/eRegulon_direct.tsv
+    threads: 32
+    resources: tmpdir=/localscratch/13124892.michal.kubacki
+
+2024-06-28 10:11:06,295 SCENIC+      INFO     Loading TF to gene adjacencies.
+2024-06-28 10:11:06,390 SCENIC+      INFO     Loading region to gene adjacencies.
+2024-06-28 10:11:07,457 SCENIC+      INFO     Loading cistromes.
+2024-06-28 10:11:08,589 GSEA         INFO     Thresholding region to gene relationships
+  0%|          | 0/14 [00:00<?, ?it/s]
+[32;1mProcessing:[0m negative r2g, 0.85 quantile: 0it [00:00, ?it/s][A
+                                                           [A  7%|▋         | 1/14 [01:29<19:24, 89.60s/it]
+[32;1mProcessing:[0m 0.9 quantile, negative r2g: 0it [00:00, ?it/s][A
+                                                          [A 14%|█▍        | 2/14 [01:30<07:27, 37.32s/it]
+[32;1mProcessing:[0m negative r2g, 0.95 quantile: 0it [00:00, ?it/s][A
+                                                           [A 21%|██▏       | 3/14 [01:31<03:46, 20.61s/it]
+[32;1mProcessing:[0m negative r2g, Top 5 region-to-gene links per gene: 0it [00:00, ?it/s][A
+                                                                                 [A 29%|██▊       | 4/14 [01:31<02:07, 12.76s/it]
+[32;1mProcessing:[0m negative r2g, Top 10 region-to-gene links per gene: 0it [00:00, ?it/s][A
+                                                                                  [A 36%|███▌      | 5/14 [01:32<01:15,  8.43s/it]
+[32;1mProcessing:[0m Top 15 region-to-gene links per gene, negative r2g: 0it [00:00, ?it/s][A
+                                                                                  [A 43%|████▎     | 6/14 [01:33<00:46,  5.81s/it]
+[32;1mProcessing:[0m BASC binarized, negative r2g: 0it [00:00, ?it/s][A
+                                                            [A 50%|█████     | 7/14 [04:10<06:27, 55.31s/it]
+[32;1mProcessing:[0m positive r2g, 0.85 quantile: 0it [00:00, ?it/s][A
+                                                           [A 57%|█████▋    | 8/14 [04:11<03:48, 38.08s/it]
+[32;1mProcessing:[0m 0.9 quantile, positive r2g: 0it [00:00, ?it/s][A
+                                                          [A 64%|██████▍   | 9/14 [04:12<02:12, 26.41s/it]
+[32;1mProcessing:[0m positive r2g, 0.95 quantile: 0it [00:00, ?it/s][A
+                                                           [A 71%|███████▏  | 10/14 [04:13<01:13, 18.48s/it]
+[32;1mProcessing:[0m Top 5 region-to-gene links per gene, positive r2g: 0it [00:00, ?it/s][A
+                                                                                 [A 79%|███████▊  | 11/14 [04:13<00:39, 13.05s/it]
+[32;1mProcessing:[0m Top 10 region-to-gene links per gene, positive r2g: 0it [00:00, ?it/s][A
+                                                                                  [A 86%|████████▌ | 12/14 [04:14<00:18,  9.30s/it]
+[32;1mProcessing:[0m Top 15 region-to-gene links per gene, positive r2g: 0it [00:00, ?it/s][A
+                                                                                  [A 93%|█████████▎| 13/14 [04:15<00:06,  6.71s/it]
+[32;1mProcessing:[0m BASC binarized, positive r2g: 0it [00:00, ?it/s][A
+                                                            [A100%|██████████| 14/14 [04:22<00:00,  6.90s/it]100%|██████████| 14/14 [04:22<00:00, 18.76s/it]
+2024-06-28 10:15:31,399 GSEA         INFO     Subsetting TF2G adjacencies for TF with motif.
+2024-06-28 10:15:31,400 GSEA         INFO     Running GSEA...
+2024-06-28 10:15:31,400 GSEA         INFO     Generating rankings...
+0it [00:00, ?it/s]0it [00:00, ?it/s]
+0it [00:00, ?it/s]0it [00:00, ?it/s]
+Running for Positive TF to gene: 0it [00:00, ?it/s]Running for Positive TF to gene: 0it [00:00, ?it/s]
+Running for Negative TF to gene: 0it [00:00, ?it/s]Running for Negative TF to gene: 0it [00:00, ?it/s]
+2024-06-28 10:15:31,403 GSEA         INFO     Subsetting on adjusted pvalue: 1, minimal NES: 0 and minimal leading edge genes 10
+2024-06-28 10:15:31,403 GSEA         INFO     Merging eRegulons
+2024-06-28 10:15:31,403 SCENIC+      INFO     Formatting eGRN as table.
+Traceback (most recent call last):
+  File "/home/michal.kubacki/miniconda3/envs/scenicplusnew/bin/scenicplus", line 33, in <module>
+    sys.exit(load_entry_point('scenicplus', 'console_scripts', 'scenicplus')())
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/michal.kubacki/Downloads/scenicplus/src/scenicplus/cli/scenicplus.py", line 1137, in main
+    args.func(args)
+  File "/home/michal.kubacki/Downloads/scenicplus/src/scenicplus/cli/scenicplus.py", line 859, in eGRN
+    infer_grn(
+  File "/home/michal.kubacki/Downloads/scenicplus/src/scenicplus/cli/commands.py", line 623, in infer_grn
+    eRegulon_metadata = _format_egrns(
+                        ^^^^^^^^^^^^^^
+  File "/home/michal.kubacki/Downloads/scenicplus/src/scenicplus/cli/commands.py", line 553, in _format_egrns
+    eRegulon_metadata = pd.concat(eRegulons_formatted)
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/michal.kubacki/miniconda3/envs/scenicplusnew/lib/python3.11/site-packages/pandas/util/_decorators.py", line 317, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/michal.kubacki/miniconda3/envs/scenicplusnew/lib/python3.11/site-packages/pandas/core/reshape/concat.py", line 369, in concat
+    op = _Concatenator(
+         ^^^^^^^^^^^^^^
+  File "/home/michal.kubacki/miniconda3/envs/scenicplusnew/lib/python3.11/site-packages/pandas/core/reshape/concat.py", line 426, in __init__
+    raise ValueError("No objects to concatenate")
+ValueError: No objects to concatenate
+[Fri Jun 28 10:15:35 2024]
+Error in rule eGRN_direct:
+    jobid: 4
+    input: /group/testa/michal.kubacki/herring/scenic_all_excitatory_all_ages/tf_to_gene_adj.tsv, /group/testa/michal.kubacki/herring/scenic_all_excitatory_all_ages/region_to_gene_adj.tsv, /group/testa/michal.kubacki/herring/scenic_all_excitatory_all_ages/cistromes_direct.h5ad, /scratch/michal.kubacki/herring/output_hg19_all_excitatory_all_ages/cistarget_motif_dataset.regions_vs_motifs.rankings.feather
+    output: /group/testa/michal.kubacki/herring/scenic_all_excitatory_all_ages/eRegulon_direct.tsv
+    shell:
+        
+        scenicplus grn_inference eGRN             --TF_to_gene_adj_fname /group/testa/michal.kubacki/herring/scenic_all_excitatory_all_ages/tf_to_gene_adj.tsv            --region_to_gene_adj_fname /group/testa/michal.kubacki/herring/scenic_all_excitatory_all_ages/region_to_gene_adj.tsv             --cistromes_fname /group/testa/michal.kubacki/herring/scenic_all_excitatory_all_ages/cistromes_direct.h5ad            --ranking_db_fname /scratch/michal.kubacki/herring/output_hg19_all_excitatory_all_ages/cistarget_motif_dataset.regions_vs_motifs.rankings.feather             --eRegulon_out_fname /group/testa/michal.kubacki/herring/scenic_all_excitatory_all_ages/eRegulon_direct.tsv             --temp_dir /group/testa/michal.kubacki/herring/output_hg19_all_excitatory_all_ages/tmp             --order_regions_to_genes_by importance             --order_TFs_to_genes_by importance             --gsea_n_perm 1000             --quantiles 0.85 0.90 0.95             --top_n_regionTogenes_per_gene 5 10 15             --top_n_regionTogenes_per_region              --min_regions_per_gene 0             --rho_threshold 0.05             --min_target_genes 10             --n_cpu 32
+        
+        (one of the commands exited with non-zero exit code; note that snakemake uses bash strict mode!)
+
+Shutting down, this might take some time.
+Exiting because a job execution failed. Look above for error message
+Complete log: .snakemake/log/2024-06-28T100834.792203.snakemake.log
+WorkflowError:
+At least one job did not complete successfully.
+slurmstepd: error: _cgroup_procs_check: failed on path /sys/fs/cgroup/memory/slurm/uid_10666/job_13124892/step_batch/cgroup.procs: No such file or directory
+slurmstepd: error: unable to read '/sys/fs/cgroup/memory/slurm/uid_10666/job_13124892/step_batch/cgroup.procs'

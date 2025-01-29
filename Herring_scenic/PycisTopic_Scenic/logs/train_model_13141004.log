@@ -1,0 +1,109 @@
+INFO: localdir at /localscratch/13141004.michal.kubacki
+INFO: your job will run on local system.
+root_dir: /group/testa/michal.kubacki/herring
+out_dir: /group/testa/michal.kubacki/herring/output_hg19_all_excitatory
+in_dir: /group/testa/michal.kubacki/herring/data
+tmp_dir: /group/testa/michal.kubacki/herring/tmp
+2024-07-03 10:04:45,302 cisTopic     INFO     Finding neighbours
+Columns ['pycisTopic_leiden_10_0.6'] will be overwritten
+Columns ['pycisTopic_leiden_10_1.2'] will be overwritten
+Columns ['pycisTopic_leiden_10_3'] will be overwritten
+2024-07-03 10:04:49,075 cisTopic     INFO     Running UMAP
+/home/michal.kubacki/.conda/envs/scenicplus/lib/python3.11/site-packages/umap/umap_.py:1943: UserWarning: n_jobs value -1 overridden to 1 by setting random_state. Use no seed for parallelism.
+  warn(f"n_jobs value {self.n_jobs} overridden to 1 by setting random_state. Use no seed for parallelism.")
+2024-07-03 10:05:15,343 cisTopic     INFO     Running TSNE
+/home/michal.kubacki/.conda/envs/scenicplus/lib/python3.11/site-packages/statsmodels/stats/weightstats.py:792: RuntimeWarning: divide by zero encountered in scalar divide
+  zstat = value / std
+2024-07-03 10:06:04,844 cisTopic     INFO     Imputing region accessibility
+2024-07-03 10:06:04,846 cisTopic     INFO     Impute region accessibility for regions 0-20000
+2024-07-03 10:06:06,390 cisTopic     INFO     Impute region accessibility for regions 20000-40000
+2024-07-03 10:06:07,856 cisTopic     INFO     Impute region accessibility for regions 40000-60000
+2024-07-03 10:06:09,328 cisTopic     INFO     Impute region accessibility for regions 60000-80000
+2024-07-03 10:06:10,797 cisTopic     INFO     Impute region accessibility for regions 80000-100000
+2024-07-03 10:06:12,270 cisTopic     INFO     Impute region accessibility for regions 100000-120000
+2024-07-03 10:06:13,741 cisTopic     INFO     Impute region accessibility for regions 120000-140000
+2024-07-03 10:06:15,213 cisTopic     INFO     Impute region accessibility for regions 140000-160000
+2024-07-03 10:06:16,684 cisTopic     INFO     Impute region accessibility for regions 160000-180000
+2024-07-03 10:06:18,156 cisTopic     INFO     Impute region accessibility for regions 180000-200000
+2024-07-03 10:06:19,627 cisTopic     INFO     Impute region accessibility for regions 200000-220000
+2024-07-03 10:06:21,098 cisTopic     INFO     Impute region accessibility for regions 220000-240000
+2024-07-03 10:06:22,569 cisTopic     INFO     Impute region accessibility for regions 240000-260000
+2024-07-03 10:06:24,041 cisTopic     INFO     Impute region accessibility for regions 260000-280000
+2024-07-03 10:06:25,512 cisTopic     INFO     Impute region accessibility for regions 280000-300000
+2024-07-03 10:06:26,977 cisTopic     INFO     Impute region accessibility for regions 300000-320000
+2024-07-03 10:06:28,448 cisTopic     INFO     Impute region accessibility for regions 320000-340000
+2024-07-03 10:06:29,119 cisTopic     INFO     Done!
+2024-07-03 10:06:29,119 cisTopic     INFO     Normalizing imputed data
+2024-07-03 10:06:47,763 cisTopic     INFO     Done!
+2024-07-03 10:06:47,763 cisTopic     INFO     Calculating mean
+2024-07-03 10:06:50,907 cisTopic     INFO     Calculating variance
+2024-07-03 10:07:14,732 cisTopic     INFO     Done!
+2024-07-03 10:08:17,244 cisTopic     INFO     Subsetting data for L2-3_CUX2 (326 of 11016)
+2024-07-03 10:08:20,708 cisTopic     INFO     Computing p-value for L2-3_CUX2
+2024-07-03 10:09:03,237 cisTopic     INFO     Computing log2FC for L2-3_CUX2
+2024-07-03 10:09:04,656 cisTopic     INFO     L2-3_CUX2 done!
+2024-07-03 10:09:04,661 cisTopic     INFO     Subsetting data for L4_RORB (263 of 11016)
+2024-07-03 10:09:04,746 cisTopic     INFO     Computing p-value for L4_RORB
+2024-07-03 10:09:47,151 cisTopic     INFO     Computing log2FC for L4_RORB
+2024-07-03 10:09:47,184 cisTopic     INFO     L4_RORB done!
+2024-07-03 10:09:47,189 cisTopic     INFO     Subsetting data for L5-6_THEMIS (97 of 11016)
+2024-07-03 10:09:47,249 cisTopic     INFO     Computing p-value for L5-6_THEMIS
+2024-07-03 10:10:30,191 cisTopic     INFO     Computing log2FC for L5-6_THEMIS
+2024-07-03 10:10:30,230 cisTopic     INFO     L5-6_THEMIS done!
+2024-07-03 10:10:30,235 cisTopic     INFO     Subsetting data for L5-6_TLE4 (83 of 11016)
+2024-07-03 10:10:30,290 cisTopic     INFO     Computing p-value for L5-6_TLE4
+2024-07-03 10:11:12,306 cisTopic     INFO     Computing log2FC for L5-6_TLE4
+2024-07-03 10:11:12,348 cisTopic     INFO     L5-6_TLE4 done!
+2024-07-03 10:11:12,353 cisTopic     INFO     Subsetting data for PN_dev (430 of 11016)
+2024-07-03 10:11:12,421 cisTopic     INFO     Computing p-value for PN_dev
+2024-07-03 10:11:54,710 cisTopic     INFO     Computing log2FC for PN_dev
+2024-07-03 10:11:54,749 cisTopic     INFO     PN_dev done!
+dict_keys(['L2-3_CUX2', 'L4_RORB', 'L5-6_THEMIS', 'L5-6_TLE4', 'PN_dev'])
+Number of DARs found:
+---------------------
+  L2-3_CUX2: 14800
+  L4_RORB: 10147
+  L5-6_THEMIS: 9072
+  L5-6_TLE4: 11488
+  PN_dev: 5722
+2024-07-03 10:12:19,942 cisTopic     INFO     Calculating gene boundaries
+join: Strand data from other will be added as strand data to self.
+If this is undesired use the flag apply_strand_suffix=False.
+To turn off the warning set apply_strand_suffix to True or False.
+2024-07-03 10:12:39,187 cisTopic     INFO     Calculating distances
+2024-07-03 10:12:48,265 cisTopic     INFO     Calculating distance weigths
+2024-07-03 10:12:48,780 cisTopic     INFO     Distance weights done
+2024-07-03 10:12:48,780 cisTopic     INFO     Calculating gini weights
+2024-07-03 10:13:08,991 cisTopic     INFO     Getting gene activity scores
+2024-07-03 10:14:43,348 cisTopic     INFO     Creating imputed features object
+<class 'pycisTopic.diff_features.CistopicImputedFeatures'>
+<class 'pandas.core.frame.DataFrame'>
+2024-07-03 10:14:49,725 cisTopic     INFO     Subsetting data for L2-3_CUX2 (326 of 11016)
+2024-07-03 10:14:51,832 cisTopic     INFO     Computing p-value for L2-3_CUX2
+2024-07-03 10:14:59,430 cisTopic     INFO     Computing log2FC for L2-3_CUX2
+2024-07-03 10:15:00,657 cisTopic     INFO     L2-3_CUX2 done!
+2024-07-03 10:15:00,659 cisTopic     INFO     Subsetting data for L4_RORB (263 of 11016)
+2024-07-03 10:15:00,676 cisTopic     INFO     Computing p-value for L4_RORB
+2024-07-03 10:15:08,266 cisTopic     INFO     Computing log2FC for L4_RORB
+2024-07-03 10:15:08,273 cisTopic     INFO     L4_RORB done!
+2024-07-03 10:15:08,275 cisTopic     INFO     Subsetting data for L5-6_THEMIS (97 of 11016)
+2024-07-03 10:15:08,290 cisTopic     INFO     Computing p-value for L5-6_THEMIS
+2024-07-03 10:15:15,889 cisTopic     INFO     Computing log2FC for L5-6_THEMIS
+2024-07-03 10:15:15,896 cisTopic     INFO     L5-6_THEMIS done!
+2024-07-03 10:15:15,899 cisTopic     INFO     Subsetting data for L5-6_TLE4 (83 of 11016)
+2024-07-03 10:15:15,912 cisTopic     INFO     Computing p-value for L5-6_TLE4
+2024-07-03 10:15:23,440 cisTopic     INFO     Computing log2FC for L5-6_TLE4
+2024-07-03 10:15:23,452 cisTopic     INFO     L5-6_TLE4 done!
+2024-07-03 10:15:23,455 cisTopic     INFO     Subsetting data for PN_dev (430 of 11016)
+2024-07-03 10:15:23,473 cisTopic     INFO     Computing p-value for PN_dev
+2024-07-03 10:15:30,532 cisTopic     INFO     Computing log2FC for PN_dev
+2024-07-03 10:15:30,540 cisTopic     INFO     PN_dev done!
+Number of DAGs found:
+---------------------
+  L2-3_CUX2: 1382
+  L4_RORB: 408
+  L5-6_THEMIS: 806
+  L5-6_TLE4: 938
+  PN_dev: 213
+slurmstepd: error: _cgroup_procs_check: failed on path /sys/fs/cgroup/memory/slurm/uid_10666/job_13141004/step_batch/cgroup.procs: No such file or directory
+slurmstepd: error: unable to read '/sys/fs/cgroup/memory/slurm/uid_10666/job_13141004/step_batch/cgroup.procs'

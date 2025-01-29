@@ -1,0 +1,48 @@
+INFO: localdir at /localscratch/13611509.michal.kubacki
+INFO: your job will run on local system.
+root_dir: /group/testa/michal.kubacki/herring
+out_dir: /group/testa/michal.kubacki/herring/output_hg19_all_cells
+in_dir: /group/testa/michal.kubacki/herring/data
+tmp_dir: /group/testa/michal.kubacki/herring/tmp
+2024-07-17 16:02:41,416 cisTopic     INFO     Finding neighbours
+2024-07-17 16:02:48,076 cisTopic     INFO     Running UMAP
+/home/michal.kubacki/.conda/envs/scenicplus/lib/python3.11/site-packages/umap/umap_.py:1943: UserWarning: n_jobs value -1 overridden to 1 by setting random_state. Use no seed for parallelism.
+  warn(f"n_jobs value {self.n_jobs} overridden to 1 by setting random_state. Use no seed for parallelism.")
+2024-07-17 16:03:23,434 cisTopic     INFO     Running TSNE
+/home/michal.kubacki/.conda/envs/scenicplus/lib/python3.11/site-packages/statsmodels/stats/weightstats.py:792: RuntimeWarning: divide by zero encountered in scalar divide
+  zstat = value / std
+2024-07-17 16:04:39,549 cisTopic     INFO     Imputing region accessibility
+2024-07-17 16:04:39,549 cisTopic     INFO     Impute region accessibility for regions 0-20000
+2024-07-17 16:04:42,181 cisTopic     INFO     Impute region accessibility for regions 20000-40000
+2024-07-17 16:04:44,740 cisTopic     INFO     Impute region accessibility for regions 40000-60000
+2024-07-17 16:04:47,303 cisTopic     INFO     Impute region accessibility for regions 60000-80000
+2024-07-17 16:04:49,861 cisTopic     INFO     Impute region accessibility for regions 80000-100000
+2024-07-17 16:04:52,417 cisTopic     INFO     Impute region accessibility for regions 100000-120000
+2024-07-17 16:04:54,975 cisTopic     INFO     Impute region accessibility for regions 120000-140000
+2024-07-17 16:04:57,536 cisTopic     INFO     Impute region accessibility for regions 140000-160000
+2024-07-17 16:05:00,109 cisTopic     INFO     Impute region accessibility for regions 160000-180000
+2024-07-17 16:05:02,679 cisTopic     INFO     Impute region accessibility for regions 180000-200000
+2024-07-17 16:05:05,251 cisTopic     INFO     Impute region accessibility for regions 200000-220000
+2024-07-17 16:05:07,825 cisTopic     INFO     Impute region accessibility for regions 220000-240000
+2024-07-17 16:05:10,398 cisTopic     INFO     Impute region accessibility for regions 240000-260000
+2024-07-17 16:05:12,956 cisTopic     INFO     Impute region accessibility for regions 260000-280000
+2024-07-17 16:05:15,513 cisTopic     INFO     Impute region accessibility for regions 280000-300000
+2024-07-17 16:05:18,074 cisTopic     INFO     Impute region accessibility for regions 300000-320000
+2024-07-17 16:05:20,643 cisTopic     INFO     Impute region accessibility for regions 320000-340000
+2024-07-17 16:05:23,215 cisTopic     INFO     Impute region accessibility for regions 340000-360000
+2024-07-17 16:05:25,772 cisTopic     INFO     Impute region accessibility for regions 360000-380000
+2024-07-17 16:05:28,347 cisTopic     INFO     Impute region accessibility for regions 380000-400000
+2024-07-17 16:05:30,917 cisTopic     INFO     Impute region accessibility for regions 400000-420000
+2024-07-17 16:05:33,475 cisTopic     INFO     Impute region accessibility for regions 420000-440000
+2024-07-17 16:05:36,044 cisTopic     INFO     Impute region accessibility for regions 440000-460000
+2024-07-17 16:05:38,615 cisTopic     INFO     Impute region accessibility for regions 460000-480000
+2024-07-17 16:05:41,183 cisTopic     INFO     Impute region accessibility for regions 480000-500000
+2024-07-17 16:05:41,912 cisTopic     INFO     Done!
+2024-07-17 16:05:41,913 cisTopic     INFO     Normalizing imputed data
+2024-07-17 16:06:29,710 cisTopic     INFO     Done!
+2024-07-17 16:06:29,710 cisTopic     INFO     Calculating mean
+2024-07-17 16:06:37,674 cisTopic     INFO     Calculating variance
+/cm/local/apps/slurm/var/spool/job13611509/slurm_script: line 22: 1654879 Killed                  "$PYTHON_PATH" /home/michal.kubacki/Githubs/Re-MEND/code/External_Datasets/GeneSet_Derivation/Herring_scenic/PycisTopic_Scenic/train_model_after.py
+slurmstepd: error: Detected 1 oom-kill event(s) in StepId=13611509.batch. Some of your processes may have been killed by the cgroup out-of-memory handler.
+slurmstepd: error: _cgroup_procs_check: failed on path /sys/fs/cgroup/memory/slurm/uid_10666/job_13611509/step_batch/cgroup.procs: No such file or directory
+slurmstepd: error: unable to read '/sys/fs/cgroup/memory/slurm/uid_10666/job_13611509/step_batch/cgroup.procs'

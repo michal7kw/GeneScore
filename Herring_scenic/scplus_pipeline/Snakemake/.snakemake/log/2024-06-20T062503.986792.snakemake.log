@@ -1,0 +1,48 @@
+Building DAG of jobs...
+Using shell: /usr/bin/bash
+Provided cores: 1 (use --cores to define parallelism)
+Rules claiming more threads will be scaled down.
+Job stats:
+job                     count
+--------------------  -------
+AUCell_direct               1
+AUCell_extended             1
+all                         1
+eGRN_direct                 1
+eGRN_extended               1
+motif_enrichment_dem        1
+prepare_menr                1
+region_to_gene              1
+scplus_mudata               1
+tf_to_gene                  1
+total                      10
+
+Select jobs to execute...
+Execute 1 jobs...
+
+[Thu Jun 20 06:25:16 2024]
+localrule motif_enrichment_dem:
+    input: /group/testa/michal.kubacki/herring/output_hg19_all_excitatory/region_sets, /group/testa/michal.kubacki/herring/output_hg19_all_excitatory/cistarget_motif_dataset.regions_vs_motifs.scores.feather, /group/testa/michal.kubacki/herring/scenic_all_excitatory/genome_annotation.tsv, /group/testa/michal.kubacki/herring/scenic_input/motifs-v9-nr.hgnc-m0.001-o0.0.tbl
+    output: /group/testa/michal.kubacki/herring/scenic_all_excitatory/dem_results.hdf5, /group/testa/michal.kubacki/herring/scenic_all_excitatory/dem_results.html
+    jobid: 7
+    reason: Params have changed since last execution
+    resources: tmpdir=/localscratch/12904596.michal.kubacki
+
+[Thu Jun 20 07:26:50 2024]
+Error in rule motif_enrichment_dem:
+    jobid: 7
+    input: /group/testa/michal.kubacki/herring/output_hg19_all_excitatory/region_sets, /group/testa/michal.kubacki/herring/output_hg19_all_excitatory/cistarget_motif_dataset.regions_vs_motifs.scores.feather, /group/testa/michal.kubacki/herring/scenic_all_excitatory/genome_annotation.tsv, /group/testa/michal.kubacki/herring/scenic_input/motifs-v9-nr.hgnc-m0.001-o0.0.tbl
+    output: /group/testa/michal.kubacki/herring/scenic_all_excitatory/dem_results.hdf5, /group/testa/michal.kubacki/herring/scenic_all_excitatory/dem_results.html
+    shell:
+        
+                scenicplus grn_inference motif_enrichment_dem                     --region_set_folder /group/testa/michal.kubacki/herring/output_hg19_all_excitatory/region_sets                     --dem_db_fname /group/testa/michal.kubacki/herring/output_hg19_all_excitatory/cistarget_motif_dataset.regions_vs_motifs.scores.feather                     --output_fname_dem_result /group/testa/michal.kubacki/herring/scenic_all_excitatory/dem_results.hdf5                     --temp_dir /group/testa/michal.kubacki/herring/output_hg19_all_excitatory/tmp                     --species homo_sapiens                     --fraction_overlap_w_dem_database 0.4                     --max_bg_regions 500                     --genome_annotation /group/testa/michal.kubacki/herring/scenic_all_excitatory/genome_annotation.tsv                     --balance_number_of_promoters                     --promoter_space 1000                     --adjpval_thr 0.05                     --log2fc_thr 1.0                     --mean_fg_thr 0.0                     --motif_hit_thr 3.0                     --path_to_motif_annotations /group/testa/michal.kubacki/herring/scenic_input/motifs-v9-nr.hgnc-m0.001-o0.0.tbl                     --annotation_version v10nr_clust                     --motif_similarity_fdr 0.001                     --orthologous_identity_threshold 0.0                     --annotations_to_use Direct_annot Orthology_annot                     --write_html                     --output_fname_dem_html /group/testa/michal.kubacki/herring/scenic_all_excitatory/dem_results.html                     --seed 666                     --n_cpu 1
+            
+        (one of the commands exited with non-zero exit code; note that snakemake uses bash strict mode!)
+
+Removing output files of failed job motif_enrichment_dem since they might be corrupted:
+/group/testa/michal.kubacki/herring/scenic_all_excitatory/dem_results.hdf5, /group/testa/michal.kubacki/herring/scenic_all_excitatory/dem_results.html
+Shutting down, this might take some time.
+Exiting because a job execution failed. Look above for error message
+Complete log: .snakemake/log/2024-06-20T062503.986792.snakemake.log
+WorkflowError:
+At least one job did not complete successfully.

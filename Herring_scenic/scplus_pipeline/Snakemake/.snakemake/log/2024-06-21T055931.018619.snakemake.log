@@ -1,0 +1,106 @@
+Building DAG of jobs...
+Using shell: /usr/bin/bash
+Provided cores: 32
+Rules claiming more threads will be scaled down.
+Job stats:
+job                     count
+--------------------  -------
+AUCell_direct               1
+AUCell_extended             1
+all                         1
+eGRN_direct                 1
+eGRN_extended               1
+motif_enrichment_dem        1
+prepare_menr                1
+region_to_gene              1
+scplus_mudata               1
+tf_to_gene                  1
+total                      10
+
+Select jobs to execute...
+Execute 1 jobs...
+
+[Fri Jun 21 05:59:45 2024]
+localrule motif_enrichment_dem:
+    input: /group/testa/michal.kubacki/herring/output_hg19_all_excitatory/region_sets, /group/testa/michal.kubacki/herring/output_hg19_all_excitatory/cistarget_motif_dataset.regions_vs_motifs.scores.feather, /group/testa/michal.kubacki/herring/scenic_all_excitatory/genome_annotation.tsv, /group/testa/michal.kubacki/herring/scenic_input/motifs-v9-nr.hgnc-m0.001-o0.0.tbl
+    output: /group/testa/michal.kubacki/herring/scenic_all_excitatory/dem_results.hdf5, /group/testa/michal.kubacki/herring/scenic_all_excitatory/dem_results.html
+    jobid: 7
+    reason: Params have changed since last execution
+    threads: 32
+    resources: tmpdir=/localscratch/12952697.michal.kubacki
+
+[Fri Jun 21 06:17:46 2024]
+Finished job 7.
+1 of 10 steps (10%) done
+Select jobs to execute...
+Execute 1 jobs...
+
+[Fri Jun 21 06:17:46 2024]
+localrule prepare_menr:
+    input: /group/testa/michal.kubacki/herring/scenic_all_excitatory/dem_results.hdf5, /group/testa/michal.kubacki/herring/scenic_all_excitatory/ctx_results.hdf5, /group/testa/michal.kubacki/herring/scenic_all_excitatory/ACC_GEX.h5mu
+    output: /group/testa/michal.kubacki/herring/scenic_all_excitatory/tf_names.txt, /group/testa/michal.kubacki/herring/scenic_all_excitatory/cistromes_direct.h5ad, /group/testa/michal.kubacki/herring/scenic_all_excitatory/cistromes_extended.h5ad
+    jobid: 6
+    reason: Input files updated by another job: /group/testa/michal.kubacki/herring/scenic_all_excitatory/dem_results.hdf5
+    resources: tmpdir=/localscratch/12952697.michal.kubacki
+
+[Fri Jun 21 06:21:04 2024]
+Finished job 6.
+2 of 10 steps (20%) done
+Select jobs to execute...
+Execute 1 jobs...
+
+[Fri Jun 21 06:21:04 2024]
+localrule region_to_gene:
+    input: /group/testa/michal.kubacki/herring/scenic_all_excitatory/ACC_GEX.h5mu, /group/testa/michal.kubacki/herring/scenic_all_excitatory/search_space.tsv
+    output: /group/testa/michal.kubacki/herring/scenic_all_excitatory/region_to_gene_adj.tsv
+    jobid: 10
+    reason: Missing output files: /group/testa/michal.kubacki/herring/scenic_all_excitatory/region_to_gene_adj.tsv
+    threads: 32
+    resources: tmpdir=/localscratch/12952697.michal.kubacki
+
+[Fri Jun 21 06:30:29 2024]
+Finished job 10.
+3 of 10 steps (30%) done
+Select jobs to execute...
+Execute 1 jobs...
+
+[Fri Jun 21 06:30:29 2024]
+localrule tf_to_gene:
+    input: /group/testa/michal.kubacki/herring/scenic_all_excitatory/ACC_GEX.h5mu, /group/testa/michal.kubacki/herring/scenic_all_excitatory/tf_names.txt
+    output: /group/testa/michal.kubacki/herring/scenic_all_excitatory/tf_to_gene_adj.tsv
+    jobid: 5
+    reason: Missing output files: /group/testa/michal.kubacki/herring/scenic_all_excitatory/tf_to_gene_adj.tsv; Input files updated by another job: /group/testa/michal.kubacki/herring/scenic_all_excitatory/tf_names.txt
+    threads: 32
+    resources: tmpdir=/localscratch/12952697.michal.kubacki
+
+[Fri Jun 21 06:51:09 2024]
+Finished job 5.
+4 of 10 steps (40%) done
+Select jobs to execute...
+Execute 1 jobs...
+
+[Fri Jun 21 06:51:10 2024]
+localrule eGRN_direct:
+    input: /group/testa/michal.kubacki/herring/scenic_all_excitatory/tf_to_gene_adj.tsv, /group/testa/michal.kubacki/herring/scenic_all_excitatory/region_to_gene_adj.tsv, /group/testa/michal.kubacki/herring/scenic_all_excitatory/cistromes_direct.h5ad, /group/testa/michal.kubacki/herring/output_hg19_all_excitatory/cistarget_motif_dataset.regions_vs_motifs.rankings.feather
+    output: /group/testa/michal.kubacki/herring/scenic_all_excitatory/eRegulon_direct.tsv
+    jobid: 4
+    reason: Missing output files: /group/testa/michal.kubacki/herring/scenic_all_excitatory/eRegulon_direct.tsv; Input files updated by another job: /group/testa/michal.kubacki/herring/scenic_all_excitatory/region_to_gene_adj.tsv, /group/testa/michal.kubacki/herring/scenic_all_excitatory/cistromes_direct.h5ad, /group/testa/michal.kubacki/herring/scenic_all_excitatory/tf_to_gene_adj.tsv
+    threads: 32
+    resources: tmpdir=/localscratch/12952697.michal.kubacki
+
+[Fri Jun 21 06:53:29 2024]
+Error in rule eGRN_direct:
+    jobid: 4
+    input: /group/testa/michal.kubacki/herring/scenic_all_excitatory/tf_to_gene_adj.tsv, /group/testa/michal.kubacki/herring/scenic_all_excitatory/region_to_gene_adj.tsv, /group/testa/michal.kubacki/herring/scenic_all_excitatory/cistromes_direct.h5ad, /group/testa/michal.kubacki/herring/output_hg19_all_excitatory/cistarget_motif_dataset.regions_vs_motifs.rankings.feather
+    output: /group/testa/michal.kubacki/herring/scenic_all_excitatory/eRegulon_direct.tsv
+    shell:
+        
+        scenicplus grn_inference eGRN             --TF_to_gene_adj_fname /group/testa/michal.kubacki/herring/scenic_all_excitatory/tf_to_gene_adj.tsv            --region_to_gene_adj_fname /group/testa/michal.kubacki/herring/scenic_all_excitatory/region_to_gene_adj.tsv             --cistromes_fname /group/testa/michal.kubacki/herring/scenic_all_excitatory/cistromes_direct.h5ad            --ranking_db_fname /group/testa/michal.kubacki/herring/output_hg19_all_excitatory/cistarget_motif_dataset.regions_vs_motifs.rankings.feather             --eRegulon_out_fname /group/testa/michal.kubacki/herring/scenic_all_excitatory/eRegulon_direct.tsv             --temp_dir /group/testa/michal.kubacki/herring/output_hg19_all_excitatory/tmp             --order_regions_to_genes_by importance             --order_TFs_to_genes_by importance             --gsea_n_perm 1000             --quantiles 0.85 0.90 0.95             --top_n_regionTogenes_per_gene 5 10 15             --top_n_regionTogenes_per_region              --min_regions_per_gene 0             --rho_threshold 0.05             --min_target_genes 10             --n_cpu 32
+        
+        (one of the commands exited with non-zero exit code; note that snakemake uses bash strict mode!)
+
+Shutting down, this might take some time.
+Exiting because a job execution failed. Look above for error message
+Complete log: .snakemake/log/2024-06-21T055931.018619.snakemake.log
+WorkflowError:
+At least one job did not complete successfully.

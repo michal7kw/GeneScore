@@ -1,0 +1,58 @@
+INFO: localdir at /localscratch/13434256.michal.kubacki
+INFO: your job will run on local system.
+root_dir: /group/testa/michal.kubacki/herring
+out_dir: /group/testa/michal.kubacki/herring/output_hg19_all_excitatory
+in_dir: /group/testa/michal.kubacki/herring/data
+tmp_dir: /group/testa/michal.kubacki/herring/tmp
+2024-07-15 14:33:49,234 cisTopic     INFO     Formatting input to corpus
+2024-07-15 14:33:49,762 cisTopic     INFO     Running model with 20 topics
+2024-07-15 14:33:49,763 LDAMalletWrapper INFO     Serializing temporary corpus to /tmp/corpus.txt
+2024-07-15 14:34:00,561 LDAMalletWrapper INFO     Converting temporary corpus to MALLET format with: /scratch/michal.kubacki/herring/Mallet-202108/bin/mallet import-file --preserve-case --keep-sequence --token-regex \S+ --input /tmp/corpus.txt --output /tmp/corpus.mallet
+2024-07-15 14:34:19,842 LDAMalletWrapper INFO     Training MALLET LDA with: /scratch/michal.kubacki/herring/Mallet-202108/bin/mallet train-topics --input /tmp/corpus.mallet --num-topics 20 --alpha 50 --beta 0.1 --optimize-interval 0 --num-threads 128 --output-state /tmp/baad62_state.mallet.gz --output-doc-topics /tmp/baad62_doctopics.txt --output-topic-keys /tmp/baad62_topickeys.txt --num-iterations 500 --inferencer-filename /tmp/baad62_inferencer.mallet --doc-topics-threshold 0.0 --random-seed 555
+2024-07-15 14:44:46,424 LDAMalletWrapper INFO     loading assigned topics from /tmp/baad62_state.mallet.gz
+2024-07-15 14:45:02,515 cisTopic     INFO     Model with 20 topics done!
+2024-07-15 14:45:02,515 cisTopic     INFO     Saving model with 20 topics at /tmp
+2024-07-15 14:45:02,674 cisTopic     INFO     Running model with 25 topics
+2024-07-15 14:45:02,674 LDAMalletWrapper INFO     Serializing temporary corpus to /tmp/corpus.txt
+2024-07-15 14:45:14,236 LDAMalletWrapper INFO     Converting temporary corpus to MALLET format with: /scratch/michal.kubacki/herring/Mallet-202108/bin/mallet import-file --preserve-case --keep-sequence --token-regex \S+ --input /tmp/corpus.txt --output /tmp/corpus.mallet
+2024-07-15 14:45:31,408 LDAMalletWrapper INFO     Training MALLET LDA with: /scratch/michal.kubacki/herring/Mallet-202108/bin/mallet train-topics --input /tmp/corpus.mallet --num-topics 25 --alpha 50 --beta 0.1 --optimize-interval 0 --num-threads 128 --output-state /tmp/fa0fbd_state.mallet.gz --output-doc-topics /tmp/fa0fbd_doctopics.txt --output-topic-keys /tmp/fa0fbd_topickeys.txt --num-iterations 500 --inferencer-filename /tmp/fa0fbd_inferencer.mallet --doc-topics-threshold 0.0 --random-seed 555
+2024-07-15 14:57:05,470 LDAMalletWrapper INFO     loading assigned topics from /tmp/fa0fbd_state.mallet.gz
+2024-07-15 14:57:18,783 cisTopic     INFO     Model with 25 topics done!
+2024-07-15 14:57:18,783 cisTopic     INFO     Saving model with 25 topics at /tmp
+2024-07-15 14:57:18,993 cisTopic     INFO     Running model with 30 topics
+2024-07-15 14:57:18,993 LDAMalletWrapper INFO     Serializing temporary corpus to /tmp/corpus.txt
+2024-07-15 14:57:30,643 LDAMalletWrapper INFO     Converting temporary corpus to MALLET format with: /scratch/michal.kubacki/herring/Mallet-202108/bin/mallet import-file --preserve-case --keep-sequence --token-regex \S+ --input /tmp/corpus.txt --output /tmp/corpus.mallet
+2024-07-15 14:57:48,168 LDAMalletWrapper INFO     Training MALLET LDA with: /scratch/michal.kubacki/herring/Mallet-202108/bin/mallet train-topics --input /tmp/corpus.mallet --num-topics 30 --alpha 50 --beta 0.1 --optimize-interval 0 --num-threads 128 --output-state /tmp/259c8c_state.mallet.gz --output-doc-topics /tmp/259c8c_doctopics.txt --output-topic-keys /tmp/259c8c_topickeys.txt --num-iterations 500 --inferencer-filename /tmp/259c8c_inferencer.mallet --doc-topics-threshold 0.0 --random-seed 555
+2024-07-15 15:09:53,284 LDAMalletWrapper INFO     loading assigned topics from /tmp/259c8c_state.mallet.gz
+2024-07-15 15:10:08,491 cisTopic     INFO     Model with 30 topics done!
+2024-07-15 15:10:08,491 cisTopic     INFO     Saving model with 30 topics at /tmp
+2024-07-15 15:10:08,693 cisTopic     INFO     Running model with 35 topics
+2024-07-15 15:10:08,694 LDAMalletWrapper INFO     Serializing temporary corpus to /tmp/corpus.txt
+2024-07-15 15:10:20,368 LDAMalletWrapper INFO     Converting temporary corpus to MALLET format with: /scratch/michal.kubacki/herring/Mallet-202108/bin/mallet import-file --preserve-case --keep-sequence --token-regex \S+ --input /tmp/corpus.txt --output /tmp/corpus.mallet
+2024-07-15 15:10:36,872 LDAMalletWrapper INFO     Training MALLET LDA with: /scratch/michal.kubacki/herring/Mallet-202108/bin/mallet train-topics --input /tmp/corpus.mallet --num-topics 35 --alpha 50 --beta 0.1 --optimize-interval 0 --num-threads 128 --output-state /tmp/58b53_state.mallet.gz --output-doc-topics /tmp/58b53_doctopics.txt --output-topic-keys /tmp/58b53_topickeys.txt --num-iterations 500 --inferencer-filename /tmp/58b53_inferencer.mallet --doc-topics-threshold 0.0 --random-seed 555
+2024-07-15 15:22:27,180 LDAMalletWrapper INFO     loading assigned topics from /tmp/58b53_state.mallet.gz
+2024-07-15 15:22:42,519 cisTopic     INFO     Model with 35 topics done!
+2024-07-15 15:22:42,519 cisTopic     INFO     Saving model with 35 topics at /tmp
+2024-07-15 15:22:42,718 cisTopic     INFO     Running model with 40 topics
+2024-07-15 15:22:42,718 LDAMalletWrapper INFO     Serializing temporary corpus to /tmp/corpus.txt
+2024-07-15 15:22:54,456 LDAMalletWrapper INFO     Converting temporary corpus to MALLET format with: /scratch/michal.kubacki/herring/Mallet-202108/bin/mallet import-file --preserve-case --keep-sequence --token-regex \S+ --input /tmp/corpus.txt --output /tmp/corpus.mallet
+2024-07-15 15:23:12,438 LDAMalletWrapper INFO     Training MALLET LDA with: /scratch/michal.kubacki/herring/Mallet-202108/bin/mallet train-topics --input /tmp/corpus.mallet --num-topics 40 --alpha 50 --beta 0.1 --optimize-interval 0 --num-threads 128 --output-state /tmp/59925b_state.mallet.gz --output-doc-topics /tmp/59925b_doctopics.txt --output-topic-keys /tmp/59925b_topickeys.txt --num-iterations 500 --inferencer-filename /tmp/59925b_inferencer.mallet --doc-topics-threshold 0.0 --random-seed 555
+2024-07-15 15:35:14,556 LDAMalletWrapper INFO     loading assigned topics from /tmp/59925b_state.mallet.gz
+2024-07-15 15:35:31,197 cisTopic     INFO     Model with 40 topics done!
+2024-07-15 15:35:31,197 cisTopic     INFO     Saving model with 40 topics at /tmp
+2024-07-15 15:35:31,402 cisTopic     INFO     Running model with 45 topics
+2024-07-15 15:35:31,402 LDAMalletWrapper INFO     Serializing temporary corpus to /tmp/corpus.txt
+2024-07-15 15:35:43,097 LDAMalletWrapper INFO     Converting temporary corpus to MALLET format with: /scratch/michal.kubacki/herring/Mallet-202108/bin/mallet import-file --preserve-case --keep-sequence --token-regex \S+ --input /tmp/corpus.txt --output /tmp/corpus.mallet
+2024-07-15 15:36:00,976 LDAMalletWrapper INFO     Training MALLET LDA with: /scratch/michal.kubacki/herring/Mallet-202108/bin/mallet train-topics --input /tmp/corpus.mallet --num-topics 45 --alpha 50 --beta 0.1 --optimize-interval 0 --num-threads 128 --output-state /tmp/172c2c_state.mallet.gz --output-doc-topics /tmp/172c2c_doctopics.txt --output-topic-keys /tmp/172c2c_topickeys.txt --num-iterations 500 --inferencer-filename /tmp/172c2c_inferencer.mallet --doc-topics-threshold 0.0 --random-seed 555
+2024-07-15 15:48:31,272 LDAMalletWrapper INFO     loading assigned topics from /tmp/172c2c_state.mallet.gz
+2024-07-15 15:48:48,930 cisTopic     INFO     Model with 45 topics done!
+2024-07-15 15:48:48,930 cisTopic     INFO     Saving model with 45 topics at /tmp
+2024-07-15 15:48:49,126 cisTopic     INFO     Running model with 50 topics
+2024-07-15 15:48:49,126 LDAMalletWrapper INFO     Serializing temporary corpus to /tmp/corpus.txt
+2024-07-15 15:49:00,669 LDAMalletWrapper INFO     Converting temporary corpus to MALLET format with: /scratch/michal.kubacki/herring/Mallet-202108/bin/mallet import-file --preserve-case --keep-sequence --token-regex \S+ --input /tmp/corpus.txt --output /tmp/corpus.mallet
+2024-07-15 15:49:18,390 LDAMalletWrapper INFO     Training MALLET LDA with: /scratch/michal.kubacki/herring/Mallet-202108/bin/mallet train-topics --input /tmp/corpus.mallet --num-topics 50 --alpha 50 --beta 0.1 --optimize-interval 0 --num-threads 128 --output-state /tmp/7ebc_state.mallet.gz --output-doc-topics /tmp/7ebc_doctopics.txt --output-topic-keys /tmp/7ebc_topickeys.txt --num-iterations 500 --inferencer-filename /tmp/7ebc_inferencer.mallet --doc-topics-threshold 0.0 --random-seed 555
+2024-07-15 16:02:37,331 LDAMalletWrapper INFO     loading assigned topics from /tmp/7ebc_state.mallet.gz
+2024-07-15 16:02:56,383 cisTopic     INFO     Model with 50 topics done!
+2024-07-15 16:02:56,383 cisTopic     INFO     Saving model with 50 topics at /tmp
+slurmstepd: error: _cgroup_procs_check: failed on path /sys/fs/cgroup/memory/slurm/uid_10666/job_13434256/step_batch/cgroup.procs: No such file or directory
+slurmstepd: error: unable to read '/sys/fs/cgroup/memory/slurm/uid_10666/job_13434256/step_batch/cgroup.procs'

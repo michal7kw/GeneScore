@@ -1,0 +1,8 @@
+Building DAG of jobs...
+InputFunctionException in rule motif_enrichment_dem in file /home/michal.kubacki/Githubs/Re-MEND/code/External_Datasets/GeneSet_Derivation/Herring_scenic/scplus_pipeline/Snakemake/workflow/Snakefile, line 98:
+Error:
+  KeyError: 'dem_mean_fg_thr'
+Wildcards:
+
+Traceback:
+  File "/home/michal.kubacki/Githubs/Re-MEND/code/External_Datasets/GeneSet_Derivation/Herring_scenic/scplus_pipeline/Snakemake/workflow/Snakefile", line 115, in <lambda> (rule motif_enrichment_dem, line 192, /home/michal.kubacki/Githubs/Re-MEND/code/External_Datasets/GeneSet_Derivation/Herring_scenic/scplus_pipeline/Snakemake/workflow/Snakefile)

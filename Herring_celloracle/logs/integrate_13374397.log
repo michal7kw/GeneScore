@@ -1,0 +1,144 @@
+INFO: localdir at /localscratch/13374397.michal.kubacki
+INFO: your job will run on local system.
+/home/michal.kubacki/.conda/envs/scenicplus/lib/python3.11/site-packages/numba/np/ufunc/parallel.py:371: NumbaWarning: [1mThe TBB threading layer requires TBB version 2021 update 6 or later i.e., TBB_INTERFACE_VERSION >= 12060. Found TBB_INTERFACE_VERSION = 12020. The TBB threading layer is disabled.[0m
+  warnings.warn(problem)
+Loading packages
+root_dir: /group/testa/michal.kubacki/herring
+out_dir: /group/testa/michal.kubacki/herring/output_hg19_all_excitatory_all_ages/celloracle
+in_dir: /group/testa/michal.kubacki/herring/data
+tmp_dir: /group/testa/michal.kubacki/herring/celloracle/tmp
+Processing loop
+Processing L5-6_TLE4_coaccess.csv, L5-6_TLE4_peaks.csv
+Loading connections
+Debugging: Checking the contents of cicero_connections
+   coaccess                      Peak1                    Peak2
+0  0.285886     chr3_12735252_12735752   chr3_12735828_12736328
+1  0.226906  chr12_127226961_127227461  chr14_69036271_69036771
+Loading peaks
+Debugging: Checking the contents of peaks
+['chr1_1094765_1095265', 'chr1_2312227_2312727', 'chr1_3518030_3518530', 'chr1_3636293_3636793', 'chr1_3662060_3662560']
+Formating peaks
+que bed peaks: 65149
+tss peaks in que: 17111
+TSS integration
+Filtering peaks
+Debugging: Checking the contents of peak_filtered
+                     peak_id gene_short_name
+0  chr10_100206318_100206818            HPS1
+1  chr10_101088845_101089345           CNNM1
+2  chr10_101190283_101190783            GOT1
+3  chr10_101380124_101380624        SLC25A28
+4  chr10_101418847_101419347          ENTPD7
+Number of rows in peak_filtered: 15849
+Saving results to /group/testa/michal.kubacki/herring/output_hg19_all_excitatory_all_ages/celloracle
+Processed peak file saved for cell type L5-6_TLE4
+Processing L2-3_CUX2_coaccess.csv, L2-3_CUX2_peaks.csv
+Loading connections
+Debugging: Checking the contents of cicero_connections
+   coaccess                     Peak1                     Peak2
+0  0.233463      chr1_5484946_5485446      chr1_5485452_5485952
+1  0.213102    chr1_17858302_17858802    chr5_38725347_38725847
+2  0.211228    chr1_31291468_31291968    chr1_31292004_31292504
+3  0.215533  chr1_181573282_181573782  chr1_181573832_181574332
+4  0.205651  chr1_208705692_208706192  chr1_208706317_208706817
+Loading peaks
+Debugging: Checking the contents of peaks
+['chr1_878472_878972', 'chr1_997910_998410', 'chr1_1006682_1007182', 'chr1_1009867_1010367', 'chr1_1019719_1020219']
+Formating peaks
+que bed peaks: 174965
+tss peaks in que: 23970
+TSS integration
+Filtering peaks
+Debugging: Checking the contents of peak_filtered
+                     peak_id gene_short_name
+0  chr10_100027729_100028229           LOXL4
+1  chr10_100205791_100206291    LOC101927278
+2  chr10_100206318_100206818            HPS1
+3  chr10_101088845_101089345           CNNM1
+4  chr10_101190283_101190783            GOT1
+Number of rows in peak_filtered: 22265
+Saving results to /group/testa/michal.kubacki/herring/output_hg19_all_excitatory_all_ages/celloracle
+Processed peak file saved for cell type L2-3_CUX2
+Processing L4_RORB_coaccess.csv, L4_RORB_peaks.csv
+Loading connections
+Debugging: Checking the contents of cicero_connections
+   coaccess                   Peak1                     Peak2
+0  0.314169    chr1_4426704_4427204      chr1_4427259_4427759
+1  0.205136    chr1_6226267_6226767      chr1_6226855_6227355
+2  0.210782  chr1_15712726_15713226    chr1_96672105_96672605
+3  0.211483  chr1_15712726_15713226  chr1_204160523_204161023
+4  0.211254  chr1_19994695_19995195    chr1_19995228_19995728
+Loading peaks
+Debugging: Checking the contents of peaks
+['chr1_785579_786079', 'chr1_812175_812675', 'chr1_852919_853419', 'chr1_854299_854799', 'chr1_862285_862785']
+Formating peaks
+que bed peaks: 216035
+tss peaks in que: 25734
+TSS integration
+Filtering peaks
+Debugging: Checking the contents of peak_filtered
+                     peak_id gene_short_name
+0  chr10_100027729_100028229           LOXL4
+1  chr10_100205791_100206291    LOC101927278
+2  chr10_100206318_100206818            HPS1
+3  chr10_101088845_101089345           CNNM1
+4  chr10_101190283_101190783            GOT1
+Number of rows in peak_filtered: 23935
+Saving results to /group/testa/michal.kubacki/herring/output_hg19_all_excitatory_all_ages/celloracle
+Processed peak file saved for cell type L4_RORB
+Processing L5-6_THEMIS_coaccess.csv, L5-6_THEMIS_peaks.csv
+Loading connections
+Debugging: Checking the contents of cicero_connections
+   coaccess                     Peak1                     Peak2
+0  0.301511  chr4_141835867_141836367  chr4_141836378_141836878
+1  0.222375  chr5_110829621_110830121  chr5_110830160_110830660
+2  0.370372  chr5_169644611_169645111  chr5_169645115_169645615
+3  0.299392    chr7_44293153_44293653    chr7_44293658_44294158
+4  0.269579    chr7_77260135_77260635    chr7_77260662_77261162
+Loading peaks
+Debugging: Checking the contents of peaks
+['chr1_970804_971304', 'chr1_1028890_1029390', 'chr1_1031328_1031828', 'chr1_1440234_1440734', 'chr1_1961707_1962207']
+Formating peaks
+que bed peaks: 118459
+tss peaks in que: 20386
+TSS integration
+Filtering peaks
+Debugging: Checking the contents of peak_filtered
+                     peak_id gene_short_name
+0  chr10_100206318_100206818            HPS1
+1  chr10_101088845_101089345           CNNM1
+2  chr10_101190283_101190783            GOT1
+3  chr10_101380124_101380624        SLC25A28
+4  chr10_101380755_101381255        SLC25A28
+Number of rows in peak_filtered: 18908
+Saving results to /group/testa/michal.kubacki/herring/output_hg19_all_excitatory_all_ages/celloracle
+Processed peak file saved for cell type L5-6_THEMIS
+Processing PN_dev_coaccess.csv, PN_dev_peaks.csv
+Loading connections
+Debugging: Checking the contents of cicero_connections
+   coaccess                     Peak1                     Peak2
+0  0.214529  chr1_118963222_118963722  chr1_118963760_118964260
+1  0.202834  chr1_155166083_155166583  chr1_163369802_163370302
+2  0.204185  chr1_155166083_155166583    chr7_86337817_86338317
+3  0.216574  chr1_215083419_215083919  chr1_215083933_215084433
+4  0.200821    chr2_99070815_99071315    chr2_99071341_99071841
+Loading peaks
+Debugging: Checking the contents of peaks
+['chr1_1051936_1052436', 'chr1_1270491_1270991', 'chr1_1352540_1353040', 'chr1_1407741_1408241', 'chr1_1843362_1843862']
+Formating peaks
+que bed peaks: 145182
+tss peaks in que: 23639
+TSS integration
+Filtering peaks
+Debugging: Checking the contents of peak_filtered
+                     peak_id gene_short_name
+0  chr10_100027729_100028229           LOXL4
+1  chr10_100205791_100206291    LOC101927278
+2  chr10_100206318_100206818            HPS1
+3  chr10_101088845_101089345           CNNM1
+4  chr10_101190283_101190783            GOT1
+Number of rows in peak_filtered: 21938
+Saving results to /group/testa/michal.kubacki/herring/output_hg19_all_excitatory_all_ages/celloracle
+Processed peak file saved for cell type PN_dev
+slurmstepd: error: _cgroup_procs_check: failed on path /sys/fs/cgroup/memory/slurm/uid_10666/job_13374397/step_batch/cgroup.procs: No such file or directory
+slurmstepd: error: unable to read '/sys/fs/cgroup/memory/slurm/uid_10666/job_13374397/step_batch/cgroup.procs'

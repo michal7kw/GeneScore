@@ -1,0 +1,222 @@
+Building DAG of jobs...
+Using shell: /usr/bin/bash
+Provided cores: 128
+Rules claiming more threads will be scaled down.
+Job stats:
+job                            count
+---------------------------  -------
+AUCell_direct                      1
+AUCell_extended                    1
+all                                1
+download_genome_annotations        1
+eGRN_direct                        1
+eGRN_extended                      1
+get_search_space                   1
+motif_enrichment_cistarget         1
+motif_enrichment_dem               1
+prepare_GEX_ACC_multiome           1
+prepare_menr                       1
+region_to_gene                     1
+scplus_mudata                      1
+tf_to_gene                         1
+total                             14
+
+Select jobs to execute...
+Execute 1 jobs...
+
+[Sun Jun  2 17:13:51 2024]
+localrule motif_enrichment_cistarget:
+    input: /group/testa/michal.kubacki/herring/output_hg19_all_excitatory/region_sets, /group/testa/michal.kubacki/herring/output_hg19_all_excitatory/ctx_db/all_excitatory.regions_vs_motifs.rankings.feather, /group/testa/michal.kubacki/herring/scenic_input/motifs-v10nr_clust-nr.hgnc-m0.001-o0.0.tbl
+    output: /group/testa/michal.kubacki/herring/scenic/tx_results.hdf5, /group/testa/michal.kubacki/herring/scenic/ctx_results.html
+    jobid: 9
+    reason: Forced execution
+    threads: 128
+    resources: tmpdir=/localscratch/12341471.michal.kubacki
+
+[Sun Jun  2 18:04:41 2024]
+Finished job 9.
+1 of 14 steps (7%) done
+Select jobs to execute...
+Execute 2 jobs...
+
+[Sun Jun  2 18:04:41 2024]
+localrule download_genome_annotations:
+    output: /group/testa/michal.kubacki/herring/scenic/genome_annotation.tsv, /group/testa/michal.kubacki/herring/scenic/chromsizes.tsv
+    jobid: 8
+    reason: Forced execution
+    resources: tmpdir=/localscratch/12341471.michal.kubacki
+
+
+[Sun Jun  2 18:04:41 2024]
+localrule prepare_GEX_ACC_multiome:
+    input: /group/testa/michal.kubacki/herring/output_hg19_all_excitatory/cistopic_obj.pkl, /group/testa/michal.kubacki/herring/output_hg19_all_excitatory/adata.h5ad
+    output: /group/testa/michal.kubacki/herring/scenic/ACC_GEX.h5mu
+    jobid: 2
+    reason: Forced execution
+    resources: tmpdir=/localscratch/12341471.michal.kubacki
+
+[Sun Jun  2 18:06:11 2024]
+Finished job 8.
+2 of 14 steps (14%) done
+Select jobs to execute...
+[Sun Jun  2 18:06:19 2024]
+Finished job 2.
+3 of 14 steps (21%) done
+Execute 1 jobs...
+
+[Sun Jun  2 18:06:19 2024]
+localrule motif_enrichment_dem:
+    input: /group/testa/michal.kubacki/herring/output_hg19_all_excitatory/region_sets, /group/testa/michal.kubacki/herring/output_hg19_all_excitatory/ctx_db/all_excitatory.regions_vs_motifs.scores.feather, /group/testa/michal.kubacki/herring/scenic/genome_annotation.tsv, /group/testa/michal.kubacki/herring/scenic_input/motifs-v10nr_clust-nr.hgnc-m0.001-o0.0.tbl
+    output: /group/testa/michal.kubacki/herring/scenic/dem_results.hdf5, /group/testa/michal.kubacki/herring/scenic/dem_results.html
+    jobid: 7
+    reason: Forced execution
+    threads: 128
+    resources: tmpdir=/localscratch/12341471.michal.kubacki
+
+[Sun Jun  2 19:11:31 2024]
+Finished job 7.
+4 of 14 steps (29%) done
+Select jobs to execute...
+Execute 2 jobs...
+
+[Sun Jun  2 19:11:31 2024]
+localrule prepare_menr:
+    input: /group/testa/michal.kubacki/herring/scenic/dem_results.hdf5, /group/testa/michal.kubacki/herring/scenic/tx_results.hdf5, /group/testa/michal.kubacki/herring/scenic/ACC_GEX.h5mu
+    output: /group/testa/michal.kubacki/herring/scenic/tf_names.txt, /group/testa/michal.kubacki/herring/scenic/cistromes_direct.h5ad, /group/testa/michal.kubacki/herring/scenic/cistromes_extended.h5ad
+    jobid: 6
+    reason: Forced execution
+    resources: tmpdir=/localscratch/12341471.michal.kubacki
+
+
+[Sun Jun  2 19:11:31 2024]
+localrule get_search_space:
+    input: /group/testa/michal.kubacki/herring/scenic/ACC_GEX.h5mu, /group/testa/michal.kubacki/herring/scenic/genome_annotation.tsv, /group/testa/michal.kubacki/herring/scenic/chromsizes.tsv
+    output: /group/testa/michal.kubacki/herring/scenic/search_space.tsv
+    jobid: 11
+    reason: Forced execution
+    resources: tmpdir=/localscratch/12341471.michal.kubacki
+
+[Sun Jun  2 19:14:51 2024]
+Finished job 11.
+5 of 14 steps (36%) done
+Select jobs to execute...
+[Sun Jun  2 19:15:29 2024]
+Finished job 6.
+6 of 14 steps (43%) done
+Execute 1 jobs...
+
+[Sun Jun  2 19:15:29 2024]
+localrule region_to_gene:
+    input: /group/testa/michal.kubacki/herring/scenic/ACC_GEX.h5mu, /group/testa/michal.kubacki/herring/scenic/search_space.tsv
+    output: /group/testa/michal.kubacki/herring/scenic/region_to_gene_adj.tsv
+    jobid: 10
+    reason: Forced execution
+    threads: 128
+    resources: tmpdir=/localscratch/12341471.michal.kubacki
+
+[Sun Jun  2 20:19:09 2024]
+Finished job 10.
+7 of 14 steps (50%) done
+Select jobs to execute...
+Execute 1 jobs...
+
+[Sun Jun  2 20:19:09 2024]
+localrule tf_to_gene:
+    input: /group/testa/michal.kubacki/herring/scenic/ACC_GEX.h5mu, /group/testa/michal.kubacki/herring/scenic/tf_names.txt
+    output: /group/testa/michal.kubacki/herring/scenic/tf_to_gene_adj.tsv
+    jobid: 5
+    reason: Forced execution
+    threads: 128
+    resources: tmpdir=/localscratch/12341471.michal.kubacki
+
+[Mon Jun  3 05:08:12 2024]
+Finished job 5.
+8 of 14 steps (57%) done
+Select jobs to execute...
+Execute 1 jobs...
+
+[Mon Jun  3 05:08:12 2024]
+localrule eGRN_direct:
+    input: /group/testa/michal.kubacki/herring/scenic/tf_to_gene_adj.tsv, /group/testa/michal.kubacki/herring/scenic/region_to_gene_adj.tsv, /group/testa/michal.kubacki/herring/scenic/cistromes_direct.h5ad, /group/testa/michal.kubacki/herring/output_hg19_all_excitatory/ctx_db/all_excitatory.regions_vs_motifs.rankings.feather
+    output: /group/testa/michal.kubacki/herring/scenic/eRegulon_direct.tsv
+    jobid: 4
+    reason: Forced execution
+    threads: 128
+    resources: tmpdir=/localscratch/12341471.michal.kubacki
+
+[Mon Jun  3 06:21:29 2024]
+Finished job 4.
+9 of 14 steps (64%) done
+Select jobs to execute...
+Execute 1 jobs...
+
+[Mon Jun  3 06:21:29 2024]
+localrule eGRN_extended:
+    input: /group/testa/michal.kubacki/herring/scenic/tf_to_gene_adj.tsv, /group/testa/michal.kubacki/herring/scenic/region_to_gene_adj.tsv, /group/testa/michal.kubacki/herring/scenic/cistromes_extended.h5ad, /group/testa/michal.kubacki/herring/output_hg19_all_excitatory/ctx_db/all_excitatory.regions_vs_motifs.rankings.feather
+    output: /group/testa/michal.kubacki/herring/scenic/eRegulons_extended.tsv
+    jobid: 13
+    reason: Forced execution
+    threads: 128
+    resources: tmpdir=/localscratch/12341471.michal.kubacki
+
+[Mon Jun  3 07:41:38 2024]
+Finished job 13.
+10 of 14 steps (71%) done
+Select jobs to execute...
+Execute 1 jobs...
+
+[Mon Jun  3 07:41:38 2024]
+localrule AUCell_direct:
+    input: /group/testa/michal.kubacki/herring/scenic/eRegulon_direct.tsv, /group/testa/michal.kubacki/herring/scenic/ACC_GEX.h5mu
+    output: /group/testa/michal.kubacki/herring/scenic/AUCell_direct.h5mu
+    jobid: 3
+    reason: Forced execution
+    threads: 128
+    resources: tmpdir=/localscratch/12341471.michal.kubacki
+
+[Mon Jun  3 07:53:44 2024]
+Finished job 3.
+11 of 14 steps (79%) done
+Select jobs to execute...
+Execute 1 jobs...
+
+[Mon Jun  3 07:53:44 2024]
+localrule AUCell_extended:
+    input: /group/testa/michal.kubacki/herring/scenic/eRegulons_extended.tsv, /group/testa/michal.kubacki/herring/scenic/ACC_GEX.h5mu
+    output: /group/testa/michal.kubacki/herring/scenic/AUCell_extended.h5mu
+    jobid: 12
+    reason: Forced execution
+    threads: 128
+    resources: tmpdir=/localscratch/12341471.michal.kubacki
+
+[Mon Jun  3 08:05:12 2024]
+Finished job 12.
+12 of 14 steps (86%) done
+Select jobs to execute...
+Execute 1 jobs...
+
+[Mon Jun  3 08:05:12 2024]
+localrule scplus_mudata:
+    input: /group/testa/michal.kubacki/herring/scenic/ACC_GEX.h5mu, /group/testa/michal.kubacki/herring/scenic/AUCell_direct.h5mu, /group/testa/michal.kubacki/herring/scenic/AUCell_extended.h5mu, /group/testa/michal.kubacki/herring/scenic/eRegulon_direct.tsv, /group/testa/michal.kubacki/herring/scenic/eRegulons_extended.tsv
+    output: /group/testa/michal.kubacki/herring/scenic/scplus_mdata.h5mu
+    jobid: 1
+    reason: Forced execution
+    resources: tmpdir=/localscratch/12341471.michal.kubacki
+
+[Mon Jun  3 08:05:36 2024]
+Finished job 1.
+13 of 14 steps (93%) done
+Select jobs to execute...
+Execute 1 jobs...
+
+[Mon Jun  3 08:05:36 2024]
+localrule all:
+    input: /group/testa/michal.kubacki/herring/scenic/scplus_mdata.h5mu
+    jobid: 0
+    reason: Forced execution
+    resources: tmpdir=/localscratch/12341471.michal.kubacki
+
+[Mon Jun  3 08:05:36 2024]
+Finished job 0.
+14 of 14 steps (100%) done
+Complete log: .snakemake/log/2024-06-02T171350.870008.snakemake.log

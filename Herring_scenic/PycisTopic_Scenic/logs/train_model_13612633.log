@@ -1,0 +1,197 @@
+INFO: localdir at /localscratch/13612633.michal.kubacki
+INFO: your job will run on local system.
+root_dir: /group/testa/michal.kubacki/herring
+out_dir: /group/testa/michal.kubacki/herring/output_hg19_all_cells
+in_dir: /group/testa/michal.kubacki/herring/data
+tmp_dir: /group/testa/michal.kubacki/herring/tmp
+2024-07-17 16:11:52,782 cisTopic     INFO     Finding neighbours
+Columns ['pycisTopic_leiden_10_0.6'] will be overwritten
+Columns ['pycisTopic_leiden_10_1.2'] will be overwritten
+Columns ['pycisTopic_leiden_10_3'] will be overwritten
+2024-07-17 16:11:59,625 cisTopic     INFO     Running UMAP
+/home/michal.kubacki/.conda/envs/scenicplus/lib/python3.11/site-packages/umap/umap_.py:1943: UserWarning: n_jobs value -1 overridden to 1 by setting random_state. Use no seed for parallelism.
+  warn(f"n_jobs value {self.n_jobs} overridden to 1 by setting random_state. Use no seed for parallelism.")
+2024-07-17 16:12:35,982 cisTopic     INFO     Running TSNE
+/home/michal.kubacki/.conda/envs/scenicplus/lib/python3.11/site-packages/statsmodels/stats/weightstats.py:792: RuntimeWarning: divide by zero encountered in scalar divide
+  zstat = value / std
+2024-07-17 16:13:53,267 cisTopic     INFO     Imputing region accessibility
+2024-07-17 16:13:53,268 cisTopic     INFO     Impute region accessibility for regions 0-20000
+2024-07-17 16:13:55,871 cisTopic     INFO     Impute region accessibility for regions 20000-40000
+2024-07-17 16:13:58,404 cisTopic     INFO     Impute region accessibility for regions 40000-60000
+2024-07-17 16:14:00,937 cisTopic     INFO     Impute region accessibility for regions 60000-80000
+2024-07-17 16:14:03,469 cisTopic     INFO     Impute region accessibility for regions 80000-100000
+2024-07-17 16:14:06,001 cisTopic     INFO     Impute region accessibility for regions 100000-120000
+2024-07-17 16:14:08,535 cisTopic     INFO     Impute region accessibility for regions 120000-140000
+2024-07-17 16:14:11,067 cisTopic     INFO     Impute region accessibility for regions 140000-160000
+2024-07-17 16:14:13,612 cisTopic     INFO     Impute region accessibility for regions 160000-180000
+2024-07-17 16:14:16,156 cisTopic     INFO     Impute region accessibility for regions 180000-200000
+2024-07-17 16:14:18,703 cisTopic     INFO     Impute region accessibility for regions 200000-220000
+2024-07-17 16:14:21,247 cisTopic     INFO     Impute region accessibility for regions 220000-240000
+2024-07-17 16:14:23,794 cisTopic     INFO     Impute region accessibility for regions 240000-260000
+2024-07-17 16:14:26,326 cisTopic     INFO     Impute region accessibility for regions 260000-280000
+2024-07-17 16:14:28,858 cisTopic     INFO     Impute region accessibility for regions 280000-300000
+2024-07-17 16:14:31,389 cisTopic     INFO     Impute region accessibility for regions 300000-320000
+2024-07-17 16:14:33,938 cisTopic     INFO     Impute region accessibility for regions 320000-340000
+2024-07-17 16:14:36,485 cisTopic     INFO     Impute region accessibility for regions 340000-360000
+2024-07-17 16:14:39,017 cisTopic     INFO     Impute region accessibility for regions 360000-380000
+2024-07-17 16:14:41,563 cisTopic     INFO     Impute region accessibility for regions 380000-400000
+2024-07-17 16:14:44,107 cisTopic     INFO     Impute region accessibility for regions 400000-420000
+2024-07-17 16:14:46,638 cisTopic     INFO     Impute region accessibility for regions 420000-440000
+2024-07-17 16:14:49,183 cisTopic     INFO     Impute region accessibility for regions 440000-460000
+2024-07-17 16:14:51,728 cisTopic     INFO     Impute region accessibility for regions 460000-480000
+2024-07-17 16:14:54,271 cisTopic     INFO     Impute region accessibility for regions 480000-500000
+2024-07-17 16:14:54,992 cisTopic     INFO     Done!
+2024-07-17 16:14:54,993 cisTopic     INFO     Normalizing imputed data
+2024-07-17 16:15:43,239 cisTopic     INFO     Done!
+2024-07-17 16:15:43,240 cisTopic     INFO     Calculating mean
+2024-07-17 16:15:51,553 cisTopic     INFO     Calculating variance
+2024-07-17 16:16:48,165 cisTopic     INFO     Done!
+2024-07-17 16:18:15,899 cisTopic     INFO     Subsetting data for Astro (490 of 19622)
+2024-07-17 16:18:19,532 cisTopic     INFO     Computing p-value for Astro
+2024-07-17 16:19:09,566 cisTopic     INFO     Computing log2FC for Astro
+2024-07-17 16:19:11,021 cisTopic     INFO     Astro done!
+2024-07-17 16:19:11,028 cisTopic     INFO     Subsetting data for L2-3_CUX2 (331 of 19622)
+2024-07-17 16:19:11,222 cisTopic     INFO     Computing p-value for L2-3_CUX2
+2024-07-17 16:20:01,461 cisTopic     INFO     Computing log2FC for L2-3_CUX2
+2024-07-17 16:20:01,512 cisTopic     INFO     L2-3_CUX2 done!
+2024-07-17 16:20:01,520 cisTopic     INFO     Subsetting data for L4_RORB (279 of 19622)
+2024-07-17 16:20:01,688 cisTopic     INFO     Computing p-value for L4_RORB
+2024-07-17 16:20:52,101 cisTopic     INFO     Computing log2FC for L4_RORB
+2024-07-17 16:20:52,152 cisTopic     INFO     L4_RORB done!
+2024-07-17 16:20:52,159 cisTopic     INFO     Subsetting data for L5-6_THEMIS (102 of 19622)
+2024-07-17 16:20:52,312 cisTopic     INFO     Computing p-value for L5-6_THEMIS
+2024-07-17 16:21:42,073 cisTopic     INFO     Computing log2FC for L5-6_THEMIS
+2024-07-17 16:21:42,122 cisTopic     INFO     L5-6_THEMIS done!
+2024-07-17 16:21:42,130 cisTopic     INFO     Subsetting data for L5-6_TLE4 (97 of 19622)
+2024-07-17 16:21:42,282 cisTopic     INFO     Computing p-value for L5-6_TLE4
+2024-07-17 16:22:32,017 cisTopic     INFO     Computing log2FC for L5-6_TLE4
+2024-07-17 16:22:32,065 cisTopic     INFO     L5-6_TLE4 done!
+2024-07-17 16:22:32,073 cisTopic     INFO     Subsetting data for MGE_dev (147 of 19622)
+2024-07-17 16:22:32,230 cisTopic     INFO     Computing p-value for MGE_dev
+2024-07-17 16:23:21,735 cisTopic     INFO     Computing log2FC for MGE_dev
+2024-07-17 16:23:21,783 cisTopic     INFO     MGE_dev done!
+2024-07-17 16:23:21,791 cisTopic     INFO     Subsetting data for Micro (156 of 19622)
+2024-07-17 16:23:21,944 cisTopic     INFO     Computing p-value for Micro
+2024-07-17 16:24:11,094 cisTopic     INFO     Computing log2FC for Micro
+2024-07-17 16:24:11,141 cisTopic     INFO     Micro done!
+2024-07-17 16:24:11,149 cisTopic     INFO     Subsetting data for OPC (203 of 19622)
+2024-07-17 16:24:11,313 cisTopic     INFO     Computing p-value for OPC
+2024-07-17 16:25:01,207 cisTopic     INFO     Computing log2FC for OPC
+2024-07-17 16:25:01,255 cisTopic     INFO     OPC done!
+2024-07-17 16:25:01,263 cisTopic     INFO     Subsetting data for Oligo (416 of 19622)
+2024-07-17 16:25:01,430 cisTopic     INFO     Computing p-value for Oligo
+2024-07-17 16:25:50,961 cisTopic     INFO     Computing log2FC for Oligo
+2024-07-17 16:25:51,009 cisTopic     INFO     Oligo done!
+2024-07-17 16:25:51,017 cisTopic     INFO     Subsetting data for PN_dev (434 of 19622)
+2024-07-17 16:25:51,185 cisTopic     INFO     Computing p-value for PN_dev
+2024-07-17 16:26:40,937 cisTopic     INFO     Computing log2FC for PN_dev
+2024-07-17 16:26:40,987 cisTopic     INFO     PN_dev done!
+2024-07-17 16:26:40,995 cisTopic     INFO     Subsetting data for PV (14 of 19622)
+2024-07-17 16:26:41,135 cisTopic     INFO     Computing p-value for PV
+2024-07-17 16:27:30,033 cisTopic     INFO     Computing log2FC for PV
+2024-07-17 16:27:30,072 cisTopic     INFO     PV done!
+2024-07-17 16:27:30,080 cisTopic     INFO     Subsetting data for SST (112 of 19622)
+2024-07-17 16:27:30,232 cisTopic     INFO     Computing p-value for SST
+2024-07-17 16:28:19,652 cisTopic     INFO     Computing log2FC for SST
+2024-07-17 16:28:19,698 cisTopic     INFO     SST done!
+2024-07-17 16:28:19,706 cisTopic     INFO     Subsetting data for VIP (64 of 19622)
+2024-07-17 16:28:19,855 cisTopic     INFO     Computing p-value for VIP
+2024-07-17 16:29:09,493 cisTopic     INFO     Computing log2FC for VIP
+2024-07-17 16:29:09,539 cisTopic     INFO     VIP done!
+dict_keys(['Astro', 'L2-3_CUX2', 'L4_RORB', 'L5-6_THEMIS', 'L5-6_TLE4', 'MGE_dev', 'Micro', 'OPC', 'Oligo', 'PN_dev', 'PV', 'SST', 'VIP'])
+Number of DARs found:
+---------------------
+  Astro: 23986
+  L2-3_CUX2: 28119
+  L4_RORB: 26180
+  L5-6_THEMIS: 22504
+  L5-6_TLE4: 16782
+  MGE_dev: 16251
+  Micro: 14188
+  OPC: 18440
+  Oligo: 19994
+  PN_dev: 25324
+  PV: 4332
+  SST: 15616
+  VIP: 13612
+2024-07-17 16:29:52,853 cisTopic     INFO     Calculating gene boundaries
+join: Strand data from other will be added as strand data to self.
+If this is undesired use the flag apply_strand_suffix=False.
+To turn off the warning set apply_strand_suffix to True or False.
+2024-07-17 16:30:12,779 cisTopic     INFO     Calculating distances
+2024-07-17 16:30:26,665 cisTopic     INFO     Calculating distance weigths
+2024-07-17 16:30:27,296 cisTopic     INFO     Distance weights done
+2024-07-17 16:30:27,296 cisTopic     INFO     Calculating gini weights
+2024-07-17 16:31:33,020 cisTopic     INFO     Getting gene activity scores
+2024-07-17 16:34:08,464 cisTopic     INFO     Creating imputed features object
+<class 'pycisTopic.diff_features.CistopicImputedFeatures'>
+<class 'pandas.core.frame.DataFrame'>
+2024-07-17 16:34:17,210 cisTopic     INFO     Subsetting data for Astro (490 of 19622)
+2024-07-17 16:34:19,221 cisTopic     INFO     Computing p-value for Astro
+2024-07-17 16:34:28,360 cisTopic     INFO     Computing log2FC for Astro
+2024-07-17 16:34:29,537 cisTopic     INFO     Astro done!
+2024-07-17 16:34:29,542 cisTopic     INFO     Subsetting data for L2-3_CUX2 (331 of 19622)
+2024-07-17 16:34:29,577 cisTopic     INFO     Computing p-value for L2-3_CUX2
+2024-07-17 16:34:38,650 cisTopic     INFO     Computing log2FC for L2-3_CUX2
+2024-07-17 16:34:38,661 cisTopic     INFO     L2-3_CUX2 done!
+2024-07-17 16:34:38,666 cisTopic     INFO     Subsetting data for L4_RORB (279 of 19622)
+2024-07-17 16:34:38,700 cisTopic     INFO     Computing p-value for L4_RORB
+2024-07-17 16:34:47,761 cisTopic     INFO     Computing log2FC for L4_RORB
+2024-07-17 16:34:47,772 cisTopic     INFO     L4_RORB done!
+2024-07-17 16:34:47,777 cisTopic     INFO     Subsetting data for L5-6_THEMIS (102 of 19622)
+2024-07-17 16:34:47,808 cisTopic     INFO     Computing p-value for L5-6_THEMIS
+2024-07-17 16:34:56,887 cisTopic     INFO     Computing log2FC for L5-6_THEMIS
+2024-07-17 16:34:56,898 cisTopic     INFO     L5-6_THEMIS done!
+2024-07-17 16:34:56,903 cisTopic     INFO     Subsetting data for L5-6_TLE4 (97 of 19622)
+2024-07-17 16:34:56,935 cisTopic     INFO     Computing p-value for L5-6_TLE4
+2024-07-17 16:35:06,441 cisTopic     INFO     Computing log2FC for L5-6_TLE4
+2024-07-17 16:35:06,452 cisTopic     INFO     L5-6_TLE4 done!
+2024-07-17 16:35:06,457 cisTopic     INFO     Subsetting data for MGE_dev (147 of 19622)
+2024-07-17 16:35:06,490 cisTopic     INFO     Computing p-value for MGE_dev
+2024-07-17 16:35:15,514 cisTopic     INFO     Computing log2FC for MGE_dev
+2024-07-17 16:35:15,525 cisTopic     INFO     MGE_dev done!
+2024-07-17 16:35:15,530 cisTopic     INFO     Subsetting data for Micro (156 of 19622)
+2024-07-17 16:35:15,561 cisTopic     INFO     Computing p-value for Micro
+2024-07-17 16:35:24,594 cisTopic     INFO     Computing log2FC for Micro
+2024-07-17 16:35:24,606 cisTopic     INFO     Micro done!
+2024-07-17 16:35:24,611 cisTopic     INFO     Subsetting data for OPC (203 of 19622)
+2024-07-17 16:35:24,643 cisTopic     INFO     Computing p-value for OPC
+2024-07-17 16:35:33,645 cisTopic     INFO     Computing log2FC for OPC
+2024-07-17 16:35:33,657 cisTopic     INFO     OPC done!
+2024-07-17 16:35:33,662 cisTopic     INFO     Subsetting data for Oligo (416 of 19622)
+2024-07-17 16:35:33,696 cisTopic     INFO     Computing p-value for Oligo
+2024-07-17 16:35:42,729 cisTopic     INFO     Computing log2FC for Oligo
+2024-07-17 16:35:42,740 cisTopic     INFO     Oligo done!
+2024-07-17 16:35:42,746 cisTopic     INFO     Subsetting data for PN_dev (434 of 19622)
+2024-07-17 16:35:42,779 cisTopic     INFO     Computing p-value for PN_dev
+2024-07-17 16:35:51,794 cisTopic     INFO     Computing log2FC for PN_dev
+2024-07-17 16:35:51,805 cisTopic     INFO     PN_dev done!
+2024-07-17 16:35:51,811 cisTopic     INFO     Subsetting data for PV (14 of 19622)
+2024-07-17 16:35:51,840 cisTopic     INFO     Computing p-value for PV
+2024-07-17 16:36:00,874 cisTopic     INFO     Computing log2FC for PV
+2024-07-17 16:36:00,884 cisTopic     INFO     PV done!
+2024-07-17 16:36:00,889 cisTopic     INFO     Subsetting data for SST (112 of 19622)
+2024-07-17 16:36:00,921 cisTopic     INFO     Computing p-value for SST
+2024-07-17 16:36:09,953 cisTopic     INFO     Computing log2FC for SST
+2024-07-17 16:36:09,969 cisTopic     INFO     SST done!
+2024-07-17 16:36:09,974 cisTopic     INFO     Subsetting data for VIP (64 of 19622)
+2024-07-17 16:36:10,004 cisTopic     INFO     Computing p-value for VIP
+2024-07-17 16:36:19,038 cisTopic     INFO     Computing log2FC for VIP
+2024-07-17 16:36:19,049 cisTopic     INFO     VIP done!
+Number of DAGs found:
+---------------------
+  Astro: 2392
+  L2-3_CUX2: 3230
+  L4_RORB: 2806
+  L5-6_THEMIS: 2682
+  L5-6_TLE4: 2230
+  MGE_dev: 2212
+  Micro: 3663
+  OPC: 2006
+  Oligo: 3459
+  PN_dev: 2632
+  PV: 1130
+  SST: 2441
+  VIP: 1822
+slurmstepd: error: _cgroup_procs_check: failed on path /sys/fs/cgroup/memory/slurm/uid_10666/job_13612633/step_batch/cgroup.procs: No such file or directory
+slurmstepd: error: unable to read '/sys/fs/cgroup/memory/slurm/uid_10666/job_13612633/step_batch/cgroup.procs'

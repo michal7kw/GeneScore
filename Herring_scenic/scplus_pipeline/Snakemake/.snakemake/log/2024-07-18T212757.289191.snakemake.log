@@ -1,0 +1,111 @@
+Building DAG of jobs...
+Using shell: /usr/bin/bash
+Provided cores: 96
+Rules claiming more threads will be scaled down.
+Job stats:
+job                            count
+---------------------------  -------
+AUCell_direct                      1
+AUCell_extended                    1
+all                                1
+download_genome_annotations        1
+eGRN_direct                        1
+eGRN_extended                      1
+get_search_space                   1
+motif_enrichment_cistarget         1
+motif_enrichment_dem               1
+prepare_GEX_ACC_multiome           1
+prepare_menr                       1
+region_to_gene                     1
+scplus_mudata                      1
+tf_to_gene                         1
+total                             14
+
+Select jobs to execute...
+Execute 3 jobs...
+
+[Thu Jul 18 21:27:58 2024]
+localrule prepare_GEX_ACC_multiome:
+    input: /group/testa/michal.kubacki/herring/output_hg19_all_excitatory_all_ages/cistopic_obj.pkl, /group/testa/michal.kubacki/herring/output_hg19_all_excitatory_all_ages/modified_adata.h5ad
+    output: /group/testa/michal.kubacki/herring/scenic_all_excitatory_all_ages/ACC_GEX.h5mu
+    jobid: 2
+    reason: Forced execution
+    resources: tmpdir=/localscratch/13716226.michal.kubacki
+
+
+[Thu Jul 18 21:27:58 2024]
+localrule download_genome_annotations:
+    output: /group/testa/michal.kubacki/herring/scenic_all_excitatory_all_ages/genome_annotation.tsv, /group/testa/michal.kubacki/herring/scenic_all_excitatory_all_ages/chromsizes.tsv
+    jobid: 8
+    reason: Forced execution
+    resources: tmpdir=/localscratch/13716226.michal.kubacki
+
+
+[Thu Jul 18 21:27:59 2024]
+localrule motif_enrichment_cistarget:
+    input: /group/testa/michal.kubacki/herring/output_hg19_all_excitatory_all_ages/region_sets, /scratch/michal.kubacki/herring/output_hg19_all_excitatory_all_ages/cistarget_motif_dataset.regions_vs_motifs.rankings.feather, /group/testa/michal.kubacki/herring/scenic_input/motifs-v10nr_clust-nr.hgnc-m0.001-o0.0.tbl
+    output: /group/testa/michal.kubacki/herring/scenic_all_excitatory_all_ages/ctx_results.hdf5, /group/testa/michal.kubacki/herring/scenic_all_excitatory_all_ages/ctx_results.html
+    jobid: 9
+    reason: Forced execution
+    threads: 32
+    resources: tmpdir=/localscratch/13716226.michal.kubacki
+
+[Thu Jul 18 21:42:05 2024]
+Finished job 8.
+1 of 14 steps (7%) done
+Select jobs to execute...
+Execute 1 jobs...
+
+[Thu Jul 18 21:42:05 2024]
+localrule motif_enrichment_dem:
+    input: /group/testa/michal.kubacki/herring/output_hg19_all_excitatory_all_ages/region_sets, /scratch/michal.kubacki/herring/output_hg19_all_excitatory_all_ages/cistarget_motif_dataset.regions_vs_motifs.scores.feather, /group/testa/michal.kubacki/herring/scenic_all_excitatory_all_ages/genome_annotation.tsv, /group/testa/michal.kubacki/herring/scenic_input/motifs-v10nr_clust-nr.hgnc-m0.001-o0.0.tbl
+    output: /group/testa/michal.kubacki/herring/scenic_all_excitatory_all_ages/dem_results.hdf5, /group/testa/michal.kubacki/herring/scenic_all_excitatory_all_ages/dem_results.html
+    jobid: 7
+    reason: Forced execution
+    threads: 32
+    resources: tmpdir=/localscratch/13716226.michal.kubacki
+
+[Thu Jul 18 21:42:11 2024]
+Finished job 2.
+2 of 14 steps (14%) done
+Select jobs to execute...
+Execute 1 jobs...
+
+[Thu Jul 18 21:42:11 2024]
+localrule get_search_space:
+    input: /group/testa/michal.kubacki/herring/scenic_all_excitatory_all_ages/ACC_GEX.h5mu, /group/testa/michal.kubacki/herring/scenic_all_excitatory_all_ages/genome_annotation.tsv, /group/testa/michal.kubacki/herring/scenic_all_excitatory_all_ages/chromsizes.tsv
+    output: /group/testa/michal.kubacki/herring/scenic_all_excitatory_all_ages/search_space.tsv
+    jobid: 11
+    reason: Forced execution
+    resources: tmpdir=/localscratch/13716226.michal.kubacki
+
+[Thu Jul 18 22:14:19 2024]
+Error in rule motif_enrichment_cistarget:
+    jobid: 9
+    input: /group/testa/michal.kubacki/herring/output_hg19_all_excitatory_all_ages/region_sets, /scratch/michal.kubacki/herring/output_hg19_all_excitatory_all_ages/cistarget_motif_dataset.regions_vs_motifs.rankings.feather, /group/testa/michal.kubacki/herring/scenic_input/motifs-v10nr_clust-nr.hgnc-m0.001-o0.0.tbl
+    output: /group/testa/michal.kubacki/herring/scenic_all_excitatory_all_ages/ctx_results.hdf5, /group/testa/michal.kubacki/herring/scenic_all_excitatory_all_ages/ctx_results.html
+    shell:
+        
+            scenicplus grn_inference motif_enrichment_cistarget                 --region_set_folder /group/testa/michal.kubacki/herring/output_hg19_all_excitatory_all_ages/region_sets                 --cistarget_db_fname /scratch/michal.kubacki/herring/output_hg19_all_excitatory_all_ages/cistarget_motif_dataset.regions_vs_motifs.rankings.feather                 --output_fname_cistarget_result /group/testa/michal.kubacki/herring/scenic_all_excitatory_all_ages/ctx_results.hdf5                 --temp_dir /group/testa/michal.kubacki/herring/output_hg19_all_excitatory_all_ages/tmp                 --species homo_sapiens                 --fr_overlap_w_ctx_db 0.4                 --auc_threshold 0.005                 --nes_threshold 3.0                 --rank_threshold 0.05                 --path_to_motif_annotations /group/testa/michal.kubacki/herring/scenic_input/motifs-v10nr_clust-nr.hgnc-m0.001-o0.0.tbl                 --annotation_version v10nr_clust                 --motif_similarity_fdr 0.001                 --orthologous_identity_threshold 0.0                 --annotations_to_use Direct_annot Orthology_annot                 --write_html                 --output_fname_cistarget_html /group/testa/michal.kubacki/herring/scenic_all_excitatory_all_ages/ctx_results.html                 --n_cpu 32
+        
+        (one of the commands exited with non-zero exit code; note that snakemake uses bash strict mode!)
+
+[Thu Jul 18 22:15:57 2024]
+Finished job 11.
+3 of 14 steps (21%) done
+[Thu Jul 18 22:22:55 2024]
+Error in rule motif_enrichment_dem:
+    jobid: 7
+    input: /group/testa/michal.kubacki/herring/output_hg19_all_excitatory_all_ages/region_sets, /scratch/michal.kubacki/herring/output_hg19_all_excitatory_all_ages/cistarget_motif_dataset.regions_vs_motifs.scores.feather, /group/testa/michal.kubacki/herring/scenic_all_excitatory_all_ages/genome_annotation.tsv, /group/testa/michal.kubacki/herring/scenic_input/motifs-v10nr_clust-nr.hgnc-m0.001-o0.0.tbl
+    output: /group/testa/michal.kubacki/herring/scenic_all_excitatory_all_ages/dem_results.hdf5, /group/testa/michal.kubacki/herring/scenic_all_excitatory_all_ages/dem_results.html
+    shell:
+        
+                scenicplus grn_inference motif_enrichment_dem                     --region_set_folder /group/testa/michal.kubacki/herring/output_hg19_all_excitatory_all_ages/region_sets                     --dem_db_fname /scratch/michal.kubacki/herring/output_hg19_all_excitatory_all_ages/cistarget_motif_dataset.regions_vs_motifs.scores.feather                     --output_fname_dem_result /group/testa/michal.kubacki/herring/scenic_all_excitatory_all_ages/dem_results.hdf5                     --temp_dir /group/testa/michal.kubacki/herring/output_hg19_all_excitatory_all_ages/tmp                     --species homo_sapiens                     --fraction_overlap_w_dem_database 0.4                     --max_bg_regions 500                     --genome_annotation /group/testa/michal.kubacki/herring/scenic_all_excitatory_all_ages/genome_annotation.tsv                     --balance_number_of_promoters                     --promoter_space 1000                     --adjpval_thr 0.05                     --log2fc_thr 1.0                     --mean_fg_thr 0.0                     --motif_hit_thr 3.0                     --path_to_motif_annotations /group/testa/michal.kubacki/herring/scenic_input/motifs-v10nr_clust-nr.hgnc-m0.001-o0.0.tbl                     --annotation_version v10nr_clust                     --motif_similarity_fdr 0.001                     --orthologous_identity_threshold 0.0                     --annotations_to_use Direct_annot Orthology_annot                     --write_html                     --output_fname_dem_html /group/testa/michal.kubacki/herring/scenic_all_excitatory_all_ages/dem_results.html                     --seed 666                     --n_cpu 32
+            
+        (one of the commands exited with non-zero exit code; note that snakemake uses bash strict mode!)
+
+Shutting down, this might take some time.
+Exiting because a job execution failed. Look above for error message
+Complete log: .snakemake/log/2024-07-18T212757.289191.snakemake.log
+WorkflowError:
+At least one job did not complete successfully.

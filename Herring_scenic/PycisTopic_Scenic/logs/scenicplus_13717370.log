@@ -1,0 +1,191 @@
+INFO: localdir at /localscratch/13717370.michal.kubacki
+INFO: your job will run on local system.
+Assuming unrestricted shared filesystem usage for local execution.
+Building DAG of jobs...
+Using shell: /usr/bin/bash
+Provided cores: 96
+Rules claiming more threads will be scaled down.
+Job stats:
+job                            count
+---------------------------  -------
+AUCell_direct                      1
+AUCell_extended                    1
+all                                1
+download_genome_annotations        1
+eGRN_direct                        1
+eGRN_extended                      1
+get_search_space                   1
+motif_enrichment_cistarget         1
+motif_enrichment_dem               1
+prepare_GEX_ACC_multiome           1
+prepare_menr                       1
+region_to_gene                     1
+scplus_mudata                      1
+tf_to_gene                         1
+total                             14
+
+Select jobs to execute...
+Execute 1 jobs...
+
+[Thu Jul 18 23:16:29 2024]
+localrule motif_enrichment_cistarget:
+    input: /group/testa/michal.kubacki/herring/output_hg19_all_cells/region_sets, /group/testa/michal.kubacki/herring/output_hg19_all_cells/cistarget_motif_dataset.regions_vs_motifs.rankings.feather, /group/testa/michal.kubacki/herring/scenic_input/motifs-v10nr_clust-nr.hgnc-m0.001-o0.0.tbl
+    output: /group/testa/michal.kubacki/herring/scenic_all_cells/ctx_results.hdf5, /group/testa/michal.kubacki/herring/scenic_all_cells/ctx_results.html
+    jobid: 9
+    reason: Forced execution
+    threads: 96
+    resources: tmpdir=/localscratch/13717370.michal.kubacki
+
+Error.  nthreads cannot be larger than environment variable "NUMEXPR_MAX_THREADS" (64)2024-07-18 23:18:06,005 SCENIC+      INFO     Reading region sets from: /group/testa/michal.kubacki/herring/output_hg19_all_cells/region_sets
+2024-07-18 23:18:06,013 SCENIC+      INFO     Reading all .bed files in: Topics_top_3k
+2024-07-18 23:18:07,310 SCENIC+      INFO     Reading all .bed files in: DARs_cell_type
+2024-07-18 23:18:08,245 SCENIC+      INFO     Reading all .bed files in: Topics_otsu
+Error.  nthreads cannot be larger than environment variable "NUMEXPR_MAX_THREADS" (64)Error.  nthreads cannot be larger than environment variable "NUMEXPR_MAX_THREADS" (64)Error.  nthreads cannot be larger than environment variable "NUMEXPR_MAX_THREADS" (64)Error.  nthreads cannot be larger than environment variable "NUMEXPR_MAX_THREADS" (64)Error.  nthreads cannot be larger than environment variable "NUMEXPR_MAX_THREADS" (64)Error.  nthreads cannot be larger than environment variable "NUMEXPR_MAX_THREADS" (64)Error.  nthreads cannot be larger than environment variable "NUMEXPR_MAX_THREADS" (64)Error.  nthreads cannot be larger than environment variable "NUMEXPR_MAX_THREADS" (64)Error.  nthreads cannot be larger than environment variable "NUMEXPR_MAX_THREADS" (64)Error.  nthreads cannot be larger than environment variable "NUMEXPR_MAX_THREADS" (64)Error.  nthreads cannot be larger than environment variable "NUMEXPR_MAX_THREADS" (64)Error.  nthreads cannot be larger than environment variable "NUMEXPR_MAX_THREADS" (64)Error.  nthreads cannot be larger than environment variable "NUMEXPR_MAX_THREADS" (64)Error.  nthreads cannot be larger than environment variable "NUMEXPR_MAX_THREADS" (64)Error.  nthreads cannot be larger than environment variable "NUMEXPR_MAX_THREADS" (64)Error.  nthreads cannot be larger than environment variable "NUMEXPR_MAX_THREADS" (64)Error.  nthreads cannot be larger than environment variable "NUMEXPR_MAX_THREADS" (64)Error.  nthreads cannot be larger than environment variable "NUMEXPR_MAX_THREADS" (64)Error.  nthreads cannot be larger than environment variable "NUMEXPR_MAX_THREADS" (64)Error.  nthreads cannot be larger than environment variable "NUMEXPR_MAX_THREADS" (64)Error.  nthreads cannot be larger than environment variable "NUMEXPR_MAX_THREADS" (64)Error.  nthreads cannot be larger than environment variable "NUMEXPR_MAX_THREADS" (64)Error.  nthreads cannot be larger than environment variable "NUMEXPR_MAX_THREADS" (64)Error.  nthreads cannot be larger than environment variable "NUMEXPR_MAX_THREADS" (64)Error.  nthreads cannot be larger than environment variable "NUMEXPR_MAX_THREADS" (64)Error.  nthreads cannot be larger than environment variable "NUMEXPR_MAX_THREADS" (64)Error.  nthreads cannot be larger than environment variable "NUMEXPR_MAX_THREADS" (64)Error.  nthreads cannot be larger than environment variable "NUMEXPR_MAX_THREADS" (64)Error.  nthreads cannot be larger than environment variable "NUMEXPR_MAX_THREADS" (64)Error.  nthreads cannot be larger than environment variable "NUMEXPR_MAX_THREADS" (64)Error.  nthreads cannot be larger than environment variable "NUMEXPR_MAX_THREADS" (64)Error.  nthreads cannot be larger than environment variable "NUMEXPR_MAX_THREADS" (64)Error.  nthreads cannot be larger than environment variable "NUMEXPR_MAX_THREADS" (64)Error.  nthreads cannot be larger than environment variable "NUMEXPR_MAX_THREADS" (64)Error.  nthreads cannot be larger than environment variable "NUMEXPR_MAX_THREADS" (64)Error.  nthreads cannot be larger than environment variable "NUMEXPR_MAX_THREADS" (64)Error.  nthreads cannot be larger than environment variable "NUMEXPR_MAX_THREADS" (64)Error.  nthreads cannot be larger than environment variable "NUMEXPR_MAX_THREADS" (64)Error.  nthreads cannot be larger than environment variable "NUMEXPR_MAX_THREADS" (64)Error.  nthreads cannot be larger than environment variable "NUMEXPR_MAX_THREADS" (64)Error.  nthreads cannot be larger than environment variable "NUMEXPR_MAX_THREADS" (64)Error.  nthreads cannot be larger than environment variable "NUMEXPR_MAX_THREADS" (64)Error.  nthreads cannot be larger than environment variable "NUMEXPR_MAX_THREADS" (64)Error.  nthreads cannot be larger than environment variable "NUMEXPR_MAX_THREADS" (64)Error.  nthreads cannot be larger than environment variable "NUMEXPR_MAX_THREADS" (64)Error.  nthreads cannot be larger than environment variable "NUMEXPR_MAX_THREADS" (64)Error.  nthreads cannot be larger than environment variable "NUMEXPR_MAX_THREADS" (64)Error.  nthreads cannot be larger than environment variable "NUMEXPR_MAX_THREADS" (64)Error.  nthreads cannot be larger than environment variable "NUMEXPR_MAX_THREADS" (64)Error.  nthreads cannot be larger than environment variable "NUMEXPR_MAX_THREADS" (64)Error.  nthreads cannot be larger than environment variable "NUMEXPR_MAX_THREADS" (64)Error.  nthreads cannot be larger than environment variable "NUMEXPR_MAX_THREADS" (64)Error.  nthreads cannot be larger than environment variable "NUMEXPR_MAX_THREADS" (64)Error.  nthreads cannot be larger than environment variable "NUMEXPR_MAX_THREADS" (64)Error.  nthreads cannot be larger than environment variable "NUMEXPR_MAX_THREADS" (64)Error.  nthreads cannot be larger than environment variable "NUMEXPR_MAX_THREADS" (64)Error.  nthreads cannot be larger than environment variable "NUMEXPR_MAX_THREADS" (64)Error.  nthreads cannot be larger than environment variable "NUMEXPR_MAX_THREADS" (64)Error.  nthreads cannot be larger than environment variable "NUMEXPR_MAX_THREADS" (64)Error.  nthreads cannot be larger than environment variable "NUMEXPR_MAX_THREADS" (64)Error.  nthreads cannot be larger than environment variable "NUMEXPR_MAX_THREADS" (64)Error.  nthreads cannot be larger than environment variable "NUMEXPR_MAX_THREADS" (64)Error.  nthreads cannot be larger than environment variable "NUMEXPR_MAX_THREADS" (64)Error.  nthreads cannot be larger than environment variable "NUMEXPR_MAX_THREADS" (64)Error.  nthreads cannot be larger than environment variable "NUMEXPR_MAX_THREADS" (64)/home/michal.kubacki/miniconda3/envs/scenicplusnew/lib/python3.11/site-packages/joblib/externals/loky/process_executor.py:752: UserWarning: A worker stopped while some jobs were given to the executor. This can be caused by a too short worker timeout or by a memory leak.
+  warnings.warn(
+Error.  nthreads cannot be larger than environment variable "NUMEXPR_MAX_THREADS" (64)Error.  nthreads cannot be larger than environment variable "NUMEXPR_MAX_THREADS" (64)Error.  nthreads cannot be larger than environment variable "NUMEXPR_MAX_THREADS" (64)Error.  nthreads cannot be larger than environment variable "NUMEXPR_MAX_THREADS" (64)Error.  nthreads cannot be larger than environment variable "NUMEXPR_MAX_THREADS" (64)Error.  nthreads cannot be larger than environment variable "NUMEXPR_MAX_THREADS" (64)Error.  nthreads cannot be larger than environment variable "NUMEXPR_MAX_THREADS" (64)Error.  nthreads cannot be larger than environment variable "NUMEXPR_MAX_THREADS" (64)Error.  nthreads cannot be larger than environment variable "NUMEXPR_MAX_THREADS" (64)Error.  nthreads cannot be larger than environment variable "NUMEXPR_MAX_THREADS" (64)Error.  nthreads cannot be larger than environment variable "NUMEXPR_MAX_THREADS" (64)Error.  nthreads cannot be larger than environment variable "NUMEXPR_MAX_THREADS" (64)Error.  nthreads cannot be larger than environment variable "NUMEXPR_MAX_THREADS" (64)Error.  nthreads cannot be larger than environment variable "NUMEXPR_MAX_THREADS" (64)Error.  nthreads cannot be larger than environment variable "NUMEXPR_MAX_THREADS" (64)Error.  nthreads cannot be larger than environment variable "NUMEXPR_MAX_THREADS" (64)Error.  nthreads cannot be larger than environment variable "NUMEXPR_MAX_THREADS" (64)Error.  nthreads cannot be larger than environment variable "NUMEXPR_MAX_THREADS" (64)Error.  nthreads cannot be larger than environment variable "NUMEXPR_MAX_THREADS" (64)Error.  nthreads cannot be larger than environment variable "NUMEXPR_MAX_THREADS" (64)Error.  nthreads cannot be larger than environment variable "NUMEXPR_MAX_THREADS" (64)Error.  nthreads cannot be larger than environment variable "NUMEXPR_MAX_THREADS" (64)Error.  nthreads cannot be larger than environment variable "NUMEXPR_MAX_THREADS" (64)Error.  nthreads cannot be larger than environment variable "NUMEXPR_MAX_THREADS" (64)Error.  nthreads cannot be larger than environment variable "NUMEXPR_MAX_THREADS" (64)Error.  nthreads cannot be larger than environment variable "NUMEXPR_MAX_THREADS" (64)Error.  nthreads cannot be larger than environment variable "NUMEXPR_MAX_THREADS" (64)Error.  nthreads cannot be larger than environment variable "NUMEXPR_MAX_THREADS" (64)2024-07-18 23:29:16,224 cisTarget    INFO     Reading cisTarget database
+2024-07-18 23:29:16,297 cisTarget    INFO     Reading cisTarget database
+2024-07-18 23:29:23,686 cisTarget    INFO     Reading cisTarget database
+2024-07-18 23:29:28,511 cisTarget    INFO     Reading cisTarget database
+2024-07-18 23:29:33,436 cisTarget    INFO     Reading cisTarget database
+2024-07-18 23:29:33,779 cisTarget    INFO     Reading cisTarget database
+2024-07-18 23:29:34,001 cisTarget    INFO     Reading cisTarget database
+2024-07-18 23:29:38,751 cisTarget    INFO     Reading cisTarget database
+2024-07-18 23:29:38,834 cisTarget    INFO     Reading cisTarget database
+2024-07-18 23:30:27,596 cisTarget    INFO     Reading cisTarget database
+2024-07-18 23:30:31,140 cisTarget    INFO     Reading cisTarget database
+2024-07-18 23:30:31,189 cisTarget    INFO     Reading cisTarget database
+2024-07-18 23:30:31,930 cisTarget    INFO     Reading cisTarget database
+2024-07-18 23:30:32,267 cisTarget    INFO     Reading cisTarget database
+2024-07-18 23:30:32,546 cisTarget    INFO     Reading cisTarget database
+2024-07-18 23:30:33,142 cisTarget    INFO     Reading cisTarget database
+2024-07-18 23:30:35,064 cisTarget    INFO     Reading cisTarget database
+2024-07-18 23:30:35,088 cisTarget    INFO     Reading cisTarget database
+2024-07-18 23:30:35,298 cisTarget    INFO     Reading cisTarget database
+2024-07-18 23:30:35,322 cisTarget    INFO     Reading cisTarget database
+2024-07-18 23:30:35,426 cisTarget    INFO     Reading cisTarget database
+2024-07-18 23:30:35,455 cisTarget    INFO     Reading cisTarget database
+2024-07-18 23:30:35,494 cisTarget    INFO     Reading cisTarget database
+2024-07-18 23:30:35,917 cisTarget    INFO     Reading cisTarget database
+2024-07-18 23:30:35,948 cisTarget    INFO     Reading cisTarget database
+2024-07-18 23:30:36,132 cisTarget    INFO     Reading cisTarget database
+2024-07-18 23:30:37,796 cisTarget    INFO     Reading cisTarget database
+2024-07-18 23:30:37,934 cisTarget    INFO     Reading cisTarget database
+2024-07-18 23:30:38,222 cisTarget    INFO     Reading cisTarget database
+2024-07-18 23:30:38,590 cisTarget    INFO     Reading cisTarget database
+2024-07-18 23:30:38,682 cisTarget    INFO     Reading cisTarget database
+2024-07-18 23:30:39,439 cisTarget    INFO     Reading cisTarget database
+2024-07-18 23:30:40,317 cisTarget    INFO     Reading cisTarget database
+2024-07-18 23:30:40,658 cisTarget    INFO     Reading cisTarget database
+2024-07-18 23:30:40,777 cisTarget    INFO     Reading cisTarget database
+2024-07-18 23:30:40,779 cisTarget    INFO     Reading cisTarget database
+2024-07-18 23:30:40,803 cisTarget    INFO     Reading cisTarget database
+2024-07-18 23:30:41,131 cisTarget    INFO     Reading cisTarget database
+2024-07-18 23:30:41,145 cisTarget    INFO     Reading cisTarget database
+2024-07-18 23:30:41,157 cisTarget    INFO     Reading cisTarget database
+2024-07-18 23:30:41,264 cisTarget    INFO     Reading cisTarget database
+2024-07-18 23:30:41,318 cisTarget    INFO     Reading cisTarget database
+2024-07-18 23:30:41,370 cisTarget    INFO     Reading cisTarget database
+2024-07-18 23:30:41,405 cisTarget    INFO     Reading cisTarget database
+2024-07-18 23:30:41,420 cisTarget    INFO     Reading cisTarget database
+2024-07-18 23:30:41,473 cisTarget    INFO     Reading cisTarget database
+2024-07-18 23:30:41,478 cisTarget    INFO     Reading cisTarget database
+2024-07-18 23:30:41,504 cisTarget    INFO     Reading cisTarget database
+2024-07-18 23:30:41,515 cisTarget    INFO     Reading cisTarget database
+2024-07-18 23:30:41,531 cisTarget    INFO     Reading cisTarget database
+2024-07-18 23:30:41,542 cisTarget    INFO     Reading cisTarget database
+2024-07-18 23:30:41,590 cisTarget    INFO     Reading cisTarget database
+2024-07-18 23:30:41,635 cisTarget    INFO     Reading cisTarget database
+2024-07-18 23:30:41,749 cisTarget    INFO     Reading cisTarget database
+2024-07-18 23:30:41,751 cisTarget    INFO     Reading cisTarget database
+2024-07-18 23:30:41,774 cisTarget    INFO     Reading cisTarget database
+2024-07-18 23:30:41,788 cisTarget    INFO     Reading cisTarget database
+2024-07-18 23:30:41,819 cisTarget    INFO     Reading cisTarget database
+2024-07-18 23:30:41,838 cisTarget    INFO     Reading cisTarget database
+2024-07-18 23:30:41,875 cisTarget    INFO     Reading cisTarget database
+2024-07-18 23:30:41,969 cisTarget    INFO     Reading cisTarget database
+2024-07-18 23:30:42,003 cisTarget    INFO     Reading cisTarget database
+2024-07-18 23:30:42,003 cisTarget    INFO     Reading cisTarget database
+2024-07-18 23:30:42,032 cisTarget    INFO     Reading cisTarget database
+2024-07-18 23:30:42,159 cisTarget    INFO     Reading cisTarget database
+2024-07-18 23:32:51,584 cisTarget    INFO     Reading cisTarget database
+2024-07-18 23:32:51,590 cisTarget    INFO     Reading cisTarget database
+2024-07-18 23:32:51,671 cisTarget    INFO     Reading cisTarget database
+2024-07-18 23:32:51,686 cisTarget    INFO     Reading cisTarget database
+2024-07-18 23:32:51,882 cisTarget    INFO     Reading cisTarget database
+2024-07-18 23:32:51,994 cisTarget    INFO     Reading cisTarget database
+2024-07-18 23:32:52,071 cisTarget    INFO     Reading cisTarget database
+2024-07-18 23:32:52,073 cisTarget    INFO     Reading cisTarget database
+2024-07-18 23:32:52,113 cisTarget    INFO     Reading cisTarget database
+2024-07-18 23:32:52,292 cisTarget    INFO     Reading cisTarget database
+2024-07-18 23:32:52,400 cisTarget    INFO     Reading cisTarget database
+2024-07-18 23:32:52,486 cisTarget    INFO     Reading cisTarget database
+2024-07-18 23:32:52,588 cisTarget    INFO     Reading cisTarget database
+2024-07-18 23:32:52,679 cisTarget    INFO     Reading cisTarget database
+2024-07-18 23:32:52,744 cisTarget    INFO     Reading cisTarget database
+2024-07-18 23:32:52,827 cisTarget    INFO     Reading cisTarget database
+2024-07-18 23:32:52,838 cisTarget    INFO     Reading cisTarget database
+2024-07-18 23:32:52,844 cisTarget    INFO     Reading cisTarget database
+2024-07-18 23:32:52,852 cisTarget    INFO     Reading cisTarget database
+2024-07-18 23:32:52,860 cisTarget    INFO     Reading cisTarget database
+2024-07-18 23:32:52,864 cisTarget    INFO     Reading cisTarget database
+2024-07-18 23:32:52,864 cisTarget    INFO     Reading cisTarget database
+2024-07-18 23:32:52,875 cisTarget    INFO     Reading cisTarget database
+2024-07-18 23:32:52,875 cisTarget    INFO     Reading cisTarget database
+2024-07-18 23:32:52,887 cisTarget    INFO     Reading cisTarget database
+2024-07-18 23:32:52,892 cisTarget    INFO     Reading cisTarget database
+2024-07-18 23:32:52,908 cisTarget    INFO     Reading cisTarget database
+2024-07-18 23:32:52,911 cisTarget    INFO     Reading cisTarget database
+2024-07-18 23:34:46,015 cisTarget    INFO     Running cisTarget for Topics_top_3k_Topic4 which has 3000 regions
+2024-07-18 23:34:55,328 cisTarget    INFO     Annotating motifs for Topics_top_3k_Topic4
+2024-07-18 23:35:09,695 cisTarget    INFO     Getting cistromes for Topics_top_3k_Topic4
+2024-07-18 23:35:21,087 cisTarget    INFO     Running cisTarget for Topics_top_3k_Topic23 which has 3000 regions
+2024-07-18 23:35:28,656 cisTarget    INFO     Annotating motifs for Topics_top_3k_Topic23
+2024-07-18 23:35:30,541 cisTarget    INFO     Getting cistromes for Topics_top_3k_Topic23
+2024-07-18 23:35:41,787 cisTarget    INFO     Running cisTarget for Topics_top_3k_Topic16 which has 3000 regions
+Traceback (most recent call last):
+  File "/home/michal.kubacki/miniconda3/envs/scenicplusnew/bin/scenicplus", line 33, in <module>
+    sys.exit(load_entry_point('scenicplus', 'console_scripts', 'scenicplus')())
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/michal.kubacki/Downloads/scenicplus/src/scenicplus/cli/scenicplus.py", line 1137, in main
+    args.func(args)
+  File "/home/michal.kubacki/Downloads/scenicplus/src/scenicplus/cli/scenicplus.py", line 386, in motif_enrichment_cistarget
+    run_motif_enrichment_cistarget(
+  File "/home/michal.kubacki/Downloads/scenicplus/src/scenicplus/cli/commands.py", line 156, in run_motif_enrichment_cistarget
+    cistarget_results: List[cisTarget] = joblib.Parallel(
+                                         ^^^^^^^^^^^^^^^^
+  File "/home/michal.kubacki/miniconda3/envs/scenicplusnew/lib/python3.11/site-packages/joblib/parallel.py", line 1952, in __call__
+    return output if self.return_generator else list(output)
+                                                ^^^^^^^^^^^^
+  File "/home/michal.kubacki/miniconda3/envs/scenicplusnew/lib/python3.11/site-packages/joblib/parallel.py", line 1595, in _get_outputs
+    yield from self._retrieve()
+  File "/home/michal.kubacki/miniconda3/envs/scenicplusnew/lib/python3.11/site-packages/joblib/parallel.py", line 1699, in _retrieve
+    self._raise_error_fast()
+  File "/home/michal.kubacki/miniconda3/envs/scenicplusnew/lib/python3.11/site-packages/joblib/parallel.py", line 1734, in _raise_error_fast
+    error_job.get_result(self.timeout)
+  File "/home/michal.kubacki/miniconda3/envs/scenicplusnew/lib/python3.11/site-packages/joblib/parallel.py", line 736, in get_result
+    return self._return_or_raise()
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/michal.kubacki/miniconda3/envs/scenicplusnew/lib/python3.11/site-packages/joblib/parallel.py", line 754, in _return_or_raise
+    raise self._result
+joblib.externals.loky.process_executor.TerminatedWorkerError: A worker process managed by the executor was unexpectedly terminated. This could be caused by a segmentation fault while calling the function or by an excessive memory usage causing the Operating System to kill the worker.
+
+The exit codes of the workers are {SIGKILL(-9)}
+[Thu Jul 18 23:36:38 2024]
+Error in rule motif_enrichment_cistarget:
+    jobid: 9
+    input: /group/testa/michal.kubacki/herring/output_hg19_all_cells/region_sets, /group/testa/michal.kubacki/herring/output_hg19_all_cells/cistarget_motif_dataset.regions_vs_motifs.rankings.feather, /group/testa/michal.kubacki/herring/scenic_input/motifs-v10nr_clust-nr.hgnc-m0.001-o0.0.tbl
+    output: /group/testa/michal.kubacki/herring/scenic_all_cells/ctx_results.hdf5, /group/testa/michal.kubacki/herring/scenic_all_cells/ctx_results.html
+    shell:
+        
+            scenicplus grn_inference motif_enrichment_cistarget                 --region_set_folder /group/testa/michal.kubacki/herring/output_hg19_all_cells/region_sets                 --cistarget_db_fname /group/testa/michal.kubacki/herring/output_hg19_all_cells/cistarget_motif_dataset.regions_vs_motifs.rankings.feather                 --output_fname_cistarget_result /group/testa/michal.kubacki/herring/scenic_all_cells/ctx_results.hdf5                 --temp_dir /group/testa/michal.kubacki/herring/output_hg19_all_cells/tmp                 --species homo_sapiens                 --fr_overlap_w_ctx_db 0.4                 --auc_threshold 0.005                 --nes_threshold 3.0                 --rank_threshold 0.05                 --path_to_motif_annotations /group/testa/michal.kubacki/herring/scenic_input/motifs-v10nr_clust-nr.hgnc-m0.001-o0.0.tbl                 --annotation_version v10nr_clust                 --motif_similarity_fdr 0.001                 --orthologous_identity_threshold 0.0                 --annotations_to_use Direct_annot Orthology_annot                 --write_html                 --output_fname_cistarget_html /group/testa/michal.kubacki/herring/scenic_all_cells/ctx_results.html                 --n_cpu 96
+        
+        (one of the commands exited with non-zero exit code; note that snakemake uses bash strict mode!)
+
+Shutting down, this might take some time.
+Exiting because a job execution failed. Look above for error message
+Complete log: .snakemake/log/2024-07-18T231628.579638.snakemake.log
+WorkflowError:
+At least one job did not complete successfully.
+slurmstepd: error: Detected 1 oom-kill event(s) in StepId=13717370.batch. Some of your processes may have been killed by the cgroup out-of-memory handler.
+slurmstepd: error: _cgroup_procs_check: failed on path /sys/fs/cgroup/memory/slurm/uid_10666/job_13717370/step_batch/cgroup.procs: No such file or directory
+slurmstepd: error: unable to read '/sys/fs/cgroup/memory/slurm/uid_10666/job_13717370/step_batch/cgroup.procs'

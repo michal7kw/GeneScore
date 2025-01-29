@@ -1,0 +1,52 @@
+Building DAG of jobs...
+Using shell: /usr/bin/bash
+Provided cores: 32
+Rules claiming more threads will be scaled down.
+Job stats:
+job                count
+---------------  -------
+AUCell_direct          1
+AUCell_extended        1
+all                    1
+eGRN_direct            1
+eGRN_extended          1
+scplus_mudata          1
+tf_to_gene             1
+total                  7
+
+Select jobs to execute...
+Execute 1 jobs...
+
+[Mon Jul  1 10:46:34 2024]
+localrule tf_to_gene:
+    input: /group/testa/michal.kubacki/herring/scenic_all_excitatory_all_ages/ACC_GEX.h5mu, /group/testa/michal.kubacki/herring/scenic_all_excitatory_all_ages/tf_names.txt
+    output: /group/testa/michal.kubacki/herring/scenic_all_excitatory_all_ages/tf_to_gene_adj.tsv
+    jobid: 5
+    reason: Missing output files: /group/testa/michal.kubacki/herring/scenic_all_excitatory_all_ages/tf_to_gene_adj.tsv
+    threads: 32
+    resources: tmpdir=/localscratch/13136352.michal.kubacki
+
+[Mon Jul  1 11:14:54 2024]
+Finished job 5.
+1 of 7 steps (14%) done
+Select jobs to execute...
+Execute 1 jobs...
+
+[Mon Jul  1 11:14:54 2024]
+localrule eGRN_direct:
+    input: /group/testa/michal.kubacki/herring/scenic_all_excitatory_all_ages/tf_to_gene_adj.tsv, /group/testa/michal.kubacki/herring/scenic_all_excitatory_all_ages/region_to_gene_adj.tsv, /group/testa/michal.kubacki/herring/scenic_all_excitatory_all_ages/cistromes_direct.h5ad, /scratch/michal.kubacki/herring/output_hg19_all_excitatory_all_ages/cistarget_motif_dataset.regions_vs_motifs.rankings.feather
+    output: /group/testa/michal.kubacki/herring/scenic_all_excitatory_all_ages/eRegulon_direct.tsv
+    jobid: 4
+    reason: Missing output files: /group/testa/michal.kubacki/herring/scenic_all_excitatory_all_ages/eRegulon_direct.tsv; Input files updated by another job: /group/testa/michal.kubacki/herring/scenic_all_excitatory_all_ages/tf_to_gene_adj.tsv
+    threads: 32
+    resources: tmpdir=/localscratch/13136352.michal.kubacki
+
+Waiting at most 5 seconds for missing files.
+MissingOutputException in rule eGRN_direct in file /home/michal.kubacki/Githubs/Re-MEND/code/External_Datasets/GeneSet_Derivation/Herring_scenic/scplus_pipeline/Snakemake/workflow/Snakefile, line 311:
+Job 4  completed successfully, but some output files are missing. Missing files after 5 seconds. This might be due to filesystem latency. If that is the case, consider to increase the wait time with --latency-wait:
+/group/testa/michal.kubacki/herring/scenic_all_excitatory_all_ages/eRegulon_direct.tsv
+Shutting down, this might take some time.
+Exiting because a job execution failed. Look above for error message
+Complete log: .snakemake/log/2024-07-01T104615.021796.snakemake.log
+WorkflowError:
+At least one job did not complete successfully.

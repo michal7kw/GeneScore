@@ -1,0 +1,5 @@
+Building DAG of jobs...
+MissingInputException in rule all in file /home/michal.kubacki/Githubs/Re-MEND/code/External_Datasets/GeneSet_Derivation/Herring_scenic/scplus_pipeline/Snakemake/workflow/Snakefile, line 10:
+Missing input files for rule all:
+    affected files:
+        /scratch/michal.kubacki/herring/scenic_out/scplus_mdata.h5mu

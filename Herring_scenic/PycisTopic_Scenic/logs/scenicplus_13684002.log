@@ -1,0 +1,11 @@
+INFO: localdir at /localscratch/13684002.michal.kubacki
+INFO: your job will run on local system.
+Assuming unrestricted shared filesystem usage for local execution.
+Building DAG of jobs...
+MissingInputException in rule prepare_GEX_ACC_multiome in file /home/michal.kubacki/Githubs/Re-MEND/code/External_Datasets/GeneSet_Derivation/Herring_scenic/scplus_pipeline/Snakemake/workflow/Snakefile, line 16:
+Missing input files for rule prepare_GEX_ACC_multiome:
+    output: /group/testa/michal.kubacki/herring/scenic_all_inhibitory/ACC_GEX.h5mu
+    affected files:
+        /group/testa/michal.kubacki/herring/output_hg19_all_inhibitory/modified_adata.h5ad
+slurmstepd: error: _cgroup_procs_check: failed on path /sys/fs/cgroup/memory/slurm/uid_10666/job_13684002/step_batch/cgroup.procs: No such file or directory
+slurmstepd: error: unable to read '/sys/fs/cgroup/memory/slurm/uid_10666/job_13684002/step_batch/cgroup.procs'

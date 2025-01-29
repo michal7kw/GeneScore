@@ -1,0 +1,492 @@
+INFO: localdir at /localscratch/13123999.michal.kubacki
+INFO: your job will run on local system.
+Assuming unrestricted shared filesystem usage for local execution.
+Building DAG of jobs...
+Using shell: /usr/bin/bash
+Provided cores: 32
+Rules claiming more threads will be scaled down.
+Job stats:
+job                            count
+---------------------------  -------
+AUCell_direct                      1
+AUCell_extended                    1
+all                                1
+download_genome_annotations        1
+eGRN_direct                        1
+eGRN_extended                      1
+get_search_space                   1
+motif_enrichment_cistarget         1
+motif_enrichment_dem               1
+prepare_GEX_ACC_multiome           1
+prepare_menr                       1
+region_to_gene                     1
+scplus_mudata                      1
+tf_to_gene                         1
+total                             14
+
+Select jobs to execute...
+Execute 1 jobs...
+
+[Fri Jun 28 07:37:09 2024]
+localrule motif_enrichment_cistarget:
+    input: /group/testa/michal.kubacki/herring/output_hg19_all_excitatory_trimmed/region_sets, /scratch/michal.kubacki/herring/output_hg19_all_excitatory_trimmed/cistarget_motif_dataset.regions_vs_motifs.rankings.feather, /group/testa/michal.kubacki/herring/scenic_input/motifs-v9-nr.hgnc-m0.001-o0.0.tbl
+    output: /group/testa/michal.kubacki/herring/scenic_all_excitatory_trimmed/ctx_results.hdf5, /group/testa/michal.kubacki/herring/scenic_all_excitatory_trimmed/ctx_results.html
+    jobid: 9
+    reason: Forced execution
+    threads: 32
+    resources: tmpdir=/localscratch/13123999.michal.kubacki
+
+2024-06-28 07:38:37,902 SCENIC+      INFO     Reading region sets from: /group/testa/michal.kubacki/herring/output_hg19_all_excitatory_trimmed/region_sets
+2024-06-28 07:38:37,914 SCENIC+      INFO     Reading all .bed files in: Topics_top_3k
+2024-06-28 07:38:39,453 SCENIC+      INFO     Reading all .bed files in: DARs_cell_type
+2024-06-28 07:38:39,574 SCENIC+      INFO     Reading all .bed files in: Topics_otsu
+2024-06-28 07:43:51,672 cisTarget    INFO     Reading cisTarget database
+2024-06-28 07:43:51,672 cisTarget    INFO     Reading cisTarget database
+2024-06-28 07:43:51,682 cisTarget    INFO     Reading cisTarget database
+2024-06-28 07:43:51,682 cisTarget    INFO     Reading cisTarget database
+2024-06-28 07:43:51,694 cisTarget    INFO     Reading cisTarget database
+2024-06-28 07:43:51,706 cisTarget    INFO     Reading cisTarget database
+2024-06-28 07:43:51,710 cisTarget    INFO     Reading cisTarget database
+2024-06-28 07:43:51,713 cisTarget    INFO     Reading cisTarget database
+2024-06-28 07:43:51,816 cisTarget    INFO     Reading cisTarget database
+2024-06-28 07:43:51,832 cisTarget    INFO     Reading cisTarget database
+2024-06-28 07:43:51,945 cisTarget    INFO     Reading cisTarget database
+2024-06-28 07:43:52,001 cisTarget    INFO     Reading cisTarget database
+2024-06-28 07:43:52,028 cisTarget    INFO     Reading cisTarget database
+2024-06-28 07:43:52,048 cisTarget    INFO     Reading cisTarget database
+2024-06-28 07:43:52,110 cisTarget    INFO     Reading cisTarget database
+2024-06-28 07:43:52,126 cisTarget    INFO     Reading cisTarget database
+2024-06-28 07:43:52,171 cisTarget    INFO     Reading cisTarget database
+2024-06-28 07:43:52,220 cisTarget    INFO     Reading cisTarget database
+2024-06-28 07:43:52,275 cisTarget    INFO     Reading cisTarget database
+2024-06-28 07:43:52,281 cisTarget    INFO     Reading cisTarget database
+2024-06-28 07:43:52,298 cisTarget    INFO     Reading cisTarget database
+2024-06-28 07:43:52,307 cisTarget    INFO     Reading cisTarget database
+2024-06-28 07:43:52,311 cisTarget    INFO     Reading cisTarget database
+2024-06-28 07:43:52,315 cisTarget    INFO     Reading cisTarget database
+2024-06-28 07:43:52,319 cisTarget    INFO     Reading cisTarget database
+2024-06-28 07:43:52,323 cisTarget    INFO     Reading cisTarget database
+2024-06-28 07:43:52,329 cisTarget    INFO     Reading cisTarget database
+2024-06-28 07:43:52,332 cisTarget    INFO     Reading cisTarget database
+2024-06-28 07:43:52,339 cisTarget    INFO     Reading cisTarget database
+2024-06-28 07:43:52,347 cisTarget    INFO     Reading cisTarget database
+2024-06-28 07:43:52,354 cisTarget    INFO     Reading cisTarget database
+2024-06-28 07:43:52,439 cisTarget    INFO     Reading cisTarget database
+2024-06-28 07:44:17,845 cisTarget    INFO     Running cisTarget for Topics_top_3k_Topic11 which has 3000 regions
+2024-06-28 07:44:17,898 cisTarget    INFO     Running cisTarget for Topics_top_3k_Topic32 which has 3000 regions
+2024-06-28 07:44:17,949 cisTarget    INFO     Running cisTarget for Topics_top_3k_Topic12 which has 3000 regions
+2024-06-28 07:44:17,969 cisTarget    INFO     Running cisTarget for Topics_top_3k_Topic19 which has 3000 regions
+2024-06-28 07:44:17,993 cisTarget    INFO     Running cisTarget for Topics_top_3k_Topic4 which has 3000 regions
+2024-06-28 07:44:17,998 cisTarget    INFO     Running cisTarget for Topics_top_3k_Topic28 which has 3000 regions
+2024-06-28 07:44:18,010 cisTarget    INFO     Running cisTarget for Topics_top_3k_Topic10 which has 3000 regions
+2024-06-28 07:44:18,019 cisTarget    INFO     Running cisTarget for Topics_top_3k_Topic17 which has 3000 regions
+2024-06-28 07:44:18,029 cisTarget    INFO     Running cisTarget for Topics_top_3k_Topic7 which has 3000 regions
+2024-06-28 07:44:18,060 cisTarget    INFO     Running cisTarget for Topics_top_3k_Topic33 which has 3000 regions
+2024-06-28 07:44:18,080 cisTarget    INFO     Running cisTarget for Topics_top_3k_Topic39 which has 3000 regions
+2024-06-28 07:44:18,090 cisTarget    INFO     Running cisTarget for Topics_top_3k_Topic36 which has 3000 regions
+2024-06-28 07:44:18,090 cisTarget    INFO     Running cisTarget for Topics_top_3k_Topic25 which has 3000 regions
+2024-06-28 07:44:18,094 cisTarget    INFO     Running cisTarget for Topics_top_3k_Topic6 which has 3000 regions
+2024-06-28 07:44:18,113 cisTarget    INFO     Running cisTarget for Topics_top_3k_Topic34 which has 3000 regions
+2024-06-28 07:44:18,116 cisTarget    INFO     Running cisTarget for Topics_top_3k_Topic30 which has 3000 regions
+2024-06-28 07:44:18,117 cisTarget    INFO     Running cisTarget for Topics_top_3k_Topic21 which has 3000 regions
+2024-06-28 07:44:18,117 cisTarget    INFO     Running cisTarget for Topics_top_3k_Topic31 which has 3000 regions
+2024-06-28 07:44:18,125 cisTarget    INFO     Running cisTarget for Topics_top_3k_Topic29 which has 3000 regions
+2024-06-28 07:44:18,137 cisTarget    INFO     Running cisTarget for Topics_top_3k_Topic3 which has 3000 regions
+2024-06-28 07:44:18,140 cisTarget    INFO     Running cisTarget for Topics_top_3k_Topic14 which has 3000 regions
+2024-06-28 07:44:18,148 cisTarget    INFO     Running cisTarget for Topics_top_3k_Topic15 which has 3000 regions
+2024-06-28 07:44:18,157 cisTarget    INFO     Running cisTarget for Topics_top_3k_Topic23 which has 3000 regions
+2024-06-28 07:44:18,169 cisTarget    INFO     Running cisTarget for Topics_top_3k_Topic8 which has 3000 regions
+2024-06-28 07:44:18,175 cisTarget    INFO     Running cisTarget for Topics_top_3k_Topic18 which has 3000 regions
+2024-06-28 07:44:18,179 cisTarget    INFO     Running cisTarget for Topics_top_3k_Topic27 which has 3000 regions
+2024-06-28 07:44:18,185 cisTarget    INFO     Running cisTarget for Topics_top_3k_Topic5 which has 3000 regions
+2024-06-28 07:44:18,187 cisTarget    INFO     Running cisTarget for Topics_top_3k_Topic38 which has 3000 regions
+2024-06-28 07:44:18,191 cisTarget    INFO     Running cisTarget for Topics_top_3k_Topic37 which has 3000 regions
+2024-06-28 07:44:18,201 cisTarget    INFO     Running cisTarget for Topics_top_3k_Topic40 which has 3000 regions
+2024-06-28 07:44:18,204 cisTarget    INFO     Running cisTarget for Topics_top_3k_Topic16 which has 3000 regions
+2024-06-28 07:44:18,259 cisTarget    INFO     Running cisTarget for Topics_top_3k_Topic13 which has 3000 regions
+2024-06-28 07:44:25,007 cisTarget    INFO     Annotating motifs for Topics_top_3k_Topic28
+2024-06-28 07:44:25,292 cisTarget    INFO     Annotating motifs for Topics_top_3k_Topic4
+2024-06-28 07:44:25,301 cisTarget    INFO     Annotating motifs for Topics_top_3k_Topic39
+2024-06-28 07:44:25,792 cisTarget    INFO     Annotating motifs for Topics_top_3k_Topic12
+2024-06-28 07:44:25,941 cisTarget    INFO     Annotating motifs for Topics_top_3k_Topic29
+2024-06-28 07:44:26,146 cisTarget    INFO     Annotating motifs for Topics_top_3k_Topic7
+2024-06-28 07:44:26,315 cisTarget    INFO     Annotating motifs for Topics_top_3k_Topic36
+2024-06-28 07:44:26,327 cisTarget    INFO     Annotating motifs for Topics_top_3k_Topic17
+2024-06-28 07:44:26,391 cisTarget    INFO     Annotating motifs for Topics_top_3k_Topic11
+2024-06-28 07:44:26,517 cisTarget    INFO     Annotating motifs for Topics_top_3k_Topic19
+2024-06-28 07:44:26,604 cisTarget    INFO     Annotating motifs for Topics_top_3k_Topic31
+2024-06-28 07:44:26,633 cisTarget    INFO     Annotating motifs for Topics_top_3k_Topic8
+2024-06-28 07:44:26,642 cisTarget    INFO     Annotating motifs for Topics_top_3k_Topic14
+2024-06-28 07:44:26,846 cisTarget    INFO     Annotating motifs for Topics_top_3k_Topic32
+2024-06-28 07:44:26,868 cisTarget    INFO     Annotating motifs for Topics_top_3k_Topic6
+2024-06-28 07:44:26,968 cisTarget    INFO     Annotating motifs for Topics_top_3k_Topic33
+2024-06-28 07:44:26,975 cisTarget    INFO     Annotating motifs for Topics_top_3k_Topic30
+2024-06-28 07:44:27,077 cisTarget    INFO     Annotating motifs for Topics_top_3k_Topic27
+2024-06-28 07:44:27,120 cisTarget    INFO     Annotating motifs for Topics_top_3k_Topic3
+2024-06-28 07:44:27,147 cisTarget    INFO     Annotating motifs for Topics_top_3k_Topic21
+2024-06-28 07:44:27,150 cisTarget    INFO     Annotating motifs for Topics_top_3k_Topic37
+2024-06-28 07:44:27,206 cisTarget    INFO     Annotating motifs for Topics_top_3k_Topic40
+2024-06-28 07:44:27,238 cisTarget    INFO     Annotating motifs for Topics_top_3k_Topic18
+2024-06-28 07:44:27,318 cisTarget    INFO     Getting cistromes for Topics_top_3k_Topic28
+2024-06-28 07:44:27,362 cisTarget    INFO     Annotating motifs for Topics_top_3k_Topic13
+2024-06-28 07:44:27,405 cisTarget    INFO     Getting cistromes for Topics_top_3k_Topic4
+2024-06-28 07:44:27,490 cisTarget    INFO     Getting cistromes for Topics_top_3k_Topic39
+2024-06-28 07:44:27,502 cisTarget    INFO     Getting cistromes for Topics_top_3k_Topic12
+2024-06-28 07:44:27,586 cisTarget    INFO     Reading cisTarget database
+2024-06-28 07:44:27,597 cisTarget    INFO     Getting cistromes for Topics_top_3k_Topic29
+2024-06-28 07:44:27,634 cisTarget    INFO     Annotating motifs for Topics_top_3k_Topic34
+2024-06-28 07:44:27,789 cisTarget    INFO     Reading cisTarget database
+2024-06-28 07:44:27,831 cisTarget    INFO     Reading cisTarget database
+2024-06-28 07:44:27,873 cisTarget    INFO     Reading cisTarget database
+2024-06-28 07:44:27,910 cisTarget    INFO     Annotating motifs for Topics_top_3k_Topic16
+2024-06-28 07:44:27,920 cisTarget    INFO     Annotating motifs for Topics_top_3k_Topic15
+2024-06-28 07:44:27,950 cisTarget    INFO     Getting cistromes for Topics_top_3k_Topic36
+2024-06-28 07:44:27,958 cisTarget    INFO     Reading cisTarget database
+2024-06-28 07:44:27,974 cisTarget    INFO     Getting cistromes for Topics_top_3k_Topic7
+2024-06-28 07:44:27,993 cisTarget    INFO     Annotating motifs for Topics_top_3k_Topic5
+2024-06-28 07:44:28,035 cisTarget    INFO     Getting cistromes for Topics_top_3k_Topic17
+2024-06-28 07:44:28,097 cisTarget    INFO     Getting cistromes for Topics_top_3k_Topic11
+2024-06-28 07:44:28,201 cisTarget    INFO     Annotating motifs for Topics_top_3k_Topic10
+2024-06-28 07:44:28,248 cisTarget    INFO     Annotating motifs for Topics_top_3k_Topic38
+2024-06-28 07:44:28,271 cisTarget    INFO     Reading cisTarget database
+2024-06-28 07:44:28,298 cisTarget    INFO     Annotating motifs for Topics_top_3k_Topic23
+2024-06-28 07:44:28,305 cisTarget    INFO     Getting cistromes for Topics_top_3k_Topic31
+2024-06-28 07:44:28,326 cisTarget    INFO     Getting cistromes for Topics_top_3k_Topic8
+2024-06-28 07:44:28,382 cisTarget    INFO     Getting cistromes for Topics_top_3k_Topic19
+2024-06-28 07:44:28,391 cisTarget    INFO     Reading cisTarget database
+2024-06-28 07:44:28,406 cisTarget    INFO     Getting cistromes for Topics_top_3k_Topic14
+2024-06-28 07:44:28,459 cisTarget    INFO     Reading cisTarget database
+2024-06-28 07:44:28,493 cisTarget    INFO     Annotating motifs for Topics_top_3k_Topic25
+2024-06-28 07:44:28,570 cisTarget    INFO     Reading cisTarget database
+2024-06-28 07:44:28,628 cisTarget    INFO     Getting cistromes for Topics_top_3k_Topic32
+2024-06-28 07:44:28,643 cisTarget    INFO     Getting cistromes for Topics_top_3k_Topic6
+2024-06-28 07:44:28,654 cisTarget    INFO     Reading cisTarget database
+2024-06-28 07:44:28,703 cisTarget    INFO     Reading cisTarget database
+2024-06-28 07:44:28,849 cisTarget    INFO     Getting cistromes for Topics_top_3k_Topic30
+2024-06-28 07:44:28,873 cisTarget    INFO     Getting cistromes for Topics_top_3k_Topic21
+2024-06-28 07:44:28,912 cisTarget    INFO     Getting cistromes for Topics_top_3k_Topic27
+2024-06-28 07:44:28,935 cisTarget    INFO     Reading cisTarget database
+2024-06-28 07:44:28,949 cisTarget    INFO     Getting cistromes for Topics_top_3k_Topic37
+2024-06-28 07:44:29,024 cisTarget    INFO     Getting cistromes for Topics_top_3k_Topic33
+2024-06-28 07:44:29,067 cisTarget    INFO     Reading cisTarget database
+2024-06-28 07:44:29,120 cisTarget    INFO     Reading cisTarget database
+2024-06-28 07:44:29,153 cisTarget    INFO     Reading cisTarget database
+2024-06-28 07:44:29,242 cisTarget    INFO     Reading cisTarget database
+2024-06-28 07:44:29,267 cisTarget    INFO     Getting cistromes for Topics_top_3k_Topic40
+2024-06-28 07:44:29,356 cisTarget    INFO     Getting cistromes for Topics_top_3k_Topic18
+2024-06-28 07:44:29,452 cisTarget    INFO     Reading cisTarget database
+2024-06-28 07:44:29,502 cisTarget    INFO     Reading cisTarget database
+2024-06-28 07:44:29,627 cisTarget    INFO     Reading cisTarget database
+2024-06-28 07:44:29,756 cisTarget    INFO     Getting cistromes for Topics_top_3k_Topic16
+2024-06-28 07:44:29,788 cisTarget    INFO     Getting cistromes for Topics_top_3k_Topic15
+2024-06-28 07:44:29,791 cisTarget    INFO     Getting cistromes for Topics_top_3k_Topic13
+2024-06-28 07:44:29,820 cisTarget    INFO     Getting cistromes for Topics_top_3k_Topic34
+2024-06-28 07:44:29,831 cisTarget    INFO     Getting cistromes for Topics_top_3k_Topic3
+2024-06-28 07:44:29,924 cisTarget    INFO     Reading cisTarget database
+2024-06-28 07:44:30,098 cisTarget    INFO     Reading cisTarget database
+2024-06-28 07:44:30,219 cisTarget    INFO     Reading cisTarget database
+2024-06-28 07:44:30,334 cisTarget    INFO     Getting cistromes for Topics_top_3k_Topic38
+2024-06-28 07:44:30,400 cisTarget    INFO     Reading cisTarget database
+2024-06-28 07:44:30,489 cisTarget    INFO     Getting cistromes for Topics_top_3k_Topic25
+2024-06-28 07:44:30,504 cisTarget    INFO     Reading cisTarget database
+2024-06-28 07:44:30,594 cisTarget    INFO     Getting cistromes for Topics_top_3k_Topic10
+2024-06-28 07:44:30,710 cisTarget    INFO     Getting cistromes for Topics_top_3k_Topic5
+2024-06-28 07:44:30,907 cisTarget    INFO     Reading cisTarget database
+2024-06-28 07:44:31,090 cisTarget    INFO     Reading cisTarget database
+2024-06-28 07:44:31,305 cisTarget    INFO     Reading cisTarget database
+2024-06-28 07:44:31,549 cisTarget    INFO     Reading cisTarget database
+2024-06-28 07:44:31,568 cisTarget    INFO     Reading cisTarget database
+2024-06-28 07:44:31,818 cisTarget    INFO     Reading cisTarget database
+2024-06-28 07:44:32,241 cisTarget    INFO     Getting cistromes for Topics_top_3k_Topic23
+2024-06-28 07:44:32,248 cisTarget    INFO     Reading cisTarget database
+2024-06-28 07:44:35,335 cisTarget    INFO     Reading cisTarget database
+2024-06-28 07:44:39,070 cisTarget    INFO     Running cisTarget for Topics_top_3k_Topic9 which has 3000 regions
+2024-06-28 07:44:40,672 cisTarget    INFO     Running cisTarget for Topics_otsu_Topic23 which has 4746 regions
+2024-06-28 07:44:41,370 cisTarget    INFO     Running cisTarget for Topics_top_3k_Topic22 which has 3000 regions
+2024-06-28 07:44:43,029 cisTarget    INFO     Annotating motifs for Topics_top_3k_Topic9
+2024-06-28 07:44:44,397 cisTarget    INFO     Annotating motifs for Topics_top_3k_Topic22
+2024-06-28 07:44:45,378 cisTarget    INFO     Running cisTarget for Topics_top_3k_Topic1 which has 3000 regions
+2024-06-28 07:44:45,617 cisTarget    INFO     Annotating motifs for Topics_otsu_Topic23
+2024-06-28 07:44:45,916 cisTarget    INFO     Running cisTarget for Topics_top_3k_Topic26 which has 3000 regions
+2024-06-28 07:44:45,918 cisTarget    INFO     Running cisTarget for Topics_top_3k_Topic24 which has 3000 regions
+2024-06-28 07:44:45,995 cisTarget    INFO     Running cisTarget for Topics_top_3k_Topic2 which has 3000 regions
+2024-06-28 07:44:46,073 cisTarget    INFO     Running cisTarget for Topics_top_3k_Topic35 which has 3000 regions
+2024-06-28 07:44:46,220 cisTarget    INFO     Running cisTarget for Topics_top_3k_Topic20 which has 3000 regions
+2024-06-28 07:44:46,298 cisTarget    INFO     Getting cistromes for Topics_top_3k_Topic22
+2024-06-28 07:44:46,432 cisTarget    INFO     Running cisTarget for DARs_cell_type_L4_RORB which has 8457 regions
+2024-06-28 07:44:46,815 cisTarget    INFO     Reading cisTarget database
+2024-06-28 07:44:46,841 cisTarget    INFO     Getting cistromes for Topics_top_3k_Topic9
+2024-06-28 07:44:47,098 cisTarget    INFO     Running cisTarget for Topics_otsu_Topic15 which has 8611 regions
+2024-06-28 07:44:47,245 cisTarget    INFO     Running cisTarget for Topics_otsu_Topic33 which has 9867 regions
+2024-06-28 07:44:47,270 cisTarget    INFO     Running cisTarget for Topics_otsu_Topic18 which has 7552 regions
+2024-06-28 07:44:47,276 cisTarget    INFO     Running cisTarget for Topics_otsu_Topic25 which has 8628 regions
+2024-06-28 07:44:47,493 cisTarget    INFO     Running cisTarget for Topics_otsu_Topic19 which has 11437 regions
+2024-06-28 07:44:47,518 cisTarget    INFO     Running cisTarget for Topics_otsu_Topic31 which has 14148 regions
+2024-06-28 07:44:47,532 cisTarget    INFO     Running cisTarget for Topics_otsu_Topic40 which has 10105 regions
+2024-06-28 07:44:47,535 cisTarget    INFO     Running cisTarget for Topics_otsu_Topic30 which has 12345 regions
+2024-06-28 07:44:47,568 cisTarget    INFO     Running cisTarget for Topics_otsu_Topic10 which has 9945 regions
+2024-06-28 07:44:47,574 cisTarget    INFO     Running cisTarget for Topics_otsu_Topic37 which has 8597 regions
+2024-06-28 07:44:47,824 cisTarget    INFO     Running cisTarget for Topics_otsu_Topic3 which has 12480 regions
+2024-06-28 07:44:48,040 cisTarget    INFO     Running cisTarget for Topics_otsu_Topic4 which has 16177 regions
+2024-06-28 07:44:48,208 cisTarget    INFO     Running cisTarget for Topics_otsu_Topic39 which has 17813 regions
+2024-06-28 07:44:48,232 cisTarget    INFO     Running cisTarget for Topics_otsu_Topic16 which has 16538 regions
+2024-06-28 07:44:48,342 cisTarget    INFO     Running cisTarget for DARs_cell_type_L2-3_CUX2 which has 16825 regions
+2024-06-28 07:44:48,446 cisTarget    INFO     Running cisTarget for Topics_otsu_Topic6 which has 16857 regions
+2024-06-28 07:44:48,500 cisTarget    INFO     Running cisTarget for Topics_otsu_Topic17 which has 19012 regions
+2024-06-28 07:44:48,506 cisTarget    INFO     Running cisTarget for Topics_otsu_Topic11 which has 18449 regions
+2024-06-28 07:44:48,508 cisTarget    INFO     Running cisTarget for Topics_otsu_Topic36 which has 15032 regions
+2024-06-28 07:44:48,667 cisTarget    INFO     Running cisTarget for Topics_otsu_Topic12 which has 16772 regions
+2024-06-28 07:44:48,740 cisTarget    INFO     Running cisTarget for Topics_otsu_Topic29 which has 16389 regions
+2024-06-28 07:44:48,820 cisTarget    INFO     Running cisTarget for Topics_otsu_Topic34 which has 8863 regions
+2024-06-28 07:44:49,560 cisTarget    INFO     Annotating motifs for Topics_top_3k_Topic1
+2024-06-28 07:44:50,048 cisTarget    INFO     Annotating motifs for Topics_top_3k_Topic26
+2024-06-28 07:44:50,507 cisTarget    INFO     Reading cisTarget database
+2024-06-28 07:44:50,573 cisTarget    INFO     Annotating motifs for Topics_top_3k_Topic2
+2024-06-28 07:44:50,574 cisTarget    INFO     Annotating motifs for Topics_top_3k_Topic24
+2024-06-28 07:44:50,962 cisTarget    INFO     Annotating motifs for Topics_top_3k_Topic35
+2024-06-28 07:44:51,239 cisTarget    INFO     Annotating motifs for Topics_top_3k_Topic20
+2024-06-28 07:44:51,919 cisTarget    INFO     Getting cistromes for Topics_otsu_Topic23
+2024-06-28 07:44:52,152 cisTarget    INFO     Getting cistromes for Topics_top_3k_Topic1
+2024-06-28 07:44:52,351 cisTarget    INFO     Getting cistromes for Topics_top_3k_Topic26
+2024-06-28 07:44:52,527 cisTarget    INFO     Reading cisTarget database
+2024-06-28 07:44:52,547 cisTarget    INFO     Getting cistromes for Topics_top_3k_Topic24
+2024-06-28 07:44:52,647 cisTarget    INFO     Reading cisTarget database
+2024-06-28 07:44:52,824 cisTarget    INFO     Getting cistromes for Topics_top_3k_Topic2
+2024-06-28 07:44:52,870 cisTarget    INFO     Reading cisTarget database
+2024-06-28 07:44:53,107 cisTarget    INFO     Getting cistromes for Topics_top_3k_Topic20
+2024-06-28 07:44:53,141 cisTarget    INFO     Getting cistromes for Topics_top_3k_Topic35
+2024-06-28 07:44:53,240 cisTarget    INFO     Reading cisTarget database
+2024-06-28 07:44:53,276 cisTarget    INFO     Reading cisTarget database
+2024-06-28 07:44:53,404 cisTarget    INFO     Reading cisTarget database
+2024-06-28 07:44:54,223 cisTarget    INFO     Annotating motifs for DARs_cell_type_L4_RORB
+2024-06-28 07:44:55,238 cisTarget    INFO     Annotating motifs for Topics_otsu_Topic25
+2024-06-28 07:44:55,326 cisTarget    INFO     Annotating motifs for Topics_otsu_Topic33
+2024-06-28 07:44:55,356 cisTarget    INFO     Annotating motifs for Topics_otsu_Topic37
+2024-06-28 07:44:55,496 cisTarget    INFO     Annotating motifs for Topics_otsu_Topic36
+2024-06-28 07:44:55,547 cisTarget    INFO     Running cisTarget for Topics_otsu_Topic38 which has 6554 regions
+2024-06-28 07:44:55,915 cisTarget    INFO     Annotating motifs for Topics_otsu_Topic19
+2024-06-28 07:44:56,607 cisTarget    INFO     Getting cistromes for DARs_cell_type_L4_RORB
+2024-06-28 07:44:56,739 cisTarget    INFO     Annotating motifs for Topics_otsu_Topic16
+2024-06-28 07:44:56,850 cisTarget    INFO     Annotating motifs for Topics_otsu_Topic4
+2024-06-28 07:44:57,216 cisTarget    INFO     Annotating motifs for Topics_otsu_Topic39
+2024-06-28 07:44:57,229 cisTarget    INFO     Getting cistromes for Topics_otsu_Topic36
+2024-06-28 07:44:57,469 cisTarget    INFO     Reading cisTarget database
+2024-06-28 07:44:57,481 cisTarget    INFO     Annotating motifs for Topics_otsu_Topic18
+2024-06-28 07:44:57,628 cisTarget    INFO     Annotating motifs for Topics_otsu_Topic15
+2024-06-28 07:44:57,794 cisTarget    INFO     Getting cistromes for Topics_otsu_Topic25
+2024-06-28 07:44:57,805 cisTarget    INFO     Running cisTarget for Topics_otsu_Topic27 which has 12995 regions
+2024-06-28 07:44:57,860 cisTarget    INFO     Annotating motifs for Topics_otsu_Topic34
+2024-06-28 07:44:57,874 cisTarget    INFO     Getting cistromes for Topics_otsu_Topic37
+2024-06-28 07:44:57,935 cisTarget    INFO     Annotating motifs for Topics_otsu_Topic12
+2024-06-28 07:44:58,046 cisTarget    INFO     Annotating motifs for DARs_cell_type_L2-3_CUX2
+2024-06-28 07:44:58,076 cisTarget    INFO     Annotating motifs for Topics_otsu_Topic31
+2024-06-28 07:44:58,118 cisTarget    INFO     Getting cistromes for Topics_otsu_Topic33
+2024-06-28 07:44:58,251 cisTarget    INFO     Annotating motifs for Topics_otsu_Topic40
+2024-06-28 07:44:58,453 cisTarget    INFO     Getting cistromes for Topics_otsu_Topic19
+2024-06-28 07:44:58,707 cisTarget    INFO     Annotating motifs for Topics_otsu_Topic29
+2024-06-28 07:44:58,846 cisTarget    INFO     Getting cistromes for Topics_otsu_Topic16
+2024-06-28 07:44:58,947 cisTarget    INFO     Annotating motifs for Topics_otsu_Topic30
+2024-06-28 07:44:59,006 cisTarget    INFO     Annotating motifs for Topics_otsu_Topic11
+2024-06-28 07:44:59,027 cisTarget    INFO     Annotating motifs for Topics_otsu_Topic17
+2024-06-28 07:44:59,095 cisTarget    INFO     Getting cistromes for Topics_otsu_Topic4
+2024-06-28 07:44:59,178 cisTarget    INFO     Getting cistromes for Topics_otsu_Topic39
+2024-06-28 07:44:59,325 cisTarget    INFO     Running cisTarget for Topics_otsu_Topic13 which has 5674 regions
+2024-06-28 07:44:59,450 cisTarget    INFO     Running cisTarget for Topics_otsu_Topic7 which has 7059 regions
+2024-06-28 07:44:59,466 cisTarget    INFO     Annotating motifs for Topics_otsu_Topic6
+2024-06-28 07:44:59,638 cisTarget    INFO     Running cisTarget for Topics_otsu_Topic5 which has 6637 regions
+2024-06-28 07:44:59,725 cisTarget    INFO     Getting cistromes for Topics_otsu_Topic12
+2024-06-28 07:44:59,944 cisTarget    INFO     Getting cistromes for Topics_otsu_Topic15
+2024-06-28 07:44:59,995 cisTarget    INFO     Getting cistromes for Topics_otsu_Topic31
+2024-06-28 07:45:00,056 cisTarget    INFO     Annotating motifs for Topics_otsu_Topic10
+2024-06-28 07:45:00,288 cisTarget    INFO     Getting cistromes for DARs_cell_type_L2-3_CUX2
+/home/michal.kubacki/miniconda3/envs/scenicplusnew/lib/python3.11/site-packages/joblib/externals/loky/process_executor.py:752: UserWarning: A worker stopped while some jobs were given to the executor. This can be caused by a too short worker timeout or by a memory leak.
+  warnings.warn(
+2024-06-28 07:45:00,402 cisTarget    INFO     Getting cistromes for Topics_otsu_Topic18
+2024-06-28 07:45:00,519 cisTarget    INFO     Getting cistromes for Topics_otsu_Topic29
+2024-06-28 07:45:00,584 cisTarget    INFO     Running cisTarget for Topics_otsu_Topic21 which has 13703 regions
+2024-06-28 07:45:00,687 cisTarget    INFO     Running cisTarget for Topics_otsu_Topic8 which has 18115 regions
+2024-06-28 07:45:00,773 cisTarget    INFO     Running cisTarget for Topics_otsu_Topic14 which has 15239 regions
+2024-06-28 07:45:00,808 cisTarget    INFO     Getting cistromes for Topics_otsu_Topic11
+2024-06-28 07:45:00,959 cisTarget    INFO     Annotating motifs for Topics_otsu_Topic3
+2024-06-28 07:45:01,048 cisTarget    INFO     Getting cistromes for Topics_otsu_Topic40
+2024-06-28 07:45:01,253 cisTarget    INFO     Getting cistromes for Topics_otsu_Topic17
+2024-06-28 07:45:01,343 cisTarget    INFO     Annotating motifs for Topics_otsu_Topic38
+2024-06-28 07:45:01,349 cisTarget    INFO     Getting cistromes for Topics_otsu_Topic30
+2024-06-28 07:45:01,382 cisTarget    INFO     Getting cistromes for Topics_otsu_Topic34
+2024-06-28 07:45:01,506 cisTarget    INFO     Getting cistromes for Topics_otsu_Topic6
+2024-06-28 07:45:02,844 cisTarget    INFO     Annotating motifs for Topics_otsu_Topic27
+2024-06-28 07:45:03,426 cisTarget    INFO     Getting cistromes for Topics_otsu_Topic10
+2024-06-28 07:45:03,577 cisTarget    INFO     Running cisTarget for Topics_otsu_Topic32 which has 7826 regions
+2024-06-28 07:45:04,249 cisTarget    INFO     Annotating motifs for Topics_otsu_Topic7
+2024-06-28 07:45:04,421 cisTarget    INFO     Getting cistromes for Topics_otsu_Topic38
+2024-06-28 07:45:04,742 cisTarget    INFO     Getting cistromes for Topics_otsu_Topic27
+2024-06-28 07:45:04,785 cisTarget    INFO     Annotating motifs for Topics_otsu_Topic13
+2024-06-28 07:45:05,417 cisTarget    INFO     Getting cistromes for Topics_otsu_Topic3
+2024-06-28 07:45:05,636 cisTarget    INFO     Annotating motifs for Topics_otsu_Topic5
+2024-06-28 07:45:06,159 cisTarget    INFO     Annotating motifs for Topics_otsu_Topic21
+2024-06-28 07:45:06,472 cisTarget    INFO     Annotating motifs for Topics_otsu_Topic14
+2024-06-28 07:45:06,598 cisTarget    INFO     Getting cistromes for Topics_otsu_Topic7
+2024-06-28 07:45:06,690 cisTarget    INFO     Annotating motifs for Topics_otsu_Topic8
+2024-06-28 07:45:07,904 cisTarget    INFO     Annotating motifs for Topics_otsu_Topic32
+2024-06-28 07:45:08,049 cisTarget    INFO     Getting cistromes for Topics_otsu_Topic21
+2024-06-28 07:45:08,425 cisTarget    INFO     Getting cistromes for Topics_otsu_Topic8
+2024-06-28 07:45:08,478 cisTarget    INFO     Getting cistromes for Topics_otsu_Topic14
+2024-06-28 07:45:08,615 cisTarget    INFO     Getting cistromes for Topics_otsu_Topic13
+2024-06-28 07:45:09,061 cisTarget    INFO     Getting cistromes for Topics_otsu_Topic5
+2024-06-28 07:45:09,968 cisTarget    INFO     Getting cistromes for Topics_otsu_Topic32
+2024-06-28 07:46:16,914 cisTarget    INFO     Reading cisTarget database
+2024-06-28 07:46:23,049 cisTarget    INFO     Running cisTarget for Topics_otsu_Topic28 which has 16073 regions
+2024-06-28 07:46:30,883 cisTarget    INFO     Annotating motifs for Topics_otsu_Topic28
+2024-06-28 07:46:32,437 cisTarget    INFO     Getting cistromes for Topics_otsu_Topic28
+2024-06-28 07:46:56,338 cisTarget    INFO     Reading cisTarget database
+2024-06-28 07:46:56,401 cisTarget    INFO     Reading cisTarget database
+2024-06-28 07:46:56,661 cisTarget    INFO     Reading cisTarget database
+2024-06-28 07:46:56,801 cisTarget    INFO     Reading cisTarget database
+2024-06-28 07:46:56,808 cisTarget    INFO     Reading cisTarget database
+2024-06-28 07:46:56,938 cisTarget    INFO     Reading cisTarget database
+2024-06-28 07:46:56,954 cisTarget    INFO     Reading cisTarget database
+2024-06-28 07:47:00,977 cisTarget    INFO     Running cisTarget for Topics_otsu_Topic26 which has 9277 regions
+2024-06-28 07:47:01,451 cisTarget    INFO     Running cisTarget for Topics_otsu_Topic22 which has 7503 regions
+2024-06-28 07:47:01,469 cisTarget    INFO     Running cisTarget for Topics_otsu_Topic9 which has 8940 regions
+2024-06-28 07:47:01,677 cisTarget    INFO     Running cisTarget for Topics_otsu_Topic1 which has 13018 regions
+2024-06-28 07:47:02,065 cisTarget    INFO     Reading cisTarget database
+2024-06-28 07:47:02,226 cisTarget    INFO     Running cisTarget for Topics_otsu_Topic35 which has 14490 regions
+2024-06-28 07:47:02,555 cisTarget    INFO     Running cisTarget for Topics_otsu_Topic20 which has 15047 regions
+2024-06-28 07:47:02,994 cisTarget    INFO     Running cisTarget for Topics_otsu_Topic2 which has 18564 regions
+2024-06-28 07:47:08,614 cisTarget    INFO     Annotating motifs for Topics_otsu_Topic26
+2024-06-28 07:47:08,913 cisTarget    INFO     Running cisTarget for Topics_otsu_Topic24 which has 17647 regions
+2024-06-28 07:47:09,177 cisTarget    INFO     Annotating motifs for Topics_otsu_Topic22
+2024-06-28 07:47:10,147 cisTarget    INFO     Annotating motifs for Topics_otsu_Topic1
+2024-06-28 07:47:10,334 cisTarget    INFO     Annotating motifs for Topics_otsu_Topic35
+2024-06-28 07:47:10,728 cisTarget    INFO     Annotating motifs for Topics_otsu_Topic20
+2024-06-28 07:47:10,879 cisTarget    INFO     Getting cistromes for Topics_otsu_Topic26
+2024-06-28 07:47:11,524 cisTarget    INFO     Annotating motifs for Topics_otsu_Topic9
+2024-06-28 07:47:11,861 cisTarget    INFO     Getting cistromes for Topics_otsu_Topic22
+2024-06-28 07:47:12,285 cisTarget    INFO     Getting cistromes for Topics_otsu_Topic35
+2024-06-28 07:47:12,306 cisTarget    INFO     Getting cistromes for Topics_otsu_Topic1
+2024-06-28 07:47:12,523 cisTarget    INFO     Getting cistromes for Topics_otsu_Topic20
+2024-06-28 07:47:13,412 cisTarget    INFO     Annotating motifs for Topics_otsu_Topic2
+2024-06-28 07:47:16,159 cisTarget    INFO     Getting cistromes for Topics_otsu_Topic2
+2024-06-28 07:47:16,924 cisTarget    INFO     Annotating motifs for Topics_otsu_Topic24
+2024-06-28 07:47:18,480 cisTarget    INFO     Getting cistromes for Topics_otsu_Topic24
+2024-06-28 07:47:19,377 cisTarget    INFO     Getting cistromes for Topics_otsu_Topic9
+2024-06-28 07:47:28,078 SCENIC+      INFO     Writing html to: /group/testa/michal.kubacki/herring/scenic_all_excitatory_trimmed/ctx_results.html
+2024-06-28 07:47:28,648 SCENIC+      INFO     Writing output to: /group/testa/michal.kubacki/herring/scenic_all_excitatory_trimmed/ctx_results.hdf5
+[Fri Jun 28 07:48:03 2024]
+Finished job 9.
+1 of 14 steps (7%) done
+Select jobs to execute...
+Execute 2 jobs...
+
+[Fri Jun 28 07:48:03 2024]
+localrule prepare_GEX_ACC_multiome:
+    input: /group/testa/michal.kubacki/herring/output_hg19_all_excitatory_trimmed/cistopic_obj.pkl, /group/testa/michal.kubacki/herring/output_hg19_all_excitatory_trimmed/adata.h5ad
+    output: /group/testa/michal.kubacki/herring/scenic_all_excitatory_trimmed/ACC_GEX.h5mu
+    jobid: 2
+    reason: Forced execution
+    resources: tmpdir=/localscratch/13123999.michal.kubacki
+
+
+[Fri Jun 28 07:48:03 2024]
+localrule download_genome_annotations:
+    output: /group/testa/michal.kubacki/herring/scenic_all_excitatory_trimmed/genome_annotation.tsv, /group/testa/michal.kubacki/herring/scenic_all_excitatory_trimmed/chromsizes.tsv
+    jobid: 8
+    reason: Forced execution
+    resources: tmpdir=/localscratch/13123999.michal.kubacki
+
+2024-06-28 07:48:31,111 SCENIC+      INFO     Reading cisTopic object.
+2024-06-28 07:48:35,279 SCENIC+      INFO     Reading gene expression AnnData.
+Traceback (most recent call last):
+  File "/home/michal.kubacki/miniconda3/envs/scenicplusnew/bin/scenicplus", line 33, in <module>
+    sys.exit(load_entry_point('scenicplus', 'console_scripts', 'scenicplus')())
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/michal.kubacki/Downloads/scenicplus/src/scenicplus/cli/scenicplus.py", line 1137, in main
+    args.func(args)
+  File "/home/michal.kubacki/Downloads/scenicplus/src/scenicplus/cli/scenicplus.py", line 44, in command_prepare_GEX_ACC
+    prepare_GEX_ACC(
+  File "/home/michal.kubacki/Downloads/scenicplus/src/scenicplus/cli/commands.py", line 61, in prepare_GEX_ACC
+    mdata = process_multiome_data(
+            ^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/michal.kubacki/Downloads/scenicplus/src/scenicplus/data_wrangling/adata_cistopic_wrangling.py", line 39, in process_multiome_data
+    raise Exception(
+Exception: No cells found which are present in both assays, check input and consider using `bc_transform_func`!
+[Fri Jun 28 07:48:40 2024]
+Error in rule prepare_GEX_ACC_multiome:
+    jobid: 2
+    input: /group/testa/michal.kubacki/herring/output_hg19_all_excitatory_trimmed/cistopic_obj.pkl, /group/testa/michal.kubacki/herring/output_hg19_all_excitatory_trimmed/adata.h5ad
+    output: /group/testa/michal.kubacki/herring/scenic_all_excitatory_trimmed/ACC_GEX.h5mu
+    shell:
+        
+            scenicplus prepare_data prepare_GEX_ACC                 --cisTopic_obj_fname /group/testa/michal.kubacki/herring/output_hg19_all_excitatory_trimmed/cistopic_obj.pkl                 --GEX_anndata_fname /group/testa/michal.kubacki/herring/output_hg19_all_excitatory_trimmed/adata.h5ad                 --out_file /group/testa/michal.kubacki/herring/scenic_all_excitatory_trimmed/ACC_GEX.h5mu                 --bc_transform_func "lambda x: f'{x}'"
+            
+        (one of the commands exited with non-zero exit code; note that snakemake uses bash strict mode!)
+
+2024-06-28 07:48:49,694 Download gene annotation INFO     Using genome: GRCh38.p14
+2024-06-28 07:48:49,741 Download gene annotation INFO     Found corresponding genome Id 51 on NCBI
+2024-06-28 07:48:50,256 Download gene annotation INFO     Found corresponding assembly Id 11968211 on NCBI
+2024-06-28 07:48:50,770 Download gene annotation INFO     Downloading assembly information from: ftp://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/000/001/405/GCF_000001405.40_GRCh38.p14/GCF_000001405.40_GRCh38.p14_assembly_report.txt
+2024-06-28 07:49:22,293 Download gene annotation INFO     Found following assembled molecules (chromosomes): 
+	1
+	2
+	3
+	4
+	5
+	6
+	7
+	8
+	9
+	10
+	11
+	12
+	13
+	14
+	15
+	16
+	17
+	18
+	19
+	20
+	21
+	22
+	X
+	Y
+	MT
+2024-06-28 07:49:22,308 Download gene annotation INFO     Converting chromosomes names to UCSC style as follows: 
+	Original	UCSC
+	1	chr1
+	2	chr2
+	3	chr3
+	4	chr4
+	5	chr5
+	6	chr6
+	7	chr7
+	8	chr8
+	9	chr9
+	10	chr10
+	11	chr11
+	12	chr12
+	13	chr13
+	14	chr14
+	15	chr15
+	16	chr16
+	17	chr17
+	18	chr18
+	19	chr19
+	20	chr20
+	21	chr21
+	22	chr22
+	X	chrX
+	Y	chrY
+	MT	chrM
+2024-06-28 07:49:22,322 SCENIC+      INFO     Saving chromosome sizes to: /group/testa/michal.kubacki/herring/scenic_all_excitatory_trimmed/chromsizes.tsv
+2024-06-28 07:49:22,403 SCENIC+      INFO     Saving genome annotation to: /group/testa/michal.kubacki/herring/scenic_all_excitatory_trimmed/genome_annotation.tsv
+[Fri Jun 28 07:49:23 2024]
+Finished job 8.
+2 of 14 steps (14%) done
+Shutting down, this might take some time.
+Exiting because a job execution failed. Look above for error message
+Complete log: .snakemake/log/2024-06-28T073708.704799.snakemake.log
+WorkflowError:
+At least one job did not complete successfully.
+slurmstepd: error: _cgroup_procs_check: failed on path /sys/fs/cgroup/memory/slurm/uid_10666/job_13123999/step_batch/cgroup.procs: No such file or directory
+slurmstepd: error: unable to read '/sys/fs/cgroup/memory/slurm/uid_10666/job_13123999/step_batch/cgroup.procs'
