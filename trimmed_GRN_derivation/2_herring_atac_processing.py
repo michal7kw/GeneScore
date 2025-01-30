@@ -20,6 +20,7 @@ import logging
 
 # Data manipulation imports
 import pandas as pd
+import polars as pl
 
 # pycisTopic imports
 import pycisTopic
@@ -351,15 +352,26 @@ if list_cols_present:
 if isinstance(df.index, pd.Index) and any(isinstance(x, set) for x in df.index):
     df.index = pd.Index([list(x) if isinstance(x, set) else x for x in df.index])
 
+# Convert any remaining sets in all columns
+for col in df.columns:
+    if df[col].dtype == 'object':
+        df[col] = df[col].apply(lambda x: list(x) if isinstance(x, set) else x)
+
 # Update columns in place instead of replacing the entire DataFrame
 for col in df.columns:
     consensus_peaks.df[col] = df[col]
+
+# Force conversion of any remaining sets in noncanonical columns
+noncanonical = list(set(consensus_peaks.df.columns) - {'Chromosome', 'Start', 'End', 'Name', 'Score', 'Strand', 'ThickStart', 'ThickEnd', 'ItemRGB', 'BlockCount', 'BlockSizes', 'BlockStarts'})
+for col in noncanonical:
+    if consensus_peaks.df[col].dtype == 'object':
+        consensus_peaks.df[col] = consensus_peaks.df[col].apply(lambda x: list(x) if isinstance(x, set) else x)
 
 del df  # Clean up reference
 
 consensus_peaks.to_bed(
     path=os.path.join(out_dir, "consensus_peak_calling/consensus_regions.bed"),
-    keep=True,
+    keep=noncanonical,  # Pass the list instead of set
     compression='infer',
     chain=False)
 

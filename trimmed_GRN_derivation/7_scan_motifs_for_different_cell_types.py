@@ -15,6 +15,7 @@ co.__version__
 n_cpus = 8
 neurons_set = "all_ex"
 # neurons_set = "all_ex_all_ages"
+reference = "hg19"
 root_dir = "/group/testa/michal.kubacki/herring_minimal"
 
 # %%

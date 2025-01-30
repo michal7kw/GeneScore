@@ -5,8 +5,8 @@
 #SBATCH --partition=cpuq
 #SBATCH --time=12:00:00
 #SBATCH --nodes=1
-#SBATCH --ntasks-per-node=32
-#SBATCH --mem=256G
+#SBATCH --ntasks-per-node=16
+#SBATCH --mem=128G
 #SBATCH --output=./logs/5_prepare_peak_data_for_celloracle.log
 
 # Set base directories
