@@ -10,7 +10,7 @@ from datetime import datetime
 
 # %%
 # Configuration
-n_cpus = 8
+n_cpus = 16
 single_file = True
 plotting = True
 neurons_set = "all_ex"

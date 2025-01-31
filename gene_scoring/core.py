@@ -38,12 +38,18 @@ def calculate_gene_variances(X: Union[np.ndarray, sparse.spmatrix], gene_indices
         # Count non-NaN values for each gene
         non_nan_count = np.sum(~np.isnan(X), axis=0)
         
-        # For genes with more than one non-NaN value, use ddof=1
-        # For genes with only one non-NaN value, use ddof=0
-        # For genes with no non-NaN values, the result will be NaN
-        variances = np.where(non_nan_count > 1,
-                           np.nanvar(X, axis=0, ddof=1),
-                           np.nanvar(X, axis=0, ddof=0))
+        # Initialize variances array with zeros
+        variances = np.zeros(X.shape[1])
+        
+        # Calculate variance only for genes with sufficient non-NaN values
+        mask_multiple = non_nan_count > 1
+        mask_single = non_nan_count == 1
+        
+        if np.any(mask_multiple):
+            variances[mask_multiple] = np.nanvar(X[:, mask_multiple], axis=0, ddof=1)
+        if np.any(mask_single):
+            variances[mask_single] = np.nanvar(X[:, mask_single], axis=0, ddof=0)
+        # Genes with no valid values remain zero
 
     # Replace negative variances (due to numerical issues) with zero
     variances = np.maximum(variances, 0)
@@ -52,6 +58,7 @@ def calculate_gene_variances(X: Union[np.ndarray, sparse.spmatrix], gene_indices
     variances = np.nan_to_num(variances, nan=0.0)
     
     return variances[gene_indices]
+
 
 
 def score_genes(
@@ -155,7 +162,8 @@ def score_genes(
     if random_state is not None:
         np.random.seed(random_state)
     
-    # Get variable names (gene names)
+    # Get variable names (gene names) from the appropriate layer
+    # var_names = adata.raw.var_names if use_raw else adata.var_names
     var_names = adata.var_names
     
     # Ensure gene_list is a pandas Index object
@@ -177,6 +185,7 @@ def score_genes(
     elif used_layer == 'raw':
         X = adata.layers['counts']
     else:
+        # print("Warnig: Using 'X' attribute, make sure that you are using the right layer")
         X = adata.X
     
     # Ensure X is in CSR format if sparse
@@ -241,6 +250,7 @@ def score_genes(
         # Replace infinite values with 1 (no scaling)
         control_variance_scaling[~np.isfinite(control_variance_scaling)] = 1
 
+    scores = {}
     for condition in conditions:
         if conditions_labels is not None:
             condition_mask = adata.obs[conditions_labels] == condition
@@ -360,6 +370,8 @@ def score_genes(
     else:
         # Update adata.obs with the new scores
         if score_name in adata.obs.columns:
+            # Create a copy of the dataframe without the score column
             adata.obs = adata.obs.drop(columns=[score_name])
-        adata.obs[score_name] = result_series
+        # Use more efficient assignment that avoids fragmentation
+        adata.obs = adata.obs.assign(**{score_name: result_series})
         return adata if copy else None
