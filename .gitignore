@@ -1,4 +1,8 @@
 Herring_celloracle/
 Herring_scenic/
-project_functions/
 logs/
+Archive/
+__pycache__/
+gene_scoring/gene_scoring.egg-info/
+gene_scoring/build/
+.ipynb_checkpoints/
