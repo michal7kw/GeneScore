@@ -1,6 +1,6 @@
 # GeneScore: Advanced Gene Set Scoring for Single-Cell RNA Sequencing
 
-GeneScore is a sophisticated Python package that implements a novel gene set scoring methodology for single-cell RNA sequencing data analysis. Building upon techniques from popular toolkits like Seurat and Scanpy, GeneScore introduces several key improvements for more accurate and efficient gene set scoring.
+GeneScore implements a novel gene set scoring methodology for single-cell RNA sequencing data analysis. Building upon techniques from popular toolkits like Seurat and Scanpy, GeneScore introduces several key improvements for more accurate and efficient gene set scoring.
 
 ## Key Features
 
@@ -75,13 +75,3 @@ scores = scorer.calculate_scores(
 ## License
 
 MIT License
-
-## Citation
-
-If you use this package in your research, please cite:
-
-[Your paper citation here]
-
-## Contributing
-
-Contributions are welcome! Please feel free to submit a Pull Request.
