@@ -8,7 +8,7 @@ with open(os.path.join(this_directory, 'README.md'), encoding='utf-8') as f:
 
 setup(
     name="gene_scoring",
-    version="0.1.3",
+    version="0.1.4",
     packages=find_packages(),
     install_requires=[
         "numpy>=1.19.0",
@@ -20,7 +20,7 @@ setup(
     },
     author="Michal Kubacki",
     author_email="michal.kubacki@example.com",  # Replace with your email
-    description="An advanced gene set scoring package for single-cell RNA sequencing data with GPU acceleration",
+    description="Gene set scoring package for single-cell RNA sequencing data with GPU acceleration.",
     long_description=long_description,
     long_description_content_type="text/markdown",
     url="https://github.com/michal7kw/GeneScore",  # Replace with your actual repository URL

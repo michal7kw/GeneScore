@@ -86,8 +86,6 @@ The main parameters for score calculation include:
 - `chunk_size`: Size of chunks for processing large datasets
 - `random_state`: Random seed for reproducibility
 
-For detailed parameter descriptions and additional options, see the function documentation.
-
 ## Requirements
 
 - Python ≥ 3.7
