@@ -3,33 +3,20 @@
 import os
 import re
 import sys
-import pandas as pd
-import importlib
+
+from dotenv import load_dotenv
+load_dotenv()
+sys.path.insert(0, os.getenv('PROJECT_FUNCTIONS_PATH'))
+
+from grn_helpers import set_output_folders
 
 # %%
-n_cpus = 8
 cell_types_set = "all_ex"
 # cell_types_set = "all_ex_all_ages"
-root_dir = "/group/testa/michal.kubacki/herring_minimal"
+root_dir = os.getenv('BASE_PATH')
 
 # %%
-def set_output_folders(suffix):
-    tmp_dir = os.path.join(root_dir, "tmp")
-    in_dir = os.path.join(root_dir, "data")
-    out_dir = os.path.join(root_dir, suffix)
-
-    print(f"root_dir: {root_dir}")
-    print(f"out_dir: {out_dir}")
-    print(f"in_dir: {in_dir}")
-    print(f"tmp_dir: {tmp_dir}")
-
-    data_folder = "GSE168408_RAW"
-
-    os.makedirs(out_dir, exist_ok = True)
-    return out_dir, in_dir, root_dir, tmp_dir, data_folder
-
-# %%
-out_dir, in_dir, root_dir, tmp_dir, data_folder = set_output_folders(cell_types_set)
+out_dir, in_dir, root_dir, tmp_dir, data_folder = set_output_folders(root_dir, cell_types_set)
 
 dir_input_files = {
     "all_ex" : ['L2-3_CUX2_consensus_regions.bed', 'L4_RORB_consensus_regions.bed', 'L5-6_THEMIS_consensus_regions.bed', 'L5-6_TLE4_consensus_regions.bed', 'PN_dev_consensus_regions.bed'],

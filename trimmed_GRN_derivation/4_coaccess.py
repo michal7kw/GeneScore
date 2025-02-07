@@ -4,35 +4,23 @@ import pickle
 from itertools import islice
 import numpy as np
 import pandas as pd
-from scipy.sparse import csr_matrix, vstack
 from pycisTopic import *
-import importlib
 from sklearn.metrics.pairwise import cosine_similarity
+
+from dotenv import load_dotenv
+load_dotenv()
+sys.path.insert(0, os.getenv('PROJECT_FUNCTIONS_PATH'))
+
+from grn_helpers import set_output_folders
 
 # %%
 n_cpus = 8
 cell_types_set = "all_ex"
 # cell_types_set = "all_ex_all_ages"
-root_dir = "/group/testa/michal.kubacki/herring_minimal"
+root_dir = os.getenv('BASE_PATH')
 
 # %%
-def set_output_folders(suffix):
-    tmp_dir = os.path.join(root_dir, "tmp")
-    in_dir = os.path.join(root_dir, "data")
-    out_dir = os.path.join(root_dir, suffix)
-
-    print(f"root_dir: {root_dir}")
-    print(f"out_dir: {out_dir}")
-    print(f"in_dir: {in_dir}")
-    print(f"tmp_dir: {tmp_dir}")
-
-    data_folder = "GSE168408_RAW"
-
-    os.makedirs(out_dir, exist_ok = True)
-    return out_dir, in_dir, root_dir, tmp_dir, data_folder
-
-# %%
-out_dir, in_dir, root_dir, tmp_dir, data_folder = set_output_folders(cell_types_set)
+out_dir, in_dir, root_dir, tmp_dir, data_folder = set_output_folders(root_dir, cell_types_set)
 
 # %%
 print("Load cistopic_obj")

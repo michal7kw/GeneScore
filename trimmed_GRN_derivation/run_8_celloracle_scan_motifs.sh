@@ -9,12 +9,16 @@
 #SBATCH --mem=64G
 #SBATCH --output=./logs/8_celloracle_scan_motifs.log
 
-# Set base directories
-WORK_DIR="/home/michal.kubacki/Githubs/GeneScore/trimmed_GRN_derivation"
+# Load environment variables from .env file
+set -a
+source .env
+set +a
+
+# Change to work directory from .env
 cd $WORK_DIR
 
-# Source the conda profile script
-source /home/michal.kubacki/new_miniconda/etc/profile.d/conda.sh
+# Source the conda profile script (use path from .env)
+source $CONDA_PROFILE_PATH
 conda activate scenicplus
 
 PYTHON_PATH=$(which python)

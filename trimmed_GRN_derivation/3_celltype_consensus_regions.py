@@ -1,34 +1,25 @@
 # %%
 import os
 import sys
-import importlib
 import pandas as pd
 from pycisTopic import *
+
+from dotenv import load_dotenv
+load_dotenv()
+sys.path.insert(0, os.getenv('PROJECT_FUNCTIONS_PATH'))
+
+from grn_helpers import set_output_folders
+
+# %%
+root_dir = os.getenv('BASE_PATH')
 
 # %%
 n_cpus = 8
 neurons_set = "all_ex"
-root_dir = "/group/testa/michal.kubacki/herring_minimal"
-
-# %%
-def set_output_folders(suffix):
-    tmp_dir = os.path.join(root_dir, "tmp")
-    in_dir = os.path.join(root_dir, "data")
-    out_dir = os.path.join(root_dir, suffix)
-
-    print(f"root_dir: {root_dir}")
-    print(f"out_dir: {out_dir}")
-    print(f"in_dir: {in_dir}")
-    print(f"tmp_dir: {tmp_dir}")
-
-    data_folder = "GSE168408_RAW"
-
-    os.makedirs(out_dir, exist_ok = True)
-    return out_dir, in_dir, root_dir, tmp_dir, data_folder
 
 # %%
 # all_excitatory ex_neurons ex_neurons_combined ex_progenitors all_inhibitory
-out_dir, in_dir, root_dir, tmp_dir, data_folder = set_output_folders(neurons_set)
+out_dir, in_dir, root_dir, tmp_dir, data_folder = set_output_folders(root_dir, neurons_set)
 
 # Read the consensus_regions.bed file using pandas
 consensus_regions = pd.read_csv(os.path.join(out_dir, 'consensus_peak_calling/consensus_regions.bed'), sep='\t', header=None)

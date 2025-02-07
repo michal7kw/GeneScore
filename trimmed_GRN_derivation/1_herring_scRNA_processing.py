@@ -30,40 +30,32 @@
 import gc
 import os
 import sys
-import importlib
 import pandas as pd
 import numpy as np
 import scanpy as sc
 import matplotlib.pyplot as plt 
 
+from dotenv import load_dotenv
+load_dotenv()
+sys.path.insert(0, os.getenv('PROJECT_FUNCTIONS_PATH'))
+
+from grn_helpers import set_custom_folders
+
+# %%
+root_dir = os.getenv('BASE_PATH')
+
 # %%
 neurons_set = "all_ex"
 # neurons_set = "all_ex_all_ages"
-root_dir = "/group/testa/michal.kubacki/herring_minimal"
+
 gois = ["AR", "THRB", "ESR2", "NR1H3", "NR1H2", "RARA", "RARG", "AHR", "NR3C1"]
 # gois = ['AHR', 'AR', 'NR1I2', 'NR1I3', 'NR3C1', 'NR3C2', 'ESR1', 'RARA', 'ESR2', 'THRB', 'THRA']
+
 min_genes_percentile = 2
 max_genes_percentile = 98
 min_counts_percentile = 2
 max_counts_percentile = 98
 max_mito_percent = 30
-
-# %%
-def set_custom_folders(suffix):
-    tmp_dir = os.path.join(root_dir, "celloracle", "tmp")
-
-    in_dir = os.path.join(root_dir, "data")
-    in_dir_from_scenic = os.path.join(root_dir, suffix)
-
-    out_dir = os.path.join(root_dir, suffix, "celloracle")
-
-    print(f"root_dir: {root_dir}")
-    print(f"out_dir: {out_dir}")
-    print(f"in_dir: {in_dir}")
-    print(f"tmp_dir: {tmp_dir}")
-
-    os.makedirs(out_dir, exist_ok = True)
-    return out_dir, in_dir, root_dir, tmp_dir, in_dir_from_scenic
 
 # %%
 cells_dict = {
@@ -76,7 +68,7 @@ ages_dict = {
     "all_ex_all_ages"  :   ['1m','3m','6m','10m','1y','2y','4y','6y','10y','16y','20y','40y','ga22','ga24']
 }
 
-output_dir, input_dir, root_dir, tmp_dir, in_dir_from_scenic = set_custom_folders(neurons_set)
+output_dir, input_dir, root_dir, tmp_dir, in_dir_from_scenic = set_custom_folders(root_dir, neurons_set)
 
 sel_celltypes  = cells_dict[neurons_set]
 sel_ages = ages_dict[neurons_set]

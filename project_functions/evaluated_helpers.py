@@ -1,5 +1,4 @@
 import os
-import csv
 import matplotlib
 import pandas as pd
 import anndata as ad
@@ -10,13 +9,11 @@ from collections import defaultdict
 import matplotlib.pyplot as plt
 from upsetplot import from_contents, UpSet
 from typing import Optional, Union
-
-
 import itertools
 from itertools import combinations
 from matplotlib_venn import venn3, venn2
 
-#### Simulation scores functions ####
+########################################################
 
 def load_GRNs_gene_sets(root_dir: str, gene_set_list: list = ["all_ex"], weights_list: str = "scores_grn_all_from_comb_run_new.csv") -> tuple:
     """
@@ -328,7 +325,7 @@ def boxplot_Reference_GRN_scores_local(
         print(f'No data to plot for the selected condition: {condition}')
         return None
 
-#### Gene Set Analysis ###
+########################################################
 
 def create_heatmap(data: dict, set_selected: str, scored_genes: list, cell_types: list) -> None:
     """
@@ -382,63 +379,6 @@ def create_heatmap(data: dict, set_selected: str, scored_genes: list, cell_types
     plt.ylabel("Cell Types")
     plt.xlabel("Scored Genes")
     plt.tight_layout()
-    plt.show()
-
-def create_venn_diagram_gene_set(gene_sets: dict, cell_type: str, mode: str = "positive", printouts: bool = False) -> None:
-    """
-    Create a Venn diagram showing the intersection of gene sets for a given cell type.
-    
-    Args:
-        gene_sets (dict): Dictionary mapping gene set names to sets of genes
-        cell_type (str): Name of the cell type being analyzed
-        mode (str, optional): Analysis mode - "positive" or "negative". Defaults to "positive"
-        printouts (bool, optional): Whether to print detailed intersection info. Defaults to False
-        
-    Returns:
-        None: Displays a Venn diagram plot
-        
-    Raises:
-        ValueError: If gene_sets is empty or invalid
-        TypeError: If arguments are of wrong type
-    """
-    if not isinstance(gene_sets, dict) or not gene_sets:
-        raise ValueError("gene_sets must be a non-empty dictionary")
-    if not isinstance(cell_type, str):
-        raise TypeError("cell_type must be a string")
-    if not isinstance(mode, str) or mode not in ["positive", "negative"]:
-        raise ValueError("mode must be either 'positive' or 'negative'")
-    if not isinstance(printouts, bool):
-        raise TypeError("printouts must be a boolean")
-
-    set_names = list(gene_sets.keys())
-    venn_sets = [set(genes) for genes in gene_sets.values()]
-    
-    if printouts:
-        print(f"\nShared genes between the sets:")
-        all_sets = set.union(*venn_sets)
-        for i in range(2, len(venn_sets) + 1):
-            for combination in itertools.combinations(range(len(venn_sets)), i):
-                shared_genes = set.intersection(*(venn_sets[j] for j in combination))
-                if shared_genes:
-                    set_names_str = " & ".join(set_names[j] for j in combination)
-                    print(f"Shared between {set_names_str}: {shared_genes}")
-
-    plt.figure(figsize=(10, 10))
-    if len(set_names) == 2:
-        venn2(venn_sets, set_labels=set_names)
-    elif len(set_names) == 3:
-        venn3(venn_sets, set_labels=set_names)
-    else:
-        plt.close()
-        print(f"More than 3 sets detected for {cell_type}, coefficients: {mode}. Displaying text-based representation.")
-        for i in range(2, min(len(set_names) + 1, 4)):
-            for combo in combinations(range(len(set_names)), i):
-                common_genes = set.intersection(*[venn_sets[j] for j in combo])
-                if common_genes:
-                    print(f"Genes common to {', '.join([set_names[j] for j in combo])}: {common_genes}")
-        return
-
-    plt.title(f"Genes Intersection for {cell_type}, coefficients: {mode}", fontsize=16)
     plt.show()
 
 def print_number_of_duplicate_genes(gene_sets: dict) -> None:
@@ -559,59 +499,6 @@ def analyze_gene_sets_gene_set(data: dict, set_selected: str, cell_type: str, sc
         
     create_venn_diagram_gene_set(gene_sets, cell_type, mode=mode, printouts=printouts)
 
-def create_venn_diagram_cell_types(gene_sets: dict, scored_gene: str, mode: str = "positive", printouts: bool = False) -> None:
-    """
-    Create Venn diagrams showing gene intersections between cell types.
-
-    Args:
-        gene_sets (dict): Dictionary mapping cell types to sets of genes
-        scored_gene (str): Name of the scored gene being analyzed
-        mode (str, optional): Analysis mode ("positive" or "negative"). Defaults to "positive"
-        printouts (bool, optional): Whether to print additional analysis info. Defaults to False
-
-    Raises:
-        TypeError: If arguments are not of expected types
-        ValueError: If mode is not "positive" or "negative"
-    """
-    # Input validation
-    if not isinstance(gene_sets, dict):
-        raise TypeError("gene_sets must be a dictionary")
-    if not isinstance(scored_gene, str):
-        raise TypeError("scored_gene must be a string")
-    if mode not in ["positive", "negative"]:
-        raise ValueError("mode must be either 'positive' or 'negative'")
-    
-    if not gene_sets:
-        print("Warning: Empty gene_sets dictionary provided")
-        return
-
-    set_names = list(gene_sets.keys())
-    venn_sets = [set(genes) for genes in gene_sets.values()]
-    
-    if printouts:
-        print(f"\nUnique genes for each set:")
-        for name, gene_set in zip(set_names, venn_sets):
-            unique_genes = gene_set - set.union(*(s for s in venn_sets if s != gene_set))
-            print(f"{name}: {unique_genes}")
-    
-    if len(set_names) == 2:
-        plt.figure(figsize=(10, 10))
-        venn2(venn_sets, set_labels=set_names)
-        plt.title(f"Gene Intersection for {scored_gene}, coefficients: {mode}", fontsize=16)
-        plt.show()
-    elif len(set_names) == 3:
-        plt.figure(figsize=(10, 10))
-        venn3(venn_sets, set_labels=set_names)
-        plt.title(f"Gene Intersection for {scored_gene}, coefficients: {mode}", fontsize=16)
-        plt.show()
-    else:
-        print(f"More than 3 cell types detected for {scored_gene}, coefficients: {mode}. Displaying text-based representation.")
-        for i in range(2, min(len(set_names) + 1, 4)):
-            for combo in combinations(range(len(set_names)), i):
-                common_genes = set.intersection(*[venn_sets[j] for j in combo])
-                if common_genes:
-                    print(f"Genes common to {', '.join([set_names[j] for j in combo])}: {common_genes}")
-        
 def analyze_gene_sets_cell_types(data: dict, set_selected: str, scored_gene: str, cell_types: list, mode: str = "positive", printouts: bool = False) -> None:
     """
     Analyze gene sets across multiple cell types.
@@ -663,42 +550,6 @@ def analyze_gene_sets_cell_types(data: dict, set_selected: str, scored_gene: str
         return
         
     create_venn_diagram_cell_types(gene_sets, scored_gene, mode=mode, printouts=printouts)
-
-def better_hist_DEGs(data: dict, gene_set: str) -> None:
-    """
-    Create an enhanced histogram for Differentially Expressed Genes.
-
-    Args:
-        data (dict): Dictionary containing gene expression data
-        gene_set (str): Name of the gene set to plot
-
-    Raises:
-        TypeError: If arguments are not of expected types
-        KeyError: If gene_set is not found in data
-    """
-    if not isinstance(data, dict):
-        raise TypeError("data must be a dictionary")
-    if not isinstance(gene_set, str):
-        raise TypeError("gene_set must be a string")
-    if gene_set not in data:
-        raise KeyError(f"gene_set '{gene_set}' not found in data")
-
-    plt.style.use('seaborn')
-    sns.set_palette("deep")
-
-    fig, ax = plt.subplots(figsize=(10, 6))
-
-    hist = ax.hist(data[gene_set], bins=20, edgecolor='black', alpha=0.7)
-
-    ax.set_xlabel('Weighting Coefficient', fontsize=12)
-    ax.set_ylabel('Frequency', fontsize=12)
-    ax.set_title(f'Gene Set: {gene_set}', fontsize=14, fontweight='bold')
-
-    ax.grid(True, linestyle='--', alpha=0.7)
-    ax.tick_params(axis='both', which='major', labelsize=10)
-
-    plt.tight_layout()
-    plt.show()
 
 def better_hist_GRNs(data: dict, set_selected: str, cell_type_selected: str, scored_gene_selected: str, 
                      score: str, bins: int = 20, genes_to_mark: list = None) -> None:
@@ -761,48 +612,6 @@ def better_hist_GRNs(data: dict, set_selected: str, cell_type_selected: str, sco
 
     plt.tight_layout()
     plt.show()
-
-def print_duplicate_genes(gene_sets: dict, max_examples: int = 5) -> None:
-    """
-    Print information about duplicate genes in gene sets.
-
-    Args:
-        gene_sets (dict): Dictionary mapping set names to collections of genes
-        max_examples (int, optional): Maximum number of duplicate examples to show. Defaults to 5
-
-    Raises:
-        TypeError: If gene_sets is not a dictionary or max_examples is not an integer
-        ValueError: If max_examples is less than 1
-    """
-    if not isinstance(gene_sets, dict):
-        raise TypeError("gene_sets must be a dictionary")
-    if not isinstance(max_examples, int) or max_examples < 1:
-        raise ValueError("max_examples must be a positive integer")
-
-    for set_name, gene_set in gene_sets.items():
-        original_length = len(gene_set)
-        # Convert to a list to preserve order
-        genes = list(gene_set)
-        
-        # Find duplicates
-        seen = set()
-        duplicates = []
-        for gene in genes:
-            if gene in seen:
-                duplicates.append(gene)
-            else:
-                seen.add(gene)
-        
-        # Print results
-        if duplicates:
-            print(f"\nDuplicates found in {set_name}:")
-            print(f"Total duplicates: {len(duplicates)} out of {original_length}")
-            print(f"Examples (up to {max_examples}):")
-            for gene in duplicates[:max_examples]:
-                indices = [i for i, x in enumerate(genes) if x == gene]
-                print(f"  Gene '{gene}' appears at indices: {indices}")
-        else:
-            print(f"\nNo duplicates found in {set_name}")
 
 def plot_gene_set_intersections(gene_sets: dict, figsize: tuple = (12, 8), title: str = "", 
                               save_path: str = None, dpi: int = 300, maxlength: int = 100) -> None:
@@ -901,8 +710,7 @@ def plot_gene_set_intersections(gene_sets: dict, figsize: tuple = (12, 8), title
         plt.close()  # Clean up in case of error
         raise RuntimeError(f"Error creating UpSet plot: {str(e)}")
 
-
-### GRNs Scores funcitons ####
+########################################################
 
 def boxplot_EDCs_GRN_scores_parameters_local(
         adata: ad.AnnData,
@@ -1215,357 +1023,115 @@ def boxplot_Reference_GRN_scores_parameters_all_gois(
     else:
         print(f'No data to plot for the conditions: {conditions}')
         return None
-
-
-
-
-
-
-
-
-
-
-################################## UNUSED ###################################################3
-
-
-
-
-
-
-
-
-
-def load_Sim_gene_sets(gene_set_list, root_dir):
-    gene_sets = {}
-
-    # Load data for each gene set and sim file type
-    for gene_set in gene_set_list:
-        path = os.path.join(root_dir, f"output_hg19_{gene_set}", "celloracle")
-        print(path)
-        
-        # Load scores_sim_all.csv
-        sim_1_path = os.path.join(path, 'scores_sim_all.csv')
-        if os.path.exists(sim_1_path):
-            gene_sets[gene_set] = pd.read_csv(sim_1_path)
-        else:
-            print(f"File not found: {sim_1_path}")
-        
-        # # Load v2_scores_sim_all.csv
-        # sim_2_path = os.path.join(path, 'scores_sim_all_to_test_old.csv')
-        # if os.path.exists(sim_2_path):
-        #     gene_sets[f"{gene_set}_sim_2"] = pd.read_csv(sim_2_path)
-        # else:
-        #     print(f"File not found: {sim_2_path}")
-
-    # Format Data
-    for key, df in gene_sets.items():
-        df['abs_fold_change'] = df['fold_change'].abs()
-        df = df.groupby('goi').apply(lambda x: x.nlargest(50, 'abs_fold_change')).reset_index(drop=True)
-        df['fold_change_enh'] = np.power(df['fold_change'], 10)
-        gene_sets[key] = df
-
-    # Sets Formatting
-    gene_sets_dict = {}
-    gene_sets_dict_cell_type_first = {}
-
-    for key, df in gene_sets.items():
-        gene_sets_dict[key] = {}
-        gene_sets_dict_cell_type_first[key] = {}
-
-        for _, row in df.iterrows():
-            local_cell_type = row['local_cell_type']
-            gene = row['gene']
-            goi = row['goi']
-            fold_change = float(row['fold_change'])
-            cell_type = row['cell_type']
-
-            # Format 1: Gene of interest first
-            if goi not in gene_sets_dict[key]:
-                gene_sets_dict[key][goi] = {}
-
-            if cell_type not in gene_sets_dict[key][goi]:
-                gene_sets_dict[key][goi][cell_type] = {'targets': [], 'weights': [], 'local_cell_types': []}
-
-            gene_sets_dict[key][goi][cell_type]['targets'].append(gene)
-            gene_sets_dict[key][goi][cell_type]['weights'].append(fold_change)
-            gene_sets_dict[key][goi][cell_type]['local_cell_types'].append(local_cell_type)
-
-            # Format 2: Cell type first
-            if cell_type not in gene_sets_dict_cell_type_first[key]:
-                gene_sets_dict_cell_type_first[key][cell_type] = {}
-
-            if goi not in gene_sets_dict_cell_type_first[key][cell_type]:
-                gene_sets_dict_cell_type_first[key][cell_type][goi] = {'targets': [], 'weights': [], 'local_cell_types': []}
-
-            gene_sets_dict_cell_type_first[key][cell_type][goi]['targets'].append(gene)
-            gene_sets_dict_cell_type_first[key][cell_type][goi]['weights'].append(fold_change)
-            gene_sets_dict_cell_type_first[key][cell_type][goi]['local_cell_types'].append(local_cell_type)
-
-    print("Processed datasets:", gene_sets_dict_cell_type_first.keys())
-
-    return gene_sets_dict, gene_sets_dict_cell_type_first
-
-def load_expression_data(data_dir = "/group/testa/michal.kubacki/gene_score"):
-    # Read the expression matrix
-    raw_matrix = pd.read_csv(os.path.join(data_dir, "Organoids/CTL04/raw_matrix.csv"), index_col=0)
-    logcpm_matrix = pd.read_csv(os.path.join(data_dir, "Organoids/CTL04/logcpm_matrix.csv"), index_col=0)
-    cpm_matrix = pd.read_csv(os.path.join(data_dir, "Organoids/CTL04/cpm_matrix.csv"), index_col=0)
-
-    # Read the row data (genes/features)
-    row_data = pd.read_csv(os.path.join(data_dir, "Organoids/CTL04/row_data.csv"), index_col=0)
-
-    # Read the column data (sample metadata)
-    col_data = pd.read_csv(os.path.join(data_dir, "Organoids/CTL04/col_data.csv"), index_col=0)
-
-    expr_matrix = logcpm_matrix
-
-    adata = ad.AnnData(X=expr_matrix.transpose(), obs=col_data, var=row_data)
-
-    print([var_name for var_name in adata.var_names if var_name.startswith("AHR")])
-    print([var_name for var_name in adata.var_names if var_name.startswith("AR")])
-    print([var_name for var_name in adata.var_names if "NR3" in var_name])
-
-    expr_matrix_df = pd.DataFrame(adata.X, index=adata.obs_names, columns=adata.var_names)
-    expr_matrix_df
-
-    adata.obs['sample_type'] = 'Other'
-    adata.obs.loc[adata.obs.index.str.endswith('_DMSO'), 'sample_type'] = 'DMSO'
-    adata.obs.loc[adata.obs.index.str.endswith('_CTL'), 'sample_type'] = 'CTL'
-
-    adata.obs.loc[adata.obs.index.str.endswith('_Ret_Ag'), 'sample_type'] = 'Ret_Ag'
-    adata.obs.loc[adata.obs.index.str.endswith('_Ret_Inh'), 'sample_type'] = 'Ret_Inh'
-
-    adata.obs.loc[adata.obs.index.str.endswith('_AhHyd_Ag'), 'sample_type'] = 'AhHyd_Ag'
-    adata.obs.loc[adata.obs.index.str.endswith('_AhHyd_Inh'), 'sample_type'] = 'AhHyd_Inh'
-
-    adata.obs.loc[adata.obs.index.str.endswith('_Andr_Ag'), 'sample_type'] = 'Andr_Ag'
-    adata.obs.loc[adata.obs.index.str.endswith('_Andr_Inh'), 'sample_type'] = 'Andr_Inh'
-
-    adata.obs.loc[adata.obs.index.str.endswith('_LivX_Ag'), 'sample_type'] = 'LivX_Ag'
-    adata.obs.loc[adata.obs.index.str.endswith('_LivX_Inh'), 'sample_type'] = 'LivX_Inh'
-
-    adata.obs.loc[adata.obs.index.str.endswith('_GC_Ag'), 'sample_type'] = 'GC_Ag'
-    adata.obs.loc[adata.obs.index.str.endswith('_GC_Inh'), 'sample_type'] = 'GC_Inh'
-
-    adata.obs.loc[adata.obs.index.str.endswith('_Estr_Ag'), 'sample_type'] = 'Estr_Ag'
-    adata.obs.loc[adata.obs.index.str.endswith('_Estr_Inh'), 'sample_type'] = 'Estr_Inh'
-
-    adata.obs.loc[adata.obs.index.str.endswith('_Thyr_Ag'), 'sample_type'] = 'Thyr_Ag'
-    adata.obs.loc[adata.obs.index.str.endswith('_Thyr_Inh'), 'sample_type'] = 'Thyr_Inh'
-    return(adata)
-
-def compare_target_intersections(gene_sets_dict, set_names, cell_types, genes):
-    result = {set_name: {} for set_name in set_names}
     
-    for set_name in set_names:
-        if set_name not in gene_sets_dict:
-            print(f"Error: Set '{set_name}' not found in the dictionary.")
-            continue
-        
-        for cell_type in cell_types:
-            if cell_type not in gene_sets_dict[set_name]:
-                print(f"Warning: Cell type '{cell_type}' not found in the '{set_name}' set.")
-                continue
-            
-            cell_type_data = gene_sets_dict[set_name][cell_type]
-            intersection = set()
-            first_gene = True
-            
-            for gene in genes:
-                if gene not in cell_type_data:
-                    print(f"Warning: Gene '{gene}' not found for cell type '{cell_type}' in set '{set_name}'.")
-                    continue
-                
-                gene_targets = set(cell_type_data[gene]['targets'])
-                
-                if first_gene:
-                    intersection = gene_targets
-                    first_gene = False
-                else:
-                    intersection &= gene_targets
-            
-            result[set_name][cell_type] = list(intersection)
+########################################################
+
+def create_venn_diagram_cell_types(gene_sets: dict, scored_gene: str, mode: str = "positive", printouts: bool = False) -> None:
+    """
+    Create Venn diagrams showing gene intersections between cell types.
+
+    Args:
+        gene_sets (dict): Dictionary mapping cell types to sets of genes
+        scored_gene (str): Name of the scored gene being analyzed
+        mode (str, optional): Analysis mode ("positive" or "negative"). Defaults to "positive"
+        printouts (bool, optional): Whether to print additional analysis info. Defaults to False
+
+    Raises:
+        TypeError: If arguments are not of expected types
+        ValueError: If mode is not "positive" or "negative"
+    """
+    # Input validation
+    if not isinstance(gene_sets, dict):
+        raise TypeError("gene_sets must be a dictionary")
+    if not isinstance(scored_gene, str):
+        raise TypeError("scored_gene must be a string")
+    if mode not in ["positive", "negative"]:
+        raise ValueError("mode must be either 'positive' or 'negative'")
     
-    return result
+    if not gene_sets:
+        print("Warning: Empty gene_sets dictionary provided")
+        return
 
-
-
-########### Legacy Functions ###############
-def process_network(df, source, celltype):
-    filtered_network = df[(df['source'] == source) & (df['celltype'] == celltype)]
-    # Sort by 'p' value
-    filtered_network = filtered_network.sort_values(by='p')
-    genes = filtered_network['target'].tolist()
-    effects = filtered_network['score'].tolist()
-    return genes, effects
-
-def load_pathways(data_dir = "/group/testa/michal.kubacki/gene_score"):
-    # gene_sets_files = ["REACTOME_CHOLESTEROL_BIOSYNTHESIS.v2023.2.Hs.grp", "HALLMARK_UNFOLDED_PROTEIN_RESPONSE.v2023.2.Hs.grp",
-    #                   "BIOCARTA_PROTEASOME_PATHWAY.v2023.2.Hs.grp", "BIOCARTA_TEL_PATHWAY.v2023.2.Hs.grp",
-    #                   "BIOCARTA_P53HYPOXIA_PATHWAY.v2023.2.Hs.grp", "BIOCARTA_CARM_ER_PATHWAY.v2023.2.Hs.grp",
-    #                   "REACTOME_PROCESSING_OF_CAPPED_INTRON_CONTAINING_PRE_MRNA.v2023.2.Hs.grp", "REACTOME_DEUBIQUITINATION.v2023.2.Hs.grp",
-    #                   "REACTOME_SARS_COV_1_INFECTION.v2023.2.Hs.grp", "REACTOME_SIGNALING_BY_ROBO_RECEPTORS.v2023.2.Hs.grp"]
-    gene_sets_files = ["REACTOME_CHOLESTEROL_BIOSYNTHESIS.v2023.2.Hs.grp", "HALLMARK_UNFOLDED_PROTEIN_RESPONSE.v2023.2.Hs.grp"]
-
-    base_path = os.path.join(data_dir, "Pathways")
-    gene_sets = {}
-    weight_sets = {}
-    for gene_set in gene_sets_files:
-        genes = []
-        with open(os.path.join(base_path, gene_set), "r") as file:
-            # Skip the first two lines (header and URL)
-            next(file)
-            next(file)
-
-            for line in file:
-                genes.append(line.strip())
-        gene_sets[gene_set]= genes
-        weight_sets[gene_set] = None
-    return gene_sets
-
-def load_endocrineReceptorsGRNs_L_old_format(data_dir = "/group/testa/michal.kubacki/gene_score"):
-    # Load the data
-    endocrine_rec_networks = pd.read_csv(os.path.join(data_dir, "endocrineReceptorsGRNs_L.tsv"), sep="\t")
-    print(endocrine_rec_networks.head())
-    print(endocrine_rec_networks.source.unique())
-    celltype_counts = endocrine_rec_networks['celltype'].value_counts().reset_index()
-    celltype_counts.columns = ['celltype', 'count']
-    print(celltype_counts)
-    gene_sets = {}
-    weight_sets = {}
-    celltype = "Exc_Mig"
-
-    # ESR2: estrogen signalling
-    genes_ESR2, effects_ESR2 = process_network(endocrine_rec_networks, "ESR2", celltype)
-    if len(genes_ESR2) > 0:
-        gene_sets["ESR2"] = genes_ESR2
-        weight_sets["ESR2"] = effects_ESR2
-
-    # THRB: thyroid hormone signalling
-    genes_THRB, effects_THRB = process_network(endocrine_rec_networks, "THRB", celltype)
-    if len(genes_THRB) > 0:
-        gene_sets["THRB"] = genes_THRB
-        weight_sets["THRB"] = effects_THRB
-
-    # RARA: retonoic acid signalling
-    genes_RARA, effects_RARA = process_network(endocrine_rec_networks, "RARA", celltype)
-    if len(genes_RARA) > 0:
-        gene_sets["RARA"] = genes_RARA
-        weight_sets["RARA"] = effects_RARA
-
-    # NR2F1: Potentially related to Ret (Retinoid Receptors) or LivX (Liver X Receptor)
-    genes_NR2F1, effects_NR2F1 = process_network(endocrine_rec_networks, "NR2F1", celltype)
-    if len(genes_NR2F1) > 0:
-        gene_sets["NR2F1"] = genes_NR2F1
-        weight_sets["NR2F1"] = effects_NR2F1
-
-    # RORA: Potentially related to Ret
-    genes_RORA, effects_RORA = process_network(endocrine_rec_networks, "RORA", celltype)
-    if len(genes_RORA) > 0:
-        gene_sets["RORA"] = genes_RORA
-        weight_sets["RORA"] = effects_RORA
+    set_names = list(gene_sets.keys())
+    venn_sets = [set(genes) for genes in gene_sets.values()]
     
-    # NR4A1: Potentially related to Ret (Retinoid Receptors) or LivX (Liver X Receptor)
-    genes_NR4A1, effects_NR4A1 = process_network(endocrine_rec_networks, "NR4A1", celltype)
-    if len(genes_NR4A1) > 0:
-        gene_sets["NR4A1"] = genes_NR4A1
-        weight_sets["NR4A1"] = effects_NR4A1
-
-    # NR2F2: Potentially related to Ret (Retinoid Receptors) or LivX (Liver X Receptor)
-    genes_NR2F2, effects_NR2F2 = process_network(endocrine_rec_networks, "NR2F2", celltype)
-    if len(genes_NR2F2) > 0:
-        gene_sets["NR2F2"] = genes_NR2F2
-        weight_sets["NR2F2"] = effects_NR2F2 
-
-    # NR4A2: Potentially related to Ret (Retinoid Receptors) or LivX (Liver X Receptor)
-    genes_NR4A2, effects_NR4A2 = process_network(endocrine_rec_networks, "NR4A2", celltype)
-    if len(genes_NR4A2) > 0:
-        gene_sets["NR4A2"] = genes_NR4A2
-        weight_sets["NR4A2"] = effects_NR4A2 
-    return gene_sets
-
-def load_topDEGs(file='topDEGs_all_conditions.csv'):
-    gene_sets = {}
-    weight_sets = {}
+    if printouts:
+        print(f"\nUnique genes for each set:")
+        for name, gene_set in zip(set_names, venn_sets):
+            unique_genes = gene_set - set.union(*(s for s in venn_sets if s != gene_set))
+            print(f"{name}: {unique_genes}")
     
-    with open(file, 'r') as file:
-        reader = csv.DictReader(file)
-        
-        for row in reader:
-            for column, value in row.items():
-                condition, comparison, data_type = column.split('.')
-                
-                if condition not in gene_sets:
-                    gene_sets[condition] = []
-                    weight_sets[condition] = []
-                
-                if data_type == 'gene':
-                    gene_sets[condition].append(value)
-                elif data_type == 'score':
-                    score = float(value) if value else None
-                    weight_sets[condition].append(score)
-    return gene_sets, weight_sets
-
-def convert_weight_sets(weight_sets):
-    if isinstance(weight_sets, dict) and all(isinstance(weights, dict) for weights in weight_sets.values()):
-        weight_sets_list = {}
-        for condition, weights in weight_sets.items():
-            weight_sets_list[condition] = list(weights.values())
-        return weight_sets_list
+    if len(set_names) == 2:
+        plt.figure(figsize=(10, 10))
+        venn2(venn_sets, set_labels=set_names)
+        plt.title(f"Gene Intersection for {scored_gene}, coefficients: {mode}", fontsize=16)
+        plt.show()
+    elif len(set_names) == 3:
+        plt.figure(figsize=(10, 10))
+        venn3(venn_sets, set_labels=set_names)
+        plt.title(f"Gene Intersection for {scored_gene}, coefficients: {mode}", fontsize=16)
+        plt.show()
     else:
-        print("weight_sets has already correct format")
+        print(f"More than 3 cell types detected for {scored_gene}, coefficients: {mode}. Displaying text-based representation.")
+        for i in range(2, min(len(set_names) + 1, 4)):
+            for combo in combinations(range(len(set_names)), i):
+                common_genes = set.intersection(*[venn_sets[j] for j in combo])
+                if common_genes:
+                    print(f"Genes common to {', '.join([set_names[j] for j in combo])}: {common_genes}")
+  
+def create_venn_diagram_gene_set(gene_sets: dict, cell_type: str, mode: str = "positive", printouts: bool = False) -> None:
+    """
+    Create a Venn diagram showing the intersection of gene sets for a given cell type.
+    
+    Args:
+        gene_sets (dict): Dictionary mapping gene set names to sets of genes
+        cell_type (str): Name of the cell type being analyzed
+        mode (str, optional): Analysis mode - "positive" or "negative". Defaults to "positive"
+        printouts (bool, optional): Whether to print detailed intersection info. Defaults to False
+        
+    Returns:
+        None: Displays a Venn diagram plot
+        
+    Raises:
+        ValueError: If gene_sets is empty or invalid
+        TypeError: If arguments are of wrong type
+    """
+    if not isinstance(gene_sets, dict) or not gene_sets:
+        raise ValueError("gene_sets must be a non-empty dictionary")
+    if not isinstance(cell_type, str):
+        raise TypeError("cell_type must be a string")
+    if not isinstance(mode, str) or mode not in ["positive", "negative"]:
+        raise ValueError("mode must be either 'positive' or 'negative'")
+    if not isinstance(printouts, bool):
+        raise TypeError("printouts must be a boolean")
 
-def load_topDEGs_unique(file='topDEGs_all_conditions.csv'):
-    gene_sets_unique = {}
-    weight_sets_unique = {}
-    gene_conditions = {}
-    gene_scores = {}
+    set_names = list(gene_sets.keys())
+    venn_sets = [set(genes) for genes in gene_sets.values()]
     
-    with open(file, 'r') as file:
-        reader = csv.DictReader(file)
-        
-        for row in reader:
-            for column, value in row.items():
-                condition, comparison, data_type = column.split('.')
-                
-                if condition not in gene_sets_unique:
-                    gene_sets_unique[condition] = []
-                    weight_sets_unique[condition] = {}
-                    gene_scores[condition] = {}
-                
-                if data_type == 'gene':
-                    gene = value
-                    if gene not in gene_conditions:
-                        gene_conditions[gene] = []
-                    gene_conditions[gene].append(condition)
-                    gene_sets_unique[condition].append(gene)
-                elif data_type == 'score':
-                    score = float(value) if value else None
-                    gene_scores[condition][gene] = score
-        
-        for condition in gene_sets_unique:
-            for gene in gene_sets_unique[condition]:
-                if gene in gene_scores[condition]:
-                    weight_sets_unique[condition][gene] = gene_scores[condition][gene]
-        
-        for gene, conditions in gene_conditions.items():
-            max_score_condition = None
-            max_score = float('-inf')
-            
-            for condition in conditions:
-                if gene in weight_sets_unique[condition]:
-                    score = weight_sets_unique[condition][gene]
-                    if score is not None and score > max_score:
-                        max_score = score
-                        max_score_condition = condition
-            
-            if max_score_condition is not None:
-                for condition in conditions:
-                    if condition == max_score_condition:
-                        weight_sets_unique[condition][gene] = max_score
-                    else:
-                        weight_sets_unique[condition][gene] = 0.0
-    
-    weight_sets_unique = convert_weight_sets(weight_sets_unique)
-    return gene_sets_unique, weight_sets_unique
-    
+    if printouts:
+        print(f"\nShared genes between the sets:")
+        all_sets = set.union(*venn_sets)
+        for i in range(2, len(venn_sets) + 1):
+            for combination in itertools.combinations(range(len(venn_sets)), i):
+                shared_genes = set.intersection(*(venn_sets[j] for j in combination))
+                if shared_genes:
+                    set_names_str = " & ".join(set_names[j] for j in combination)
+                    print(f"Shared between {set_names_str}: {shared_genes}")
+
+    plt.figure(figsize=(10, 10))
+    if len(set_names) == 2:
+        venn2(venn_sets, set_labels=set_names)
+    elif len(set_names) == 3:
+        venn3(venn_sets, set_labels=set_names)
+    else:
+        plt.close()
+        print(f"More than 3 sets detected for {cell_type}, coefficients: {mode}. Displaying text-based representation.")
+        for i in range(2, min(len(set_names) + 1, 4)):
+            for combo in combinations(range(len(set_names)), i):
+                common_genes = set.intersection(*[venn_sets[j] for j in combo])
+                if common_genes:
+                    print(f"Genes common to {', '.join([set_names[j] for j in combo])}: {common_genes}")
+        return
+
+    plt.title(f"Genes Intersection for {cell_type}, coefficients: {mode}", fontsize=16)
+    plt.show()

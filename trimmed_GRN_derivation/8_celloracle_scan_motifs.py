@@ -10,29 +10,17 @@ import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 
-import celloracle as co
-co.__version__
+from dotenv import load_dotenv
+load_dotenv()
+sys.path.insert(0, os.getenv('PROJECT_FUNCTIONS_PATH'))
+
+from grn_helpers import set_custom_folders
 
 # %%
 n_cpus = 8
 neurons_set = "all_ex"
 # neurons_set = "all_ex_all_ages"
-root_dir = "/group/testa/michal.kubacki/herring_minimal"
-
-# %%
-def set_custom_folders(suffix):
-    tmp_dir = os.path.join(root_dir, "celloracle", "tmp")
-    in_dir = os.path.join(root_dir, "data")
-    out_dir = os.path.join(root_dir, suffix, "celloracle")
-    in_dir_from_scenic = os.path.join(root_dir, suffix)
-
-    print(f"root_dir: {root_dir}")
-    print(f"out_dir: {out_dir}")
-    print(f"in_dir: {in_dir}")
-    print(f"tmp_dir: {tmp_dir}")
-
-    os.makedirs(out_dir, exist_ok = True)
-    return out_dir, in_dir, root_dir, tmp_dir, in_dir_from_scenic
+root_dir = os.getenv('BASE_PATH')
 
 # %%
 cells_dict = {
@@ -45,7 +33,7 @@ ages_dict = {
     "all_ex_all_ages"   :   ['1m','3m','6m','10m','1y','2y','4y','6y','10y','16y','20y','40y','ga22','ga24']
 }
 
-output_dir, input_dir, root_dir, tmp_dir, in_dir_from_scenic = set_custom_folders(neurons_set)
+output_dir, input_dir, root_dir, tmp_dir, in_dir_from_scenic = set_custom_folders(root_dir, neurons_set)
 
 sel_celltypes  = cells_dict[neurons_set]
 sel_ages = ages_dict[neurons_set]
