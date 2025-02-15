@@ -19,7 +19,8 @@ from grn_helpers import set_custom_folders
 
 # %%
 n_cpus = 8
-neurons_set = "all_ex"
+neurons_set = "L2-3_CUX2"
+# neurons_set = "all_ex"
 # neurons_set = "all_ex_all_ages"
 reference = "hg19"
 root_dir = os.getenv('BASE_PATH')
@@ -29,7 +30,8 @@ output_dir, input_dir, root_dir, tmp_dir, in_dir_from_scenic = set_custom_folder
     
 celltypes_dict = {
     "all_ex"                : ['L5-6_TLE4', 'L2-3_CUX2', 'L4_RORB', 'L5-6_THEMIS', 'PN_dev'],
-    "all_ex_all_ages"       : ['L5-6_TLE4', 'L2-3_CUX2', 'L4_RORB', 'L5-6_THEMIS', 'PN_dev']
+    "all_ex_all_ages"       : ['L5-6_TLE4', 'L2-3_CUX2', 'L4_RORB', 'L5-6_THEMIS', 'PN_dev'],
+    "L2-3_CUX2"             : ['L2-3_CUX2']
 }
 
 sel_celltypes = celltypes_dict[neurons_set]

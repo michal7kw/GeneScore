@@ -1,26 +1,35 @@
-
 import os
 
 def set_custom_folders(root_dir, suffix):
+    # Define all required paths
     tmp_dir = os.path.join(root_dir, "celloracle", "tmp")
-
     in_dir = os.path.join(root_dir, "data")
     in_dir_from_scenic = os.path.join(root_dir, suffix)
-
     out_dir = os.path.join(root_dir, suffix, "celloracle")
+    
+    # Create all required directories
+    os.makedirs(tmp_dir, exist_ok=True)
+    os.makedirs(in_dir, exist_ok=True)
+    os.makedirs(in_dir_from_scenic, exist_ok=True)
+    os.makedirs(out_dir, exist_ok=True)
 
     print(f"root_dir: {root_dir}")
     print(f"out_dir: {out_dir}")
     print(f"in_dir: {in_dir}")
     print(f"tmp_dir: {tmp_dir}")
 
-    os.makedirs(out_dir, exist_ok = True)
     return out_dir, in_dir, root_dir, tmp_dir, in_dir_from_scenic
 
-def set_output_folders(root_dir,suffix):
+def set_output_folders(root_dir, suffix):
+    # Define all required paths
     tmp_dir = os.path.join(root_dir, "tmp")
     in_dir = os.path.join(root_dir, "data")
     out_dir = os.path.join(root_dir, suffix)
+
+    # Create all required directories
+    os.makedirs(tmp_dir, exist_ok=True)
+    os.makedirs(in_dir, exist_ok=True)
+    os.makedirs(out_dir, exist_ok=True)
 
     print(f"root_dir: {root_dir}")
     print(f"out_dir: {out_dir}")
@@ -29,7 +38,6 @@ def set_output_folders(root_dir,suffix):
 
     data_folder = "GSE168408_RAW"
 
-    os.makedirs(out_dir, exist_ok = True)
     return out_dir, in_dir, root_dir, tmp_dir, data_folder
 
 def select_files(root_dir, selected_fragments = ['2y', '4y']):

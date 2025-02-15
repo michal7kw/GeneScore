@@ -14,7 +14,8 @@ sys.path.insert(0, os.getenv('PROJECT_FUNCTIONS_PATH'))
 from grn_helpers import set_custom_folders
 
 # %%
-neurons_set = "all_ex"
+neurons_set = "L2-3_CUX2"
+# neurons_set = "all_ex"
 # neurons_set = "all_ex_all_ages"
 root_dir = os.getenv('BASE_PATH')
 
@@ -23,7 +24,8 @@ output_dir, input_dir, root_dir, tmp_dir, in_dir_from_scenic = set_custom_folder
     
 celltypes_dict = {
     "all_ex"                : ['L5-6_TLE4', 'L2-3_CUX2', 'L4_RORB', 'L5-6_THEMIS', 'PN_dev'],
-    "all_ex_all_ages"       : ['L5-6_TLE4', 'L2-3_CUX2', 'L4_RORB', 'L5-6_THEMIS', 'PN_dev']
+    "all_ex_all_ages"       : ['L5-6_TLE4', 'L2-3_CUX2', 'L4_RORB', 'L5-6_THEMIS', 'PN_dev'],
+    "L2-3_CUX2"             : ['L2-3_CUX2']
 }
 
 cell_types = celltypes_dict[neurons_set]

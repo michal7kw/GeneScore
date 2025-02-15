@@ -45,11 +45,21 @@ from grn_helpers import set_custom_folders
 root_dir = os.getenv('BASE_PATH')
 
 # %%
-neurons_set = "all_ex"
+neurons_set = "L2-3_CUX2"
+# neurons_set = "all_ex"
 # neurons_set = "all_ex_all_ages"
 
-gois = ["AR", "THRB", "ESR2", "NR1H3", "NR1H2", "RARA", "RARG", "AHR", "NR3C1"]
+# gois = ["AR", "THRB", "ESR2", "NR1H3", "NR1H2", "RARA", "RARG", "AHR", "NR3C1"]
 # gois = ['AHR', 'AR', 'NR1I2', 'NR1I3', 'NR3C1', 'NR3C2', 'ESR1', 'RARA', 'ESR2', 'THRB', 'THRA']
+gois = ['FGFR1', 'FGFR2', 'FGFR3', 'FGFR4', 'FGFRL1'] # FGF pathway
+gois = gois + ['PTCH1', 'SMO', 'GLI1', 'GLI2', 'GLI3', 'GLI4'] # SAG pathway
+gois = gois + ['BMPR1A', 'BMPR1B'] # BMP4 pathway
+gois = gois + ['ACVR1'] # BMP7 pathway
+gois = gois + ['CTNNB1', 'WNT5A', 'WNT3A', 'WNT3', 'APC', 'WNT10B'] # WNT pathway ('WNT1' is missing)
+gois = gois + ['RARA', 'RARB', 'RARG', 'RXRA', 'RXRB', 'RXRG'] # Retinoic Acid pathway
+print(f"gois: {gois}")
+# Available genes: ['FGFR1', 'FGFR2', 'FGFR3', 'FGFR4', 'FGFRL1', 'PTCH1', 'SMO', 'GLI1', 'GLI2', 'GLI3', 'GLI4', 'BMPR1A', 'BMPR1B', 'ACVR1', 'CTNNB1', 'WNT5A', 'WNT3A', 'WNT3', 'APC', 'WNT10B', 'RARA', 'RARB', 'RARG', 'RXRA', 'RXRB', 'RXRG']
+# Missing genes: ['WNT1']
 
 min_genes_percentile = 2
 max_genes_percentile = 98
@@ -60,15 +70,17 @@ max_mito_percent = 30
 # %%
 cells_dict = {
     "all_ex"            :   ['L5-6_TLE4', 'L2-3_CUX2', 'L4_RORB', 'L5-6_THEMIS', 'PN_dev'],
-    "all_ex_all_ages"   :   ['L5-6_TLE4', 'L2-3_CUX2', 'L4_RORB', 'L5-6_THEMIS', 'PN_dev']
+    "all_ex_all_ages"   :   ['L5-6_TLE4', 'L2-3_CUX2', 'L4_RORB', 'L5-6_THEMIS', 'PN_dev'],
+    "L2-3_CUX2"         :   ['L2-3_CUX2']
 }
 
 ages_dict = {
     "all_ex"           :   ['1m','3m','6m','10m','1y','2y','4y','ga22','ga24'],
-    "all_ex_all_ages"  :   ['1m','3m','6m','10m','1y','2y','4y','6y','10y','16y','20y','40y','ga22','ga24']
+    "all_ex_all_ages"  :   ['1m','3m','6m','10m','1y','2y','4y','6y','10y','16y','20y','40y','ga22','ga24'],
+    "L2-3_CUX2"        :   ['1m','3m','6m','10m','1y','2y','4y','ga22','ga24']
 }
 
-output_dir, input_dir, root_dir, tmp_dir, in_dir_from_scenic = set_custom_folders(root_dir, neurons_set)
+output_dir, input_dir, root_dir, _, in_dir_from_scenic = set_custom_folders(root_dir, neurons_set)
 
 sel_celltypes  = cells_dict[neurons_set]
 sel_ages = ages_dict[neurons_set]
@@ -261,25 +273,34 @@ pseudobulk_adata
 # ### scRNAseq - receptors expression
 
 # %%
+# Find available genes and their indices
 gene_indexs = []
+available_gois = []
+missing_gois = []
+
 for goi in gois:
-    try:
-        index = np.where(adata.var_names == goi)[0][0]
-        gene_indexs.append(index)
-    except ValueError:
-        print(f"{goi} index not found")
-print(gene_indexs)
+    gene_matches = np.where(adata.var_names == goi)[0]
+    if len(gene_matches) > 0:
+        gene_indexs.append(gene_matches[0])
+        available_gois.append(goi)
+    else:
+        missing_gois.append(goi)
 
-# %% [markdown]
-# #### Expression in metacells
+print("\nAvailable genes:", available_gois)
+print("Missing genes:", missing_gois)
+print(f"Found {len(available_gois)} out of {len(gois)} genes")
 
-# %%
-for i, goi in enumerate(gois):
+if len(available_gois) == 0:
+    print("\nNo genes of interest found in the dataset. Please check gene names.")
+    sys.exit(1)
+
+# Update subsequent code to use available_gois instead of gois
+for i, goi in enumerate(available_gois):
     expression_bulk = pseudobulk_adata.X[:,gene_indexs[i]]
     print([f"Expression of {goi} in {cell}: {expression}" for cell, expression in zip(pseudobulk_adata.obs_names, expression_bulk)])
 
 # %%
-expression_data = [pseudobulk_adata.X[:,gene_indexs[i]] for i in range(0,len(gois))]
+expression_data = [pseudobulk_adata.X[:,gene_indexs[i]] for i in range(0,len(available_gois))]
 cell_types = pseudobulk_adata.obs_names
 
 bar_width = 0.1
@@ -290,8 +311,8 @@ x = np.arange(len(cell_types))
 ax.set_xticks(x)
 ax.set_xticklabels(cell_types, rotation=45, ha='right', fontsize=15)
 
-for i, goi in enumerate(gois):
-    offset = (i - (len(gois) - 1) / 2) * (bar_width + spacing)
+for i, goi in enumerate(available_gois):
+    offset = (i - (len(available_gois) - 1) / 2) * (bar_width + spacing)
     ax.bar(x + offset, expression_data[i], width=bar_width, label=goi)
 
 ax.set_xlabel('Cell Types', fontsize=16)
@@ -321,10 +342,10 @@ for i, gene_index in enumerate(gene_indexs[:3]):
     
     plt.xlabel("Counts")
     plt.ylabel("Frequency (log scale)")
-    plt.title(f"Histogram of Counts: {gois[i]}")
-    plt.savefig(os.path.join(output_dir, f'histogram_of_counts_{gois[i]}.png'))
+    plt.title(f"Histogram of Counts: {available_gois[i]}")
+    plt.savefig(os.path.join(output_dir, f'histogram_of_counts_{available_gois[i]}.png'))
     plt.close()
-    print(f"{gois[i]} count: {count}")
+    print(f"{available_gois[i]} count: {count}")
 
 # %%
 adata.shape

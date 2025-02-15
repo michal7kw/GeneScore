@@ -11,19 +11,21 @@ sys.path.insert(0, os.getenv('PROJECT_FUNCTIONS_PATH'))
 from grn_helpers import set_output_folders
 
 # %%
-cell_types_set = "all_ex"
-# cell_types_set = "all_ex_all_ages"
+neurons_set = "L2-3_CUX2"
+# neurons_set = "all_ex"
+# neurons_set = "all_ex_all_ages"
 root_dir = os.getenv('BASE_PATH')
 
 # %%
-out_dir, in_dir, root_dir, tmp_dir, data_folder = set_output_folders(root_dir, cell_types_set)
+out_dir, in_dir, root_dir, tmp_dir, data_folder = set_output_folders(root_dir, neurons_set)
 
 dir_input_files = {
     "all_ex" : ['L2-3_CUX2_consensus_regions.bed', 'L4_RORB_consensus_regions.bed', 'L5-6_THEMIS_consensus_regions.bed', 'L5-6_TLE4_consensus_regions.bed', 'PN_dev_consensus_regions.bed'],
-    "all_ex_all_ages" : ['L2-3_CUX2_consensus_regions.bed', 'L4_RORB_consensus_regions.bed', 'L5-6_THEMIS_consensus_regions.bed', 'L5-6_TLE4_consensus_regions.bed', 'PN_dev_consensus_regions.bed']
+    "all_ex_all_ages" : ['L2-3_CUX2_consensus_regions.bed', 'L4_RORB_consensus_regions.bed', 'L5-6_THEMIS_consensus_regions.bed', 'L5-6_TLE4_consensus_regions.bed', 'PN_dev_consensus_regions.bed'],
+    "L2-3_CUX2" : ['L2-3_CUX2_consensus_regions.bed']
 }
 
-input_files = dir_input_files[cell_types_set]
+input_files = dir_input_files[neurons_set]
 
 # %%
 # Function to process a single file

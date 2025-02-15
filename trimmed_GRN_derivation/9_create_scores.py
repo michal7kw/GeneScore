@@ -19,19 +19,22 @@ from grn_helpers import set_custom_folders
 n_cpus = 16
 single_file = True
 plotting = True
-neurons_set = "all_ex"
+neurons_set = "L2-3_CUX2"
+# neurons_set = "all_ex"
 # neurons_set = "all_ex_all_ages"
 root_dir = os.getenv('BASE_PATH')
 
 # %%
 cells_dict = {
     "all_ex"            :   ['L5-6_TLE4', 'L2-3_CUX2', 'L4_RORB', 'L5-6_THEMIS', 'PN_dev'],
-    "all_ex_all_ages"   :   ['L5-6_TLE4', 'L2-3_CUX2', 'L4_RORB', 'L5-6_THEMIS', 'PN_dev']
+    "all_ex_all_ages"   :   ['L5-6_TLE4', 'L2-3_CUX2', 'L4_RORB', 'L5-6_THEMIS', 'PN_dev'],
+    "L2-3_CUX2"         :   ['L2-3_CUX2']
 }
 
 ages_dict = {
     "all_ex"            :   ['1m','3m','6m','10m','1y','2y','4y','ga22','ga24'],
-    "all_ex_all_ages"   :   ['1m','3m','6m','10m','1y','2y','4y','6y','10y','16y','20y','40y','ga22','ga24']
+    "all_ex_all_ages"   :   ['1m','3m','6m','10m','1y','2y','4y','6y','10y','16y','20y','40y','ga22','ga24'],
+    "L2-3_CUX2"         :   ['1m','3m','6m','10m','1y','2y','4y','ga22','ga24']
 }
 
 motif_scan_files = {
@@ -44,7 +47,8 @@ motif_scan_files = {
                                    'L4_RORB': 'L4_RORB.celloracle.parquet',
                                    'L5-6_THEMIS': 'L5-6_THEMIS.celloracle.parquet',
                                    'L5-6_TLE4': '5-6_TLE4.celloracle.parquet',
-                                   'PN_dev': 'PN_dev.celloracle.parquet'}
+                                   'PN_dev': 'PN_dev.celloracle.parquet'},
+    "L2-3_CUX2"         : {'L2-3_CUX2': 'L2-3_CUX2.celloracle.parquet'}
 }
 
 # Setup directories
@@ -58,10 +62,17 @@ motif_scan_files = motif_scan_files[neurons_set]
 plt.rcParams['figure.figsize'] = [6, 4.5]
 plt.rcParams["savefig.dpi"] = 300
 
-# Genes of interest
-gois = ["RET", "NTRK1", "NTRK2", "NTRK3", "GFRA1", "GFRA2", "GFRA3", "GFRA4",
-        "AHR", "ARNT", "ARNT2", "CLOCK", "AR", "NR1I2", "NR1I3", "NR3C1", "NR3C2",
-        "ESR1", "GPER1", "DIO3", "DIO2", 'RARA', 'ESR2', 'THRB', "THRA", "THRSP", "THRAP3"]
+# gois = ["AR", "THRB", "ESR2", "NR1H3", "NR1H2", "RARA", "RARG", "AHR", "NR3C1"]
+# gois = ['AHR', 'AR', 'NR1I2', 'NR1I3', 'NR3C1', 'NR3C2', 'ESR1', 'RARA', 'ESR2', 'THRB', 'THRA']
+gois = ['FGFR1', 'FGFR2', 'FGFR3', 'FGFR4', 'FGFRL1'] # FGF pathway
+gois = gois + ['PTCH1', 'SMO', 'GLI1', 'GLI2', 'GLI3', 'GLI4'] # SAG pathway
+gois = gois + ['BMPR1A', 'BMPR1B'] # BMP4 pathway
+gois = gois + ['ACVR1'] # BMP7 pathway
+gois = gois + ['CTNNB1', 'WNT5A', 'WNT3A', 'WNT3', 'APC', 'WNT10B'] # WNT pathway ('WNT1' is missing)
+gois = gois + ['RARA', 'RARB', 'RARG', 'RXRA', 'RXRB', 'RXRG'] # Retinoic Acid pathway
+print(f"gois: {gois}")
+# Available genes: ['FGFR1', 'FGFR2', 'FGFR3', 'FGFR4', 'FGFRL1', 'PTCH1', 'SMO', 'GLI1', 'GLI2', 'GLI3', 'GLI4', 'BMPR1A', 'BMPR1B', 'ACVR1', 'CTNNB1', 'WNT5A', 'WNT3A', 'WNT3', 'APC', 'WNT10B', 'RARA', 'RARB', 'RARG', 'RXRA', 'RXRB', 'RXRG']
+# Missing genes: ['WNT1']
 
 def load_and_process_data():
     print("Loading scRNA-seq data")

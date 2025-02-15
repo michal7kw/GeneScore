@@ -5,7 +5,7 @@
 #SBATCH --partition=cpuq
 #SBATCH --time=12:00:00
 #SBATCH --nodes=1
-#SBATCH --ntasks-per-node=8
+#SBATCH --ntasks-per-node=32
 #SBATCH --mem=64G
 #SBATCH --output=./logs/2_herring_atac_preprocessing.log
 

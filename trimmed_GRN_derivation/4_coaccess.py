@@ -15,12 +15,13 @@ from grn_helpers import set_output_folders
 
 # %%
 n_cpus = 8
-cell_types_set = "all_ex"
-# cell_types_set = "all_ex_all_ages"
+neurons_set = "L2-3_CUX2"
+# neurons_set = "all_ex"
+# neurons_set = "all_ex_all_ages"
 root_dir = os.getenv('BASE_PATH')
 
 # %%
-out_dir, in_dir, root_dir, tmp_dir, data_folder = set_output_folders(root_dir, cell_types_set)
+out_dir, in_dir, root_dir, tmp_dir, data_folder = set_output_folders(root_dir, neurons_set)
 
 # %%
 print("Load cistopic_obj")
@@ -36,11 +37,13 @@ print(f"fragment_matrix_ori.shape: {fragment_matrix_ori.shape}")
 print(F"peak_names: {peak_names[:10]}")
 
     
-celltypes_dict = {
-    "all_ex" : ['L5-6_TLE4', 'L2-3_CUX2', 'L4_RORB', 'L5-6_THEMIS', 'PN_dev'],
+cells_dict = {
+    "all_ex"            :   ['L5-6_TLE4', 'L2-3_CUX2', 'L4_RORB', 'L5-6_THEMIS', 'PN_dev'],
+    "all_ex_all_ages"   :   ['L5-6_TLE4', 'L2-3_CUX2', 'L4_RORB', 'L5-6_THEMIS', 'PN_dev'],
+    "L2-3_CUX2"         :   ['L2-3_CUX2']
 }
 
-cell_types = celltypes_dict[cell_types_set]
+cell_types = cells_dict[neurons_set]
 
 cell_type_dir = os.path.join(out_dir, "cell_type_consensus_regions")
 cell_type_fragments_dir = os.path.join(out_dir, "cell_type_fragments_data")

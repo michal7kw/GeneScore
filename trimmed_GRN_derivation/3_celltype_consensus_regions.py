@@ -15,7 +15,9 @@ root_dir = os.getenv('BASE_PATH')
 
 # %%
 n_cpus = 8
-neurons_set = "all_ex"
+neurons_set = "L2-3_CUX2"
+# neurons_set = "all_ex"
+# neurons_set = "all_ex_all_ages"
 
 # %%
 # all_excitatory ex_neurons ex_neurons_combined ex_progenitors all_inhibitory
@@ -26,10 +28,12 @@ consensus_regions = pd.read_csv(os.path.join(out_dir, 'consensus_peak_calling/co
 consensus_regions.columns = ['chrom', 'start', 'end', 'peak_id', 'score', 'strand']
 
 # Define the cell types of interest
-cell_types_dict = {
-    "all_ex" : ['L5-6_TLE4', 'L2-3_CUX2', 'L4_RORB', 'L5-6_THEMIS', 'PN_dev'],
+cells_dict = {
+    "all_ex"            :   ['L5-6_TLE4', 'L2-3_CUX2', 'L4_RORB', 'L5-6_THEMIS', 'PN_dev'],
+    "all_ex_all_ages"   :   ['L5-6_TLE4', 'L2-3_CUX2', 'L4_RORB', 'L5-6_THEMIS', 'PN_dev'],
+    "L2-3_CUX2"         :   ['L2-3_CUX2']
 }
-cell_types = cell_types_dict[neurons_set]
+cell_types = cells_dict[neurons_set]
 
 # %%
 # Create the peak_name column
