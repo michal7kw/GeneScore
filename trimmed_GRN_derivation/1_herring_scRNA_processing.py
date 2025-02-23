@@ -174,7 +174,7 @@ min_genes = np.percentile(adata.obs['n_genes_by_counts'], min_genes_percentile)
 max_genes = np.percentile(adata.obs['n_genes_by_counts'], max_genes_percentile)
 min_counts = np.percentile(adata.obs['n_counts'], min_counts_percentile)
 max_counts = np.percentile(adata.obs['n_counts'], max_counts_percentile)
-max_mito = np.percentile(adata.obs['percent_mito'], max_mito_percent)
+max_mito = max_mito_percent
 
 mask = (adata.obs['n_genes_by_counts'] >= min_genes) & (adata.obs['n_genes_by_counts'] <= max_genes) & \
         (adata.obs['n_counts'] >= min_counts) & (adata.obs['n_counts'] <= max_counts) & \
