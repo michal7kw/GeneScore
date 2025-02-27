@@ -9,10 +9,6 @@ import celloracle as co
 import importlib
 from datetime import datetime
 
-# Set working directory
-os.chdir('/home/michal.kubacki/Githubs/GeneScore/trimmed_GRN_derivation')
-
-
 from dotenv import load_dotenv
 load_dotenv()
 sys.path.insert(0, os.getenv('PROJECT_FUNCTIONS_PATH'))
@@ -105,6 +101,9 @@ oracle.import_anndata_as_raw_count(adata, cluster_column_name="major_clust", emb
 
 # %%
 df_grouped = pd.read_csv(os.path.join(input_dir, "2023_11_CellOracleProof.tsv"), delimiter="\t")
+TF_to_TG_dictionary = {TF: TGs.replace(" ", "").split(",") for TF, TGs in zip(df_grouped.TF, df_grouped.Target_genes)}
+TG_to_TF_dictionary = co.utility.inverse_dictionary(TF_to_TG_dictionary)
+oracle.addTFinfo_dictionary(TG_to_TF_dictionary)
 
 # %%
 print(df_grouped.shape)
@@ -113,17 +112,6 @@ df_grouped.head()
 # %%
 for _, row in df_grouped[:5].iterrows():
     print(f"{row['TF']} n_targets: {len(row['Target_genes'].split(','))}")
-
-# %%
-# Find intersection between TFs and genes of interest
-tf_array = df_grouped.TF.unique()
-gois_present_in_tfs = np.intersect1d(tf_array, gois_present)
-gois_present_in_tfs
-
-# %%
-# TF_to_TG_dictionary = {TF: TGs.replace(" ", "").split(",") for TF, TGs in zip(df_grouped.TF, df_grouped.Target_genes)}
-# TG_to_TF_dictionary = co.utility.inverse_dictionary(TF_to_TG_dictionary)
-# oracle.addTFinfo_dictionary(TG_to_TF_dictionary)
 
 # %% [markdown]
 # ## trrust_rawdata.human.tsv
@@ -216,9 +204,9 @@ gois_present_in_tfs = np.intersect1d(tf_array, gois_present)
 gois_present_in_tfs
 
 # %%
-# TF_to_TG_dictionary = {TF: TGs.replace(" ", "").split(",") for TF, TGs in zip(df_grouped.TF, df_grouped.Target_genes)}
-# TG_to_TF_dictionary = co.utility.inverse_dictionary(TF_to_TG_dictionary)
-# oracle.addTFinfo_dictionary(TG_to_TF_dictionary)
+TF_to_TG_dictionary = {TF: TGs.replace(" ", "").split(",") for TF, TGs in zip(df_grouped.TF, df_grouped.Target_genes)}
+TG_to_TF_dictionary = co.utility.inverse_dictionary(TF_to_TG_dictionary)
+oracle.addTFinfo_dictionary(TG_to_TF_dictionary)
 
 # %% [markdown]
 # ## TFLink_Homo_sapiens_interactions_SS_simpleFormat_v1.0.tsv
@@ -317,43 +305,8 @@ oracle.addTFinfo_dictionary(TG_to_TF_dictionary)
 # # DIM reduction
 
 # %%
-# Check if saved data exists and load it, otherwise perform PCA
-oracle_save_path = os.path.join(output_dir, 'oracle_after_pca.pkl')
-pca_results_path = os.path.join(output_dir, 'pca_results.npz')
-
-if os.path.exists(oracle_save_path) and os.path.exists(pca_results_path):
-    print("Loading saved PCA results and oracle object...")
-    oracle = co.Oracle.load(oracle_save_path)
-    pca_data = np.load(pca_results_path)
-    print("Successfully loaded saved data")
-else:
-    print("No saved data found. Performing PCA...")
-    oracle.perform_PCA()
-    
-    # Save PCA results and oracle object
-    print("Saving PCA results and oracle object...")
-    oracle.save(oracle_save_path)
-    
-    # Save the PCA transformed data separately for quick access
-    pca_data = {
-        'pca_transformed': oracle.pca.transform(oracle.adata.X),
-        'explained_variance_ratio': oracle.pca.explained_variance_ratio_,
-        'components': oracle.pca.components_
-    }
-    np.savez(pca_results_path, **pca_data)
-    
-    print(f"Saved oracle object to: {oracle_save_path}")
-    print("Saved PCA results to: pca_results.npz")
-
+oracle.perform_PCA()
 n_comps = min(np.where(np.diff(np.diff(np.cumsum(oracle.pca.explained_variance_ratio_))>0.002))[0][0], 50)
-# %%
-plt.axvline(n_comps, c="k")
-plt.savefig(os.path.join(output_dir, "pca_elbow.png"), bbox_inches='tight')
-plt.close()
-print(n_comps)
-n_comps = min(n_comps, 50)
-
-# %%
 n_cell = oracle.adata.shape[0]
 k = int(0.025*n_cell)
 oracle.knn_imputation(n_pca_dims=n_comps, k=k, balanced=True, b_sight=k*8, b_maxl=k*4, n_jobs=n_cpus)
@@ -366,64 +319,61 @@ sc.tl.umap(oracle.adata)
 all_sim_top = []
 all_grn_combined = []
 
-cell_type, motif_scan_file = motif_scan_files.items()
+for cell_type, motif_scan_file in motif_scan_files.items():
+    print(f"Processing cell type: {cell_type}")
+    
+    # Load base GRN
+    base_GRN = pd.read_parquet(os.path.join(output_dir, motif_scan_file), engine='pyarrow')
+    oracle.import_TF_data(TF_info_matrix=base_GRN)
 
-# %%
+    # Get links
+    links = oracle.get_links(cluster_name_for_GRN_unit="major_clust", alpha=10, verbose_level=10, n_jobs=n_cpus)
+    links.filter_links(p=0.001, weight="coef_abs", threshold_number=2000)
+    links.get_network_score()
+    
+    # Save links
+    file_name = os.path.join(output_dir, f"{cell_type}.celloracle.links")
+    links.to_hdf5(file_path=file_name)
 
-print(f"Processing cell type: {cell_type}")
+    if plotting:
+        links.plot_degree_distributions(plot_model=True)
+        plt.savefig(os.path.join(output_dir, f"degree_distributions_{cell_type}.png"), bbox_inches='tight')
+        plt.close()
 
-# Load base GRN
-base_GRN = pd.read_parquet(os.path.join(output_dir, motif_scan_file), engine='pyarrow')
-oracle.import_TF_data(TF_info_matrix=base_GRN)
+    oracle.get_cluster_specific_TFdict_from_Links(links_object=links)
+    oracle.fit_GRN_for_simulation(alpha=10, use_cluster_specific_TFdict=True)
 
-# Get links
-links = oracle.get_links(cluster_name_for_GRN_unit="major_clust", alpha=10, verbose_level=10, n_jobs=n_cpus)
-links.filter_links(p=0.05, weight="coef_abs", threshold_number=2000)
-links.get_network_score()
+    # Process each gene of interest
+    for goi in gois_present:
+        if goi in oracle.adata.var_names:
+            print(f"Processing {goi} for cell type {cell_type}")
+            
+            if plotting:
+                sc.pl.umap(oracle.adata, color=[goi, oracle.cluster_column_name], layer="imputed_count", use_raw=False, cmap="viridis")
+                plt.savefig(os.path.join(output_dir, f"gene_expression_{goi}_{cell_type}.png"), bbox_inches='tight')
+                plt.close()
 
-# Save links
-file_name = os.path.join(output_dir, f"{cell_type}.celloracle.links")
-links.to_hdf5(file_path=file_name)
+            # Simulate perturbation
+            oracle.simulate_shift(perturb_condition={goi: 0.0}, n_propagation=3)
+            oracle.estimate_transition_prob(n_neighbors=200, knn_random=True, sampled_fraction=1)
+            oracle.calculate_embedding_shift(sigma_corr=0.05)
 
-if plotting:
-    links.plot_degree_distributions(plot_model=True)
-    plt.savefig(os.path.join(output_dir, f"degree_distributions_{cell_type}.png"), bbox_inches='tight')
-    plt.close()
+            # Get simulation scores
+            sim_scores = oracle.get_simulation_score()
+            sim_scores['cell_type'] = cell_type
+            sim_scores['perturbed_gene'] = goi
+            all_sim_top.append(sim_scores)
 
-oracle.get_cluster_specific_TFdict_from_Links(links_object=links)
-oracle.fit_GRN_for_simulation(alpha=10, use_cluster_specific_TFdict=True)
+            # Get GRN scores
+            grn_scores = links.get_network_score_for_each_target_gene()
+            grn_scores['cell_type'] = cell_type
+            grn_scores['perturbed_gene'] = goi
+            all_grn_combined.append(grn_scores)
 
-# Process each gene of interest
-for goi in gois_present:
-    if goi in oracle.adata.var_names:
-        print(f"Processing {goi} for cell type {cell_type}")
-        
-        if plotting:
-            sc.pl.umap(oracle.adata, color=[goi, oracle.cluster_column_name], layer="imputed_count", use_raw=False, cmap="viridis")
-            plt.savefig(os.path.join(output_dir, f"gene_expression_{goi}_{cell_type}.png"), bbox_inches='tight')
-            plt.close()
-
-        # Simulate perturbation
-        oracle.simulate_shift(perturb_condition={goi: 0.0}, n_propagation=3)
-        oracle.estimate_transition_prob(n_neighbors=200, knn_random=True, sampled_fraction=1)
-        oracle.calculate_embedding_shift(sigma_corr=0.05)
-
-        # Get simulation scores
-        sim_scores = oracle.get_simulation_score()
-        sim_scores['cell_type'] = cell_type
-        sim_scores['perturbed_gene'] = goi
-        all_sim_top.append(sim_scores)
-
-        # Get GRN scores
-        grn_scores = links.get_network_score_for_each_target_gene()
-        grn_scores['cell_type'] = cell_type
-        grn_scores['perturbed_gene'] = goi
-        all_grn_combined.append(grn_scores)
-
-        if plotting:
-            oracle.plot_simulation_results()
-            plt.savefig(os.path.join(output_dir, f"simulation_results_{goi}_{cell_type}.png"), bbox_inches='tight')
-            plt.close()
+            if plotting:
+                oracle.plot_simulation_results()
+                plt.savefig(os.path.join(output_dir, f"simulation_results_{goi}_{cell_type}.png"), bbox_inches='tight')
+                plt.close()
 
 # %%
 if all_sim_top:
