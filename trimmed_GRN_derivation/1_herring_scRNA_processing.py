@@ -35,6 +35,8 @@ import numpy as np
 import scanpy as sc
 import matplotlib.pyplot as plt 
 
+os.chdir('/home/michal.kubacki/Githubs/GeneScore/trimmed_GRN_derivation/')
+
 from dotenv import load_dotenv
 load_dotenv()
 sys.path.insert(0, os.getenv('PROJECT_FUNCTIONS_PATH'))
