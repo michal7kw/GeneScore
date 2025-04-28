@@ -10,11 +10,37 @@ import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 
-from dotenv import load_dotenv
-load_dotenv()
-sys.path.insert(0, os.getenv('PROJECT_FUNCTIONS_PATH'))
+# Set working directory
+# work_dir = '/home/michal.kubacki/Githubs/GeneScore/trimmed_GRN_derivation'
+# work_dir = 'D:/Github/GeneScore/trimmed_GRN_derivation'
+work_dir = '/mnt/d/Github/GeneScore/trimmed_GRN_derivation'
+os.chdir(work_dir)
 
-from grn_helpers import set_custom_folders
+# Load environment variables from .env file
+from dotenv import load_dotenv
+
+# Explicitly specify the path to the .env file
+env_path = os.path.join(work_dir, '.env')
+load_dotenv(env_path)
+
+# Get environment variables with error handling
+project_functions_path = os.getenv('PROJECT_FUNCTIONS_PATH')
+if not project_functions_path:
+    raise ValueError("PROJECT_FUNCTIONS_PATH environment variable not found in .env file")
+
+print(f"Using PROJECT_FUNCTIONS_PATH: {project_functions_path}")
+sys.path.insert(0, project_functions_path)
+
+# Try to import from project_functions
+try:
+    from grn_helpers import *
+except ImportError:
+    print("Warning: Could not import from project_functions path, trying absolute path")
+    # Try absolute import path as fallback
+    # sys.path.insert(0, '/home/michal.kubacki/Githubs/GeneScore/project_functions')
+    # sys.path.insert(0, 'D:/Github/GeneScore/project_functions')
+    sys.path.insert(0,'/mnt/d/Github/GeneScore/project_functions')
+    from grn_helpers import *
 
 # %%
 n_cpus = 8

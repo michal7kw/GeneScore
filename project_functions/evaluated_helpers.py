@@ -48,6 +48,7 @@ def load_GRNs_gene_sets(root_dir: str, gene_set_list: list = ["all_ex"], weights
     # Load data for each gene set
     for gene_set in gene_set_list:
         path = os.path.join(root_dir, f"{gene_set}", "celloracle")
+        print(f"loading data from: {path}")
         file_path = os.path.join(path, weights_list)
         
         if not os.path.exists(file_path):
@@ -407,6 +408,7 @@ def print_number_of_duplicate_genes(gene_sets: dict) -> None:
         # for set1 total duplicates: 1 out of 4
         # for set2 total duplicates: 1 out of 4
     """
+    duplicates = False
     # Input validation
     if not isinstance(gene_sets, dict):
         raise TypeError("gene_sets must be a dictionary")
@@ -434,6 +436,13 @@ def print_number_of_duplicate_genes(gene_sets: dict) -> None:
         # Print results
         if duplicates:
             print(f"for {set_name} total duplicates: {len(duplicates)} out of {original_length}")
+            duplicates = True
+        else:
+            print(f"for {set_name} no duplicates found")
+    if duplicates:
+        return True
+    else:
+        return False
 
 def analyze_gene_sets_gene_set(data: dict, set_selected: str, cell_type: str, scored_genes: list, mode: str = "positive", printouts: bool = False) -> None:
     """
@@ -578,7 +587,8 @@ def better_hist_GRNs(data: dict, set_selected: str, cell_type_selected: str, sco
     if genes_to_mark is not None and not isinstance(genes_to_mark, list):
         raise TypeError("genes_to_mark must be a list or None")
 
-    plt.style.use('seaborn')
+    # plt.style.use('seaborn-v0_8-deep') # Removed as it causes issues in some environments
+    sns.set_style("darkgrid") # Use seaborn's function to set style
     sns.set_palette("deep")
 
     fig, ax = plt.subplots(figsize=(12, 6))
@@ -1134,4 +1144,36 @@ def create_venn_diagram_gene_set(gene_sets: dict, cell_type: str, mode: str = "p
         return
 
     plt.title(f"Genes Intersection for {cell_type}, coefficients: {mode}", fontsize=16)
+    plt.show()
+
+def visualize_weight_distributions(gene_sets_dict_cell_type_first, set_selected, cell_type_selected, scored_genes, score_type="scored_coef_mean"):
+    data = []
+    labels = []
+    
+    for scored_gene in scored_genes:
+        weights = gene_sets_dict_cell_type_first[set_selected][cell_type_selected][scored_gene][score_type]
+        data.append(weights)
+        labels.append(scored_gene)
+    
+    # Create the box plot
+    fig, ax = plt.subplots(figsize=(12, 8))
+    bp = ax.boxplot(data, labels=labels, patch_artist=True)
+    
+    # Customize the plot
+    ax.set_title(f'Distribution of Weights for Different Genes\nSet: {set_selected}, Cell Type: {cell_type_selected}')
+    ax.set_xlabel('Genes')
+    ax.set_ylabel('Weights')
+    
+    # Rotate x-axis labels for better readability
+    plt.xticks(rotation=45, ha='right')
+    
+    # Add grid for easier comparison
+    ax.yaxis.grid(True)
+    
+    # Color each box
+    colors = plt.cm.viridis(np.linspace(0, 1, len(scored_genes)))
+    for patch, color in zip(bp['boxes'], colors):
+        patch.set_facecolor(color)
+    
+    plt.tight_layout()
     plt.show()

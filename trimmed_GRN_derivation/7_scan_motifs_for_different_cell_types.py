@@ -14,10 +14,13 @@ from pathlib import Path
 
 import celloracle as co
 from celloracle import motif_analysis as ma
+from gimmemotifs.motif import read_motifs, Motif # Import read_motifs and Motif class
 co.__version__
 
 # Set working directory
-work_dir = '/home/michal.kubacki/Githubs/GeneScore/trimmed_GRN_derivation'
+# work_dir = '/home/michal.kubacki/Githubs/GeneScore/trimmed_GRN_derivation'
+# work_dir = 'D:/Github/GeneScore/trimmed_GRN_derivation'
+work_dir = '/mnt/d/Github/GeneScore/trimmed_GRN_derivation'
 os.chdir(work_dir)
 
 # Load environment variables from .env file
@@ -41,11 +44,17 @@ try:
 except ImportError:
     print("Warning: Could not import from project_functions path, trying absolute path")
     # Try absolute import path as fallback
-    sys.path.insert(0, '/home/michal.kubacki/Githubs/GeneScore/project_functions')
+    # sys.path.insert(0, '/home/michal.kubacki/Githubs/GeneScore/project_functions')
+    # sys.path.insert(0, 'D:/Github/GeneScore/project_functions')
+    sys.path.insert(0,'/mnt/d/Github/GeneScore/project_functions')
     from grn_helpers import *
 
 # %%
-n_cpus = 8
+import genomepy
+genomepy.install_genome("hg19", "UCSC")
+
+# %%
+n_cpus = 20
 neurons_set = "L2-3_CUX2"
 # neurons_set = "all_ex"
 # neurons_set = "all_ex_all_ages"
@@ -78,14 +87,17 @@ def download_file(url, output_path):
         print(f"Failed to download {url}, status code: {response.status_code}")
         return False
 
+# %%
 # Download JASPAR motifs
 jaspar_path = os.path.join(motif_dir, "JASPAR2022_CORE_vertebrates_non-redundant_pfms.txt")
 if not os.path.exists(jaspar_path):
     download_file(
-        "https://jaspar.genereg.net/download/data/2022/CORE/JASPAR2022_CORE_vertebrates_non-redundant_pfms.txt", 
+        # "https://jaspar.genereg.net/download/data/2022/CORE/JASPAR2022_CORE_vertebrates_non-redundant_pfms.txt", 
+        'https://jaspar.elixir.no/download/data/2024/CORE/JASPAR2024_CORE_vertebrates_non-redundant_pfms_jaspar.txt',
         jaspar_path
     )
 
+# %%
 # Download HOCOMOCO motifs
 hocomoco_path = os.path.join(motif_dir, "HOCOMOCOv11_core_HUMAN_mono_meme_format.meme")
 if not os.path.exists(hocomoco_path):
@@ -94,6 +106,7 @@ if not os.path.exists(hocomoco_path):
         hocomoco_path
     )
 
+# %%
 # HOMER motifs - Assuming you have HOMER installed
 homer_path = os.path.join(motif_dir, "homer_motifs")
 os.makedirs(homer_path, exist_ok=True)
@@ -101,25 +114,112 @@ os.makedirs(homer_path, exist_ok=True)
 # %%
 # Load motifs from multiple databases and combine them
 # Load original CisBP motifs
+# Load original CisBP motifs using the celloracle function (assuming this works for built-in names)
 cisbp_motifs = ma.load_motifs("CisBP_ver2_Homo_sapiens.pfm")
 print(f"Loaded {len(cisbp_motifs)} CisBP motifs")
 
+
+# %% Helper function to parse MEME format manually
+def parse_meme_to_motifs(filepath):
+    """
+    Parses a MEME file and returns a list of gimmemotifs Motif objects.
+    Handles basic MEME format, skipping metadata lines.
+    """
+    motifs = []
+    current_motif_id = None
+    current_matrix = []
+    in_matrix = False
+
+    try:
+        with open(filepath, 'r') as f:
+            for line in f:
+                line = line.strip()
+                if not line or line.startswith("#"):
+                    continue
+
+                if line.startswith("MOTIF"):
+                    # Finalize previous motif if any
+                    if current_motif_id and current_matrix:
+                        try:
+                            pwm = np.array(current_matrix, dtype=float)
+                            # GimmeMotifs Motif expects PFM (Position Frequency Matrix)
+                            # MEME provides PPM (Position Probability Matrix)
+                            # For basic use with CellOracle scan, PPM might be okay,
+                            # or conversion might be needed depending on downstream steps.
+                            # Let's try with PPM first.
+                            m = Motif(pwm)
+                            m.id = current_motif_id
+                            motifs.append(m)
+                        except ValueError as e:
+                             print(f"Warning: Could not process matrix for motif {current_motif_id}: {e}")
+
+                    # Start new motif
+                    parts = line.split()
+                    current_motif_id = parts[1] if len(parts) > 1 else f"UnnamedMotif_{len(motifs)}"
+                    current_matrix = []
+                    in_matrix = False
+
+                elif line.startswith("letter-probability matrix"):
+                    in_matrix = True
+                elif in_matrix:
+                    # Check if line looks like matrix data (starts with numbers)
+                    if line and (line[0].isdigit() or line.startswith('.')):
+                         # Split line into floats, handling potential extra whitespace
+                        try:
+                            row = [float(x) for x in line.split()]
+                            if len(row) == 4: # Expect A C G T
+                                current_matrix.append(row)
+                            else:
+                                # Stop reading matrix if row length is not 4
+                                in_matrix = False
+                        except ValueError:
+                             # Stop reading matrix if conversion to float fails
+                             in_matrix = False
+                    else:
+                        # If line doesn't look like matrix data, stop reading matrix
+                        in_matrix = False
+
+            # Add the last motif
+            if current_motif_id and current_matrix:
+                 try:
+                    pwm = np.array(current_matrix, dtype=float)
+                    m = Motif(pwm)
+                    m.id = current_motif_id
+                    motifs.append(m)
+                 except ValueError as e:
+                     print(f"Warning: Could not process matrix for motif {current_motif_id}: {e}")
+
+
+    except FileNotFoundError:
+        print(f"Error: MEME file not found at {filepath}")
+        return []
+    except Exception as e:
+        print(f"Error parsing MEME file {filepath}: {e}")
+        return []
+
+    return motifs
+
+# %%
 # Load JASPAR motifs
 try:
-    jaspar_motifs = ma.load_motifs(jaspar_path)
+    # Load JASPAR motifs using gimmemotifs' read_motifs
+    jaspar_motifs = read_motifs(jaspar_path)
     print(f"Loaded {len(jaspar_motifs)} JASPAR motifs")
 except Exception as e:
     print(f"Error loading JASPAR motifs: {e}")
     jaspar_motifs = []
 
+# %%
 # Load HOCOMOCO motifs (may need conversion depending on format support)
 try:
-    hocomoco_motifs = ma.load_motifs(hocomoco_path)
+    # Load HOCOMOCO motifs using the custom MEME parser
+    hocomoco_motifs = parse_meme_to_motifs(hocomoco_path)
     print(f"Loaded {len(hocomoco_motifs)} HOCOMOCO motifs")
 except Exception as e:
     print(f"Error loading HOCOMOCO motifs: {e}")
     hocomoco_motifs = []
 
+# %%
 # Combine all motifs
 all_motifs = cisbp_motifs + jaspar_motifs + hocomoco_motifs
 print(f"Total combined motifs: {len(all_motifs)}")
@@ -194,3 +294,5 @@ for cell_type in sel_celltypes:
     
     stats_df = pd.DataFrame([stats])
     stats_df.to_csv(os.path.join(output_dir, f"{cell_type}_motif_scan_stats.csv"), index=False)
+
+# %%

@@ -2,6 +2,7 @@ Herring_celloracle/
 Herring_scenic/
 logs/
 Archive/
+trimmed_GRN_derivation/Archive
 __pycache__/
 gene_scoring/gene_scoring.egg-info/
 gene_scoring/build/

@@ -7,20 +7,43 @@ import pandas as pd
 import scanpy as sc
 import celloracle as co
 import importlib
+import pickle
 from datetime import datetime
 
 # Set working directory
-os.chdir('/home/michal.kubacki/Githubs/GeneScore/trimmed_GRN_derivation')
+# work_dir = '/home/michal.kubacki/Githubs/GeneScore/trimmed_GRN_derivation'
+# work_dir = 'D:/Github/GeneScore/trimmed_GRN_derivation'
+work_dir = '/mnt/d/Github/GeneScore/trimmed_GRN_derivation'
+os.chdir(work_dir)
 
-
+# Load environment variables from .env file
 from dotenv import load_dotenv
-load_dotenv()
-sys.path.insert(0, os.getenv('PROJECT_FUNCTIONS_PATH'))
 
-from grn_helpers import set_custom_folders
+# Explicitly specify the path to the .env file
+env_path = os.path.join(work_dir, '.env')
+load_dotenv(env_path)
+
+# Get environment variables with error handling
+project_functions_path = os.getenv('PROJECT_FUNCTIONS_PATH')
+if not project_functions_path:
+    raise ValueError("PROJECT_FUNCTIONS_PATH environment variable not found in .env file")
+
+print(f"Using PROJECT_FUNCTIONS_PATH: {project_functions_path}")
+sys.path.insert(0, project_functions_path)
+
+# Try to import from project_functions
+try:
+    from grn_helpers import *
+except ImportError:
+    print("Warning: Could not import from project_functions path, trying absolute path")
+    # Try absolute import path as fallback
+    # sys.path.insert(0, '/home/michal.kubacki/Githubs/GeneScore/project_functions')
+    # sys.path.insert(0, 'D:/Github/GeneScore/project_functions')
+    sys.path.insert(0,'/mnt/d/Github/GeneScore/project_functions')
+    from grn_helpers import *
 
 # %%
-n_cpus = 16
+n_cpus = 20
 single_file = True
 plotting = True
 neurons_set = "L2-3_CUX2"
@@ -317,13 +340,15 @@ oracle.addTFinfo_dictionary(TG_to_TF_dictionary)
 # # DIM reduction
 
 # %%
+import pickle
 # Check if saved data exists and load it, otherwise perform PCA
 oracle_save_path = os.path.join(output_dir, 'oracle_after_pca.pkl')
 pca_results_path = os.path.join(output_dir, 'pca_results.npz')
 
 if os.path.exists(oracle_save_path) and os.path.exists(pca_results_path):
     print("Loading saved PCA results and oracle object...")
-    oracle = co.Oracle.load(oracle_save_path)
+    with open(oracle_save_path, 'rb') as f:
+        oracle = pickle.load(f)
     pca_data = np.load(pca_results_path)
     print("Successfully loaded saved data")
 else:
@@ -332,7 +357,8 @@ else:
     
     # Save PCA results and oracle object
     print("Saving PCA results and oracle object...")
-    oracle.save(oracle_save_path)
+    with open(oracle_save_path, 'wb') as f:
+        pickle.dump(oracle, f)
     
     # Save the PCA transformed data separately for quick access
     pca_data = {
@@ -366,64 +392,96 @@ sc.tl.umap(oracle.adata)
 all_sim_top = []
 all_grn_combined = []
 
-cell_type, motif_scan_file = motif_scan_files.items()
+# Iterate over the cell types and their corresponding motif scan files
+for cell_type, motif_scan_file in motif_scan_files.items():
+    print(f"Processing cell type: {cell_type}")
 
-# %%
+    # Load base GRN
+    base_GRN_path = os.path.join(output_dir, motif_scan_file)
+    print(f"Loading base GRN from: {base_GRN_path}")
+    if not os.path.exists(base_GRN_path):
+        print(f"Warning: Base GRN file not found at {base_GRN_path}. Skipping cell type {cell_type}.")
+        continue  # Skip to the next cell type if file not found
+    
+    try:
+        base_GRN = pd.read_parquet(base_GRN_path, engine='pyarrow')
+        oracle.import_TF_data(TF_info_matrix=base_GRN)
+    except Exception as e:
+        print(f"Error loading or importing base GRN for {cell_type} from {base_GRN_path}: {e}")
+        continue # Skip to the next cell type on error
 
-print(f"Processing cell type: {cell_type}")
+    # Get links
+    try:
+        links = oracle.get_links(cluster_name_for_GRN_unit="major_clust", alpha=10, verbose_level=10, n_jobs=n_cpus)
+        links.filter_links(p=0.05, weight="coef_abs", threshold_number=2000)
+        links.get_network_score()
+    except Exception as e:
+        print(f"Error processing links for {cell_type}: {e}")
+        continue # Skip to the next cell type on error
 
-# Load base GRN
-base_GRN = pd.read_parquet(os.path.join(output_dir, motif_scan_file), engine='pyarrow')
-oracle.import_TF_data(TF_info_matrix=base_GRN)
+    # Save links
+    try:
+        file_name = os.path.join(output_dir, f"{cell_type}.celloracle.links")
+        links.to_hdf5(file_path=file_name)
+        print(f"Saved links for {cell_type} to {file_name}")
+    except Exception as e:
+        print(f"Error saving links for {cell_type}: {e}")
+        # Continue processing even if saving fails
 
-# Get links
-links = oracle.get_links(cluster_name_for_GRN_unit="major_clust", alpha=10, verbose_level=10, n_jobs=n_cpus)
-links.filter_links(p=0.05, weight="coef_abs", threshold_number=2000)
-links.get_network_score()
-
-# Save links
-file_name = os.path.join(output_dir, f"{cell_type}.celloracle.links")
-links.to_hdf5(file_path=file_name)
-
-if plotting:
-    links.plot_degree_distributions(plot_model=True)
-    plt.savefig(os.path.join(output_dir, f"degree_distributions_{cell_type}.png"), bbox_inches='tight')
-    plt.close()
-
-oracle.get_cluster_specific_TFdict_from_Links(links_object=links)
-oracle.fit_GRN_for_simulation(alpha=10, use_cluster_specific_TFdict=True)
-
-# Process each gene of interest
-for goi in gois_present:
-    if goi in oracle.adata.var_names:
-        print(f"Processing {goi} for cell type {cell_type}")
-        
-        if plotting:
-            sc.pl.umap(oracle.adata, color=[goi, oracle.cluster_column_name], layer="imputed_count", use_raw=False, cmap="viridis")
-            plt.savefig(os.path.join(output_dir, f"gene_expression_{goi}_{cell_type}.png"), bbox_inches='tight')
+    if plotting:
+        try:
+            links.plot_degree_distributions(plot_model=True)
+            plt.savefig(os.path.join(output_dir, f"degree_distributions_{cell_type}.png"), bbox_inches='tight')
             plt.close()
+        except Exception as e:
+            print(f"Error plotting degree distributions for {cell_type}: {e}")
 
-        # Simulate perturbation
-        oracle.simulate_shift(perturb_condition={goi: 0.0}, n_propagation=3)
-        oracle.estimate_transition_prob(n_neighbors=200, knn_random=True, sampled_fraction=1)
-        oracle.calculate_embedding_shift(sigma_corr=0.05)
+    try:
+        oracle.get_cluster_specific_TFdict_from_Links(links_object=links)
+        oracle.fit_GRN_for_simulation(alpha=10, use_cluster_specific_TFdict=True)
+    except Exception as e:
+        print(f"Error fitting GRN for simulation for {cell_type}: {e}")
+        continue # Skip to the next cell type on error
 
-        # Get simulation scores
-        sim_scores = oracle.get_simulation_score()
-        sim_scores['cell_type'] = cell_type
-        sim_scores['perturbed_gene'] = goi
-        all_sim_top.append(sim_scores)
+    # Process each gene of interest
+    for goi in gois_present:
+        if goi in oracle.adata.var_names:
+            print(f"Processing {goi} for cell type {cell_type}")
+            
+            if plotting:
+                try:
+                    sc.pl.umap(oracle.adata, color=[goi, oracle.cluster_column_name], layer="imputed_count", use_raw=False, cmap="viridis", show=False)
+                    plt.savefig(os.path.join(output_dir, f"gene_expression_{goi}_{cell_type}.png"), bbox_inches='tight')
+                    plt.close()
+                except Exception as e:
+                    print(f"Error plotting gene expression for {goi} in {cell_type}: {e}")
 
-        # Get GRN scores
-        grn_scores = links.get_network_score_for_each_target_gene()
-        grn_scores['cell_type'] = cell_type
-        grn_scores['perturbed_gene'] = goi
-        all_grn_combined.append(grn_scores)
+            try:
+                # Simulate perturbation
+                oracle.simulate_shift(perturb_condition={goi: 0.0}, n_propagation=3)
+                oracle.estimate_transition_prob(n_neighbors=200, knn_random=True, sampled_fraction=1)
+                oracle.calculate_embedding_shift(sigma_corr=0.05)
 
-        if plotting:
-            oracle.plot_simulation_results()
-            plt.savefig(os.path.join(output_dir, f"simulation_results_{goi}_{cell_type}.png"), bbox_inches='tight')
-            plt.close()
+                # Get simulation scores
+                sim_scores = oracle.get_simulation_score()
+                sim_scores['cell_type'] = cell_type
+                sim_scores['perturbed_gene'] = goi
+                all_sim_top.append(sim_scores)
+
+                # Get GRN scores
+                grn_scores = links.get_network_score_for_each_target_gene()
+                grn_scores['cell_type'] = cell_type
+                grn_scores['perturbed_gene'] = goi
+                all_grn_combined.append(grn_scores)
+
+                if plotting:
+                    oracle.plot_simulation_results(show=False)
+                    plt.savefig(os.path.join(output_dir, f"simulation_results_{goi}_{cell_type}.png"), bbox_inches='tight')
+                    plt.close()
+            except Exception as e:
+                print(f"Error during simulation or scoring for {goi} in {cell_type}: {e}")
+                # Decide whether to continue with the next gene or cell type
+                # continue # Uncomment to skip to the next gene on error
 
 # %%
 if all_sim_top:
