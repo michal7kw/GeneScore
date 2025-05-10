@@ -4,9 +4,27 @@ import sys
 import pandas as pd
 from pycisTopic import *
 
+# Set working directory
+# work_dir = '/home/michal.kubacki/Githubs/GeneScore/trimmed_GRN_derivation'
+# work_dir = 'D:/Github/GeneScore/trimmed_GRN_derivation'
+work_dir = '/mnt/d/Github/GeneScore/trimmed_GRN_derivation'
+
+os.chdir(work_dir)
+
+# Load environment variables from .env file
 from dotenv import load_dotenv
-load_dotenv()
-sys.path.insert(0, os.getenv('PROJECT_FUNCTIONS_PATH'))
+
+# Explicitly specify the path to the .env file
+env_path = os.path.join(work_dir, '.env')
+load_dotenv(env_path)
+
+# Get environment variables with error handling
+project_functions_path = os.getenv('PROJECT_FUNCTIONS_PATH')
+if not project_functions_path:
+    raise ValueError("PROJECT_FUNCTIONS_PATH environment variable not found in .env file")
+
+print(f"Using PROJECT_FUNCTIONS_PATH: {project_functions_path}")
+sys.path.insert(0, project_functions_path)
 
 from grn_helpers import set_output_folders
 
@@ -15,8 +33,8 @@ root_dir = os.getenv('BASE_PATH')
 
 # %%
 n_cpus = 8
-neurons_set = "L2-3_CUX2"
-# neurons_set = "all_ex"
+# neurons_set = "L2-3_CUX2"
+neurons_set = "all_ex"
 # neurons_set = "all_ex_all_ages"
 
 # %%

@@ -15,6 +15,7 @@ from datetime import datetime
 # work_dir = '/home/michal.kubacki/Githubs/GeneScore/trimmed_GRN_derivation'
 # work_dir = 'D:/Github/GeneScore/trimmed_GRN_derivation'
 work_dir = '/mnt/d/Github/GeneScore/trimmed_GRN_derivation'
+
 os.chdir(work_dir)
 
 # Load environment variables from .env file
@@ -32,22 +33,14 @@ if not project_functions_path:
 print(f"Using PROJECT_FUNCTIONS_PATH: {project_functions_path}")
 sys.path.insert(0, project_functions_path)
 
-# Try to import from project_functions
-try:
-    from grn_helpers import *
-    from results_analysis import *
-except ImportError:
-    print("Warning: Could not import from project_functions path, trying absolute path")
-    # Try absolute import path as fallback
-    # sys.path.insert(0, '/home/michal.kubacki/Githubs/GeneScore/project_functions')
-    # sys.path.insert(0, 'D:/Github/GeneScore/project_functions')
-    sys.path.insert(0,'/mnt/d/Github/GeneScore/project_functions')
-    from grn_helpers import *
-    from results_analysis import *
+from grn_helpers import *
+from results_analysis import *
 
 # %%
 # Configuration parameters
-neurons_set = "L2-3_CUX2"  # Options: "all_ex", "all_ex_all_ages", "L2-3_CUX2"
+# neurons_set = "L2-3_CUX2"
+neurons_set = "all_ex"
+# neurons_set = "all_ex_all_ages" 
 
 # Get base path from environment variables with error handling
 root_dir = os.getenv('BASE_PATH')
