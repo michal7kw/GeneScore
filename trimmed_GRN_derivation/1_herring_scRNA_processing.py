@@ -96,6 +96,7 @@ cells_dict = {
 
 ages_dict = {
     "all_ex"           :   ['1m','3m','6m','10m','1y','2y','4y','ga22','ga24'],
+    "all_ex_comb"      :   ['1m','3m','6m','10m','1y','2y','4y','ga22','ga24'], # Added for all_ex_comb
     "all_ex_all_ages"  :   ['1m','3m','6m','10m','1y','2y','4y','6y','10y','16y','20y','40y','ga22','ga24'],
     "L2-3_CUX2"        :   ['1m','3m','6m','10m','1y','2y','4y','ga22','ga24']
 }
@@ -166,6 +167,30 @@ print(adata.shape)
 adata = adata[adata.obs['major_clust'].isin(sel_celltypes)]
 print(adata.shape)
 
+# %%
+# Combine cell types into 'ex_neurons' if neurons_set is "all_ex_comb"
+if neurons_set == "all_ex_comb":
+    print(f"Combining cell types for neurons_set='{neurons_set}'. Original types to combine from sel_celltypes: {sel_celltypes}")
+    
+    # Ensure 'major_clust' can accept the new 'ex_neurons' value.
+    if pd.api.types.is_categorical_dtype(adata.obs['major_clust']):
+        current_categories = adata.obs['major_clust'].cat.categories.tolist()
+        categories_to_map = [cat for cat in sel_celltypes if cat in current_categories]
+        
+        if 'ex_neurons' not in current_categories:
+            adata.obs['major_clust'] = adata.obs['major_clust'].cat.add_categories(['ex_neurons'])
+        
+        adata.obs.loc[adata.obs['major_clust'].isin(categories_to_map), 'major_clust'] = 'ex_neurons'
+        
+        # After re-assigning, some of the original categories (those in categories_to_map)
+        # might no longer be present in adata.obs['major_clust'].
+        # remove_unused_categories() will clean these up.
+        adata.obs['major_clust'] = adata.obs['major_clust'].cat.remove_unused_categories()
+    else:
+        # If 'major_clust' is not categorical (e.g., object dtype), direct assignment using .loc.
+        adata.obs.loc[adata.obs['major_clust'].isin(sel_celltypes), 'major_clust'] = 'ex_neurons'
+        
+    print(f"Cell types in 'major_clust' after combining: {list(adata.obs['major_clust'].unique())}")
 # %%
 adata.obs.age.unique()
 

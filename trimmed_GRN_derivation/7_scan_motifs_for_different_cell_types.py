@@ -59,7 +59,8 @@ output_dir, input_dir, root_dir, tmp_dir, in_dir_from_scenic = set_custom_folder
 celltypes_dict = {
     "all_ex"                : ['L5-6_TLE4', 'L2-3_CUX2', 'L4_RORB', 'L5-6_THEMIS', 'PN_dev'],
     "all_ex_all_ages"       : ['L5-6_TLE4', 'L2-3_CUX2', 'L4_RORB', 'L5-6_THEMIS', 'PN_dev'],
-    "L2-3_CUX2"             : ['L2-3_CUX2']
+    "L2-3_CUX2"             : ['L2-3_CUX2'],
+    "all_ex_comb"           : ['ex_neurons']
 }
 
 sel_celltypes = celltypes_dict[neurons_set]

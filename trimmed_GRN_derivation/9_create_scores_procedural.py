@@ -47,13 +47,15 @@ root_dir = os.getenv('BASE_PATH')
 cells_dict = {
     "all_ex"            :   ['L5-6_TLE4', 'L2-3_CUX2', 'L4_RORB', 'L5-6_THEMIS', 'PN_dev'],
     "all_ex_all_ages"   :   ['L5-6_TLE4', 'L2-3_CUX2', 'L4_RORB', 'L5-6_THEMIS', 'PN_dev'],
-    "L2-3_CUX2"         :   ['L2-3_CUX2']
+    "L2-3_CUX2"         :   ['L2-3_CUX2'],
+    "all_ex_comb"       :   ['ex_neurons']
 }
 
 ages_dict = {
     "all_ex"            :   ['1m','3m','6m','10m','1y','2y','4y','ga22','ga24'],
     "all_ex_all_ages"   :   ['1m','3m','6m','10m','1y','2y','4y','6y','10y','16y','20y','40y','ga22','ga24'],
-    "L2-3_CUX2"         :   ['1m','3m','6m','10m','1y','2y','4y','ga22','ga24']
+    "L2-3_CUX2"         :   ['1m','3m','6m','10m','1y','2y','4y','ga22','ga24'],
+    "all_ex_comb"       :   ['1m','3m','6m','10m','1y','2y','4y','ga22','ga24']
 }
 
 motif_scan_files = {
@@ -67,7 +69,8 @@ motif_scan_files = {
                                    'L5-6_THEMIS': 'L5-6_THEMIS.celloracle.parquet',
                                    'L5-6_TLE4': '5-6_TLE4.celloracle.parquet',
                                    'PN_dev': 'PN_dev.celloracle.parquet'},
-    "L2-3_CUX2"         : {'L2-3_CUX2': 'L2-3_CUX2.celloracle.parquet'}
+    "L2-3_CUX2"         : {'L2-3_CUX2': 'L2-3_CUX2.celloracle.parquet'},
+    "all_ex_comb"       : {'ex_neurons': 'ex_neurons.celloracle.parquet'}
 }
 
 # %%

@@ -12,3 +12,4 @@ project_functions/not_used.py
 *.tsv.gz
 *.tsv
 herring_minimal/
+pycisTopic/

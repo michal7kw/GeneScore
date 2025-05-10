@@ -58,7 +58,8 @@ print(F"peak_names: {peak_names[:10]}")
 cells_dict = {
     "all_ex"            :   ['L5-6_TLE4', 'L2-3_CUX2', 'L4_RORB', 'L5-6_THEMIS', 'PN_dev'],
     "all_ex_all_ages"   :   ['L5-6_TLE4', 'L2-3_CUX2', 'L4_RORB', 'L5-6_THEMIS', 'PN_dev'],
-    "L2-3_CUX2"         :   ['L2-3_CUX2']
+    "L2-3_CUX2"         :   ['L2-3_CUX2'],
+    "all_ex_comb"       :   ['ex_neurons']
 }
 
 cell_types = cells_dict[neurons_set]
