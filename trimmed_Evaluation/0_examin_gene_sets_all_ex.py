@@ -37,7 +37,9 @@ from evaluated_helpers import *
 
 # %%
 base_path = os.getenv('BASE_PATH')
-gene_set = "L2-3_CUX2"
+# gene_set = "L2-3_CUX2"
+gene_set = "all_ex"
+cell_type = "L2-3_CUX2"
 
 # %% [markdown]
 # # Load Gene Sets Data 
@@ -56,17 +58,17 @@ score = "coef_mean"
 # ### Remove duplicates
 
 # %%
-print(gene_sets_dict_cell_type_first_celloracle[gene_set][gene_set].keys())
-gois = gene_sets_dict_cell_type_first_celloracle[gene_set][gene_set].keys()
+print(gene_sets_dict_cell_type_first_celloracle[gene_set][cell_type].keys())
+gois = gene_sets_dict_cell_type_first_celloracle[gene_set][cell_type].keys()
 
 # %%
-data={key: gene_sets_dict_cell_type_first_celloracle[gene_set][gene_set][key]["targets"] for key in gois}
+data={key: gene_sets_dict_cell_type_first_celloracle[gene_set][cell_type][key]["targets"] for key in gois}
 duplicates = print_number_of_duplicate_genes(data)
 
 # %%
 if duplicates:
     gene_sets_dict_cell_type_first_celloracle = remove_duplicates_preserve_order_GRNs(gene_sets_dict_cell_type_first_celloracle)
-    data={key: gene_sets_dict_cell_type_first_celloracle[gene_set][gene_set][key]["targets"] for key in gois}
+    data={key: gene_sets_dict_cell_type_first_celloracle[gene_set][cell_type][key]["targets"] for key in gois}
     print_number_of_duplicate_genes(data)
 
 # %% [markdown]
@@ -75,9 +77,9 @@ if duplicates:
 # %%
 sets = list(gene_sets_dict_cell_type_first_celloracle.keys())
 cell_types = list(gene_sets_dict_cell_type_first_celloracle[gene_set].keys())
-scored_genes = list(gene_sets_dict_cell_type_first_celloracle[gene_set][gene_set].keys())
+scored_genes = list(gene_sets_dict_cell_type_first_celloracle[gene_set][cell_type].keys())
 print(scored_genes)
-print(len(gene_sets_dict_cell_type_first_celloracle[gene_set][gene_set][goi]['targets']))
+print(len(gene_sets_dict_cell_type_first_celloracle[gene_set][cell_type][goi]['targets']))
 
 # %%
 for cell_type in cell_types:
@@ -101,46 +103,45 @@ analyze_gene_sets_gene_set(gene_sets_dict_cell_type_first_celloracle, gene_set, 
 
 # %%
 genes_to_mark = ['PAM', 'EPHA6', 'OXR1', 'RBFOX1', 'RASGRF2', 'CPVL']
-better_hist_GRNs(gene_sets_dict_cell_type_first_celloracle, gene_set, gene_set, goi, score="coef_mean", bins=30, genes_to_mark=genes_to_mark)
+better_hist_GRNs(gene_sets_dict_cell_type_first_celloracle, gene_set, cell_type, goi, score="coef_mean", bins=30, genes_to_mark=genes_to_mark)
 
 # %%
 genes_to_mark = ['BDNF', 'PRKG2', 'KIRREL3', 'CUX1', 'UBB']
-better_hist_GRNs(gene_sets_dict_cell_type_first_celloracle, gene_set, gene_set, goi, score="coef_mean", bins=30, genes_to_mark=genes_to_mark)
+better_hist_GRNs(gene_sets_dict_cell_type_first_celloracle, gene_set, cell_type, goi, score="coef_mean", bins=30, genes_to_mark=genes_to_mark)
 
 # %%
 scored_genes=["RARA", "THRB", "AR"]
-cell_type = gene_set
-analyze_gene_sets_gene_set(gene_sets_dict_cell_type_first_celloracle, gene_set, cell_type=cell_type, scored_genes=scored_genes, mode="negative")
+analyze_gene_sets_gene_set(gene_sets_dict_cell_type_first_celloracle, gene_set, cell_type, scored_genes=scored_genes, mode="negative")
 
 # %%
 cell_types=["L2-3_CUX2", "L4_RORB", "L5-6_THEMIS"]
 scored_gene="NR3C2"
 
-analyze_gene_sets_cell_types(gene_sets_dict_cell_type_first_celloracle, set_selected, scored_gene, cell_types, mode = "positive", printouts=True)
+analyze_gene_sets_cell_types(gene_sets_dict_cell_type_first_celloracle, gene_set, scored_gene, cell_types, mode = "positive", printouts=True)
 
 # %%
 cell_types=["L2-3_CUX2", "L4_RORB", "L5-6_THEMIS"]
 scored_gene="NR3C2"
 
-analyze_gene_sets_cell_types(gene_sets_dict_cell_type_first_celloracle, set_selected, scored_gene, cell_types, mode = "negative")
+analyze_gene_sets_cell_types(gene_sets_dict_cell_type_first_celloracle, gene_set, scored_gene, cell_types, mode = "negative")
 
 # %% [markdown]
 # ### Histograms
 
 # %%
-better_hist_GRNs(gene_sets_dict_cell_type_first_celloracle, set_selected, cell_type_selected, "AR", score="coef_mean", bins=30)
+better_hist_GRNs(gene_sets_dict_cell_type_first_celloracle, gene_set, cell_type, "AR", score="coef_mean", bins=30)
 
 # %%
-better_hist_GRNs(gene_sets_dict_cell_type_first_celloracle, set_selected, cell_type_selected, scored_gene_selected, score="coef_mean", bins=30)
+better_hist_GRNs(gene_sets_dict_cell_type_first_celloracle, gene_set, cell_type, "RARA", score="coef_mean", bins=30)
 
 # %%
-visualize_weight_distributions(gene_sets_dict_cell_type_first_celloracle, set_selected, cell_type_selected, scored_genes, score_type="coef_mean")
+visualize_weight_distributions(gene_sets_dict_cell_type_first_celloracle, gene_set, cell_type, scored_genes, score_type="coef_mean")
 
 # %% [markdown]
 # ### Intersections
 
 # %%
-data={key: gene_sets_dict_cell_type_first_celloracle[set_selected][cell_type_selected][key]["targets"] for key in gois}
+data={key: gene_sets_dict_cell_type_first_celloracle[gene_set][cell_type][key]["targets"] for key in gois}
 
 plot_gene_set_intersections(data, title="Intersection of Gene Sets (Ag)")
 
@@ -158,11 +159,11 @@ plot_gene_set_intersections(data, title="Intersection of Gene Sets (Ag)")
 
 # %%
 genes_to_mark = ['SASH1', 'HTR1B', 'MICAL2', 'BCL9', 'RASGRF2']
-better_hist_GRNs(gene_sets_dict_cell_type_first_celloracle, set_selected, "L2-3_CUX2", "NR3C2", score="coef_mean", bins=30, genes_to_mark=genes_to_mark)
+better_hist_GRNs(gene_sets_dict_cell_type_first_celloracle, gene_set, "L2-3_CUX2", "NR3C2", score="coef_mean", bins=30, genes_to_mark=genes_to_mark)
 
 # %%
 genes_to_mark = ['GFRA1', 'RGS6', 'ATF5', 'GDF5', 'NCAM2', 'SESN3', 'FN1', 'KIF26B', 'NR4A3', 'PTPRZ1', 'TUBB2B', 'SOX5', 'BHLHE22', 'LINGO2']
-better_hist_GRNs(gene_sets_dict_cell_type_first_celloracle, set_selected, "L4_RORB", "NR3C2", score="coef_mean", bins=30, genes_to_mark=genes_to_mark)
+better_hist_GRNs(gene_sets_dict_cell_type_first_celloracle, gene_set, "L4_RORB", "NR3C2", score="coef_mean", bins=30, genes_to_mark=genes_to_mark)
 
 # %%
 genes_to_mark = ['HIST1H1E', 'COMMD3-BMI1', 'ETV5', 'TXNIP', 'CH25H', 'USP39', 'RARB', 'HIST1H2BN', 'LPL']

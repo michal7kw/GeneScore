@@ -60,9 +60,10 @@ from grn_helpers import set_output_folders, select_files
 root_dir = os.getenv('BASE_PATH')
 
 # %% # Define parameters
-n_cpu = 8
+n_cpu = 20
 # neurons_set = "L2-3_CUX2"
-neurons_set = "all_ex"
+# neurons_set = "all_ex"
+neurons_set = "all_ex_comb"
 # neurons_set = "all_ex_all_ages"
 
 # %% # Define parameters
@@ -119,14 +120,24 @@ cells_data['age'] = cells_data.predictedCell.apply(process_age)
 cells_data['chem'] = cells_data.predictedCell.apply(process_chem)
 
 unique_names = cells_data.predictedGroup.unique()
+print(f"DEBUG: Unique values in cells_data.predictedGroup after load: {sorted(list(unique_names))}")
+cells_data['original_clust'] = cells_data.predictedGroup.apply(process_name)
 
 if neurons_set == "all_ex_comb":
     # Specific mapping for "all_ex_comb"
     ex_neuron_original_types = ['L5-6_TLE4', 'L2-3_CUX2', 'L4_RORB', 'L5-6_THEMIS']
+    
+    # Create a new column to store the original cell type
+    # The line `cells_data['original_clust'] = cells_data.predictedGroup.apply(process_name)` was moved before this `if` block.
+    
+    
+    # Map all ex_neuron_original_types to 'ex_neurons' for filtering
     def map_func_all_ex_comb(name_val):
-        if name_val in ex_neuron_original_types:
+        processed_name_val = process_name(name_val) # First process the name
+        if processed_name_val in ex_neuron_original_types: # Then check if the processed name is in the list
             return "ex_neurons"
-        return process_name(name_val)
+        return processed_name_val # Return the processed name if not in the list (e.g. for non-excitatory types)
+    
     cells_data['major_clust'] = cells_data.predictedGroup.apply(map_func_all_ex_comb)
 else:
     # Original mapping logic
@@ -172,6 +183,8 @@ cells_data["age_mapped"].unique()
 
 # %% # filter cells data
 print(cells_data.shape)
+print(f"DEBUG: Unique values in cells_data.major_clust before filtering by sel_celltypes: {sorted(list(cells_data['major_clust'].unique()))}")
+print(f"DEBUG: sel_celltypes for this run: {sel_celltypes}")
 
 cells_data = cells_data[cells_data['major_clust'].isin(sel_celltypes)]
 print(cells_data.shape)
@@ -242,16 +255,39 @@ os.makedirs(os.path.join(out_dir, "consensus_peak_calling/pseudobulk_bw_files"),
 
 # %% # export pseudobulk profiles
 # beforehand one might need to run `for file in *fragments.tsv.gz; do tabix -p bed "$file"; done`
+# For all_ex_comb, use original_clust instead of major_clust for export_pseudobulk
+# This preserves the original cell type information for the function
+variable_to_use = "original_clust" if neurons_set == "all_ex_comb" else "major_clust"
+
+# Ensure fragments_dict keys match the samples (ages) actually present in cells_data
+# after all filtering. The sample_id_col used in export_pseudobulk is 'age_mapped'.
+final_present_ages_in_cells_data = set(cells_data['age_mapped'].unique())
+original_fragments_dict_keys = sorted(list(fragments_dict.keys())) # For logging
+fragments_dict = {
+    age: path
+    for age, path in fragments_dict.items()
+    if age in final_present_ages_in_cells_data
+}
+# Logging the filtering action
+print(f"Original fragments_dict had keys: {original_fragments_dict_keys}")
+print(f"After filtering based on cells_data['age_mapped'], fragments_dict now has keys: {sorted(list(fragments_dict.keys()))}")
+print(f"Unique ages in final cells_data['age_mapped']: {sorted(list(final_present_ages_in_cells_data))}")
+
+if not fragments_dict:
+    raise ValueError("fragments_dict is empty after filtering against cells_data. "
+                     "This means no common samples (ages) are left after processing cells_data. "
+                     "Check filtering steps for cells_data and initial sample lists.")
+
 paths = export_pseudobulk(
     input_data = cells_data,
-    variable = "major_clust",
+    variable = variable_to_use,  # Use original_clust for all_ex_comb
     sample_id_col = "age_mapped",
     chromsizes = chromsizes,
     bigwig_path = os.path.join(out_dir, "consensus_peak_calling/pseudobulk_bw_files"),
     bed_path = os.path.join(out_dir, "consensus_peak_calling/pseudobulk_bed_files"),
     path_to_fragments = fragments_dict,
     n_cpu = 1,
-    temp_dir = '/home/michal.kubacki/Githubs/Re-MEND/code/External_Datasets/GeneSet_Derivation/Herring_scenic/PycisTopic_Scenic/tmp',
+    temp_dir = '/tmp',
     split_pattern = "-"
 )
 
@@ -270,7 +306,8 @@ with open(os.path.join(out_dir, "consensus_peak_calling/bed_paths.tsv")) as f:
         bed_paths.update({v: p})
 
 #%% # peak_calling
-macs_path = "/home/michal.kubacki/.conda/envs/scenicplus/bin/macs2" 
+# macs_path = "/home/michal.kubacki/.conda/envs/scenicplus/bin/macs2" 
+macs_path = "/home/michal/miniforge3/envs/scenicplus-new/bin/macs2"
 os.makedirs(os.path.join(out_dir, "consensus_peak_calling/MACS"), exist_ok=True)
 
 narrow_peak_dict = peak_calling(
@@ -543,3 +580,4 @@ pickle.dump(
     cistopic_obj,
     open(os.path.join(out_dir, "cistopic_obj.pkl"), "wb")
 )
+# %%

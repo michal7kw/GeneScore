@@ -32,9 +32,10 @@ from grn_helpers import set_output_folders
 root_dir = os.getenv('BASE_PATH')
 
 # %%
-n_cpus = 8
+n_cpu = 20
 # neurons_set = "L2-3_CUX2"
-neurons_set = "all_ex"
+# neurons_set = "all_ex"
+neurons_set = "all_ex_comb"
 # neurons_set = "all_ex_all_ages"
 
 # %%
@@ -50,7 +51,7 @@ cells_dict = {
     "all_ex"            :   ['L5-6_TLE4', 'L2-3_CUX2', 'L4_RORB', 'L5-6_THEMIS', 'PN_dev'],
     "all_ex_all_ages"   :   ['L5-6_TLE4', 'L2-3_CUX2', 'L4_RORB', 'L5-6_THEMIS', 'PN_dev'],
     "L2-3_CUX2"         :   ['L2-3_CUX2'],
-    "all_ex_comb"       :   ['ex_neurons']
+    "all_ex_comb"       :   ['L5-6_TLE4', 'L2-3_CUX2', 'L4_RORB', 'L5-6_THEMIS']
 }
 cell_types = cells_dict[neurons_set]
 
@@ -58,6 +59,8 @@ cell_types = cells_dict[neurons_set]
 # Create the peak_name column
 consensus_regions['peak_name'] = consensus_regions['chrom'].astype(str) + '_' + consensus_regions['start'].astype(str) + '_' + consensus_regions['end'].astype(str)
 
+
+# %%
 # Define a score threshold for selecting valid peaks
 score_threshold = 1.0
 
@@ -68,7 +71,10 @@ os.makedirs(cell_type_dir, exist_ok=True)
 # Save the valid consensus regions for each cell type
 for cell_type in cell_types:
     cell_type_regions = consensus_regions[consensus_regions['peak_id'].str.contains(cell_type) & (consensus_regions['score'] >= score_threshold)]
-    cell_type_regions.loc[:, 'cell_type'] = cell_type
-    cell_type_regions_file = os.path.join(cell_type_dir, f"{cell_type}_consensus_regions.bed")
-    cell_type_regions.to_csv(cell_type_regions_file, sep='\t', header=False, index=False)
-    print(f"Saved valid consensus regions for cell type {cell_type} to {cell_type_regions_file}")
+    if not cell_type_regions.empty:
+        cell_type_regions.loc[:, 'cell_type'] = cell_type
+        cell_type_regions_file = os.path.join(cell_type_dir, f"{cell_type}_consensus_regions.bed")
+        cell_type_regions.to_csv(cell_type_regions_file, sep='\t', header=False, index=False)
+        print(f"Saved valid consensus regions for cell type {cell_type} to {cell_type_regions_file}")
+    else:
+        print(f"No regions found for cell type {cell_type} with score >= {score_threshold}. Skipping file generation.")

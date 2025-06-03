@@ -495,3 +495,120 @@ print(f"Script ended at {end_time}")
 print(f"Total execution time: {end_time - start_time}")
 
 
+# %%
+
+# %% [markdown]
+# # Load and Re-plot Generated Data
+
+# %%
+print("Loading previously generated data and re-plotting...")
+
+# Re-establish output_dir based on existing logic
+output_dir, _, _, _, _ = set_custom_folders(root_dir, neurons_set)
+
+# Load adata
+print("Loading scRNA-seq data (adata) for re-plotting...")
+adata_reloaded = sc.read_h5ad(os.path.join(output_dir, 'subseted_rna_andata.h5ad'))
+# Ensure adata has the same subset of genes as before
+gois_present_reloaded = [gene for gene in gois if gene in adata_reloaded.var_names]
+hvgs_reloaded = list(adata_reloaded.var_names[adata_reloaded.var['highly_variable']])
+combined_genes_reloaded = pd.Series(hvgs_reloaded + gois_present_reloaded).unique()
+adata_reloaded = adata_reloaded[:, combined_genes_reloaded]
+
+
+# Load oracle object after PCA
+oracle_save_path = os.path.join(output_dir, 'oracle_after_pca.pkl')
+if os.path.exists(oracle_save_path):
+    print(f"Loading oracle object from: {oracle_save_path}")
+    with open(oracle_save_path, 'rb') as f:
+        oracle_reloaded = pickle.load(f)
+    # Ensure the reloaded oracle uses the reloaded adata for consistent plotting
+    oracle_reloaded.adata = adata_reloaded
+    
+    # Re-import anndata to ensure all necessary layers are present for imputation
+    print("Re-importing anndata into reloaded oracle object...")
+    oracle_reloaded.import_anndata_as_raw_count(oracle_reloaded.adata, cluster_column_name="major_clust", embedding_name="X_umap")
+
+    # Re-run KNN imputation and UMAP on the reloaded oracle object
+    print("Re-running KNN imputation and UMAP on reloaded oracle object...")
+    n_cell_reloaded = oracle_reloaded.adata.shape[0]
+    k_reloaded = int(0.025 * n_cell_reloaded)
+    oracle_reloaded.knn_imputation(n_pca_dims=n_comps, k=k_reloaded, balanced=True, b_sight=k_reloaded * 8, b_maxl=k_reloaded * 4, n_jobs=n_cpus)
+    sc.pp.neighbors(oracle_reloaded.adata)
+    sc.tl.umap(oracle_reloaded.adata)
+
+else:
+    print(f"Warning: Oracle object not found at {oracle_save_path}. Cannot re-plot UMAPs and related data.")
+    oracle_reloaded = None
+
+# Load PCA results
+pca_results_path = os.path.join(output_dir, 'pca_results.npz')
+if os.path.exists(pca_results_path):
+    print(f"Loading PCA results from: {pca_results_path}")
+    pca_data_reloaded = np.load(pca_results_path)
+    # Re-plot PCA elbow
+    if plotting:
+        print("Re-plotting PCA elbow plot...")
+        plt.figure()
+        plt.plot(np.cumsum(pca_data_reloaded['explained_variance_ratio']))
+        plt.xlabel('Number of components')
+        plt.ylabel('Cumulative explained variance')
+        plt.title('PCA Elbow Plot (Reloaded)')
+        plt.axvline(n_comps, c="k", linestyle='--', label=f'Selected components: {n_comps}')
+        plt.legend()
+        plt.savefig(os.path.join(output_dir, "pca_elbow_reloaded.png"), bbox_inches='tight')
+        plt.close()
+else:
+    print(f"Warning: PCA results not found at {pca_results_path}. Cannot re-plot PCA elbow.")
+
+# Load simulation and GRN scores
+sim_scores_path = os.path.join(output_dir, 'scores_sim_all_new.csv')
+grn_scores_path = os.path.join(output_dir, 'scores_grn_all_from_comb_run_new.csv')
+
+if os.path.exists(sim_scores_path):
+    print(f"Loading simulation scores from: {sim_scores_path}")
+    all_sim_loaded = pd.read_csv(sim_scores_path)
+    print("First 5 rows of loaded simulation scores:")
+    print(all_sim_loaded.head())
+else:
+    print(f"Warning: Simulation scores not found at {sim_scores_path}.")
+
+if os.path.exists(grn_scores_path):
+    print(f"Loading GRN scores from: {grn_scores_path}")
+    all_grn_loaded = pd.read_csv(grn_scores_path)
+    print("First 5 rows of loaded GRN scores:")
+    print(all_grn_loaded.head())
+else:
+    print(f"Warning: GRN scores not found at {grn_scores_path}.")
+
+# Re-plot degree distributions, gene expression UMAPs
+if plotting and oracle_reloaded is not None:
+    print("Re-plotting degree distributions and gene expression UMAPs...")
+    for cell_type in sel_celltypes:
+        # Load links object
+        links_file_name = os.path.join(output_dir, f"{cell_type}.celloracle.links")
+        if os.path.exists(links_file_name):
+            print(f"Loading links for {cell_type} from: {links_file_name}")
+            links_reloaded = co.load_hdf5(links_file_name)
+            
+            # Re-plot degree distributions
+            print(f"Re-plotting degree distributions for {cell_type}...")
+            links_reloaded.plot_degree_distributions(plot_model=True)
+            plt.title(f"Degree Distributions for {cell_type} (Reloaded)")
+            plt.savefig(os.path.join(output_dir, f"degree_distributions_{cell_type}_reloaded.png"), bbox_inches='tight')
+            plt.close()
+        else:
+            print(f"Warning: Links file not found for {cell_type} at {links_file_name}. Skipping degree distribution plot.")
+
+        for goi in gois_present:
+            if goi in oracle_reloaded.adata.var_names:
+                print(f"Re-plotting gene expression UMAP for {goi} in {cell_type}...")
+                sc.pl.umap(oracle_reloaded.adata, color=[goi, oracle_reloaded.cluster_column_name], layer="imputed_count", use_raw=False, cmap="viridis", show=False, title=f"Gene Expression: {goi} in {cell_type} (Reloaded)")
+                plt.savefig(os.path.join(output_dir, f"gene_expression_{goi}_{cell_type}_reloaded.png"), bbox_inches='tight')
+                plt.close()
+            else:
+                print(f"Warning: Gene {goi} not found in reloaded adata for {cell_type}. Skipping gene expression UMAP.")
+
+    print("\nNote: Re-plotting 'simulation_results' requires re-running the computationally intensive simulation steps (simulate_shift, estimate_transition_prob, calculate_embedding_shift) as the intermediate 'embedding_shift' data is not explicitly saved. Only plots that can be generated from saved data (PCA elbow, degree distributions, gene expression UMAPs) are shown.")
+
+# Removed the final plt.show() as plots are now saved

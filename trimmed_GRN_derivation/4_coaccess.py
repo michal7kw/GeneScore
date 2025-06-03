@@ -1,3 +1,4 @@
+# %%
 import os
 import sys
 import pickle
@@ -32,9 +33,10 @@ sys.path.insert(0, project_functions_path)
 from grn_helpers import set_output_folders
 
 # %%
-n_cpus = 8
+n_cpu = 20
 # neurons_set = "L2-3_CUX2"
-neurons_set = "all_ex"
+# neurons_set = "all_ex"
+neurons_set = "all_ex_comb"
 # neurons_set = "all_ex_all_ages"
 root_dir = os.getenv('BASE_PATH')
 
